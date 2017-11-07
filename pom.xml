@@ -1,8 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ced2arddigenerator</groupId>
+  <!-- 
+      This pom.xml will generate TWO .jar files.  It uses the maven repository naming convention of: artifactId-version(-classifier).type
+      The two .jar files are:
+        1) ced2arddigenerator-0.2.0.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
+        2) ced2arddigenerator-0.2.0-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
+   -->
+  <!-- svn group
+    <groupId>ced2arddigenerator</groupId>
+   -->
+  <groupId>edu.ncrn.cornell.ced2ar</groupId>
   <artifactId>ced2arddigenerator</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <!-- svn version id
+    <version>0.0.1-SNAPSHOT</version>
+	-->
+  <!-- initial git build version id -->
+  <version>0.2.0-SNAPSHOT</version>
   <name>ced2arddigenerator</name>
   <description>ced2arddigenerator</description>
   	<dependencies>
@@ -21,10 +34,20 @@
 			<artifactId>opencsv</artifactId>
 			<version>2.3</version>
 		</dependency>
+	<!-- original svn dependency
 	    <dependency>
 	      <groupId>edu.ncrn.cornell.ced2ar.stata</groupId>
 	      <artifactId>ced2arstatareader</artifactId>
 	      <version>1.1.1</version>
+	    </dependency>
+	 -->
+	<!-- TEMPORARY git dependency to test build 
+	    use: edu.ncrn.cornell.ced2ar.stata   ced2arstatareader   0.0.1-SNAPSHOT
+	    TODO: Fix this  -->
+	    <dependency>
+	      <groupId>edu.ncrn.cornell.ced2ar.stata</groupId>
+	      <artifactId>ced2arstatareader</artifactId>
+	      <version>0.0.1-SNAPSHOT</version>
 	    </dependency>
 	    <dependency>
 	      <groupId>org.opendatafoundation.data</groupId>
@@ -78,7 +101,10 @@
 		</dependency>
 	</dependencies>	 
 	<build>
-    	<finalName>ced2ar_ddi_generator</finalName>
+		<!-- svn finalName Rev 1823+
+			<finalName>ced2ar_ddi_generator</finalName>
+		 -->
+		<finalName>ced2arddigenerator</finalName>
 		<plugins>
 			<plugin>
 	    		<groupId>org.apache.maven.plugins</groupId>
@@ -93,6 +119,8 @@
 	    	      <descriptorRefs>
 	    	        <descriptorRef>jar-with-dependencies</descriptorRef>
 	    	      </descriptorRefs>
+    	          <!-- Set appendAssemblyId to false IF you want this full jar to replace the normal jar in the maven repo. -->
+	    	      <!-- <appendAssemblyId>false</appendAssemblyId>  -->
 	    	      <archive>
 	    	        <manifest>
 	    	          <addClasspath>true</addClasspath>	
