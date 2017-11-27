@@ -6,7 +6,7 @@
         1) ced2arddigenerator-0.2.0.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
         2) ced2arddigenerator-0.2.0-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
    -->
-  <!-- svn group
+  <!-- original svn group
     <groupId>ced2arddigenerator</groupId>
    -->
   <groupId>edu.ncrn.cornell.ced2ar</groupId>
@@ -41,18 +41,15 @@
 	      <version>1.1.1</version>
 	    </dependency>
 	 -->
-	<!-- TEMPORARY git dependency to test build 
-	    use: edu.ncrn.cornell.ced2ar.stata   ced2arstatareader   0.0.1-SNAPSHOT
-	    TODO: Fix this  -->
 	    <dependency>
 	      <groupId>edu.ncrn.cornell.ced2ar.stata</groupId>
 	      <artifactId>ced2arstatareader</artifactId>
-	      <version>0.0.1-SNAPSHOT</version>
+	      <version>1.2.0</version>
 	    </dependency>
 	    <dependency>
 	      <groupId>org.opendatafoundation.data</groupId>
 	      <artifactId>ced2arspssreader</artifactId>
-	      <version>1.1.1</version>
+	      <version>1.2.0</version>
 	    </dependency>
 	    <dependency>
 			<groupId>org.apache.commons</groupId>
