@@ -116,7 +116,7 @@ public class CsvGenerator {
 				"name,label,valid,invalid,min,max,mean,stdev\n");
 		int i = 0;
 		for (Ced2arVariableStat v : ced2arVariableStats) {
-			logger.info("Processing variable " + (++i) + " of "
+			logger.debug("Processing variable " + (++i) + " of "
 					+ ced2arVariableStats.size() + " " + v.getName());
 			sb.append(v.getCSVValue(includeSummaryStatistics) + "\n");
 		}

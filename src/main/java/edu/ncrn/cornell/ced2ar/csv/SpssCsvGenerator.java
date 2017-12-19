@@ -33,6 +33,13 @@ public class SpssCsvGenerator extends CsvGenerator {
 			.getLogger(SpssCsvGenerator.class);
 
 	/**
+	 * The underlying ced2arspssreader .jar file has a binary option for logging. (It is either all on or off).
+	 * The spssFileLogFlag package variable and its getter and setter methods allow you to turn it on/off at a higher level.
+	 * Right now, it is turned off because SPSSFile dumps out a ton of data via println.
+	 */
+	public boolean spssFileLogFlag = false; // < Turn logging on/off
+
+	/**
 	 * generates CSV using a data file upload by the sword server
 	 * 
 	 * @param dataFileLocation
@@ -56,6 +63,14 @@ public class SpssCsvGenerator extends CsvGenerator {
 		SPSSFile spssFile = null;
 		File serverFile = new File(dataFileLocation);
 		spssFile = new SPSSFile(serverFile);
+		/**
+		 * Override SPSSFile file logging if it does not match what we want.
+		 * (The SPSSFile class dumps out a ton of data via println by default.)
+		 */
+		if (spssFileLogFlag != spssFile.logFlag) {
+			spssFile.logFlag = spssFileLogFlag;
+			logger.info("Changed SPSSFile logging flag. spssFile.logFlag set to: " + spssFile.logFlag);
+		}
 		VariableCsv variableCSV = getVariablesCsv(spssFile, summaryStatistics,
 				recordLimit);
 		return variableCSV;
@@ -192,5 +207,14 @@ public class SpssCsvGenerator extends CsvGenerator {
 		}
 		return readErrors;
 	}
+
+	
+	public boolean getSpssFileLogFlag() {
+		return spssFileLogFlag;
+	}
+	
+	public void setSpssFileLogFlag(boolean spssFileLogFlag) {
+		this.spssFileLogFlag = spssFileLogFlag;
+	}	
 
 }
