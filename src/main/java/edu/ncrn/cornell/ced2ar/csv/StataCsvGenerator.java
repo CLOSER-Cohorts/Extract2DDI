@@ -91,7 +91,7 @@ public class StataCsvGenerator extends CsvGenerator {
 			stataReader.openDtaFile();
 			for (long l = 1; l <= observationsToProcess; l++) {
 				if (l % 100 == 0)
-					logger.info("Processing observation " + l);
+					logger.debug("Processing observation " + l);
 
 				List<String> observation = stataReader.getObservation(l);
 				String[] varValues = observation.toArray(new String[observation
