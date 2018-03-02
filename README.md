@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1186913.svg)](https://doi.org/10.5281/zenodo.1186913)
 # CED2AR data file to DDI 2.5 Generator
 
 This project contains java classes that will allow you to read several versions of **Stata** *or* **SPSS** data sets and generate out DDI 2.5 xml files.
