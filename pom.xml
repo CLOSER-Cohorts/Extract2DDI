@@ -3,14 +3,38 @@
   <!-- 
       This pom.xml will generate TWO .jar files.  It uses the maven repository naming convention of: artifactId-version(-classifier).type
       The two .jar files are:
-        1) ced2arddigenerator-0.2.0.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
-        2) ced2arddigenerator-0.2.0-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
+        1) ced2arddigenerator-1.2.x.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
+        2) ced2arddigenerator-1.2.x-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
    -->
   <groupId>edu.ncrn.cornell.ced2ar.ddi</groupId>
   <artifactId>ced2arddigenerator</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1-SNAPSHOT</version>
+ <!--
   <name>ced2arddigenerator</name>
   <description>ced2arddigenerator</description>
+ -->
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>Read several versions of Stata or SPSS data sets and generate out DDI 2.5 xml files.  Can include in other projects or run as an executable jar file.</description>
+  <url>https://github.com/ncrncornell/ced2arddigenerator</url>
+  <licenses>
+    <license>
+      <name>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</name>
+      <url>http://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Ced2ar Development</name>
+      <email>ced2ar-devs-l@list.cornell.edu</email>
+      <organization>NSF Census Research Network (NCRN) - Cornell node</organization>
+      <organizationUrl>https://www.ncrn.cornell.edu/projects/</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/ncrncornell/ced2arddigenerator.git</connection>
+    <developerConnection>scm:git:ssh://github.com/ncrncornell/ced2arddigenerator.git</developerConnection>
+    <url>https://github.com/ncrncornell/ced2arddigenerator/tree/master</url>
+  </scm>
   	<dependencies>
 		<dependency>
 			<groupId>commons-configuration</groupId>
@@ -30,12 +54,12 @@
 	    <dependency>
 	      <groupId>edu.ncrn.cornell.ced2ar.stata</groupId>
 	      <artifactId>ced2arstatareader</artifactId>
-	      <version>1.2.0</version>
+	      <version>1.2.1-SNAPSHOT</version>
 	    </dependency>
 	    <dependency>
 	      <groupId>org.opendatafoundation.data</groupId>
 	      <artifactId>ced2arspssreader</artifactId>
-	      <version>1.2.0</version>
+	      <version>1.2.1-SNAPSHOT</version>
 	    </dependency>
 	    <dependency>
 			<groupId>org.apache.commons</groupId>
