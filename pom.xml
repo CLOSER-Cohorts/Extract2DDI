@@ -42,12 +42,12 @@
 			<version>1.2</version>
 		</dependency>
 	    <dependency>
-	      <groupId>edu.ncrn.cornell.ced2ar.stata</groupId>
+	      <groupId>edu.cornell.ncrn.ced2ar.stata</groupId>
 	      <artifactId>ced2arstatareader</artifactId>
 	      <version>1.2.1-SNAPSHOT</version>
 	    </dependency>
 	    <dependency>
-	      <groupId>org.opendatafoundation.data</groupId>
+	      <groupId>edu.cornell.ncrn.ced2ar.data</groupId>
 	      <artifactId>ced2arspssreader</artifactId>
 	      <version>1.2.1-SNAPSHOT</version>
 	    </dependency>

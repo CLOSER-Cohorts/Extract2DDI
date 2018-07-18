@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.opendatafoundation.data.FileFormatInfo;
-import org.opendatafoundation.data.FileFormatInfo.ASCIIFormat;
-import org.opendatafoundation.data.spss.SPSSFile;
-import org.opendatafoundation.data.spss.SPSSFileException;
-import org.opendatafoundation.data.spss.SPSSNumericVariable;
-import org.opendatafoundation.data.spss.SPSSStringVariable;
-import org.opendatafoundation.data.spss.SPSSVariable;
-import org.opendatafoundation.data.spss.SPSSVariableCategory;
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo.ASCIIFormat;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSFileException;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSNumericVariable;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSStringVariable;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariable;
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariableCategory;
 
 /**
  * @author Cornell University, Copyright 2012-2015

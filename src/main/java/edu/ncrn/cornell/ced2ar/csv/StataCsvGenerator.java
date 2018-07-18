@@ -22,9 +22,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import edu.ncrn.cornell.ced2ar.stata.StataReader;
-import edu.ncrn.cornell.ced2ar.stata.StataReaderFactory;
-import edu.ncrn.cornell.ced2ar.stata.impl.DtaVariable;
+import edu.cornell.ncrn.ced2ar.stata.StataReader;
+import edu.cornell.ncrn.ced2ar.stata.StataReaderFactory;
+import edu.cornell.ncrn.ced2ar.stata.impl.DtaVariable;
 
 public class StataCsvGenerator extends CsvGenerator {
 	private static final Logger logger = Logger
