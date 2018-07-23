@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar.csv;
+package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 /**
  * Purpose of this class is to read STATA data file and 

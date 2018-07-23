@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar.csv;
+package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import edu.ncrn.cornell.ced2ar.csv.Ced2arVariableStat;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 
 /**
  * This is a super class that abstracts the methods commonly used to convert

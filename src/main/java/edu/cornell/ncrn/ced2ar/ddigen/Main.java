@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar;
+package edu.cornell.ncrn.ced2ar.ddigen;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;

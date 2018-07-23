@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar.ddi;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi;
 
 import java.io.Serializable;
 import java.util.ArrayList;

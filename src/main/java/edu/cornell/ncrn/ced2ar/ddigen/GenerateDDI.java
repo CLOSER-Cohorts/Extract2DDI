@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar;
+package edu.cornell.ncrn.ced2ar.ddigen;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,11 +9,11 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
-import edu.ncrn.cornell.ced2ar.csv.SpssCsvGenerator;
-import edu.ncrn.cornell.ced2ar.csv.StataCsvGenerator;
-import edu.ncrn.cornell.ced2ar.csv.VariableCsv;
-import edu.ncrn.cornell.ced2ar.ddi.CodebookVariable;
-import edu.ncrn.cornell.ced2ar.ddi.VariableDDIGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.CodebookVariable;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 
 /**
  *

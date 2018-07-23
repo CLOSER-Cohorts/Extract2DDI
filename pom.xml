@@ -6,7 +6,7 @@
         1) ced2arddigenerator-1.2.x.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
         2) ced2arddigenerator-1.2.x-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
    -->
-  <groupId>edu.ncrn.cornell.ced2ar.ddi</groupId>
+  <groupId>edu.cornell.ncrn.ced2ar.ddigen</groupId>
   <artifactId>ced2arddigenerator</artifactId>
   <version>1.2.1-SNAPSHOT</version>
  <!--
@@ -96,7 +96,7 @@
 	    	      <archive>
 	    	        <manifest>
 	    	          <addClasspath>true</addClasspath>	
-	    	          <mainClass>edu.ncrn.cornell.ced2ar.Main</mainClass>
+	    	          <mainClass>edu.cornell.ncrn.ced2ar.ddigen.Main</mainClass>
 	    	        </manifest>
 	    	      </archive>
 	    	    </configuration>

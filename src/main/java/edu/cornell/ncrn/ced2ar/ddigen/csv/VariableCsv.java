@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar.csv;
+package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package edu.ncrn.cornell.ced2ar.ddi;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.ls.DOMImplementationLS;
 import org.w3c.dom.ls.LSSerializer;
 
-import edu.ncrn.cornell.ced2ar.csv.VariableCsv;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 
 public class VariableDDIGenerator {
 	public String namespace = "";
