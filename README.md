@@ -65,4 +65,4 @@ This run example generates the following files:
 * One log file.  ced2arstatareader.log
 
 ---
-Version: 1.2.0 1/9/18 Required: JDK 8.0
+Version: 1.3.0 7/31/18 Required: JDK 8.0
