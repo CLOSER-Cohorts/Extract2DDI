@@ -17,6 +17,7 @@ import edu.cornell.ncrn.ced2ar.data.spss.SPSSNumericVariable;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSStringVariable;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariable;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariableCategory;
+import org.w3c.dom.Document;
 
 /**
  * @author Cornell University, Copyright 2012-2015
@@ -74,6 +75,27 @@ public class SpssCsvGenerator extends CsvGenerator {
 		VariableCsv variableCSV = getVariablesCsv(spssFile, summaryStatistics,
 				recordLimit);
 		return variableCSV;
+	}
+
+	public Document getLogicalProduct(String dataFileLocation) throws IOException, SPSSFileException {
+		File serverFile = new File(dataFileLocation);
+		return getLogicalProduct(serverFile);
+	}
+
+	public Document getLogicalProduct(File serverFile) throws IOException, SPSSFileException {
+		SPSSFile spssFile = new SPSSFile(serverFile);
+		/**
+		 * Override SPSSFile file logging if it does not match what we want.
+		 * (The SPSSFile class dumps out a ton of data via println by default.)
+		 */
+		if (spssFileLogFlag != spssFile.logFlag) {
+			spssFile.logFlag = spssFileLogFlag;
+			logger.info("Changed SPSSFile logging flag. spssFile.logFlag set to: " + spssFile.logFlag);
+		}
+
+		spssFile.loadMetadata();
+
+		return spssFile.getDDI3LogicalProduct();
 	}
 
 	/**
