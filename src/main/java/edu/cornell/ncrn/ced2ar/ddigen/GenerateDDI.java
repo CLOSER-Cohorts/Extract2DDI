@@ -32,7 +32,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 public class GenerateDDI {
 	private static final Logger logger = Logger.getLogger(GenerateDDI.class);
 
-	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
+	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit, String format) throws Exception {
 		
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
@@ -42,17 +42,6 @@ public class GenerateDDI {
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
-
-			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
-
-			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
-
-			FragmentInstanceTransformer transformer = new FragmentInstanceTransformer(logicalProduct);
-			Document fragmentInstanceDocument = transformer.toDocument();
-
-			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-			String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
-			System.out.println(xml);
 		}
 
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
@@ -60,12 +49,27 @@ public class GenerateDDI {
 		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
 		logger.info("Successfully created csv files");
 
-		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-		List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
-		Document document = variableDDIGenerator.getCodebookDocument(codebookVariables,dataFile,runSumStats);
-		String xml = variableDDIGenerator.domToString(document);
-		createFile(xml, dataFile+".xml");
-		logger.info("Successfully created DDI file");
+		if (format.equalsIgnoreCase("2.5")) {
+			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+			List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
+			Document document = variableDDIGenerator.getCodebookDocument(codebookVariables,dataFile,runSumStats);
+			String xml = variableDDIGenerator.domToString(document);
+			createFile(xml, dataFile+".xml");
+			logger.info("Successfully created DDI file");
+		} else if (format.equalsIgnoreCase("3.3")) {
+			SpssCsvGenerator spssGen = new SpssCsvGenerator();
+			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
+			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
+
+			FragmentInstanceTransformer transformer = new FragmentInstanceTransformer(logicalProduct);
+			Document fragmentInstanceDocument = transformer.toDocument();
+
+			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+			String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
+			createFile(xml, dataFile+".xml");
+			logger.info("Successfully created DDI file");
+		}
+
 		logger.info(observationLimit);
 	}
 

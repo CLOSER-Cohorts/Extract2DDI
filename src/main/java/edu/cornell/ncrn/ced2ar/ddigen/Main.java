@@ -25,6 +25,7 @@ public class Main {
 		String observationLimit;
 		String dataFile;
 		String processSummaryStatics;
+		String format;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -32,6 +33,7 @@ public class Main {
 			dataFile = cmd.getOptionValue("f");
 			processSummaryStatics = cmd.getOptionValue("s");
 			observationLimit = cmd.getOptionValue("l");
+			format = cmd.getOptionValue("format");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -43,11 +45,12 @@ public class Main {
 		
 		Boolean summaryStats = Util.runSumStatsCheck(processSummaryStatics);
 		Long obsLimit = Util.observationLimitCheck(observationLimit);
+		String formatOutput = Util.formatCheck(format);
 
 		Util.fileCheck(dataFile);
 
 		GenerateDDI generateDDI = new GenerateDDI();
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput);
 		System.out.println("Finished. Exiting.");
 	}
 }
