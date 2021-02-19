@@ -1,5 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceTransformer;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,8 +42,18 @@ public class GenerateDDI {
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
+
+			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
+
+			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
+
+			FragmentInstanceTransformer transformer = new FragmentInstanceTransformer(logicalProduct);
+			Document fragmentInstanceDocument = transformer.toDocument();
+
+			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+			String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
+			System.out.println(xml);
 		}
-		
 
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
 		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
