@@ -44,19 +44,14 @@ public class GenerateDDI {
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
 		}
 
-		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
-		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
-		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
-		logger.info("Successfully created csv files");
-
-		if (format.equalsIgnoreCase("2.5")) {
+		if (dataFile.toLowerCase().endsWith(".sav") && format.equalsIgnoreCase("2.5") || dataFile.toLowerCase().endsWith(".dta")) {
 			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 			List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
 			Document document = variableDDIGenerator.getCodebookDocument(codebookVariables,dataFile,runSumStats);
 			String xml = variableDDIGenerator.domToString(document);
 			createFile(xml, dataFile+".xml");
 			logger.info("Successfully created DDI file");
-		} else if (format.equalsIgnoreCase("3.3")) {
+		} else if (dataFile.toLowerCase().endsWith(".sav") && format.equalsIgnoreCase("3.3")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
@@ -69,6 +64,11 @@ public class GenerateDDI {
 			createFile(xml, dataFile+".xml");
 			logger.info("Successfully created DDI file");
 		}
+
+		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
+		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
+		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
+		logger.info("Successfully created csv files");
 
 		logger.info(observationLimit);
 	}
