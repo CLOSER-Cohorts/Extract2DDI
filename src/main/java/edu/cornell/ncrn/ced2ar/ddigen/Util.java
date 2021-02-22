@@ -2,6 +2,8 @@ package edu.cornell.ncrn.ced2ar.ddigen;
 
 import java.io.File;
 
+import java.net.URISyntaxException;
+import java.net.URL;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -31,6 +33,7 @@ public class Util {
 		_options.addOption("s", true,
 				"(optional) [true|false] Generate summary statistics");
 		_options.addOption("l", true, "(optional) Observation limit");
+		_options.addOption("format", true, "(optional) DDI format");
 	}
 
 	public CommandLineParser getParser() {
@@ -58,6 +61,27 @@ public class Util {
 		if (!od.exists()) {
 			System.out.println("The path '" + path + "' does not exist");
 			System.exit(1);
+		}
+	}
+
+	/**
+	 * Format is set to 3.3 by default. User can choose 2.5 format
+	 *
+	 * @param format
+	 * @param format
+	 */
+	public static String formatCheck(String format) {
+
+		if (format == null || format.isEmpty()) {
+			return "3.3";
+		}
+
+		if (format.equalsIgnoreCase("2.5") || format.equalsIgnoreCase("3.3")) {
+			return format;
+		} else {
+			System.out.println("Only following formats are supported: 2.5 and 3.3");
+			System.exit(1);
+			return "3.3";
 		}
 	}
 

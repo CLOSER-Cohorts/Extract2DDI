@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.fragment;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFileException;
+import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceTransformer;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
@@ -8,23 +9,13 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
+import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 public class FragmentInstanceTransformerTest {
-
-	private File getFileFromResource(String fileName) throws URISyntaxException {
-		ClassLoader classLoader = getClass().getClassLoader();
-		URL resource = classLoader.getResource(fileName);
-		if (resource == null) {
-			throw new IllegalArgumentException("file not found! " + fileName);
-		} else {
-			return new File(resource.toURI());
-		}
-	}
 
 	private Node getRepresentationNode(Document document, int index) {
 		return document
@@ -41,9 +32,10 @@ public class FragmentInstanceTransformerTest {
 	}
 
 	@Test
-	public void testToDocument() throws URISyntaxException, IOException, SPSSFileException {
+	public void testToDocument()
+		throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
-		File file = getFileFromResource("test-file-data-types.sav");
+		File file = FileUtil.getFileFromResource(getClass(), "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
@@ -59,19 +51,27 @@ public class FragmentInstanceTransformerTest {
 		Assert.assertEquals(14, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
 		Assert.assertEquals("r:URN", variable.getFirstChild().getNodeName());
 		Assert.assertEquals("r:Agency", variable.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("uk.closer", variable.getChildNodes().item(1).getTextContent());
 		Assert.assertEquals("r:ID", variable.getChildNodes().item(2).getNodeName());
 		Assert.assertEquals("r:Version", variable.getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("VariableName", variable.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("r:String", variable.getChildNodes().item(4).getFirstChild().getNodeName());
+		Assert.assertEquals("xml:lang", variable.getChildNodes().item(4).getFirstChild().getAttributes().item(0).getNodeName());
+		Assert.assertEquals("en-GB", variable.getChildNodes().item(4).getFirstChild().getAttributes().item(0).getTextContent());
+		Assert.assertEquals("TestString", variable.getChildNodes().item(4).getFirstChild().getTextContent());
 		Assert.assertEquals("r:Label", variable.getChildNodes().item(5).getNodeName());
+		Assert.assertEquals("xml:lang", variable.getChildNodes().item(5).getAttributes().item(0).getNodeName());
+		Assert.assertEquals("en-GB", variable.getChildNodes().item(5).getAttributes().item(0).getTextContent());
 		Assert.assertEquals("VariableRepresentation", variable.getChildNodes().item(6).getNodeName());
 		Assert.assertEquals("VariableRole", variable.getChildNodes().item(6).getFirstChild().getNodeName());
 		Assert.assertEquals("input", variable.getChildNodes().item(6).getFirstChild().getTextContent());
 	}
 
 	@Test
-	public void testToDocument_DateTimeRepresentation() throws URISyntaxException, IOException, SPSSFileException {
+	public void testToDocument_DateTimeRepresentation()
+		throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
-		File file = getFileFromResource("test-file-data-types.sav");
+		File file = FileUtil.getFileFromResource(getClass(), "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
@@ -87,9 +87,10 @@ public class FragmentInstanceTransformerTest {
 	}
 
 	@Test
-	public void testToDocument_TextRepresentation() throws URISyntaxException, IOException, SPSSFileException {
+	public void testToDocument_TextRepresentation()
+		throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
-		File file = getFileFromResource("test-file-data-types.sav");
+		File file = FileUtil.getFileFromResource(getClass(), "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
@@ -105,9 +106,10 @@ public class FragmentInstanceTransformerTest {
 	}
 
 	@Test
-	public void testToDocument_NumericRepresentation() throws URISyntaxException, IOException, SPSSFileException {
+	public void testToDocument_NumericRepresentation()
+		throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
-		File file = getFileFromResource("test-file-data-types.sav");
+		File file = FileUtil.getFileFromResource(getClass(), "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
