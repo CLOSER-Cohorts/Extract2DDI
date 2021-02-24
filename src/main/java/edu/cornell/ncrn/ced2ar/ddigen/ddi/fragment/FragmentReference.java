@@ -14,7 +14,7 @@ public abstract class FragmentReference implements Appendable {
 	private String id;
 	private int version;
 
-	public FragmentReference(String agency, String id, int version) {
+	public FragmentReference(String id, String agency, int version) {
 		setAgency(agency);
 		setId(id);
 		setVersion(version);
@@ -46,20 +46,19 @@ public abstract class FragmentReference implements Appendable {
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-
 		// Agency
-		Element agencyElement = doc.createElementNS(namespace, NODE_NAME_AGENCY);
-		agencyElement.setTextContent(agency);
-		element.appendChild(agencyElement);
+		Element agency = doc.createElementNS(namespace, NODE_NAME_AGENCY);
+		agency.setTextContent(getAgency());
+		element.appendChild(agency);
 
 		// ID
-		Element idElement = doc.createElementNS(namespace, NODE_NAME_ID);
-		idElement.setTextContent(getId());
-		element.appendChild(idElement);
+		Element id = doc.createElementNS(namespace, NODE_NAME_ID);
+		id.setTextContent(getId());
+		element.appendChild(id);
 
 		// Version
-		Element versionElement = doc.createElementNS(namespace, NODE_NAME_VERSION);
-		versionElement.setTextContent(Integer.toString(getVersion()));
-		element.appendChild(versionElement);
+		Element version = doc.createElementNS(namespace, NODE_NAME_VERSION);
+		version.setTextContent(Integer.toString(getVersion()));
+		element.appendChild(version);
 	}
 }

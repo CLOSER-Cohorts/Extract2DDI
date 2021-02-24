@@ -34,19 +34,19 @@ public class LogicalProductGenerator {
 
 		List<Fragment> fragmentList = new ArrayList<>();
 
-		VariableScheme variableScheme = new VariableScheme(agency, UUID.randomUUID().toString(), 1);
+		VariableScheme variableScheme = new VariableScheme(UUID.randomUUID().toString(), agency, 1);
 
 		List<Fragment> variableFragmentList = new ArrayList<>();
 		for (Variable variable : logicalProduct.getVariableList()) {
 			String id = UUID.randomUUID().toString();
 			int version = 1;
 
-			VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(agency, id, version);
+			VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(id, agency, version);
 			variableScheme.addVariable(variableReferenceFragment);
 
 			VariableFragment variableFragment = new VariableFragment(
-				agency,
 				id,
+				agency,
 				version,
 				variable.getLabel(),
 				variable.getName(),

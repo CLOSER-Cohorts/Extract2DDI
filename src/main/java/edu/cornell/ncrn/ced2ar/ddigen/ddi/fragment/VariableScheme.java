@@ -10,9 +10,8 @@ public class VariableScheme extends Fragment {
 
 	private List<VariableReferenceFragment> variableList = new ArrayList<>();
 
-
-	public VariableScheme(String agency, String id, int version) {
-		super(agency, id, version);
+	public VariableScheme(String id, String agency, int version) {
+		super(id, agency, version);
 	}
 
 	public void addVariable(VariableReferenceFragment variable) {
@@ -33,14 +32,12 @@ public class VariableScheme extends Fragment {
 
 		super.appendToElement(variableScheme, doc, namespace);
 
-		{
-			Element fragmentElement = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-			fragmentElement.appendChild(variableScheme);
-			element.appendChild(fragmentElement);
-		}
+		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.appendChild(variableScheme);
+		element.appendChild(fragment);
 
-		for (VariableReferenceFragment variableFragment : variableList) {
-			variableFragment.appendToElement(variableScheme, doc, namespace);
+		for (VariableReferenceFragment variable : variableList) {
+			variable.appendToElement(variableScheme, doc, namespace);
 		}
 	}
 }

@@ -10,22 +10,22 @@ public class VariableReferenceFragment extends FragmentReference {
 
 	private ReferenceType referenceType;
 
-	public VariableReferenceFragment(String agency, String id, int version) {
-		super(agency, id, version);
+	public VariableReferenceFragment(String id, String agency, int version) {
+		super(id, agency, version);
 		setReferenceType(ReferenceType.VARIABLE);
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		Element variableElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REFERENCE);
-		element.appendChild(variableElement);
+		Element variable = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REFERENCE);
+		element.appendChild(variable);
 
-		super.appendToElement(variableElement, doc, namespace);
+		super.appendToElement(variable, doc, namespace);
 
 		if (getReferenceType() == ReferenceType.VARIABLE) {
 			Element objectType = doc.createElementNS(namespace, NODE_NAME_OBJECT_TYPE);
 			objectType.setTextContent("Variable");
-			variableElement.appendChild(objectType);
+			variable.appendChild(objectType);
 		}
 	}
 

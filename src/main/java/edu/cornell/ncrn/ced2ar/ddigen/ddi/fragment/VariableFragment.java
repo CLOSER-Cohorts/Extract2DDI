@@ -19,8 +19,8 @@ public class VariableFragment extends Fragment {
 	private AbstractVariableRepresentation variableRepresentation;
 	private String xmlLang;
 
-	public VariableFragment(String agency, String id, int version, String label, String name, String xmlLang) {
-		super(agency, id, version);
+	public VariableFragment(String id, String agency, int version, String label, String name, String xmlLang) {
+		super(id, agency, version);
 		setLabel(label);
 		setName(name);
 		setXmlLang(xmlLang);
@@ -60,34 +60,34 @@ public class VariableFragment extends Fragment {
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragmentElement = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		Element variableElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE);
-		fragmentElement.appendChild(variableElement);
-		element.appendChild(fragmentElement);
+		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		Element variable = doc.createElementNS(namespace, NODE_NAME_VARIABLE);
+		fragment.appendChild(variable);
+		element.appendChild(fragment);
 
-		super.appendToElement(variableElement, doc, namespace);
+		super.appendToElement(variable, doc, namespace);
 
 		// VariableName
-		Element variableNameElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_NAME);
-		Element stringElement = doc.createElementNS(namespace, NODE_NAME_STRING);
-		stringElement.setAttribute(ATTRIBUTE_NAME_XML_LANG, xmlLang);
-		stringElement.setTextContent(getName());
-		variableNameElement.appendChild(stringElement);
-		variableElement.appendChild(variableNameElement);
+		Element variableName = doc.createElementNS(namespace, NODE_NAME_VARIABLE_NAME);
+		Element string = doc.createElementNS(namespace, NODE_NAME_STRING);
+		string.setAttribute(ATTRIBUTE_NAME_XML_LANG, xmlLang);
+		string.setTextContent(getName());
+		variableName.appendChild(string);
+		variable.appendChild(variableName);
 
 		// Label
-		Element labelElement = doc.createElementNS(namespace, NODE_NAME_LABEL);
-		labelElement.setAttribute(ATTRIBUTE_NAME_XML_LANG, getXmlLang());
-		Element contentElement = doc.createElementNS(namespace, NODE_NAME_CONTENT);
-		contentElement.setTextContent(getLabel());
-		labelElement.appendChild(contentElement);
-		variableElement.appendChild(labelElement);
+		Element label = doc.createElementNS(namespace, NODE_NAME_LABEL);
+		label.setAttribute(ATTRIBUTE_NAME_XML_LANG, getXmlLang());
+		Element content = doc.createElementNS(namespace, NODE_NAME_CONTENT);
+		content.setTextContent(getLabel());
+		label.appendChild(content);
+		variable.appendChild(label);
 
 		// VariableRepresentation
 
 		AbstractVariableRepresentation variableRepresentation = getVariableRepresentation();
 		if (variableRepresentation != null) {
-			variableRepresentation.appendToElement(variableElement, doc, namespace);
+			variableRepresentation.appendToElement(variable, doc, namespace);
 		}
 	}
 }

@@ -12,18 +12,18 @@ public class DateTimeVariableRepresentation extends AbstractVariableRepresentati
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		Element representationElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
+		Element representation = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
 
-		super.appendToElement(representationElement, doc, namespace);
-		element.appendChild(representationElement);
+		super.appendToElement(representation, doc, namespace);
+		element.appendChild(representation);
 
-		Element dateTypeCodeElement = doc.createElementNS(namespace, NODE_NAME_DATE_TYPE_CODE);
-		dateTypeCodeElement.setTextContent(getType());
+		Element dateTypeCode = doc.createElementNS(namespace, NODE_NAME_DATE_TYPE_CODE);
+		dateTypeCode.setTextContent(getType());
 
-		Element dateTimeRepresentationElement = doc.createElementNS(namespace, NODE_NAME_DATE_TIME_REPRESENTATION);
-		dateTimeRepresentationElement.appendChild(dateTypeCodeElement);
-		dateTimeRepresentationElement.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
-		representationElement.appendChild(dateTimeRepresentationElement);
+		Element dateTimeRepresentation = doc.createElementNS(namespace, NODE_NAME_DATE_TIME_REPRESENTATION);
+		dateTimeRepresentation.appendChild(dateTypeCode);
+		dateTimeRepresentation.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
+		representation.appendChild(dateTimeRepresentation);
 	}
 
 	public String getType() {

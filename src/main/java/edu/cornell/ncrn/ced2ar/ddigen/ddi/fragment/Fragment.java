@@ -9,9 +9,9 @@ public abstract class Fragment extends FragmentReference {
 
 	private String urn;
 
-	public Fragment(String agency, String id, int version) {
-		super(agency, id, version);
-		setUrn(FragmentUtil.generateUrn(agency, id, version));
+	public Fragment(String id, String agency, int version) {
+		super(id, agency, version);
+		setUrn(FragmentUtil.generateUrn(id, agency, version));
 	}
 
 	public String getUrn() {
@@ -25,9 +25,9 @@ public abstract class Fragment extends FragmentReference {
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		// URN
-		Element urnElement = doc.createElementNS(namespace, NODE_NAME_URN);
-		urnElement.setTextContent(getUrn());
-		element.appendChild(urnElement);
+		Element urn = doc.createElementNS(namespace, NODE_NAME_URN);
+		urn.setTextContent(getUrn());
+		element.appendChild(urn);
 
 		super.appendToElement(element, doc, namespace);
 	}

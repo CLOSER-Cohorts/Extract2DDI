@@ -13,20 +13,20 @@ public class NumericVariableRepresentation extends AbstractVariableRepresentatio
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		Element representationElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
+		Element representation = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
 
-		super.appendToElement(representationElement, doc, namespace);
-		element.appendChild(representationElement);
+		super.appendToElement(representation, doc, namespace);
+		element.appendChild(representation);
 
-		Element numericTypeCodeElement = doc.createElementNS(namespace, NODE_NAME_NUMERIC_TYPE_CODE);
-		numericTypeCodeElement.setTextContent(getType());
+		Element numericTypeCode = doc.createElementNS(namespace, NODE_NAME_NUMERIC_TYPE_CODE);
+		numericTypeCode.setTextContent(getType());
 
-		Element numericRepresentationElement = doc.createElementNS(namespace, NODE_NAME_NUMERIC_REPRESENTATION);
-		numericRepresentationElement.appendChild(numericTypeCodeElement);
-		numericRepresentationElement.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
-		numericRepresentationElement.setAttribute(ATTRIBUTE_NAME_DECIMAL_POSITIONS, "4");
+		Element numericRepresentation = doc.createElementNS(namespace, NODE_NAME_NUMERIC_REPRESENTATION);
+		numericRepresentation.appendChild(numericTypeCode);
+		numericRepresentation.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
+		numericRepresentation.setAttribute(ATTRIBUTE_NAME_DECIMAL_POSITIONS, "4");
 
-		representationElement.appendChild(numericRepresentationElement);
+		representation.appendChild(numericRepresentation);
 	}
 
 	public String getType() {
