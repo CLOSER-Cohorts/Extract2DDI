@@ -4,7 +4,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class TextVariableRepresentation extends AbstractVariableRepresentation {
-	private String maxLength;
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
@@ -16,9 +15,5 @@ public class TextVariableRepresentation extends AbstractVariableRepresentation {
 		textRepresentationElement.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
 		textRepresentationElement.setAttribute(ATTRIBUTE_NAME_CLASSIFICATION_LEVEL, ATTRIBUTE_VALUE_NOMINAL);
 		representationElement.appendChild(textRepresentationElement);
-	}
-
-	public String getMaxLength() {
-		return maxLength;
 	}
 }

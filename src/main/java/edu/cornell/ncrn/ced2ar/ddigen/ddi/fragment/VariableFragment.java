@@ -19,6 +19,13 @@ public class VariableFragment extends Fragment {
 	private AbstractVariableRepresentation variableRepresentation;
 	private String xmlLang;
 
+	public VariableFragment(String agency, String id, int version, String label, String name, String xmlLang) {
+		super(agency, id, version);
+		setLabel(label);
+		setName(name);
+		setXmlLang(xmlLang);
+	}
+
 	public String getName() {
 		return name;
 	}

@@ -6,6 +6,10 @@ import org.w3c.dom.Element;
 public class DateTimeVariableRepresentation extends AbstractVariableRepresentation {
 	private String type;
 
+	public DateTimeVariableRepresentation(String type) {
+		setType(type);
+	}
+
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element representationElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);

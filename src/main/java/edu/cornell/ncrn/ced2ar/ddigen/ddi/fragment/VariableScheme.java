@@ -10,6 +10,11 @@ public class VariableScheme extends Fragment {
 
 	private List<VariableReferenceFragment> variableList = new ArrayList<>();
 
+
+	public VariableScheme(String agency, String id, int version) {
+		super(agency, id, version);
+	}
+
 	public void addVariable(VariableReferenceFragment variable) {
 		this.variableList.add(variable);
 	}

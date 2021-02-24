@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
-public class LogicalProductTransformer {
+public class LogicalProductGenerator {
 
 	public static final String KEY_AGENCY = "edu.cornell.ncrn.ced2ar.ddigen.fragment.agency";
 	public static final String KEY_XML_LANG = "edu.cornell.ncrn.ced2ar.ddigen.fragment.xml.lang";
 
 	private LogicalProduct logicalProduct;
 
-	public LogicalProductTransformer(LogicalProduct logicalProduct) {
+	public LogicalProductGenerator(LogicalProduct logicalProduct) {
 		setLogicalProduct(logicalProduct);
 	}
 
@@ -34,39 +34,38 @@ public class LogicalProductTransformer {
 
 		List<Fragment> fragmentList = new ArrayList<>();
 
-		VariableScheme variableScheme = new VariableScheme();
+		VariableScheme variableScheme = new VariableScheme(agency, UUID.randomUUID().toString(), 1);
 
 		List<Fragment> variableFragmentList = new ArrayList<>();
 		for (Variable variable : logicalProduct.getVariableList()) {
 			String id = UUID.randomUUID().toString();
+			int version = 1;
 
-			VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment();
-			variableScheme.addVariable(variableReferenceFragment);
-			variableReferenceFragment.setAgency(agency);
-			variableReferenceFragment.setId(id);
+			VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(agency, id, version);
 			variableScheme.addVariable(variableReferenceFragment);
 
-			VariableFragment variableFragment = new VariableFragment();
-			variableFragment.setAgency(agency);
-			variableFragment.setId(id);
-			variableFragment.setXmlLang(xmlLang);
-			variableFragment.setLabel(variable.getLabel());
-			variableFragment.setName(variable.getName());
-			variableFragment.setName(variable.getName());
+			VariableFragment variableFragment = new VariableFragment(
+				agency,
+				id,
+				version,
+				variable.getLabel(),
+				variable.getName(),
+				xmlLang
+			);
 
 			Representation representation = variable.getRepresentation();
 			if (representation instanceof TextRepresentation) {
 				TextVariableRepresentation textVariableRepresentation = new TextVariableRepresentation();
 				variableFragment.setRepresentation(textVariableRepresentation);
 			} else if (representation instanceof NumericRepresentation) {
-				NumericRepresentation numericRepresentation = (NumericRepresentation) representation;
-				NumericVariableRepresentation numericVariableRepresentation = new NumericVariableRepresentation();
-				numericVariableRepresentation.setType(numericRepresentation.getType());
+				NumericVariableRepresentation numericVariableRepresentation = new NumericVariableRepresentation(
+					((NumericRepresentation) representation).getType()
+				);
 				variableFragment.setRepresentation(numericVariableRepresentation);
 			} else if (representation instanceof DateTimeRepresentation) {
-				DateTimeRepresentation dateTimeRepresentation = (DateTimeRepresentation) representation;
-				DateTimeVariableRepresentation dateTimeVariableRepresentation = new DateTimeVariableRepresentation();
-				dateTimeVariableRepresentation.setType(dateTimeRepresentation.getType());
+				DateTimeVariableRepresentation dateTimeVariableRepresentation = new DateTimeVariableRepresentation(
+					((DateTimeRepresentation) representation).getType()
+				);
 				variableFragment.setRepresentation(dateTimeVariableRepresentation);
 			}
 			variableFragmentList.add(variableFragment);

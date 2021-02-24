@@ -7,14 +7,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class FragmentInstanceTransformer {
+public class FragmentInstanceGenerator {
 
 	public static final String NODE_NAME_FRAGMENT_INSTANCE = "ddi:FragmentInstance";
 
 	public String namespace = "";
 	private List<Fragment> fragmentList;
 
-	public FragmentInstanceTransformer(List<Fragment> fragmentList) {
+	public FragmentInstanceGenerator(List<Fragment> fragmentList) {
 		setFragmentList(fragmentList);
 	}
 
@@ -36,7 +36,6 @@ public class FragmentInstanceTransformer {
 
 		doc.appendChild(fragmentInstance);
 		doc.getDocumentElement().normalize();
-
 
 		for (Fragment fragment : fragmentList) {
 			fragment.appendToElement(fragmentInstance, doc, namespace);
