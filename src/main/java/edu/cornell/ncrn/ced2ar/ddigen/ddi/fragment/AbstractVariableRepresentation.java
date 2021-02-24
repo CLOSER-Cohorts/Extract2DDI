@@ -23,11 +23,10 @@ public abstract class AbstractVariableRepresentation implements Appendable {
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-
-		Element variableRoleElement = doc.createElementNS(namespace, NODE_NAME_VARIABLE_ROLE);
-		variableRoleElement.setTextContent(getRole());
-		variableRoleElement.setTextContent("input");
-		element.appendChild(variableRoleElement);
+		Element variableRole = doc.createElementNS(namespace, NODE_NAME_VARIABLE_ROLE);
+		variableRole.setTextContent(getRole());
+		variableRole.setTextContent("input");
+		element.appendChild(variableRole);
 	}
 
 	public String getRole() {
