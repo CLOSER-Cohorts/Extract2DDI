@@ -3,7 +3,7 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.logical;
 public class Variable {
 	private String label;
 	private String name;
-	private VariableRepresentation representation;
+	private Representation representation;
 
 	public String getName() {
 		return name;
@@ -13,7 +13,7 @@ public class Variable {
 		return label;
 	}
 
-	public VariableRepresentation getRepresentation() {
+	public Representation getRepresentation() {
 		return representation;
 	}
 
@@ -25,8 +25,7 @@ public class Variable {
 		this.label = label;
 	}
 
-	public void setRepresentation(
-		VariableRepresentation representation) {
+	public void setRepresentation(Representation representation) {
 		this.representation = representation;
 	}
 }

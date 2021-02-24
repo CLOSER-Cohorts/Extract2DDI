@@ -1,14 +1,16 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.logical;
 
+import java.util.List;
+
 public class LogicalProduct {
 
-	private VariableScheme variableScheme;
+	private List<Variable> variableList;
 
-	public VariableScheme getVariableScheme() {
-		return variableScheme;
+	public List<Variable> getVariableList() {
+		return variableList;
 	}
 
-	public void setVariableScheme(VariableScheme variableScheme) {
-		this.variableScheme = variableScheme;
+	public void setVariableList(List<Variable> variableList) {
+		this.variableList = variableList;
 	}
 }

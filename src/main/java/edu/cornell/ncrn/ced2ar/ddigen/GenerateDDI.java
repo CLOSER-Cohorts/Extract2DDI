@@ -1,6 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceTransformer;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
 import java.io.BufferedWriter;
@@ -56,7 +58,10 @@ public class GenerateDDI {
 			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
 
-			FragmentInstanceTransformer transformer = new FragmentInstanceTransformer(logicalProduct);
+			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(logicalProduct);
+			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+
+			FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 			Document fragmentInstanceDocument = transformer.toDocument();
 
 			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();

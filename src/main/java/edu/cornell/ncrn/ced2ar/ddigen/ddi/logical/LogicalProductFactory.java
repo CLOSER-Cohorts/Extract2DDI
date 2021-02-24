@@ -1,5 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.logical;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -9,7 +11,7 @@ public class LogicalProductFactory {
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
 
-		VariableScheme variableScheme = new VariableScheme();
+		List<Variable> variableList = new ArrayList<>();
 
 		NodeList variableSchemeList = document.getElementsByTagName("VariableScheme");
 		for (int i = 0; i < variableSchemeList.getLength(); i++) {
@@ -30,7 +32,7 @@ public class LogicalProductFactory {
 								variable.setLabel(variableChild.getTextContent());
 							} else if (nodeNameEquals(variableChild, "Representation")) {
 								Node representationNode = variableChild.getFirstChild();
-								VariableRepresentation representation = new VariableRepresentation();
+								Representation representation = null;
 								if (nodeNameEquals(representationNode, "NumericRepresentation")) {
 									NumericRepresentation numericRepresentation = new NumericRepresentation();
 
@@ -40,9 +42,9 @@ public class LogicalProductFactory {
 											numericRepresentation.setType(attribute.getTextContent());
 										}
 									}
-									representation.setRepresentation(numericRepresentation);
+									representation = numericRepresentation;
 								} else if (nodeNameEquals(representationNode, "TextRepresentation")) {
-									representation.setRepresentation(new TextRepresentation());
+									representation = new TextRepresentation();
 								} else if (nodeNameEquals(representationNode, "DateTimeRepresentation")) {
 
 									DateTimeRepresentation dateTimeRepresentation = new DateTimeRepresentation();
@@ -53,17 +55,17 @@ public class LogicalProductFactory {
 											dateTimeRepresentation.setType(attribute.getTextContent());
 										}
 									}
-									representation.setRepresentation(dateTimeRepresentation);
+									representation = dateTimeRepresentation;
 								}
 								variable.setRepresentation(representation);
 							}
 						}
-						variableScheme.addVariable(variable);
+						variableList.add(variable);
 					}
 				}
 			}
 		}
-		logicalProduct.setVariableScheme(variableScheme);
+		logicalProduct.setVariableList(variableList);
 		return logicalProduct;
 	}
 
