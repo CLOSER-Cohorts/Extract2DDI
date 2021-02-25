@@ -5,12 +5,12 @@ import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class VariableScheme extends Fragment {
+public class VariableSchemeFragment extends Fragment {
 	public static final String NODE_NAME_VARIABLE_SCHEME = "VariableScheme";
 
 	private List<VariableReferenceFragment> variableList = new ArrayList<>();
 
-	public VariableScheme(String id, String agency, int version) {
+	public VariableSchemeFragment(String id, String agency, int version) {
 		super(id, agency, version);
 	}
 
@@ -36,7 +36,7 @@ public class VariableScheme extends Fragment {
 		fragment.appendChild(variableScheme);
 		element.appendChild(fragment);
 
-		for (VariableReferenceFragment variable : variableList) {
+		for (VariableReferenceFragment variable : getVariableList()) {
 			variable.appendToElement(variableScheme, doc, namespace);
 		}
 	}

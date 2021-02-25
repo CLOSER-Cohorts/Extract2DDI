@@ -24,19 +24,27 @@ public class FragmentInstanceGeneratorTest {
 
 	private static Document fragmentInstanceDocument;
 
-	private Node getCategoryNode(Document document) {
+	private Node getCategory(Document document) {
+		return document.getFirstChild().getChildNodes().item(9).getFirstChild();
+	}
+
+	private Node getCategoryScheme(Document document) {
 		return document.getFirstChild().getChildNodes().item(1).getFirstChild();
 	}
 
-	private Node getRepresentationNode(Document document, int index) {
-		return getVariableNode(document, index).getLastChild().getLastChild();
+	private Node getCategoryReference(Document document) {
+		return getCategoryScheme(document).getChildNodes().item(4);
 	}
 
-	private Node getVariableNode(Document document) {
-		return getVariableNode(document, 14);
+	private Node getRepresentation(Document document, int index) {
+		return getVariable(document, index).getLastChild().getLastChild();
 	}
 
-	private Node getVariableNode(Document document, int index) {
+	private Node getVariable(Document document) {
+		return getVariable(document, 22);
+	}
+
+	private Node getVariable(Document document, int index) {
 		return document.getFirstChild().getChildNodes().item(index).getFirstChild();
 	}
 
@@ -45,18 +53,18 @@ public class FragmentInstanceGeneratorTest {
 	}
 
 	private Node getVariableScheme(Document document) {
-		return document.getFirstChild().getChildNodes().item(13).getFirstChild();
+		return document.getFirstChild().getChildNodes().item(21).getFirstChild();
 	}
 
 	@Test
 	public void testToDocument() {
-		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+		/*VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
-		System.out.println(xml);
+		System.out.println(xml);*/
 
-		Node variable = getVariableNode(fragmentInstanceDocument);
+		Node variable = getVariable(fragmentInstanceDocument);
 
-		Assert.assertEquals(28, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
+		Assert.assertEquals(36, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
 		Assert.assertEquals("r:URN", variable.getFirstChild().getNodeName());
 		Assert.assertNotEquals("", variable.getFirstChild().getTextContent());
 		Assert.assertEquals("r:Agency", variable.getChildNodes().item(1).getNodeName());
@@ -80,7 +88,7 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_Category() {
-		Node category = getCategoryNode(fragmentInstanceDocument);
+		Node category = getCategory(fragmentInstanceDocument);
 		Assert.assertEquals("Category", category.getNodeName());
 		Assert.assertEquals("r:URN", category.getFirstChild().getNodeName());
 		Assert.assertNotEquals("", category.getFirstChild().getNodeName());
@@ -94,8 +102,35 @@ public class FragmentInstanceGeneratorTest {
 	}
 
 	@Test
+	public void testToDocument_CategoryScheme() {
+		Node categoryScheme = getCategoryScheme(fragmentInstanceDocument);
+		Assert.assertEquals("CategoryScheme", categoryScheme.getNodeName());
+		Assert.assertEquals("r:URN", categoryScheme.getFirstChild().getNodeName());
+		Assert.assertNotEquals("", categoryScheme.getFirstChild().getTextContent());
+		Assert.assertEquals("r:Agency", categoryScheme.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("uk.closer", categoryScheme.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("r:ID", categoryScheme.getChildNodes().item(2).getNodeName());
+		Assert.assertNotEquals("", categoryScheme.getChildNodes().item(2).getTextContent());
+	}
+
+	@Test
+	public void testToDocument_CategoryReference() {
+		Node categoryReference = getCategoryReference(fragmentInstanceDocument);
+
+		Assert.assertEquals("r:CategoryReference", categoryReference.getNodeName());
+		Assert.assertEquals("r:Agency", categoryReference.getFirstChild().getNodeName());
+		Assert.assertEquals("uk.closer", categoryReference.getFirstChild().getTextContent());
+		Assert.assertEquals("r:ID", categoryReference.getChildNodes().item(1).getNodeName());
+		Assert.assertNotEquals("", categoryReference.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("r:Version", categoryReference.getChildNodes().item(2).getNodeName());
+		Assert.assertEquals("1", categoryReference.getChildNodes().item(2).getTextContent());
+		Assert.assertEquals("r:TypeOfObject", categoryReference.getChildNodes().item(3).getNodeName());
+		Assert.assertEquals("Category", categoryReference.getChildNodes().item(3).getTextContent());
+	}
+
+	@Test
 	public void testToDocument_CodeRepresentation() {
-		Node representation = getRepresentationNode(fragmentInstanceDocument, 25);
+		Node representation = getRepresentation(fragmentInstanceDocument, 33);
 
 		Assert.assertEquals("r:CodeRepresentation", representation.getNodeName());
 		Assert.assertEquals("blankIsMissingValue", representation.getAttributes().item(0).getNodeName());
@@ -113,7 +148,7 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_DateTimeRepresentation() {
-		Node representation = getRepresentationNode(fragmentInstanceDocument, 20);
+		Node representation = getRepresentation(fragmentInstanceDocument, 28);
 
 		Assert.assertEquals("r:DateTimeRepresentation", representation.getNodeName());
 		Assert.assertEquals("blankIsMissingValue", representation.getAttributes().item(0).getNodeName());
@@ -124,7 +159,7 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_TextRepresentation() {
-		Node representation = getRepresentationNode(fragmentInstanceDocument, 14);
+		Node representation = getRepresentation(fragmentInstanceDocument, 22);
 
 		Assert.assertEquals("r:TextRepresentation", representation.getNodeName());
 		Assert.assertEquals("blankIsMissingValue", representation.getAttributes().item(0).getNodeName());
@@ -135,7 +170,7 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_NumericRepresentation() {
-		Node representation = getRepresentationNode(fragmentInstanceDocument, 15);
+		Node representation = getRepresentation(fragmentInstanceDocument, 23);
 
 		Assert.assertEquals("r:NumericRepresentation", representation.getNodeName());
 		Assert.assertEquals("blankIsMissingValue", representation.getAttributes().item(0).getNodeName());

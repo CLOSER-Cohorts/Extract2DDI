@@ -8,52 +8,62 @@ import org.w3c.dom.NodeList;
 
 public class LogicalProductFactory {
 
-	public static List<Category> createCategoryList(Document document) {
-		List<Category> categoryList = new ArrayList<>();
+	public static List<CategoryScheme> createCategoryList(Document document) {
+		List<CategoryScheme> categorySchemeList = new ArrayList<>();
 
-		NodeList variableSchemeList = document.getElementsByTagName("CategoryScheme");
-		for (int i = 0; i < variableSchemeList.getLength(); i++) {
-			Node variableSchemeNode = variableSchemeList.item(i);
-			if (nodeNameEquals(variableSchemeNode, "CategoryScheme")) {
-				NodeList variableNodeList = variableSchemeNode.getChildNodes();
+		NodeList categorySchemeNodeList = document.getElementsByTagName("CategoryScheme");
+		CategoryScheme categoryScheme = new CategoryScheme();
+
+		for (int i = 0; i < categorySchemeNodeList.getLength(); i++) {
+			List<Category> categoryList = new ArrayList<>();
+
+			Node categorySchemeNode = categorySchemeNodeList.item(i);
+			if (nodeNameEquals(categorySchemeNode, "CategoryScheme")) {
+				NodeList variableNodeList = categorySchemeNode.getChildNodes();
 				for (int j = 0; j < variableNodeList.getLength(); j++) {
-					Node variableNode = variableNodeList.item(j);
-					if (nodeNameEquals(variableNode, "Category")) {
-						Category variable = new Category();
-						NodeList variableChildList = variableNode.getChildNodes();
+					Node categoryNode = variableNodeList.item(j);
+					if (nodeNameEquals(categoryNode, "Category")) {
+						Category category = new Category();
+						NodeList variableChildList = categoryNode.getChildNodes();
 
 						for (int k = 0; k < variableChildList.getLength(); k++) {
-							Node variableChild = variableChildList.item(k);
-							if (nodeNameEquals(variableChild, "Label")) {
-								variable.setLabel(variableChild.getTextContent());
+							Node categoryChild = variableChildList.item(k);
+							if (nodeNameEquals(categoryChild, "Label")) {
+								category.setLabel(categoryChild.getTextContent());
 							}
 						}
-						categoryList.add(variable);
+						categoryList.add(category);
 					}
 				}
 			}
+
+			categoryScheme.setCategoryList(categoryList);
+			categorySchemeList.add(categoryScheme);
 		}
 
-		return categoryList;
+		return categorySchemeList;
 	}
 
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
-		List<Variable> variableList = createVariableList(document);
-		List<Category> categoryList = createCategoryList(document);
+		List<VariableScheme> variableList = createVariableList(document);
+		List<CategoryScheme> categoryList = createCategoryList(document);
 
-		logicalProduct.setCategoryList(categoryList);
-		logicalProduct.setVariableList(variableList);
+		logicalProduct.setCategorySchemeList(categoryList);
+		logicalProduct.setVariableSchemeList(variableList);
 
 		return logicalProduct;
 	}
 
-	private static List<Variable> createVariableList(Document document) {
-		List<Variable> variableList = new ArrayList<>();
+	private static List<VariableScheme> createVariableList(Document document) {
+		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
-		NodeList variableSchemeList = document.getElementsByTagName("VariableScheme");
-		for (int i = 0; i < variableSchemeList.getLength(); i++) {
-			Node variableSchemeNode = variableSchemeList.item(i);
+		NodeList variableSchemeNodeList = document.getElementsByTagName("VariableScheme");
+		for (int i = 0; i < variableSchemeNodeList.getLength(); i++) {
+			Node variableSchemeNode = variableSchemeNodeList.item(i);
+			List<Variable> variableList = new ArrayList<>();
+			VariableScheme variableScheme = new VariableScheme();
+
 			if (nodeNameEquals(variableSchemeNode, "VariableScheme")) {
 				NodeList variableNodeList = variableSchemeNode.getChildNodes();
 				for (int j = 0; j < variableNodeList.getLength(); j++) {
@@ -104,12 +114,13 @@ public class LogicalProductFactory {
 					}
 				}
 			}
+
+			variableScheme.setVariableList(variableList);
+			variableSchemeList.add(variableScheme);
 		}
 
-		return variableList;
+		return variableSchemeList;
 	}
-
-
 
 	private static boolean nodeNameEquals(Node node, String string) {
 		return node.getNodeName() != null && node.getNodeName().equalsIgnoreCase(string);
