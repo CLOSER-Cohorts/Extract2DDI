@@ -13,11 +13,6 @@ public abstract class AbstractVariableRepresentation implements Appendable {
 
 	public static final String NODE_NAME_VARIABLE_REPRESENTATION = "VariableRepresentation";
 	public static final String NODE_NAME_VARIABLE_ROLE = "VariableRole";
-	public static final String NODE_NAME_NUMERIC_TYPE_CODE = "r:NumericTypeCode";
-	public static final String NODE_NAME_NUMERIC_REPRESENTATION = "r:NumericRepresentation";
-	public static final String NODE_NAME_TEXT_REPRESENTATION = "r:TextRepresentation";
-	public static final String NODE_NAME_DATE_TYPE_CODE = "r:DateTypeCode";
-	public static final String NODE_NAME_DATE_TIME_REPRESENTATION = "r:DateTimeRepresentation";
 
 	private String role;
 

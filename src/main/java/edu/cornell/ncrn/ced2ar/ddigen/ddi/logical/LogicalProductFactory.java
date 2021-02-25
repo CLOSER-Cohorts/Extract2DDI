@@ -8,9 +8,47 @@ import org.w3c.dom.NodeList;
 
 public class LogicalProductFactory {
 
+	public static List<Category> createCategoryList(Document document) {
+		List<Category> categoryList = new ArrayList<>();
+
+		NodeList variableSchemeList = document.getElementsByTagName("CategoryScheme");
+		for (int i = 0; i < variableSchemeList.getLength(); i++) {
+			Node variableSchemeNode = variableSchemeList.item(i);
+			if (nodeNameEquals(variableSchemeNode, "CategoryScheme")) {
+				NodeList variableNodeList = variableSchemeNode.getChildNodes();
+				for (int j = 0; j < variableNodeList.getLength(); j++) {
+					Node variableNode = variableNodeList.item(j);
+					if (nodeNameEquals(variableNode, "Category")) {
+						Category variable = new Category();
+						NodeList variableChildList = variableNode.getChildNodes();
+
+						for (int k = 0; k < variableChildList.getLength(); k++) {
+							Node variableChild = variableChildList.item(k);
+							if (nodeNameEquals(variableChild, "Label")) {
+								variable.setLabel(variableChild.getTextContent());
+							}
+						}
+						categoryList.add(variable);
+					}
+				}
+			}
+		}
+
+		return categoryList;
+	}
+
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
+		List<Variable> variableList = createVariableList(document);
+		List<Category> categoryList = createCategoryList(document);
 
+		logicalProduct.setCategoryList(categoryList);
+		logicalProduct.setVariableList(variableList);
+
+		return logicalProduct;
+	}
+
+	private static List<Variable> createVariableList(Document document) {
 		List<Variable> variableList = new ArrayList<>();
 
 		NodeList variableSchemeList = document.getElementsByTagName("VariableScheme");
@@ -56,6 +94,8 @@ public class LogicalProductFactory {
 										}
 									}
 									representation = dateTimeRepresentation;
+								} else if (nodeNameEquals(representationNode, "CodeRepresentation")) {
+									representation = new CodeRepresentation();
 								}
 								variable.setRepresentation(representation);
 							}
@@ -65,9 +105,11 @@ public class LogicalProductFactory {
 				}
 			}
 		}
-		logicalProduct.setVariableList(variableList);
-		return logicalProduct;
+
+		return variableList;
 	}
+
+
 
 	private static boolean nodeNameEquals(Node node, String string) {
 		return node.getNodeName() != null && node.getNodeName().equalsIgnoreCase(string);

@@ -5,6 +5,9 @@ import org.w3c.dom.Element;
 
 public class NumericVariableRepresentation extends AbstractVariableRepresentation {
 
+	public static final String NODE_NAME_NUMERIC_TYPE_CODE = "r:NumericTypeCode";
+	public static final String NODE_NAME_NUMERIC_REPRESENTATION = "r:NumericRepresentation";
+
 	private String type;
 
 	public NumericVariableRepresentation(String type) {

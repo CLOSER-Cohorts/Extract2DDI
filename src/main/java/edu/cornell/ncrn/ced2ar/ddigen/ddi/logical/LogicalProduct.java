@@ -4,7 +4,12 @@ import java.util.List;
 
 public class LogicalProduct {
 
+	private List<Category> categoryList;
 	private List<Variable> variableList;
+
+	public List<Category> getCategoryList() {
+		return categoryList;
+	}
 
 	public List<Variable> getVariableList() {
 		return variableList;
@@ -12,5 +17,10 @@ public class LogicalProduct {
 
 	public void setVariableList(List<Variable> variableList) {
 		this.variableList = variableList;
+	}
+
+	public void setCategoryList(
+		List<Category> categoryList) {
+		this.categoryList = categoryList;
 	}
 }

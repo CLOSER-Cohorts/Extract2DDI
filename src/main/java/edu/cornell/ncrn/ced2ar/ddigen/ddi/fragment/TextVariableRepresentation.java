@@ -5,6 +5,8 @@ import org.w3c.dom.Element;
 
 public class TextVariableRepresentation extends AbstractVariableRepresentation {
 
+	public static final String NODE_NAME_TEXT_REPRESENTATION = "r:TextRepresentation";
+
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element representation = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);

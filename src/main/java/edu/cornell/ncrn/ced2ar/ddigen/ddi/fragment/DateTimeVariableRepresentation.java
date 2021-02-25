@@ -4,6 +4,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class DateTimeVariableRepresentation extends AbstractVariableRepresentation {
+
+	public static final String NODE_NAME_DATE_TYPE_CODE = "r:DateTypeCode";
+	public static final String NODE_NAME_DATE_TIME_REPRESENTATION = "r:DateTimeRepresentation";
+
 	private String type;
 
 	public DateTimeVariableRepresentation(String type) {

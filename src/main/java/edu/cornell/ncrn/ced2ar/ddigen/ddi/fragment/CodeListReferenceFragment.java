@@ -3,14 +3,14 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class VariableReferenceFragment extends FragmentReference {
+public class CodeListReferenceFragment extends FragmentReference {
 
-	public static final String NODE_NAME_VARIABLE_REFERENCE = "r:VariableReference";
+	public static final String NODE_NAME_VARIABLE_REFERENCE = "r:CodeListReference";
 	public static final String NODE_NAME_OBJECT_TYPE = "r:TypeOfObject";
 
-	private String objectType = "Variable";
+	private String objectType = "CodeList";
 
-	public VariableReferenceFragment(String id, String agency, int version) {
+	public CodeListReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
 	}
 
