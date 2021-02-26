@@ -4,13 +4,22 @@ import java.util.List;
 
 public class LogicalProduct {
 
-	private List<Variable> variableList;
+	private List<CategoryScheme> categorySchemeList;
+	private List<VariableScheme> variableSchemeList;
 
-	public List<Variable> getVariableList() {
-		return variableList;
+	public List<CategoryScheme> getCategorySchemeList() {
+		return categorySchemeList;
 	}
 
-	public void setVariableList(List<Variable> variableList) {
-		this.variableList = variableList;
+	public List<VariableScheme> getVariableSchemeList() {
+		return variableSchemeList;
+	}
+
+	public void setVariableSchemeList(List<VariableScheme> variableSchemeList) {
+		this.variableSchemeList = variableSchemeList;
+	}
+
+	public void setCategorySchemeList(List<CategoryScheme> categorySchemeList) {
+		this.categorySchemeList = categorySchemeList;
 	}
 }

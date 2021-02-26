@@ -3,20 +3,20 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class VariableReferenceFragment extends FragmentReference {
+public class CategoryReferenceFragment extends FragmentReference {
 
-	public static final String NODE_NAME_VARIABLE_REFERENCE = "r:VariableReference";
+	public static final String NODE_NAME_CATEGORY_REFERENCE = "r:CategoryReference";
 	public static final String NODE_NAME_OBJECT_TYPE = "r:TypeOfObject";
 
-	private String objectType = "Variable";
+	private String objectType = "Category";
 
-	public VariableReferenceFragment(String id, String agency, int version) {
+	public CategoryReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		Element variable = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REFERENCE);
+		Element variable = doc.createElementNS(namespace, NODE_NAME_CATEGORY_REFERENCE);
 		element.appendChild(variable);
 
 		super.appendToElement(variable, doc, namespace);

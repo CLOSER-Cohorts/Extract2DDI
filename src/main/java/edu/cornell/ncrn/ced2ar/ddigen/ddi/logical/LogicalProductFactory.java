@@ -8,14 +8,62 @@ import org.w3c.dom.NodeList;
 
 public class LogicalProductFactory {
 
+	public static List<CategoryScheme> createCategoryList(Document document) {
+		List<CategoryScheme> categorySchemeList = new ArrayList<>();
+
+		NodeList categorySchemeNodeList = document.getElementsByTagName("CategoryScheme");
+		CategoryScheme categoryScheme = new CategoryScheme();
+
+		for (int i = 0; i < categorySchemeNodeList.getLength(); i++) {
+			List<Category> categoryList = new ArrayList<>();
+
+			Node categorySchemeNode = categorySchemeNodeList.item(i);
+			if (nodeNameEquals(categorySchemeNode, "CategoryScheme")) {
+				NodeList variableNodeList = categorySchemeNode.getChildNodes();
+				for (int j = 0; j < variableNodeList.getLength(); j++) {
+					Node categoryNode = variableNodeList.item(j);
+					if (nodeNameEquals(categoryNode, "Category")) {
+						Category category = new Category();
+						NodeList variableChildList = categoryNode.getChildNodes();
+
+						for (int k = 0; k < variableChildList.getLength(); k++) {
+							Node categoryChild = variableChildList.item(k);
+							if (nodeNameEquals(categoryChild, "Label")) {
+								category.setLabel(categoryChild.getTextContent());
+							}
+						}
+						categoryList.add(category);
+					}
+				}
+			}
+
+			categoryScheme.setCategoryList(categoryList);
+			categorySchemeList.add(categoryScheme);
+		}
+
+		return categorySchemeList;
+	}
+
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
+		List<VariableScheme> variableList = createVariableList(document);
+		List<CategoryScheme> categoryList = createCategoryList(document);
 
-		List<Variable> variableList = new ArrayList<>();
+		logicalProduct.setCategorySchemeList(categoryList);
+		logicalProduct.setVariableSchemeList(variableList);
 
-		NodeList variableSchemeList = document.getElementsByTagName("VariableScheme");
-		for (int i = 0; i < variableSchemeList.getLength(); i++) {
-			Node variableSchemeNode = variableSchemeList.item(i);
+		return logicalProduct;
+	}
+
+	private static List<VariableScheme> createVariableList(Document document) {
+		List<VariableScheme> variableSchemeList = new ArrayList<>();
+
+		NodeList variableSchemeNodeList = document.getElementsByTagName("VariableScheme");
+		for (int i = 0; i < variableSchemeNodeList.getLength(); i++) {
+			Node variableSchemeNode = variableSchemeNodeList.item(i);
+			List<Variable> variableList = new ArrayList<>();
+			VariableScheme variableScheme = new VariableScheme();
+
 			if (nodeNameEquals(variableSchemeNode, "VariableScheme")) {
 				NodeList variableNodeList = variableSchemeNode.getChildNodes();
 				for (int j = 0; j < variableNodeList.getLength(); j++) {
@@ -56,6 +104,8 @@ public class LogicalProductFactory {
 										}
 									}
 									representation = dateTimeRepresentation;
+								} else if (nodeNameEquals(representationNode, "CodeRepresentation")) {
+									representation = new CodeRepresentation();
 								}
 								variable.setRepresentation(representation);
 							}
@@ -64,9 +114,12 @@ public class LogicalProductFactory {
 					}
 				}
 			}
+
+			variableScheme.setVariableList(variableList);
+			variableSchemeList.add(variableScheme);
 		}
-		logicalProduct.setVariableList(variableList);
-		return logicalProduct;
+
+		return variableSchemeList;
 	}
 
 	private static boolean nodeNameEquals(Node node, String string) {
