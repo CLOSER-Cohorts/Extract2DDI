@@ -58,9 +58,9 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument() {
-		/*VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
-		System.out.println(xml);*/
+		System.out.println(xml);
 
 		Node variable = getVariable(fragmentInstanceDocument);
 

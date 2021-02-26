@@ -28,29 +28,20 @@ public class LogicalProductGenerator {
 	}
 
 	public List<Fragment> getCategoryFragmentList(String agency, int version, String xmlLang) {
-
 		List<Fragment> fragmentList = new ArrayList<>();
-
 		List<Fragment> categoryFragmentList = new ArrayList<>();
 
 		for (CategoryScheme categoryScheme : logicalProduct.getCategorySchemeList()) {
 
-			CategorySchemeFragment categorySchemeFragment = new CategorySchemeFragment(
-				UUID.randomUUID().toString(),
-				agency,
-				version
-			);
+			String categorySchemeId = UUID.randomUUID().toString();
+			CategorySchemeFragment categorySchemeFragment =
+				new CategorySchemeFragment(categorySchemeId, agency, version);
 			fragmentList.add(categorySchemeFragment);
 			for (Category category : categoryScheme.getCategoryList()) {
 				String id = UUID.randomUUID().toString();
 
-				CategoryReferenceFragment categoryReferenceFragment = new CategoryReferenceFragment(
-					id,
-					agency,
-					version
-				);
-
-				categorySchemeFragment.addVariable(categoryReferenceFragment);
+				CategoryReferenceFragment reference = new CategoryReferenceFragment(id, agency, version);
+				categorySchemeFragment.addVariable(reference);
 
 				CategoryFragment categoryFragment = new CategoryFragment(id, agency, version);
 
@@ -70,7 +61,8 @@ public class LogicalProductGenerator {
 	}
 
 	public List<Fragment> getVariableFragmentList(String variableSchemeId, String agency, int version, String xmlLang) {
-		VariableSchemeFragment variableSchemeFragment = new VariableSchemeFragment(variableSchemeId, agency, version);
+		VariableSchemeFragment variableSchemeFragment =
+			new VariableSchemeFragment(variableSchemeId, agency, version);
 		List<Fragment> fragmentList = new ArrayList<>();
 		fragmentList.add(variableSchemeFragment);
 		for (VariableScheme variableScheme : logicalProduct.getVariableSchemeList()) {
@@ -98,12 +90,13 @@ public class LogicalProductGenerator {
 					);
 					variableFragment.setRepresentation(numericVariableRepresentation);
 				} else if (representation instanceof DateTimeRepresentation) {
-					DateTimeVariableRepresentation dateTimeVariableRepresentation = new DateTimeVariableRepresentation(
+					DateTimeVariableRepresentation dateTimeVariableRepresentation =new DateTimeVariableRepresentation(
 						((DateTimeRepresentation) representation).getType()
 					);
 					variableFragment.setRepresentation(dateTimeVariableRepresentation);
 				} else if (representation instanceof CodeRepresentation) {
-					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation(id, agency, version);
+					CodeVariableRepresentation codeVariableRepresentation =
+						new CodeVariableRepresentation(id, agency, version);
 					variableFragment.setRepresentation(codeVariableRepresentation);
 				}
 				fragmentList.add(variableFragment);
@@ -120,15 +113,13 @@ public class LogicalProductGenerator {
 
 		List<Fragment> fragmentList = new ArrayList<>();
 
-		fragmentList.addAll(getCategoryFragmentList(agency, 1, xmlLang));
+		fragmentList.addAll(
+			getCategoryFragmentList(agency, 1, xmlLang)
+		);
 
-		fragmentList.addAll(getVariableFragmentList(
-			UUID.randomUUID().toString(),
-			agency,
-			1,
-			xmlLang
-		));
-
+		fragmentList.addAll(
+			getVariableFragmentList(UUID.randomUUID().toString(), agency, 1, xmlLang)
+		);
 
 		return fragmentList;
 	}
