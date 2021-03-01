@@ -24,8 +24,13 @@ public class LogicalProductFactory {
 					Node categoryNode = variableNodeList.item(j);
 					if (nodeNameEquals(categoryNode, "Category")) {
 						Category category = new Category();
-						NodeList variableChildList = categoryNode.getChildNodes();
 
+						Node id = categoryNode.getAttributes().getNamedItem("id");
+						if (id != null) {
+							category.setId(id.getTextContent());
+						}
+
+						NodeList variableChildList = categoryNode.getChildNodes();
 						for (int k = 0; k < variableChildList.getLength(); k++) {
 							Node categoryChild = variableChildList.item(k);
 							if (nodeNameEquals(categoryChild, "Label")) {
@@ -44,12 +49,56 @@ public class LogicalProductFactory {
 		return categorySchemeList;
 	}
 
+	public static List<CodeList> createCodeListList(Document document) {
+		List<CodeList> codeListList = new ArrayList<>();
+
+		NodeList codeSchemeList = document.getElementsByTagName("CodeScheme");
+
+		for (int i = 0; i < codeSchemeList.getLength(); i++) {
+			CodeList codeList = new CodeList();
+
+			List<Code> codes = new ArrayList<>();
+
+			Node categorySchemeNode = codeSchemeList.item(i);
+			if (nodeNameEquals(categorySchemeNode, "CodeScheme")) {
+				NodeList variableNodeList = categorySchemeNode.getChildNodes();
+				for (int j = 0; j < variableNodeList.getLength(); j++) {
+					Node codeNode = variableNodeList.item(j);
+					if (nodeNameEquals(codeNode, "Code")) {
+						Code code = new Code();
+						NodeList codeChildList = codeNode.getChildNodes();
+
+						for (int k = 0; k < codeChildList.getLength(); k++) {
+							Node categoryChild = codeChildList.item(k);
+							if (nodeNameEquals(categoryChild, "Value")) {
+								code.setValue(categoryChild.getTextContent());
+							} else if (nodeNameEquals(categoryChild, "CategoryReference")) {
+								Node id = categoryChild.getFirstChild();
+								if (nodeNameEquals(id, "ID")) {
+									code.setCategoryId(id.getTextContent());
+								}
+							}
+						}
+						codes.add(code);
+					}
+				}
+			}
+
+			codeList.setCodeList(codes);
+			codeListList.add(codeList);
+		}
+
+		return codeListList;
+	}
+
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
-		List<VariableScheme> variableList = createVariableList(document);
 		List<CategoryScheme> categoryList = createCategoryList(document);
+		List<CodeList> codeListList = createCodeListList(document);
+		List<VariableScheme> variableList = createVariableList(document);
 
 		logicalProduct.setCategorySchemeList(categoryList);
+		logicalProduct.setCodeListList(codeListList);
 		logicalProduct.setVariableSchemeList(variableList);
 
 		return logicalProduct;
