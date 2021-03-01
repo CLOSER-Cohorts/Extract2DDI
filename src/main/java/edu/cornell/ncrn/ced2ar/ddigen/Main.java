@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import java.util.Properties;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -45,16 +46,17 @@ public class Main {
 		Boolean summaryStats;
 		Long obsLimit;
 		String formatOutput;
+		ConfigUtil configUtil;
 
 		if (config != null && !config.isEmpty()) {
 			Util.fileCheck(config);
 
 			Properties properties = FileUtil.getPropertiesFromFile(config);
-			ConfigUtil configUtil = new ConfigUtil(properties);
+			configUtil = new ConfigUtil(properties);
 
 			summaryStats = configUtil.getSumStats();
 			obsLimit = configUtil.getObservationLimit();
-			formatOutput = configUtil.getDdiLang();
+			formatOutput = configUtil.getDdiLanguage();
 			dataFile = configUtil.getFilename();
 
 		} else {
@@ -62,15 +64,20 @@ public class Main {
 				util.help();
 			}
 
+			Properties properties = FileUtil.getPropertiesFromResource(LogicalProductGenerator.class);
+			configUtil = new ConfigUtil(properties);
 			summaryStats = Util.runSumStatsCheck(processSummaryStatics);
 			obsLimit = Util.observationLimitCheck(observationLimit);
 			formatOutput = Util.formatCheck(format);
 		}
 
+		String agency = configUtil.getAgency();
+		String ddiLanguage = configUtil.getDdiLanguage();
+
 		Util.fileCheck(dataFile);
 
 		GenerateDDI generateDDI = new GenerateDDI();
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput);
+		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput, agency, ddiLanguage);
 		System.out.println("Finished. Exiting.");
 	}
 }

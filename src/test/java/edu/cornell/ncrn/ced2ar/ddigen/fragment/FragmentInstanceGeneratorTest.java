@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.fragment;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFileException;
+import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Properties;
 import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -258,8 +260,16 @@ public class FragmentInstanceGeneratorTest {
 		File file = FileUtil.getFileFromResource(FragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
+		Properties properties = FileUtil.getPropertiesFromResource(FragmentInstanceGeneratorTest.class);
+		ConfigUtil configUtil = new ConfigUtil(properties);
+
+
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(logicalProduct);
+		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+			logicalProduct,
+			configUtil.getAgency(),
+			configUtil.getDdiLanguage()
+		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);

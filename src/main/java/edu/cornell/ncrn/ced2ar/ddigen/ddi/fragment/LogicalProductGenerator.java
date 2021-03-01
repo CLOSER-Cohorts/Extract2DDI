@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 
-import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeFragment;
@@ -26,18 +25,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.UUID;
 
 public class LogicalProductGenerator {
 
-	public static final String KEY_AGENCY = "edu.cornell.ncrn.ced2ar.ddigen.fragment.agency";
-	public static final String KEY_XML_LANG = "edu.cornell.ncrn.ced2ar.ddigen.fragment.xml.lang";
-
+	private String agency;
+	private String ddiLanguage;
 	private LogicalProduct logicalProduct;
 
-	public LogicalProductGenerator(LogicalProduct logicalProduct) {
+	public LogicalProductGenerator(LogicalProduct logicalProduct, String agency, String ddiLanguage) {
+		setAgency(agency);
+		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
+	}
+
+	public String getAgency() {
+		return agency;
 	}
 
 	public List<Fragment> getCategoryFragmentList(
@@ -100,6 +103,10 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public String getDdiLanguage() {
+		return ddiLanguage;
+	}
+
 	public LogicalProduct getLogicalProduct() {
 		return logicalProduct;
 	}
@@ -151,10 +158,6 @@ public class LogicalProductGenerator {
 	}
 
 	public List<Fragment> toFragmentList() {
-		Properties properties = FileUtil.getPropertiesFromResource(getClass());
-		String agency = properties.getProperty(KEY_AGENCY);
-		String xmlLang = properties.getProperty(KEY_XML_LANG);
-
 		List<Fragment> fragmentList = new ArrayList<>();
 
 		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
@@ -168,18 +171,26 @@ public class LogicalProductGenerator {
 		}
 
 		fragmentList.addAll(
-			getCategoryFragmentList(agency, 1, categoryIdToUuidMap, xmlLang)
+			getCategoryFragmentList(getAgency(), 1, categoryIdToUuidMap, getDdiLanguage())
 		);
 
 		fragmentList.addAll(
-			getCodeListFragmentList(agency, 1, categoryIdToUuidMap, xmlLang)
+			getCodeListFragmentList(getAgency(), 1, categoryIdToUuidMap, getDdiLanguage())
 		);
 
 		fragmentList.addAll(
-			getVariableFragmentList(UUID.randomUUID().toString(), agency, 1, xmlLang)
+			getVariableFragmentList(UUID.randomUUID().toString(), getAgency(), 1, getDdiLanguage())
 		);
 
 		return fragmentList;
+	}
+
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
 	}
 
 	public void setLogicalProduct(LogicalProduct logicalProduct) {

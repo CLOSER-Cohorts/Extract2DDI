@@ -5,7 +5,7 @@ import java.util.Properties;
 public class ConfigUtil {
 
 	public static final String KEY_AGENCY = "agency";
-	public static final String KEY_DDI_LANG = "ddilang";
+	public static final String KEY_DDI_LANGUAGE = "ddilang";
 	public static final String KEY_FILENAME = "filename";
 	public static final String KEY_OUTPUT_FILE = "outputfile";
 	public static final String KEY_RENAME = "rename";
@@ -24,8 +24,8 @@ public class ConfigUtil {
 		return agency;
 	}
 
-	public String getDdiLang() {
-		String ddiLang = getProperties().getProperty(KEY_DDI_LANG);
+	public String getDdiLanguage() {
+		String ddiLang = getProperties().getProperty(KEY_DDI_LANGUAGE);
 		return ddiLang;
 	}
 
