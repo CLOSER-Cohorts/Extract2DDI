@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import java.util.Properties;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -26,6 +27,7 @@ public class Main {
 		String dataFile;
 		String processSummaryStatics;
 		String format;
+		String config;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -34,18 +36,36 @@ public class Main {
 			processSummaryStatics = cmd.getOptionValue("s");
 			observationLimit = cmd.getOptionValue("l");
 			format = cmd.getOptionValue("format");
+			config = cmd.getOptionValue("config");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
 		}
 
-		if (StringUtils.isEmpty(dataFile)) {
-			util.help();
+		Boolean summaryStats;
+		Long obsLimit;
+		String formatOutput;
+
+		if (config != null && !config.isEmpty()) {
+			Util.fileCheck(config);
+
+			Properties properties = FileUtil.getPropertiesFromFile(config);
+			ConfigUtil configUtil = new ConfigUtil(properties);
+
+			summaryStats = configUtil.getSumStats();
+			obsLimit = configUtil.getObservationLimit();
+			formatOutput = configUtil.getDdiLang();
+			dataFile = configUtil.getFilename();
+
+		} else {
+			if (StringUtils.isEmpty(dataFile)) {
+				util.help();
+			}
+
+			summaryStats = Util.runSumStatsCheck(processSummaryStatics);
+			obsLimit = Util.observationLimitCheck(observationLimit);
+			formatOutput = Util.formatCheck(format);
 		}
-		
-		Boolean summaryStats = Util.runSumStatsCheck(processSummaryStatics);
-		Long obsLimit = Util.observationLimitCheck(observationLimit);
-		String formatOutput = Util.formatCheck(format);
 
 		Util.fileCheck(dataFile);
 
