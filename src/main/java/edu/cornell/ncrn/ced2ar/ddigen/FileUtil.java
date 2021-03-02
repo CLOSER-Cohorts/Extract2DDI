@@ -1,6 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -23,7 +25,7 @@ public class FileUtil {
 
 	public static InputStream getInputStreamFromResource(Class cl, String fileName) {
 		ClassLoader classLoader = cl.getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream(fileName);
+		InputStream inputStream =  classLoader.getResourceAsStream(fileName);
 		if (inputStream == null) {
 			throw new IllegalArgumentException("file not found! " + fileName);
 		} else {
@@ -36,11 +38,27 @@ public class FileUtil {
 		Properties properties = new Properties();
 		try
 		{
-			if(stream != null) {
+			if (stream != null) {
 				properties.load(stream);
 			}
 		}
 		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return properties;
+	}
+
+	public static Properties getPropertiesFromFile(String fileName) {
+		Properties properties = new Properties();
+		try {
+			InputStream stream = new FileInputStream(fileName);
+			if (stream != null) {
+				properties.load(stream);
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 

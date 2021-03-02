@@ -3,7 +3,7 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class AbstractReferenceFragment extends FragmentReference {
+public abstract class AbstractReferenceFragment extends FragmentReference {
 
 	public static final String NODE_NAME_OBJECT_TYPE = "r:TypeOfObject";
 

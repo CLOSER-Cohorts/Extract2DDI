@@ -34,6 +34,7 @@ public class Util {
 				"(optional) [true|false] Generate summary statistics");
 		_options.addOption("l", true, "(optional) Observation limit");
 		_options.addOption("format", true, "(optional) DDI format");
+		_options.addOption("config", true, "(optional) Config path file");
 	}
 
 	public CommandLineParser getParser() {

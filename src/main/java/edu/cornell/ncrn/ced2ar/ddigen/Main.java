@@ -1,5 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
+import java.util.Properties;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -26,6 +28,7 @@ public class Main {
 		String dataFile;
 		String processSummaryStatics;
 		String format;
+		String config;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -34,23 +37,47 @@ public class Main {
 			processSummaryStatics = cmd.getOptionValue("s");
 			observationLimit = cmd.getOptionValue("l");
 			format = cmd.getOptionValue("format");
+			config = cmd.getOptionValue("config");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
 		}
 
-		if (StringUtils.isEmpty(dataFile)) {
-			util.help();
+		Boolean summaryStats;
+		Long obsLimit;
+		String formatOutput;
+		ConfigUtil configUtil;
+
+		if (config != null && !config.isEmpty()) {
+			Util.fileCheck(config);
+
+			Properties properties = FileUtil.getPropertiesFromFile(config);
+			configUtil = new ConfigUtil(properties);
+
+			summaryStats = configUtil.getSumStats();
+			obsLimit = configUtil.getObservationLimit();
+			formatOutput = configUtil.getDdiLanguage();
+			dataFile = configUtil.getFilename();
+
+		} else {
+			if (StringUtils.isEmpty(dataFile)) {
+				util.help();
+			}
+
+			Properties properties = FileUtil.getPropertiesFromResource(LogicalProductGenerator.class);
+			configUtil = new ConfigUtil(properties);
+			summaryStats = Util.runSumStatsCheck(processSummaryStatics);
+			obsLimit = Util.observationLimitCheck(observationLimit);
+			formatOutput = Util.formatCheck(format);
 		}
-		
-		Boolean summaryStats = Util.runSumStatsCheck(processSummaryStatics);
-		Long obsLimit = Util.observationLimitCheck(observationLimit);
-		String formatOutput = Util.formatCheck(format);
+
+		String agency = configUtil.getAgency();
+		String ddiLanguage = configUtil.getDdiLanguage();
 
 		Util.fileCheck(dataFile);
 
 		GenerateDDI generateDDI = new GenerateDDI();
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput);
+		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput, agency, ddiLanguage);
 		System.out.println("Finished. Exiting.");
 	}
 }

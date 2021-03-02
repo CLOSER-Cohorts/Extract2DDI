@@ -34,7 +34,14 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 public class GenerateDDI {
 	private static final Logger logger = Logger.getLogger(GenerateDDI.class);
 
-	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit, String format) throws Exception {
+	public void generateDDI(
+		String dataFile,
+		boolean runSumStats,
+		long observationLimit,
+		String format,
+		String agency,
+		String ddiLanguage
+	) throws Exception {
 		
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
@@ -58,7 +65,11 @@ public class GenerateDDI {
 			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
 
-			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(logicalProduct);
+			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+				logicalProduct,
+				"",
+				""
+			);
 			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 
 			FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
