@@ -8,7 +8,15 @@ public class VariableSchemeReferenceFragment extends AbstractReferenceFragment {
 
 	public VariableSchemeReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
-		setNodeNameReference(NODE_NAME_VARIABLE_SCHEME_REFERENCE);
-		setObjectType("VariableScheme");
+	}
+
+	@Override
+	protected String getNodeNameReference() {
+		return NODE_NAME_VARIABLE_SCHEME_REFERENCE;
+	}
+
+	@Override
+	public String getObjectType() {
+		return "VariableScheme";
 	}
 }

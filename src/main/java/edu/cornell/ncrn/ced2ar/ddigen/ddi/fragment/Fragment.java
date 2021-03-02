@@ -3,32 +3,62 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public abstract class Fragment extends FragmentReference {
+public abstract class Fragment implements Appendable {
 
-	public static final String NODE_NAME_URN = "r:URN";
+	public static final String NODE_NAME_FRAGMENT = "ddi:Fragment";
+	public static final String NODE_NAME_AGENCY = "r:Agency";
+	public static final String NODE_NAME_ID = "r:ID";
+	public static final String NODE_NAME_VERSION = "r:Version";
 
-	private String urn;
+	private String agency;
+	private String id;
+	private int version;
 
 	public Fragment(String id, String agency, int version) {
-		super(id, agency, version);
-		setUrn(FragmentUtil.generateUrn(id, agency, version));
+		setAgency(agency);
+		setId(id);
+		setVersion(version);
 	}
 
-	public String getUrn() {
-		return urn;
+	public String getAgency() {
+		return agency;
 	}
 
-	public void setUrn(String urn) {
-		this.urn = urn;
+	public String getId() {
+		return id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
-		// URN
-		Element urn = doc.createElementNS(namespace, NODE_NAME_URN);
-		urn.setTextContent(getUrn());
-		element.appendChild(urn);
+		// Agency
+		Element agency = doc.createElementNS(namespace, NODE_NAME_AGENCY);
+		agency.setTextContent(getAgency());
+		element.appendChild(agency);
 
-		super.appendToElement(element, doc, namespace);
+		// ID
+		Element id = doc.createElementNS(namespace, NODE_NAME_ID);
+		id.setTextContent(getId());
+		element.appendChild(id);
+
+		// Version
+		Element version = doc.createElementNS(namespace, NODE_NAME_VERSION);
+		version.setTextContent(Integer.toString(getVersion()));
+		element.appendChild(version);
 	}
 }

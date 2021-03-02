@@ -5,38 +5,38 @@ import org.w3c.dom.Element;
 
 public class StringElement implements Appendable {
 
-	public static final String ATTRIBUTE_NAME_XML_LANG = "xml:lang";
+	public static final String ATTRIBUTE_NAME_DDI_LANGUAGE = "xml:lang";
 
 	public static final String NODE_NAME_STRING = "r:String";
 
-	private java.lang.String content;
-	private java.lang.String xmlLang;
+	private String content;
+	private String ddiLanguage;
 
-	public StringElement(String content, String xmlLang) {
+	public StringElement(String content, String ddiLanguage) {
 		setContent(content);
-		setXmlLang(xmlLang);
+		setDdiLanguage(ddiLanguage);
 	}
 
 	public String getContent() {
 		return content;
 	}
 
-	public String getXmlLang() {
-		return xmlLang;
+	public String getDdiLanguage() {
+		return ddiLanguage;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public void setXmlLang(String xmlLang) {
-		this.xmlLang = xmlLang;
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element string = doc.createElementNS(namespace, NODE_NAME_STRING);
-		string.setAttribute(ATTRIBUTE_NAME_XML_LANG, getXmlLang());
+		string.setAttribute(ATTRIBUTE_NAME_DDI_LANGUAGE, getDdiLanguage());
 		string.setTextContent(getContent());
 		element.appendChild(string);
 	}

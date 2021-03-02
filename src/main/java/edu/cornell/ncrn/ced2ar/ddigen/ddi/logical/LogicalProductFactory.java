@@ -8,17 +8,21 @@ import org.w3c.dom.NodeList;
 
 public class LogicalProductFactory {
 
-	public static List<CategoryScheme> createCategoryList(Document document) {
+	public static List<CategoryScheme> createCategorySchemeList(Document document) {
 		List<CategoryScheme> categorySchemeList = new ArrayList<>();
 
 		NodeList categorySchemeNodeList = document.getElementsByTagName("CategoryScheme");
-		CategoryScheme categoryScheme = new CategoryScheme();
+
 
 		for (int i = 0; i < categorySchemeNodeList.getLength(); i++) {
+			CategoryScheme categoryScheme = new CategoryScheme();
 			List<Category> categoryList = new ArrayList<>();
 
 			Node categorySchemeNode = categorySchemeNodeList.item(i);
 			if (nodeNameEquals(categorySchemeNode, "CategoryScheme")) {
+				Node categorySchemeIdNode = categorySchemeNode.getAttributes().getNamedItem("id");
+				categoryScheme.setId(categorySchemeIdNode.getTextContent());
+
 				NodeList variableNodeList = categorySchemeNode.getChildNodes();
 				for (int j = 0; j < variableNodeList.getLength(); j++) {
 					Node categoryNode = variableNodeList.item(j);
@@ -93,9 +97,9 @@ public class LogicalProductFactory {
 
 	public static LogicalProduct createLogicalProduct(Document document) {
 		LogicalProduct logicalProduct = new LogicalProduct();
-		List<CategoryScheme> categoryList = createCategoryList(document);
+		List<CategoryScheme> categoryList = createCategorySchemeList(document);
 		List<CodeList> codeListList = createCodeListList(document);
-		List<VariableScheme> variableList = createVariableList(document);
+		List<VariableScheme> variableList = createVariableSchemeList(document);
 
 		logicalProduct.setCategorySchemeList(categoryList);
 		logicalProduct.setCodeListList(codeListList);
@@ -104,7 +108,7 @@ public class LogicalProductFactory {
 		return logicalProduct;
 	}
 
-	private static List<VariableScheme> createVariableList(Document document) {
+	private static List<VariableScheme> createVariableSchemeList(Document document) {
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		NodeList variableSchemeNodeList = document.getElementsByTagName("VariableScheme");

@@ -8,7 +8,15 @@ public class VariableReferenceFragment extends AbstractReferenceFragment {
 
 	public VariableReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
-		setNodeNameReference(NODE_NAME_VARIABLE_REFERENCE);
-		setObjectType("Variable");
+	}
+
+	@Override
+	protected String getNodeNameReference() {
+		return NODE_NAME_VARIABLE_REFERENCE;
+	}
+
+	@Override
+	public String getObjectType() {
+		return "Variable";
 	}
 }

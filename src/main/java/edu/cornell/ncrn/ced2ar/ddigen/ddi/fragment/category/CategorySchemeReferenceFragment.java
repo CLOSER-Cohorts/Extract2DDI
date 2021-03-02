@@ -8,7 +8,15 @@ public class CategorySchemeReferenceFragment extends AbstractReferenceFragment {
 
 	public CategorySchemeReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
-		setNodeNameReference(NODE_NAME_CATEGORY_SCHEME_REFERENCE);
-		setObjectType("CategoryScheme");
+	}
+
+	@Override
+	protected String getNodeNameReference() {
+		return NODE_NAME_CATEGORY_SCHEME_REFERENCE;
+	}
+
+	@Override
+	public String getObjectType() {
+		return "CategoryScheme";
 	}
 }

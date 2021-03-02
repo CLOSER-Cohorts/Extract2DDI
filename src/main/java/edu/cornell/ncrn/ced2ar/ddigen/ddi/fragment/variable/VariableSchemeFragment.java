@@ -1,12 +1,12 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class VariableSchemeFragment extends Fragment {
+public class VariableSchemeFragment extends FragmentWithUrn {
 	public static final String NODE_NAME_VARIABLE_SCHEME = "VariableScheme";
 
 	private List<VariableReferenceFragment> variableList = new ArrayList<>();

@@ -3,12 +3,14 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeListFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Code;
@@ -32,38 +34,40 @@ public class LogicalProductGenerator {
 	private String agency;
 	private String ddiLanguage;
 	private LogicalProduct logicalProduct;
+	private String title;
+	private int version;
 
-	public LogicalProductGenerator(LogicalProduct logicalProduct, String agency, String ddiLanguage) {
+	public LogicalProductGenerator(LogicalProduct logicalProduct, String agency, String ddiLanguage, String title) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
+		setTitle(title);
+		setVersion(1);
 	}
 
 	public String getAgency() {
 		return agency;
 	}
 
-	public List<Fragment> getCategoryFragmentList(
-		String agency,
-		int version,
-		Map<String, UUID> categoryIdToUuidMap,
-		String xmlLang
+	public List<FragmentWithUrn> getCategoryFragmentList(
+		Map<String, UUID> categorySchemeIdToUuidMap,
+		Map<String, UUID> categoryIdToUuidMap
 	) {
-		List<Fragment> fragmentList = new ArrayList<>();
-		List<Fragment> categoryFragmentList = new ArrayList<>();
+		List<FragmentWithUrn> fragmentList = new ArrayList<>();
+		List<FragmentWithUrn> categoryFragmentList = new ArrayList<>();
 
 		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
-			String categorySchemeId = UUID.randomUUID().toString();
-			CategorySchemeFragment fragment = new CategorySchemeFragment(categorySchemeId, agency, version);
+			UUID categorySchemeId = categorySchemeIdToUuidMap.get(categoryScheme.getId());
+			CategorySchemeFragment fragment = new CategorySchemeFragment(categorySchemeId.toString(), getAgency(), getVersion());
 			fragmentList.add(fragment);
 			for (Category category : categoryScheme.getCategoryList()) {
 				String id = categoryIdToUuidMap.get(category.getId()).toString();
-				CategoryReferenceFragment reference = new CategoryReferenceFragment(id, agency, version);
+				CategoryReferenceFragment reference = new CategoryReferenceFragment(id, getAgency(), getVersion());
 				fragment.addCategoryReference(reference);
 
-				CategoryFragment categoryFragment = new CategoryFragment(id, agency, version);
+				CategoryFragment categoryFragment = new CategoryFragment(id, getAgency(), getVersion());
 
-				Label label = new Label(category.getLabel(), xmlLang);
+				Label label = new Label(category.getLabel(), getDdiLanguage());
 				categoryFragment.setLabel(label);
 
 				categoryFragmentList.add(categoryFragment);
@@ -74,18 +78,16 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
-	public List<Fragment> getCodeListFragmentList(
-		String agency,
-		int version,
-		Map<String, UUID> categoryIdToUuidMap,
-		String xmlLang
+	public List<FragmentWithUrn> getCodeListFragmentList(
+		Map<String, UUID> codeListIdToUuidMap,
+		Map<String, UUID> categoryIdToUuidMap
 	) {
-		List<Fragment> fragmentList = new ArrayList<>();
+		List<FragmentWithUrn> fragmentList = new ArrayList<>();
 		for (CodeList codeList : getLogicalProduct().getCodeListList()) {
-			String categorySchemeId = UUID.randomUUID().toString();
-			CodeListFragment codeListFragment = new CodeListFragment(categorySchemeId, agency, version);
+			UUID categorySchemeId = codeListIdToUuidMap.get(codeList.getId());
+			CodeListFragment codeListFragment = new CodeListFragment(categorySchemeId.toString(), getAgency(), getVersion());
 
-			Label label = new Label(codeList.getLabel(), xmlLang);
+			Label label = new Label(codeList.getLabel(), getDdiLanguage());
 			codeListFragment.setLabel(label);
 
 			fragmentList.add(codeListFragment);
@@ -93,8 +95,8 @@ public class LogicalProductGenerator {
 				String id = UUID.randomUUID().toString();
 
 				String categoryId = categoryIdToUuidMap.get(code.getCategoryId()).toString();
-				CodeFragment codeFragment = new CodeFragment(id, agency, version, code.getValue());
-				CategoryReferenceFragment reference = new CategoryReferenceFragment(categoryId, agency, version);
+				CodeFragment codeFragment = new CodeFragment(id, getAgency(), getVersion(), code.getValue());
+				CategoryReferenceFragment reference = new CategoryReferenceFragment(categoryId, getAgency(), getVersion());
 				codeFragment.setCategoryReference(reference);
 				codeListFragment.addCode(codeFragment);
 			}
@@ -111,24 +113,78 @@ public class LogicalProductGenerator {
 		return logicalProduct;
 	}
 
-	public List<Fragment> getVariableFragmentList(String variableSchemeId, String agency, int version, String xmlLang) {
-		VariableSchemeFragment variableSchemeFragment =
-			new VariableSchemeFragment(variableSchemeId, agency, version);
-		List<Fragment> fragmentList = new ArrayList<>();
-		fragmentList.add(variableSchemeFragment);
-		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+	public FragmentWithUrn getResourcePackageFragment(
+		String title,
+		Map<String, UUID> categorySchemeIdToUuidMap,
+		Map<String, UUID> physicalInstanceIdToUuidMap,
+		Map<String, UUID> variableSchemeIdToUuidMap
+	) {
+		ResourcePackageFragment resourcePackage = new ResourcePackageFragment(
+			UUID.randomUUID().toString(),
+			getAgency(),
+			getVersion()
+		);
 
+		StringElement string = new StringElement(title, getDdiLanguage());
+		Title titleElement = new Title(string);
+		Citation citation = new Citation(titleElement);
+		resourcePackage.setCitation(citation);
+
+		for (Map.Entry<String, UUID> physicalInstanceEntry : physicalInstanceIdToUuidMap.entrySet()) {
+			PhysicalInstanceReferenceFragment fragment = new PhysicalInstanceReferenceFragment(
+				physicalInstanceEntry.getValue().toString(),
+				getAgency(),
+				getVersion()
+			);
+			resourcePackage.addPhysicalInstanceReferenceFragment(fragment);
+		}
+
+		for (Map.Entry<String, UUID> categorySchemeEntry : categorySchemeIdToUuidMap.entrySet()) {
+			CategorySchemeReferenceFragment fragment = new CategorySchemeReferenceFragment(
+				categorySchemeEntry.getValue().toString(),
+				getAgency(),
+				getVersion()
+			);
+			resourcePackage.addCategorySchemeReferenceFragment(fragment);
+		}
+
+		for (Map.Entry<String, UUID> variableSchemeEntry : variableSchemeIdToUuidMap.entrySet()) {
+			VariableSchemeReferenceFragment fragment = new VariableSchemeReferenceFragment(
+				variableSchemeEntry.getValue().toString(),
+				getAgency(),
+				getVersion()
+			);
+			resourcePackage.addVariableSchemeReferenceFragment(fragment);
+		}
+
+		return resourcePackage;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public List<FragmentWithUrn> getVariableFragmentList(Map<String, UUID> variableSchemeIdToUuidMap) {
+		List<FragmentWithUrn> fragmentList = new ArrayList<>();
+		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+			UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
+			VariableSchemeFragment variableSchemeFragment = new VariableSchemeFragment(
+				variableSchemeId.toString(),
+				getAgency(),
+				getVersion()
+			);
+			fragmentList.add(variableSchemeFragment);
 			for (Variable variable : variableScheme.getVariableList()) {
 				String id = UUID.randomUUID().toString();
-				VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(id, agency, version);
+				VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(id, getAgency(), getVersion());
 				variableSchemeFragment.addVariable(variableReferenceFragment);
 
-				VariableFragment variableFragment = new VariableFragment(id, agency, version);
+				VariableFragment variableFragment = new VariableFragment(id, getAgency(), getVersion());
 
-				Label label = new Label(variable.getLabel(), xmlLang);
+				Label label = new Label(variable.getLabel(), getDdiLanguage());
 				variableFragment.setLabel(label);
 
-				StringElement string = new StringElement(variable.getName(), xmlLang);
+				StringElement string = new StringElement(variable.getName(), getDdiLanguage());
 				variableFragment.setName(string);
 
 				Representation representation = variable.getRepresentation();
@@ -147,7 +203,7 @@ public class LogicalProductGenerator {
 					variableFragment.setRepresentation(dateTimeVariableRepresentation);
 				} else if (representation instanceof CodeRepresentation) {
 					CodeVariableRepresentation codeVariableRepresentation =
-						new CodeVariableRepresentation(id, agency, version);
+						new CodeVariableRepresentation(id, getAgency(), getVersion());
 					variableFragment.setRepresentation(codeVariableRepresentation);
 				}
 				fragmentList.add(variableFragment);
@@ -157,11 +213,14 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
 	public List<Fragment> toFragmentList() {
 		List<Fragment> fragmentList = new ArrayList<>();
 
 		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
-
 		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
 			for (Category category : categoryScheme.getCategoryList()) {
 				if (category.getId() != null) {
@@ -170,17 +229,44 @@ public class LogicalProductGenerator {
 			}
 		}
 
-		fragmentList.addAll(
-			getCategoryFragmentList(getAgency(), 1, categoryIdToUuidMap, getDdiLanguage())
+		Map<String, UUID> categorySchemeIdToUuidMap = new HashMap<>();
+		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
+			categorySchemeIdToUuidMap.put(categoryScheme.getId(), UUID.randomUUID());
+		}
+
+		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
+		for (CodeList codeList : getLogicalProduct().getCodeListList()) {
+			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
+		}
+
+		Map<String, UUID> variableSchemeIdToUuidMap = new HashMap<>();
+		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+			variableSchemeIdToUuidMap.put(variableScheme.getId(), UUID.randomUUID());
+		}
+
+		Fragment topLevelReferenceFragment = new TopLevelReferenceFragment(UUID.randomUUID().toString(), getAgency(), 1);
+		fragmentList.add(topLevelReferenceFragment);
+
+		FragmentWithUrn resourcePackageFragment = getResourcePackageFragment(
+			getTitle(),
+			categorySchemeIdToUuidMap,
+			codeListIdToUuidMap,
+			variableSchemeIdToUuidMap
 		);
 
-		fragmentList.addAll(
-			getCodeListFragmentList(getAgency(), 1, categoryIdToUuidMap, getDdiLanguage())
-		);
+		fragmentList.add(resourcePackageFragment);
 
-		fragmentList.addAll(
-			getVariableFragmentList(UUID.randomUUID().toString(), getAgency(), 1, getDdiLanguage())
-		);
+		List<FragmentWithUrn> categoryFragmentList =
+			getCategoryFragmentList(categorySchemeIdToUuidMap, categoryIdToUuidMap);
+		fragmentList.addAll(categoryFragmentList);
+
+		List<FragmentWithUrn> codeListFragmentList =
+			getCodeListFragmentList(codeListIdToUuidMap, categoryIdToUuidMap);
+		fragmentList.addAll(codeListFragmentList);
+
+		List<FragmentWithUrn> variableFragmentList =
+			getVariableFragmentList(variableSchemeIdToUuidMap);
+		fragmentList.addAll(variableFragmentList);
 
 		return fragmentList;
 	}
@@ -195,5 +281,13 @@ public class LogicalProductGenerator {
 
 	public void setLogicalProduct(LogicalProduct logicalProduct) {
 		this.logicalProduct = logicalProduct;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 }

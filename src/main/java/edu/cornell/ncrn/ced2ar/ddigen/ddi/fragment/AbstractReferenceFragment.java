@@ -3,12 +3,9 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public abstract class AbstractReferenceFragment extends FragmentReference {
+public abstract class AbstractReferenceFragment extends Fragment {
 
 	public static final String NODE_NAME_OBJECT_TYPE = "r:TypeOfObject";
-
-	private String objectType;
-	protected String nodeNameReference;
 
 	public AbstractReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
@@ -26,19 +23,7 @@ public abstract class AbstractReferenceFragment extends FragmentReference {
 		variable.appendChild(objectType);
 	}
 
-	protected String getNodeNameReference() {
-		return nodeNameReference;
-	}
+	protected abstract String getNodeNameReference();
 
-	public String getObjectType() {
-		return objectType;
-	}
-
-	protected void setNodeNameReference(String nodeNameReference) {
-		this.nodeNameReference = nodeNameReference;
-	}
-
-	public void setObjectType(String objectType) {
-		this.objectType = objectType;
-	}
+	public abstract String getObjectType();
 }

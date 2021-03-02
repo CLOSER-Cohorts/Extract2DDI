@@ -1,13 +1,12 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class CategorySchemeFragment extends Fragment {
+public class CategorySchemeFragment extends FragmentWithUrn {
 	public static final String NODE_NAME_CATEGORY_SCHEME = "CategoryScheme";
 
 	private List<CategoryReferenceFragment> categoryReferenceList = new ArrayList<>();
