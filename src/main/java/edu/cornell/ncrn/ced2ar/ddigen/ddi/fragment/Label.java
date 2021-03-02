@@ -11,34 +11,34 @@ public class Label implements Appendable {
 	public static final String NODE_NAME_CONTENT = "r:Content";
 
 	private String content;
-	private String xmlLang;
+	private String ddiLanguage;
 
-	public Label(String content, String xmlLang) {
+	public Label(String content, String ddiLanguage) {
 		setContent(content);
-		setXmlLang(xmlLang);
+		setDdiLanguage(ddiLanguage);
 	}
 
 	public String getContent() {
 		return content;
 	}
 
-	public String getXmlLang() {
-		return xmlLang;
+	public String getDdiLanguage() {
+		return ddiLanguage;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
 	}
 
-	public void setXmlLang(String xmlLang) {
-		this.xmlLang = xmlLang;
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element label = doc.createElementNS(namespace, NODE_NAME_LABEL);
 		Element content = doc.createElementNS(namespace, NODE_NAME_CONTENT);
-		content.setAttribute(ATTRIBUTE_NAME_XML_LANG, getXmlLang());
+		content.setAttribute(ATTRIBUTE_NAME_XML_LANG, getDdiLanguage());
 		content.setTextContent(getContent());
 		label.appendChild(content);
 		element.appendChild(label);

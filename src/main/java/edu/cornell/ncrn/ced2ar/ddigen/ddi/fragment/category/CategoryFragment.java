@@ -1,12 +1,12 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractVariableRepresentation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class CategoryFragment extends Fragment {
+public class CategoryFragment extends FragmentWithUrn {
 
 	public static final String NODE_NAME_CATEGORY = "Category";
 

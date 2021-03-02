@@ -1,14 +1,13 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeFragment;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class CodeListFragment extends Fragment {
+public class CodeListFragment extends FragmentWithUrn {
 	public static final String NODE_NAME_CODE_LIST = "CodeList";
 
 	private List<CodeFragment> codeFragmentList = new ArrayList<>();

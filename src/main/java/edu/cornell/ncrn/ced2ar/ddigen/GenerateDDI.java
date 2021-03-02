@@ -2,6 +2,7 @@ package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
@@ -67,8 +68,9 @@ public class GenerateDDI {
 
 			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 				logicalProduct,
-				"",
-				""
+				agency,
+				ddiLanguage,
+				dataFile
 			);
 			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 

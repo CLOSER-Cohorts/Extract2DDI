@@ -6,10 +6,15 @@ import java.util.List;
 public class CodeList {
 
 	private List<Code> codeList = new ArrayList<>();
+	private String id;
 	private String label;
 
 	public List<Code> getCodeList() {
 		return codeList;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getLabel() {
@@ -18,6 +23,10 @@ public class CodeList {
 
 	public void setCodeList(List<Code> codeList) {
 		this.codeList = codeList;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public void setLabel(String label) {

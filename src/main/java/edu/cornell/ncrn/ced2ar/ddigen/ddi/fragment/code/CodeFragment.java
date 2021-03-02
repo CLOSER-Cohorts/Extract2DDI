@@ -1,11 +1,11 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class CodeFragment extends Fragment {
+public class CodeFragment extends FragmentWithUrn {
 	public static final String NODE_NAME_CODE = "Code";
 	public static final String NODE_NAME_VALUE = "r:Value";
 

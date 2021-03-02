@@ -8,7 +8,15 @@ public class CodeListReferenceFragment extends AbstractReferenceFragment {
 
 	public CodeListReferenceFragment(String id, String agency, int version) {
 		super(id, agency, version);
-		setNodeNameReference(NODE_NAME_VARIABLE_REFERENCE);
-		setObjectType("CodeList");
+	}
+
+	@Override
+	protected String getNodeNameReference() {
+		return NODE_NAME_VARIABLE_REFERENCE;
+	}
+
+	@Override
+	public String getObjectType() {
+		return "CodeList";
 	}
 }
