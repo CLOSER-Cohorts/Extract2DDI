@@ -123,6 +123,10 @@ public class LogicalProductFactory {
 					Node variableNode = variableNodeList.item(j);
 					if (nodeNameEquals(variableNode, "Variable")) {
 						Variable variable = new Variable();
+
+						Node variableId = variableNode.getAttributes().getNamedItem("id");
+						variable.setId(variableId.getTextContent());
+
 						NodeList variableChildList = variableNode.getChildNodes();
 
 						for (int k = 0; k < variableChildList.getLength(); k++) {
