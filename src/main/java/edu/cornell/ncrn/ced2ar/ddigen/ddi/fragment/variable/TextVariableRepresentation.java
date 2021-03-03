@@ -1,5 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractVariableRepresentation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

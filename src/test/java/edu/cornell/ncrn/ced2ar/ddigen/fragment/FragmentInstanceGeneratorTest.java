@@ -26,6 +26,10 @@ public class FragmentInstanceGeneratorTest {
 
 	private static Document fragmentInstanceDocument;
 
+	private Node getDataRelationship(Document document) {
+		return document.getFirstChild().getChildNodes().item(36);
+	}
+
 	private Node getCategory(Document document) {
 		return document.getFirstChild().getChildNodes().item(9).getFirstChild();
 	}
@@ -74,6 +78,26 @@ public class FragmentInstanceGeneratorTest {
 		return document.getFirstChild().getChildNodes().item(21).getFirstChild();
 	}
 
+	private void testFragment(Node fragment) {
+		Assert.assertEquals("r:URN", fragment.getFirstChild().getNodeName());
+		Assert.assertNotEquals("", fragment.getFirstChild().getTextContent());
+		Assert.assertEquals("r:Agency", fragment.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("uk.closer", fragment.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("r:ID", fragment.getChildNodes().item(2).getNodeName());
+		Assert.assertNotEquals("", fragment.getChildNodes().item(2).getTextContent());
+		Assert.assertEquals("r:Version", fragment.getChildNodes().item(3).getNodeName());
+		Assert.assertEquals("1", fragment.getChildNodes().item(3).getTextContent());
+	}
+
+	private void testFragmentReference(Node fragment) {
+		Assert.assertEquals("r:Agency", fragment.getFirstChild().getNodeName());
+		Assert.assertEquals("uk.closer", fragment.getFirstChild().getTextContent());
+		Assert.assertEquals("r:ID", fragment.getChildNodes().item(1).getNodeName());
+		Assert.assertNotEquals("", fragment.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("r:Version", fragment.getChildNodes().item(2).getNodeName());
+		Assert.assertEquals("1", fragment.getChildNodes().item(2).getTextContent());
+	}
+
 	@Test
 	public void testToDocument() {
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
@@ -82,14 +106,8 @@ public class FragmentInstanceGeneratorTest {
 
 		Node variable = getVariable(fragmentInstanceDocument);
 
-		Assert.assertEquals(36, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
-		Assert.assertEquals("r:URN", variable.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", variable.getFirstChild().getTextContent());
-		Assert.assertEquals("r:Agency", variable.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", variable.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", variable.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("r:Version", variable.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", variable.getChildNodes().item(3).getTextContent());
+		Assert.assertEquals(37, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
+		testFragment(variable);
 		Assert.assertEquals("VariableName", variable.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:String", variable.getChildNodes().item(4).getFirstChild().getNodeName());
 		Assert.assertEquals("xml:lang", variable.getChildNodes().item(4).getFirstChild().getAttributes().item(0).getNodeName());
@@ -108,14 +126,7 @@ public class FragmentInstanceGeneratorTest {
 	public void testToDocument_Category() {
 		Node category = getCategory(fragmentInstanceDocument);
 		Assert.assertEquals("Category", category.getNodeName());
-		Assert.assertEquals("r:URN", category.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", category.getFirstChild().getNodeName());
-		Assert.assertEquals("r:Agency", category.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", category.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", category.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", category.getChildNodes().item(2).getTextContent());
-		Assert.assertEquals("r:Version", category.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", category.getChildNodes().item(3).getTextContent());
+		testFragment(category);
 		Assert.assertEquals("r:Label", category.getChildNodes().item(4).getNodeName());
 	}
 
@@ -123,14 +134,7 @@ public class FragmentInstanceGeneratorTest {
 	public void testToDocument_Code() {
 		Node code = getCode(fragmentInstanceDocument);
 		Assert.assertEquals("Code", code.getNodeName());
-		Assert.assertEquals("r:URN", code.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", code.getFirstChild().getNodeName());
-		Assert.assertEquals("r:Agency", code.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", code.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", code.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", code.getChildNodes().item(2).getTextContent());
-		Assert.assertEquals("r:Version", code.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", code.getChildNodes().item(3).getTextContent());
+		testFragment(code);
 		Assert.assertEquals("r:CategoryReference", code.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:Value", code.getChildNodes().item(5).getNodeName());
 		Assert.assertEquals("1", code.getChildNodes().item(5).getTextContent());
@@ -138,42 +142,24 @@ public class FragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_CodeList() {
-		Node category = getCodeList(fragmentInstanceDocument);
-		Assert.assertEquals("CodeList", category.getNodeName());
-		Assert.assertEquals("r:URN", category.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", category.getFirstChild().getNodeName());
-		Assert.assertEquals("r:Agency", category.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", category.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", category.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", category.getChildNodes().item(2).getTextContent());
-		Assert.assertEquals("r:Version", category.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", category.getChildNodes().item(3).getTextContent());
-		Assert.assertEquals("r:Label", category.getChildNodes().item(4).getNodeName());
+		Node codeList = getCodeList(fragmentInstanceDocument);
+		Assert.assertEquals("CodeList", codeList.getNodeName());
+		testFragment(codeList);
+		Assert.assertEquals("r:Label", codeList.getChildNodes().item(4).getNodeName());
 	}
 
 	@Test
 	public void testToDocument_CategoryScheme() {
 		Node categoryScheme = getCategoryScheme(fragmentInstanceDocument);
 		Assert.assertEquals("CategoryScheme", categoryScheme.getNodeName());
-		Assert.assertEquals("r:URN", categoryScheme.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", categoryScheme.getFirstChild().getTextContent());
-		Assert.assertEquals("r:Agency", categoryScheme.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", categoryScheme.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", categoryScheme.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", categoryScheme.getChildNodes().item(2).getTextContent());
+		testFragment(categoryScheme);
 	}
 
 	@Test
 	public void testToDocument_CategoryReference() {
 		Node categoryReference = getCategoryReference(fragmentInstanceDocument);
-
 		Assert.assertEquals("r:CategoryReference", categoryReference.getNodeName());
-		Assert.assertEquals("r:Agency", categoryReference.getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", categoryReference.getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", categoryReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", categoryReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", categoryReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", categoryReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(categoryReference);
 		Assert.assertEquals("r:TypeOfObject", categoryReference.getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("Category", categoryReference.getChildNodes().item(3).getTextContent());
 	}
@@ -186,14 +172,37 @@ public class FragmentInstanceGeneratorTest {
 		Assert.assertEquals("blankIsMissingValue", representation.getAttributes().item(0).getNodeName());
 		Assert.assertEquals("false", representation.getAttributes().item(0).getTextContent());
 		Assert.assertEquals("r:CodeListReference", representation.getFirstChild().getNodeName());
-		Assert.assertEquals("r:Agency", representation.getFirstChild().getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", representation.getFirstChild().getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", representation.getFirstChild().getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", representation.getFirstChild().getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", representation.getFirstChild().getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", representation.getFirstChild().getChildNodes().item(2).getTextContent());
+		testFragmentReference(representation.getFirstChild());
 		Assert.assertEquals("r:TypeOfObject", representation.getFirstChild().getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("CodeList", representation.getFirstChild().getChildNodes().item(3).getTextContent());
+	}
+
+	@Test
+	public void testToDocument_DataRelationship() {
+		Node dataRelationship = getDataRelationship(fragmentInstanceDocument);
+		Assert.assertEquals("r:DataRelationship", dataRelationship.getNodeName());
+		testFragment(dataRelationship);
+		Assert.assertEquals("r:DataRelationshipName", dataRelationship.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("r:String", dataRelationship.getChildNodes().item(4).getFirstChild().getNodeName());
+		Assert.assertEquals("test-file-data-types.sav", dataRelationship.getChildNodes().item(4).getFirstChild().getTextContent());
+
+		// Logical Record
+		Node logicalRecord = dataRelationship.getChildNodes().item(5);
+		Assert.assertEquals("r:LogicalRecord", logicalRecord.getNodeName());
+		testFragment(logicalRecord);
+		Assert.assertEquals("r:LogicalRecordName", logicalRecord.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("r:String", logicalRecord.getChildNodes().item(4).getFirstChild().getNodeName());
+		Assert.assertEquals("test-file-data-types.sav", logicalRecord.getChildNodes().item(4).getFirstChild().getTextContent());
+
+		// Variable Used Reference
+		Node variablesInRecord = logicalRecord.getChildNodes().item(5);
+		Assert.assertEquals("VariablesInRecord", variablesInRecord.getNodeName());
+
+		Node variableUsed = variablesInRecord.getFirstChild();
+		Assert.assertEquals("r:VariableUsedReference", variableUsed.getNodeName());
+		testFragmentReference(variableUsed);
+		Assert.assertEquals("r:TypeOfObject", variableUsed.getChildNodes().item(3).getNodeName());
+		Assert.assertEquals("Variable", variableUsed.getChildNodes().item(3).getTextContent());
 	}
 
 	@Test
@@ -225,14 +234,7 @@ public class FragmentInstanceGeneratorTest {
 		Node resourcePackage = getResourcePackage(fragmentInstanceDocument);
 
 		Assert.assertEquals("ResourcePackage", resourcePackage.getNodeName());
-		Assert.assertEquals("r:URN", resourcePackage.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", resourcePackage.getFirstChild().getTextContent());
-		Assert.assertEquals("r:Agency", resourcePackage.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", resourcePackage.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", resourcePackage.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", resourcePackage.getChildNodes().item(2).getTextContent());
-		Assert.assertEquals("r:Version", resourcePackage.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", resourcePackage.getChildNodes().item(3).getTextContent());
+		testFragment(resourcePackage);
 		Assert.assertEquals("r:Citation", resourcePackage.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:Title", resourcePackage.getChildNodes().item(4).getFirstChild().getNodeName());
 		Assert.assertEquals("r:String", resourcePackage.getChildNodes().item(4).getFirstChild().getFirstChild().getNodeName());
@@ -243,32 +245,17 @@ public class FragmentInstanceGeneratorTest {
 		// Physical Instance Reference
 		Node physicalInstanceReference = resourcePackage.getChildNodes().item(5);
 		Assert.assertEquals("r:PhysicalInstanceReference", physicalInstanceReference.getNodeName());
-		Assert.assertEquals("r:Agency", physicalInstanceReference.getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", physicalInstanceReference.getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", physicalInstanceReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", physicalInstanceReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", physicalInstanceReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", physicalInstanceReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(physicalInstanceReference);
 
 		// Physical Instance Reference
 		Node categorySchemeReference = resourcePackage.getChildNodes().item(6);
 		Assert.assertEquals("r:CategorySchemeReference", categorySchemeReference.getNodeName());
-		Assert.assertEquals("r:Agency", categorySchemeReference.getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", categorySchemeReference.getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", categorySchemeReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", categorySchemeReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", categorySchemeReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", categorySchemeReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(categorySchemeReference);
 
 		// Physical Instance Reference
 		Node variableSchemeReference = resourcePackage.getChildNodes().item(9);
 		Assert.assertEquals("r:VariableSchemeReference", variableSchemeReference.getNodeName());
-		Assert.assertEquals("r:Agency", variableSchemeReference.getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", variableSchemeReference.getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", variableSchemeReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", variableSchemeReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", variableSchemeReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", variableSchemeReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(variableSchemeReference);
 	}
 
 	@Test
@@ -287,11 +274,7 @@ public class FragmentInstanceGeneratorTest {
 		Node topLevelReference = getTopLevelReference(fragmentInstanceDocument);
 
 		Assert.assertEquals("ddi:TopLevelReference", topLevelReference.getNodeName());
-		Assert.assertEquals("r:Agency", topLevelReference.getFirstChild().getNodeName());
-		Assert.assertEquals("r:ID", topLevelReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", topLevelReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", topLevelReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", topLevelReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(topLevelReference);
 		Assert.assertEquals("r:TypeOfObject", topLevelReference.getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("PackageReference", topLevelReference.getChildNodes().item(3).getTextContent());
 	}
@@ -301,14 +284,7 @@ public class FragmentInstanceGeneratorTest {
 		Node variableScheme = getVariableScheme(fragmentInstanceDocument);
 
 		Assert.assertEquals("VariableScheme", variableScheme.getNodeName());
-		Assert.assertEquals("r:URN", variableScheme.getFirstChild().getNodeName());
-		Assert.assertNotEquals("", variableScheme.getFirstChild().getTextContent());
-		Assert.assertEquals("r:Agency", variableScheme.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("uk.closer", variableScheme.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:ID", variableScheme.getChildNodes().item(2).getNodeName());
-		Assert.assertNotEquals("", variableScheme.getChildNodes().item(2).getTextContent());
-		Assert.assertEquals("r:Version", variableScheme.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("1", variableScheme.getChildNodes().item(3).getTextContent());
+		testFragment(variableScheme);
 	}
 
 	@Test
@@ -316,12 +292,7 @@ public class FragmentInstanceGeneratorTest {
 		Node variableReference = getVariableReference(fragmentInstanceDocument);
 
 		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
-		Assert.assertEquals("r:Agency", variableReference.getFirstChild().getNodeName());
-		Assert.assertEquals("uk.closer", variableReference.getFirstChild().getTextContent());
-		Assert.assertEquals("r:ID", variableReference.getChildNodes().item(1).getNodeName());
-		Assert.assertNotEquals("", variableReference.getChildNodes().item(1).getTextContent());
-		Assert.assertEquals("r:Version", variableReference.getChildNodes().item(2).getNodeName());
-		Assert.assertEquals("1", variableReference.getChildNodes().item(2).getTextContent());
+		testFragmentReference(variableReference);
 		Assert.assertEquals("r:TypeOfObject", variableReference.getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("Variable", variableReference.getChildNodes().item(3).getTextContent());
 	}
