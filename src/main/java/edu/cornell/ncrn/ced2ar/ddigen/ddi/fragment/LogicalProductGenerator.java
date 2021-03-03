@@ -6,6 +6,13 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeFragme
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code.CodeListFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.DataFileIdentification;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.GrossFileStructure;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.PhysicalInstanceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.PhysicalInstanceReferenceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.DataRelationshipReferenceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.resource.ResourcePackageFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.resource.TopLevelReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.CodeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.DataRelationshipFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.LogicalRecordFragment;
@@ -111,12 +118,78 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	private DataRelationshipFragment getDataRelationshipFragment(
+		String dataRelationshipId,
+		Map<String, UUID> variableIdToUuidMap
+	) {
+		DataRelationshipFragment dataRelationshipFragment = new DataRelationshipFragment(
+			dataRelationshipId,
+			getAgency(),
+			getVersion()
+		);
+
+		dataRelationshipFragment.setName(new StringElement(getTitle(), getDdiLanguage()));
+
+		LogicalRecordFragment logicalRecordFragment = new LogicalRecordFragment(
+			UUID.randomUUID().toString(),
+			getAgency(),
+			getVersion()
+		);
+
+		logicalRecordFragment.setName(new StringElement(getTitle(), getDdiLanguage()));
+
+		for (Map.Entry<String, UUID> variableIdToUuidEntry : variableIdToUuidMap.entrySet()) {
+			VariableUsedReferenceFragment fragment = new VariableUsedReferenceFragment(
+				variableIdToUuidEntry.getValue().toString(),
+				getAgency(),
+				getVersion()
+			);
+			logicalRecordFragment.addVariableUsedReference(fragment);
+		}
+		dataRelationshipFragment.setLogicalRecord(logicalRecordFragment);
+
+		return dataRelationshipFragment;
+	}
+
 	public String getDdiLanguage() {
 		return ddiLanguage;
 	}
 
 	public LogicalProduct getLogicalProduct() {
 		return logicalProduct;
+	}
+
+	private PhysicalInstanceFragment getPhysicalInstanceFragment(String dataRelationshipId) {
+		PhysicalInstanceFragment physicalInstanceReference = new PhysicalInstanceFragment(
+			UUID.randomUUID().toString(),
+			getAgency(),
+			getVersion()
+		);
+
+		StringElement string = new StringElement(getTitle(), getDdiLanguage());
+		Title titleElement = new Title(string);
+		Citation citation = new Citation(titleElement);
+		physicalInstanceReference.setCitation(citation);
+
+		DataRelationshipReferenceFragment dataRelationshipReference = new DataRelationshipReferenceFragment(
+			dataRelationshipId,
+			getAgency(),
+			getVersion()
+		);
+		physicalInstanceReference.setDataRelationshipReference(dataRelationshipReference);
+
+		DataFileIdentification dataFileIdentification = new DataFileIdentification(getTitle());
+		physicalInstanceReference.setDataFileIdentification(dataFileIdentification);
+
+		GrossFileStructure grossFileStructure = new GrossFileStructure(
+			UUID.randomUUID().toString(),
+			getAgency(),
+			getVersion(),
+			3
+		);
+		physicalInstanceReference.setGrossFileStructure(grossFileStructure);
+
+		return physicalInstanceReference;
 	}
 
 	public FragmentWithUrn getResourcePackageFragment(
@@ -290,31 +363,17 @@ public class LogicalProductGenerator {
 			getVariableFragmentList(variableSchemeIdToUuidMap, variableIdToUuidMap);
 		fragmentList.addAll(variableFragmentList);
 
-		DataRelationshipFragment dataRelationshipFragment = new DataRelationshipFragment(
-			UUID.randomUUID().toString(),
-			getAgency(),
-			getVersion()
+		String dataRelationshipId = UUID.randomUUID().toString();
+
+		PhysicalInstanceFragment physicalInstanceReference = getPhysicalInstanceFragment(
+			dataRelationshipId
 		);
+		fragmentList.add(physicalInstanceReference);
 
-		dataRelationshipFragment.setName(new StringElement(getTitle(), getDdiLanguage()));
-
-		LogicalRecordFragment logicalRecordFragment = new LogicalRecordFragment(
-			UUID.randomUUID().toString(),
-			getAgency(),
-			getVersion()
+		DataRelationshipFragment dataRelationshipFragment = getDataRelationshipFragment(
+			dataRelationshipId,
+			variableIdToUuidMap
 		);
-
-		logicalRecordFragment.setName(new StringElement(getTitle(), getDdiLanguage()));
-
-		for (Map.Entry<String, UUID> variableIdToUuidEntry : variableIdToUuidMap.entrySet()) {
-			VariableUsedReferenceFragment fragment = new VariableUsedReferenceFragment(
-				variableIdToUuidEntry.getValue().toString(),
-				getAgency(),
-				getVersion()
-			);
-			logicalRecordFragment.addVariableUsedReference(fragment);
-		}
-		dataRelationshipFragment.setLogicalRecord(logicalRecordFragment);
 		fragmentList.add(dataRelationshipFragment);
 
 		return fragmentList;

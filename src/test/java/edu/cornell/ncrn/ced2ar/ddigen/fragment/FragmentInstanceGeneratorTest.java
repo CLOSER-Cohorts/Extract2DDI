@@ -27,7 +27,7 @@ public class FragmentInstanceGeneratorTest {
 	private static Document fragmentInstanceDocument;
 
 	private Node getDataRelationship(Document document) {
-		return document.getFirstChild().getChildNodes().item(36);
+		return document.getFirstChild().getChildNodes().item(37);
 	}
 
 	private Node getCategory(Document document) {
@@ -48,6 +48,10 @@ public class FragmentInstanceGeneratorTest {
 
 	private Node getCodeList(Document document) {
 		return document.getFirstChild().getChildNodes().item(18).getFirstChild();
+	}
+
+	private Node getPhysicalInstance(Document document) {
+		return document.getFirstChild().getChildNodes().item(36).getFirstChild();
 	}
 
 	private Node getResourcePackage(Document document) {
@@ -106,7 +110,7 @@ public class FragmentInstanceGeneratorTest {
 
 		Node variable = getVariable(fragmentInstanceDocument);
 
-		Assert.assertEquals(37, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
+		Assert.assertEquals(38, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
 		testFragment(variable);
 		Assert.assertEquals("VariableName", variable.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:String", variable.getChildNodes().item(4).getFirstChild().getNodeName());
@@ -256,6 +260,41 @@ public class FragmentInstanceGeneratorTest {
 		Node variableSchemeReference = resourcePackage.getChildNodes().item(9);
 		Assert.assertEquals("r:VariableSchemeReference", variableSchemeReference.getNodeName());
 		testFragmentReference(variableSchemeReference);
+	}
+
+	@Test
+	public void testToDocument_PhysicalInstance() {
+		Node physicalInstance = getPhysicalInstance(fragmentInstanceDocument);
+		Assert.assertEquals("PhysicalInstance", physicalInstance.getNodeName());
+		testFragment(physicalInstance);
+
+		// Citation
+		Assert.assertEquals("r:Citation", physicalInstance.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("r:Title", physicalInstance.getChildNodes().item(4).getFirstChild().getNodeName());
+		Assert.assertEquals("r:String", physicalInstance.getChildNodes().item(4).getFirstChild().getFirstChild().getNodeName());
+		Assert.assertEquals("xml:lang", physicalInstance.getChildNodes().item(4).getFirstChild().getFirstChild().getAttributes().getNamedItem("xml:lang").getNodeName());
+		Assert.assertEquals("en-GB", physicalInstance.getChildNodes().item(4).getFirstChild().getFirstChild().getAttributes().getNamedItem("xml:lang").getTextContent());
+		Assert.assertEquals("test-file-data-types.sav", physicalInstance.getChildNodes().item(4).getFirstChild().getFirstChild().getTextContent());
+
+		// Data Relationship Reference
+		Node dataRelationshipReference = physicalInstance.getChildNodes().item(5);
+		Assert.assertEquals("r:DataRelationshipReference", dataRelationshipReference.getNodeName());
+		testFragmentReference(dataRelationshipReference);
+		Assert.assertEquals("r:TypeOfObject", dataRelationshipReference.getChildNodes().item(3).getNodeName());
+		Assert.assertEquals("DataRelationship", dataRelationshipReference.getChildNodes().item(3).getTextContent());
+
+		// Data File Identification
+		Node dataFileIdentification = physicalInstance.getChildNodes().item(6);
+		Assert.assertEquals("DataFileIdentification", dataFileIdentification.getNodeName());
+		Assert.assertEquals("DataFileURI", dataFileIdentification.getFirstChild().getNodeName());
+		Assert.assertEquals("test-file-data-types.sav", dataFileIdentification.getFirstChild().getTextContent());
+
+		// Gross File Structure
+		Node grossFileStructure = physicalInstance.getChildNodes().item(7);
+		Assert.assertEquals("GrossFileStructure", grossFileStructure.getNodeName());
+		testFragment(grossFileStructure);
+		Assert.assertEquals("CaseQuantity", grossFileStructure.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("3", grossFileStructure.getChildNodes().item(4).getTextContent());
 	}
 
 	@Test
