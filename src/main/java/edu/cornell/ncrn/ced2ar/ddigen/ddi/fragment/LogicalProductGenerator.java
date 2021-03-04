@@ -24,6 +24,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeReferenceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableStatisticsFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Code;
@@ -62,12 +63,12 @@ public class LogicalProductGenerator {
 		return agency;
 	}
 
-	public List<FragmentWithUrn> getCategoryFragmentList(
+	public List<Fragment> getCategoryFragmentList(
 		Map<String, UUID> categorySchemeIdToUuidMap,
 		Map<String, UUID> categoryIdToUuidMap
 	) {
-		List<FragmentWithUrn> fragmentList = new ArrayList<>();
-		List<FragmentWithUrn> categoryFragmentList = new ArrayList<>();
+		List<Fragment> fragmentList = new ArrayList<>();
+		List<Fragment> categoryFragmentList = new ArrayList<>();
 
 		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
 			UUID categorySchemeId = categorySchemeIdToUuidMap.get(categoryScheme.getId());
@@ -91,11 +92,11 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
-	public List<FragmentWithUrn> getCodeListFragmentList(
+	public List<Fragment> getCodeListFragmentList(
 		Map<String, UUID> codeListIdToUuidMap,
 		Map<String, UUID> categoryIdToUuidMap
 	) {
-		List<FragmentWithUrn> fragmentList = new ArrayList<>();
+		List<Fragment> fragmentList = new ArrayList<>();
 		for (CodeList codeList : getLogicalProduct().getCodeListList()) {
 			UUID categorySchemeId = codeListIdToUuidMap.get(codeList.getId());
 			CodeListFragment codeListFragment = new CodeListFragment(categorySchemeId.toString(), getAgency(), getVersion());
@@ -192,7 +193,7 @@ public class LogicalProductGenerator {
 		return physicalInstanceReference;
 	}
 
-	public FragmentWithUrn getResourcePackageFragment(
+	public Fragment getResourcePackageFragment(
 		String title,
 		Map<String, UUID> categorySchemeIdToUuidMap,
 		Map<String, UUID> physicalInstanceIdToUuidMap,
@@ -243,11 +244,11 @@ public class LogicalProductGenerator {
 		return title;
 	}
 
-	public List<FragmentWithUrn> getVariableFragmentList(
+	public List<Fragment> getVariableFragmentList(
 		Map<String, UUID> variableSchemeIdToUuidMap,
 		Map<String, UUID> variableIdToUuidMap
 	) {
-		List<FragmentWithUrn> fragmentList = new ArrayList<>();
+		List<Fragment> fragmentList = new ArrayList<>();
 		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
 			UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
 			VariableSchemeFragment variableSchemeFragment = new VariableSchemeFragment(
@@ -289,6 +290,27 @@ public class LogicalProductGenerator {
 					variableFragment.setRepresentation(codeVariableRepresentation);
 				}
 				fragmentList.add(variableFragment);
+			}
+		}
+
+		return fragmentList;
+	}
+
+	public List<Fragment> getVariableStatisticsList(
+		Map<String, UUID> variableSchemeIdToUuidMap,
+		Map<String, UUID> variableIdToUuidMap
+	) {
+		List<Fragment> fragmentList = new ArrayList<>();
+		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+			for (Variable variable : variableScheme.getVariableList()) {
+				UUID id = variableIdToUuidMap.get(variable.getId());
+				VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
+
+				VariableStatisticsFragment variableStatistics = new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
+
+				variableStatistics.setVariableReference(variableReferenceFragment);
+
+				fragmentList.add(variableStatistics);
 			}
 		}
 
@@ -342,7 +364,7 @@ public class LogicalProductGenerator {
 		);
 		fragmentList.add(topLevelReferenceFragment);
 
-		FragmentWithUrn resourcePackageFragment = getResourcePackageFragment(
+		Fragment resourcePackageFragment = getResourcePackageFragment(
 			getTitle(),
 			categorySchemeIdToUuidMap,
 			codeListIdToUuidMap,
@@ -351,15 +373,15 @@ public class LogicalProductGenerator {
 
 		fragmentList.add(resourcePackageFragment);
 
-		List<FragmentWithUrn> categoryFragmentList =
+		List<Fragment> categoryFragmentList =
 			getCategoryFragmentList(categorySchemeIdToUuidMap, categoryIdToUuidMap);
 		fragmentList.addAll(categoryFragmentList);
 
-		List<FragmentWithUrn> codeListFragmentList =
+		List<Fragment> codeListFragmentList =
 			getCodeListFragmentList(codeListIdToUuidMap, categoryIdToUuidMap);
 		fragmentList.addAll(codeListFragmentList);
 
-		List<FragmentWithUrn> variableFragmentList =
+		List<Fragment> variableFragmentList =
 			getVariableFragmentList(variableSchemeIdToUuidMap, variableIdToUuidMap);
 		fragmentList.addAll(variableFragmentList);
 
@@ -375,6 +397,9 @@ public class LogicalProductGenerator {
 			variableIdToUuidMap
 		);
 		fragmentList.add(dataRelationshipFragment);
+
+		List<Fragment> variableStatisticsList = getVariableStatisticsList(variableSchemeIdToUuidMap, variableIdToUuidMap);
+		fragmentList.addAll(variableStatisticsList);
 
 		return fragmentList;
 	}

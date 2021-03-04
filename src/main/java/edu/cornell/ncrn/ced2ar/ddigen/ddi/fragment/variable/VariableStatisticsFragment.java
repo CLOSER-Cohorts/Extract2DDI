@@ -1,0 +1,71 @@
+package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable;
+
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
+import java.util.ArrayList;
+import java.util.List;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+public class VariableStatisticsFragment extends FragmentWithUrn {
+
+	public static final String NODE_NAME_VARIABLE_STATISTICS = "r:VariableStatistics";
+	public static final String NODE_NAME_TOTAL_RESPONSES = "TotalResponses";
+
+	private int totalResponses;
+	private VariableReferenceFragment variableReference;
+	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
+
+	public VariableStatisticsFragment(String id, String agency, int version) {
+		super(id, agency, version);
+	}
+
+	public void addSummaryStatistic(SummaryStatistic statistic) {
+		this.summaryStatisticList.add(statistic);
+	}
+
+	@Override
+	public void appendToElement(Element element, Document doc, String namespace) {
+		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		Element variableStatistics = doc.createElementNS(namespace, NODE_NAME_VARIABLE_STATISTICS);
+		super.appendToElement(variableStatistics, doc, namespace);
+		fragment.appendChild(variableStatistics);
+
+		Element totalResponses = doc.createElementNS(namespace, NODE_NAME_TOTAL_RESPONSES);
+		totalResponses.setTextContent(Integer.toString(getTotalResponses()));
+		variableStatistics.appendChild(totalResponses);
+
+		if (getVariableReference() != null) {
+			getVariableReference().appendToElement(variableStatistics, doc, namespace);
+		}
+
+		for (SummaryStatistic statistic : getSummaryStatisticList()) {
+			statistic.appendToElement(variableStatistics, doc, namespace);
+		}
+
+		element.appendChild(fragment);
+	}
+
+	public int getTotalResponses() {
+		return totalResponses;
+	}
+
+	public List<SummaryStatistic> getSummaryStatisticList() {
+		return summaryStatisticList;
+	}
+
+	public VariableReferenceFragment getVariableReference() {
+		return variableReference;
+	}
+
+	public void setTotalResponses(int totalResponses) {
+		this.totalResponses = totalResponses;
+	}
+
+	public void setSummaryStatisticList(List<SummaryStatistic> summaryStatisticList) {
+		this.summaryStatisticList = summaryStatisticList;
+	}
+
+	public void setVariableReference(VariableReferenceFragment variableReference) {
+		this.variableReference = variableReference;
+	}
+}

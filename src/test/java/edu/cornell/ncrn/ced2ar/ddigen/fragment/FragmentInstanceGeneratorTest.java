@@ -82,6 +82,10 @@ public class FragmentInstanceGeneratorTest {
 		return document.getFirstChild().getChildNodes().item(21).getFirstChild();
 	}
 
+	private Node getVariableStatistics(Document document) {
+		return document.getFirstChild().getChildNodes().item(38).getFirstChild();
+	}
+
 	private void testFragment(Node fragment) {
 		Assert.assertEquals("r:URN", fragment.getFirstChild().getNodeName());
 		Assert.assertNotEquals("", fragment.getFirstChild().getTextContent());
@@ -110,7 +114,7 @@ public class FragmentInstanceGeneratorTest {
 
 		Node variable = getVariable(fragmentInstanceDocument);
 
-		Assert.assertEquals(38, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
+		Assert.assertEquals(52, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
 		testFragment(variable);
 		Assert.assertEquals("VariableName", variable.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:String", variable.getChildNodes().item(4).getFirstChild().getNodeName());
@@ -327,6 +331,21 @@ public class FragmentInstanceGeneratorTest {
 	}
 
 	@Test
+	public void testToDocument_VariableStatistics() {
+		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument);
+
+		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
+		testFragment(variableStatistics);
+		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(4).getTextContent());
+
+		// Variable Reference
+		Node variableReference = variableStatistics.getChildNodes().item(5);
+		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
+		testFragmentReference(variableReference);
+	}
+
+	@Test
 	public void testToDocument_VariableReference() {
 		Node variableReference = getVariableReference(fragmentInstanceDocument);
 
@@ -337,8 +356,7 @@ public class FragmentInstanceGeneratorTest {
 	}
 
 	@BeforeClass
-	public static void setUp()
-		throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
+	public static void setUp() throws URISyntaxException, IOException, SPSSFileException, ParserConfigurationException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(FragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
