@@ -1,7 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.resource;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractReferenceFragment;
 
 public class TopLevelReferenceFragment extends AbstractReferenceFragment {
 

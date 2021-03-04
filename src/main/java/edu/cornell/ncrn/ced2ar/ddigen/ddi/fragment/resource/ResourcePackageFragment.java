@@ -1,6 +1,9 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.resource;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Citation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeReferenceFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.PhysicalInstanceReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeReferenceFragment;
 import java.util.ArrayList;
 import java.util.List;

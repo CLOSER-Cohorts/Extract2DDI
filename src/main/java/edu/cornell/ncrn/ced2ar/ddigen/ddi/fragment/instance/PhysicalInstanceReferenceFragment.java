@@ -1,4 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance;
+
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractReferenceFragment;
 
 public class PhysicalInstanceReferenceFragment extends AbstractReferenceFragment {
 
