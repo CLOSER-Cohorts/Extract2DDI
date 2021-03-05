@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 
+import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeFragment;
@@ -19,6 +20,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.LogicalRecordFra
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.VariableUsedReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.DateTimeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.NumericVariableRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.TextVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableReferenceFragment;
@@ -49,13 +51,21 @@ public class LogicalProductGenerator {
 	private String ddiLanguage;
 	private LogicalProduct logicalProduct;
 	private String title;
+	private List<Ced2arVariableStat> variableStatList = new ArrayList<>();
 	private int version;
 
-	public LogicalProductGenerator(LogicalProduct logicalProduct, String agency, String ddiLanguage, String title) {
+	public LogicalProductGenerator(
+		LogicalProduct logicalProduct,
+		List<Ced2arVariableStat> variableStatList,
+		String agency,
+		String ddiLanguage,
+		String title
+	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
 		setTitle(title);
+		setVariableStatList(variableStatList);
 		setVersion(1);
 	}
 
@@ -296,6 +306,10 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public List<Ced2arVariableStat> getVariableStatList() {
+		return variableStatList;
+	}
+
 	public List<Fragment> getVariableStatisticsList(
 		Map<String, UUID> variableSchemeIdToUuidMap,
 		Map<String, UUID> variableIdToUuidMap
@@ -309,6 +323,13 @@ public class LogicalProductGenerator {
 				VariableStatisticsFragment variableStatistics = new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
 
 				variableStatistics.setVariableReference(variableReferenceFragment);
+
+				for (Ced2arVariableStat variableStat : getVariableStatList()) {
+					SummaryStatistic statistic = new SummaryStatistic();
+					statistic.setStatistic(Double.toString(variableStat.getStats().getMax()));
+					statistic.setType("A");
+					variableStatistics.addSummaryStatistic(statistic);
+				}
 
 				fragmentList.add(variableStatistics);
 			}
@@ -398,7 +419,10 @@ public class LogicalProductGenerator {
 		);
 		fragmentList.add(dataRelationshipFragment);
 
-		List<Fragment> variableStatisticsList = getVariableStatisticsList(variableSchemeIdToUuidMap, variableIdToUuidMap);
+		List<Fragment> variableStatisticsList = getVariableStatisticsList(
+			variableSchemeIdToUuidMap,
+			variableIdToUuidMap
+		);
 		fragmentList.addAll(variableStatisticsList);
 
 		return fragmentList;
@@ -418,6 +442,10 @@ public class LogicalProductGenerator {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public void setVariableStatList(List<Ced2arVariableStat> variableStatList) {
+		this.variableStatList = variableStatList;
 	}
 
 	public void setVersion(int version) {

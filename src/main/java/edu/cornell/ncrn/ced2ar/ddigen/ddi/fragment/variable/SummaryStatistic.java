@@ -22,7 +22,7 @@ public class SummaryStatistic implements Appendable {
 		summaryStatistic.appendChild(type);
 
 		Element statistic = doc.createElementNS(namespace, NODE_NAME_STATISTIC);
-		type.setTextContent(getStatistic());
+		statistic.setTextContent(getStatistic());
 		summaryStatistic.appendChild(statistic);
 
 		element.appendChild(summaryStatistic);

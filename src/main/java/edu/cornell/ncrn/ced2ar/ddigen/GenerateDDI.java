@@ -1,8 +1,9 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
+import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
@@ -63,11 +64,21 @@ public class GenerateDDI {
 			logger.info("Successfully created DDI file");
 		} else if (dataFile.toLowerCase().endsWith(".sav") && format.equalsIgnoreCase("3.3")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
-			Document logicalProductDocument = spssGen.getLogicalProduct(dataFile);
+			File serverFile = new File(dataFile);
+			SPSSFile spssFile = new SPSSFile(serverFile);
+
+			Document logicalProductDocument = spssGen.getLogicalProduct(spssFile);
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
+			List<Ced2arVariableStat> variableStatList = spssGen.getVariableStats(spssFile);
+
+			long readErrors = 0;
+			if (runSumStats) {
+				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, observationLimit);
+			}
 
 			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 				logicalProduct,
+				variableStatList,
 				agency,
 				ddiLanguage,
 				dataFile
