@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Assert;
@@ -57,18 +59,30 @@ public class AbstractFragmentInstanceGeneratorTest {
 		ConfigUtil configUtil = new ConfigUtil(properties);
 
 		List<Ced2arVariableStat> variableStatList = new ArrayList<>();
-		Ced2arVariableStat variableStat = new Ced2arVariableStat();
-		variableStat.setName("TestInteger");
-		variableStat.setInvalidCount(3L);
-		variableStat.setValidCount(3L);
-		variableStat.getStats().addValue(3.);
-		variableStat.getStats().addValue(1.);
-		variableStatList.add(variableStat);
+		Ced2arVariableStat variableStat1 = new Ced2arVariableStat();
+		variableStat1.setName("TestInteger");
+		variableStat1.setInvalidCount(3L);
+		variableStat1.setValidCount(3L);
+		variableStat1.getStats().addValue(3.);
+		variableStat1.getStats().addValue(1.);
+		variableStatList.add(variableStat1);
+
+		Ced2arVariableStat variableStat2 = new Ced2arVariableStat();
+		variableStat2.setName("TestString");
+		variableStat2.setInvalidCount(3L);
+		variableStat2.setValidCount(3L);
+		variableStat2.getStats().addValue(3.);
+		variableStat2.getStats().addValue(1.);
+		variableStatList.add(variableStat2);
+
+		Map<String, String> excludeVariableToStatMap = new HashMap<>();
+		excludeVariableToStatMap.put("TestString", "invalid,valid,max,min,mean");
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
 			variableStatList,
+			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav"

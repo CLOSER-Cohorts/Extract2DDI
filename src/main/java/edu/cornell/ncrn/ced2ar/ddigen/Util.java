@@ -2,8 +2,6 @@ package edu.cornell.ncrn.ced2ar.ddigen;
 
 import java.io.File;
 
-import java.net.URISyntaxException;
-import java.net.URL;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
@@ -34,7 +32,8 @@ public class Util {
 				"(optional) [true|false] Generate summary statistics");
 		_options.addOption("l", true, "(optional) Observation limit");
 		_options.addOption("format", true, "(optional) DDI format");
-		_options.addOption("config", true, "(optional) Config path file");
+		_options.addOption("config", true, "(optional) Config file path");
+		_options.addOption("exclude", true, "(optional) Exclude variable statistics file path");
 	}
 
 	public CommandLineParser getParser() {
@@ -93,7 +92,6 @@ public class Util {
 	 * entered other options.
 	 * 
 	 * @param summaryStatistics
-	 * @param summaryStats
 	 */
 	public static boolean runSumStatsCheck(String summaryStatistics) {
 		if (StringUtils.isEmpty(summaryStatistics)) {
@@ -118,7 +116,6 @@ public class Util {
 	 * positive value
 	 * 
 	 * @param observationLimit
-	 * @param observations
 	 */
 	public static long observationLimitCheck(String observationLimit) {
 		

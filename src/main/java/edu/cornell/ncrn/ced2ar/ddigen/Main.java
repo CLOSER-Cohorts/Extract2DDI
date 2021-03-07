@@ -1,6 +1,11 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -29,6 +34,7 @@ public class Main {
 		String processSummaryStatics;
 		String format;
 		String config;
+		String exclude;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -38,6 +44,7 @@ public class Main {
 			observationLimit = cmd.getOptionValue("l");
 			format = cmd.getOptionValue("format");
 			config = cmd.getOptionValue("config");
+			exclude = cmd.getOptionValue("exclude");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -47,6 +54,7 @@ public class Main {
 		Long obsLimit;
 		String formatOutput;
 		ConfigUtil configUtil;
+		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 
 		if (config != null && !config.isEmpty()) {
 			Util.fileCheck(config);
@@ -71,13 +79,24 @@ public class Main {
 			formatOutput = Util.formatCheck(format);
 		}
 
+		if (exclude != null && !exclude.isEmpty()) {
+			Util.fileCheck(exclude);
+
+			Properties properties = FileUtil.getPropertiesFromFile(exclude);
+			List propertyNameList = Collections.list(properties.propertyNames());
+			for (Object propertyNameObj : propertyNameList) {
+				String propertyName = propertyNameObj.toString();
+				excludeVariableToStatMap.put(propertyName, properties.getProperty(propertyName));
+			}
+		}
+
 		String agency = configUtil.getAgency();
 		String ddiLanguage = configUtil.getDdiLanguage();
 
 		Util.fileCheck(dataFile);
 
 		GenerateDDI generateDDI = new GenerateDDI();
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput, agency, ddiLanguage);
+		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput, agency, ddiLanguage, excludeVariableToStatMap);
 		System.out.println("Finished. Exiting.");
 	}
 }

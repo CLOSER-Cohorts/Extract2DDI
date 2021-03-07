@@ -7,13 +7,36 @@ import org.w3c.dom.Node;
 
 public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTest {
 
-	private Node getVariableStatistics(Document document) {
-		return document.getFirstChild().getChildNodes().item(39).getFirstChild();
+	private Node getVariableStatistics(Document document, int index) {
+		return document.getFirstChild().getChildNodes().item(index).getFirstChild();
+	}
+
+	@Test
+	public void testToDocument_ExcludeVariableStatistics() {
+		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument, 38);
+
+		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
+		testFragment(variableStatistics);
+		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(4).getTextContent());
+
+		// Variable Reference
+		Node variableReference = variableStatistics.getChildNodes().item(5);
+		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
+		testFragmentReference(variableReference);
+
+		// Summary Statistic
+		Node standardDeviation = variableStatistics.getChildNodes().item(6);
+		Assert.assertEquals("SummaryStatistic", standardDeviation.getNodeName());
+		Assert.assertEquals("TypeOfSummaryStatistic", standardDeviation.getFirstChild().getNodeName());
+		Assert.assertEquals("StandardDeviation", standardDeviation.getFirstChild().getTextContent());
+		Assert.assertEquals("Statistic", standardDeviation.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("1.4142135623730951", standardDeviation.getChildNodes().item(1).getTextContent());
 	}
 
 	@Test
 	public void testToDocument_VariableStatistics() {
-		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument);
+		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument, 39);
 
 		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
@@ -54,7 +77,14 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("Statistic", maximum.getChildNodes().item(1).getNodeName());
 		Assert.assertEquals("1.0", maximum.getChildNodes().item(1).getTextContent());
 
-		Node standardDeviation = variableStatistics.getChildNodes().item(10);
+		Node mean = variableStatistics.getChildNodes().item(10);
+		Assert.assertEquals("SummaryStatistic", mean.getNodeName());
+		Assert.assertEquals("TypeOfSummaryStatistic", mean.getFirstChild().getNodeName());
+		Assert.assertEquals("Mean", mean.getFirstChild().getTextContent());
+		Assert.assertEquals("Statistic", mean.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("2.0", mean.getChildNodes().item(1).getTextContent());
+
+		Node standardDeviation = variableStatistics.getChildNodes().item(11);
 		Assert.assertEquals("SummaryStatistic", standardDeviation.getNodeName());
 		Assert.assertEquals("TypeOfSummaryStatistic", standardDeviation.getFirstChild().getNodeName());
 		Assert.assertEquals("StandardDeviation", standardDeviation.getFirstChild().getTextContent());

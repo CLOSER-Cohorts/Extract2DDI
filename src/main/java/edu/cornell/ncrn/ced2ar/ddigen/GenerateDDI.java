@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import java.util.Map;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -42,7 +43,8 @@ public class GenerateDDI {
 		long observationLimit,
 		String format,
 		String agency,
-		String ddiLanguage
+		String ddiLanguage,
+		Map<String, String> excludeVariableToStatMap
 	) throws Exception {
 		
 		long s = System.currentTimeMillis();
@@ -79,6 +81,7 @@ public class GenerateDDI {
 			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 				logicalProduct,
 				variableStatList,
+				excludeVariableToStatMap,
 				agency,
 				ddiLanguage,
 				dataFile

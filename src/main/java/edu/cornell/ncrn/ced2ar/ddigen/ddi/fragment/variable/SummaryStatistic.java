@@ -9,11 +9,13 @@ public class SummaryStatistic implements Appendable {
 	public static final String NODE_NAME_SUMMARY_STATISTIC = "SummaryStatistic";
 	public static final String NODE_NAME_TYPE = "TypeOfSummaryStatistic";
 	public static final String NODE_NAME_STATISTIC = "Statistic";
-	public static final String NODE_VALUE_VALID_CASES = "ValidCases";
 	public static final String NODE_VALUE_INVALID_CASES = "InvalidCases";
-	public static final String NODE_VALUE_MINIMUM = "Minimum";
 	public static final String NODE_VALUE_MAXIMUM = "Maximum";
+	public static final String NODE_VALUE_MEAN = "Mean";
+	public static final String NODE_VALUE_MINIMUM = "Minimum";
 	public static final String NODE_VALUE_STANDARD_DEVIATION = "StandardDeviation";
+	public static final String NODE_VALUE_VALID_CASES = "ValidCases";
+
 
 	private StatisticType type;
 	private String statistic;
@@ -30,20 +32,23 @@ public class SummaryStatistic implements Appendable {
 		Element type = doc.createElementNS(namespace, NODE_NAME_TYPE);
 
 		switch (getType()) {
-			case VALID_CASES:
-				type.setTextContent(NODE_VALUE_VALID_CASES);
-				break;
 			case INVALID_CASES:
 				type.setTextContent(NODE_VALUE_INVALID_CASES);
-				break;
-			case MINIMUM:
-				type.setTextContent(NODE_VALUE_MINIMUM);
 				break;
 			case MAXIMUM:
 				type.setTextContent(NODE_VALUE_MAXIMUM);
 				break;
+			case MEAN:
+				type.setTextContent(NODE_VALUE_MEAN);
+				break;
+			case MINIMUM:
+				type.setTextContent(NODE_VALUE_MINIMUM);
+				break;
 			case STANDARD_DEVIATION:
 				type.setTextContent(NODE_VALUE_STANDARD_DEVIATION);
+				break;
+			case VALID_CASES:
+				type.setTextContent(NODE_VALUE_VALID_CASES);
 				break;
 		}
 

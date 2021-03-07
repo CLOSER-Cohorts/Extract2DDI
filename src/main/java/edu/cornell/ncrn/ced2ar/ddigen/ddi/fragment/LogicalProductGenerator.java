@@ -48,10 +48,9 @@ import java.util.UUID;
 
 public class LogicalProductGenerator {
 
-
-
 	private String agency;
 	private String ddiLanguage;
+	private Map<String, String> excludeVariableToStatMap;
 	private LogicalProduct logicalProduct;
 	private String title;
 	private List<Ced2arVariableStat> variableStatList = new ArrayList<>();
@@ -60,6 +59,7 @@ public class LogicalProductGenerator {
 	public LogicalProductGenerator(
 		LogicalProduct logicalProduct,
 		List<Ced2arVariableStat> variableStatList,
+		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
 		String title
@@ -67,6 +67,7 @@ public class LogicalProductGenerator {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
+		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setTitle(title);
 		setVariableStatList(variableStatList);
 		setVersion(1);
@@ -167,6 +168,10 @@ public class LogicalProductGenerator {
 
 	public String getDdiLanguage() {
 		return ddiLanguage;
+	}
+
+	public Map<String, String> getExcludeVariableToStatMap() {
+		return excludeVariableToStatMap;
 	}
 
 	public LogicalProduct getLogicalProduct() {
@@ -327,32 +332,43 @@ public class LogicalProductGenerator {
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 				for (Ced2arVariableStat variableStat : getVariableStatList()) {
-
 					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
-						String validCount = Long.toString(variableStat.getValidCount());
-						SummaryStatistic validCases = new SummaryStatistic(validCount, StatisticType.VALID_CASES);
-						variableStatistics.addSummaryStatistic(validCases);
+						String excludeVariableStat = getExcludeVariableToStatMap().get(variableStat.getName());
 
-						String invalidCount = Long.toString(variableStat.getInvalidCount());
-						SummaryStatistic invalidCases = new SummaryStatistic(invalidCount, StatisticType.INVALID_CASES);
-						variableStatistics.addSummaryStatistic(invalidCases);
-
-						if (!Double.isNaN(variableStat.getStats().getMax())) {
-							String max = Double.toString(variableStat.getStats().getMax());
-							SummaryStatistic maximum = new SummaryStatistic(max, StatisticType.MAXIMUM);
-							variableStatistics.addSummaryStatistic(maximum);
+						if (excludeVariableStat == null || !excludeVariableStat.contains("valid")) {
+							String statistic = Long.toString(variableStat.getValidCount());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.VALID_CASES);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (!Double.isNaN(variableStat.getStats().getMin())) {
-							String min = Double.toString(variableStat.getStats().getMin());
-							SummaryStatistic minimum = new SummaryStatistic(min, StatisticType.MINIMUM);
-							variableStatistics.addSummaryStatistic(minimum);
+						if (excludeVariableStat == null || !excludeVariableStat.contains("invalid")) {
+							String statistic = Long.toString(variableStat.getInvalidCount());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.INVALID_CASES);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (!Double.isNaN(variableStat.getStats().getStandardDeviation())) {
-							String stdDev = Double.toString(variableStat.getStats().getStandardDeviation());
-							SummaryStatistic standardDeviation = new SummaryStatistic(stdDev, StatisticType.STANDARD_DEVIATION);
-							variableStatistics.addSummaryStatistic(standardDeviation);
+						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getMax()) && !excludeVariableStat.contains("max")) {
+							String statistic = Double.toString(variableStat.getStats().getMax());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MAXIMUM);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getMin()) && !excludeVariableStat.contains("min")) {
+							String statistic = Double.toString(variableStat.getStats().getMin());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MINIMUM);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getStandardDeviation()) && !excludeVariableStat.contains("mean")) {
+							String statistic = Double.toString(variableStat.getStats().getMean());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MEAN);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getStandardDeviation()) && !excludeVariableStat.contains("stddev")) {
+							String statistic = Double.toString(variableStat.getStats().getStandardDeviation());
+							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.STANDARD_DEVIATION);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 					}
 				}
@@ -457,6 +473,10 @@ public class LogicalProductGenerator {
 
 	public void setDdiLanguage(String ddiLanguage) {
 		this.ddiLanguage = ddiLanguage;
+	}
+
+	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
+		this.excludeVariableToStatMap = excludeVariableToStatMap;
 	}
 
 	public void setLogicalProduct(LogicalProduct logicalProduct) {
