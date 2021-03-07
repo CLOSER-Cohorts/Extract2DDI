@@ -58,11 +58,11 @@ public class AbstractFragmentInstanceGeneratorTest {
 
 		List<Ced2arVariableStat> variableStatList = new ArrayList<>();
 		Ced2arVariableStat variableStat = new Ced2arVariableStat();
+		variableStat.setName("TestInteger");
 		variableStat.setInvalidCount(3L);
 		variableStat.setValidCount(3L);
-		variableStat.setMaxValue(3.);
-		variableStat.setMinValue(3.);
-		variableStat.setStdDeviation(3.);
+		variableStat.getStats().addValue(3.);
+		variableStat.getStats().addValue(1.);
 		variableStatList.add(variableStat);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);

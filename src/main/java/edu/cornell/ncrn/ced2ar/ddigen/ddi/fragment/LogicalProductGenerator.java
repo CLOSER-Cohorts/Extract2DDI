@@ -20,6 +20,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.LogicalRecordFra
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.relationship.VariableUsedReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.DateTimeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.NumericVariableRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.StatisticType;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.TextVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableFragment;
@@ -46,6 +47,8 @@ import java.util.Map;
 import java.util.UUID;
 
 public class LogicalProductGenerator {
+
+
 
 	private String agency;
 	private String ddiLanguage;
@@ -310,25 +313,48 @@ public class LogicalProductGenerator {
 		return variableStatList;
 	}
 
-	public List<Fragment> getVariableStatisticsList(
-		Map<String, UUID> variableSchemeIdToUuidMap,
-		Map<String, UUID> variableIdToUuidMap
-	) {
+	public List<Fragment> getVariableStatisticsList(Map<String, UUID> variableIdToUuidMap) {
 		List<Fragment> fragmentList = new ArrayList<>();
 		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
 			for (Variable variable : variableScheme.getVariableList()) {
 				UUID id = variableIdToUuidMap.get(variable.getId());
-				VariableReferenceFragment variableReferenceFragment = new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
+				VariableReferenceFragment variableReferenceFragment =
+					new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
 
-				VariableStatisticsFragment variableStatistics = new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
+				VariableStatisticsFragment variableStatistics =
+					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
 
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 				for (Ced2arVariableStat variableStat : getVariableStatList()) {
-					SummaryStatistic statistic = new SummaryStatistic();
-					statistic.setStatistic(Double.toString(variableStat.getStats().getMax()));
-					statistic.setType("A");
-					variableStatistics.addSummaryStatistic(statistic);
+
+					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
+						String validCount = Long.toString(variableStat.getValidCount());
+						SummaryStatistic validCases = new SummaryStatistic(validCount, StatisticType.VALID_CASES);
+						variableStatistics.addSummaryStatistic(validCases);
+
+						String invalidCount = Long.toString(variableStat.getInvalidCount());
+						SummaryStatistic invalidCases = new SummaryStatistic(invalidCount, StatisticType.INVALID_CASES);
+						variableStatistics.addSummaryStatistic(invalidCases);
+
+						if (!Double.isNaN(variableStat.getStats().getMax())) {
+							String max = Double.toString(variableStat.getStats().getMax());
+							SummaryStatistic maximum = new SummaryStatistic(max, StatisticType.MAXIMUM);
+							variableStatistics.addSummaryStatistic(maximum);
+						}
+
+						if (!Double.isNaN(variableStat.getStats().getMin())) {
+							String min = Double.toString(variableStat.getStats().getMin());
+							SummaryStatistic minimum = new SummaryStatistic(min, StatisticType.MINIMUM);
+							variableStatistics.addSummaryStatistic(minimum);
+						}
+
+						if (!Double.isNaN(variableStat.getStats().getStandardDeviation())) {
+							String stdDev = Double.toString(variableStat.getStats().getStandardDeviation());
+							SummaryStatistic standardDeviation = new SummaryStatistic(stdDev, StatisticType.STANDARD_DEVIATION);
+							variableStatistics.addSummaryStatistic(standardDeviation);
+						}
+					}
 				}
 
 				fragmentList.add(variableStatistics);
@@ -419,10 +445,7 @@ public class LogicalProductGenerator {
 		);
 		fragmentList.add(dataRelationshipFragment);
 
-		List<Fragment> variableStatisticsList = getVariableStatisticsList(
-			variableSchemeIdToUuidMap,
-			variableIdToUuidMap
-		);
+		List<Fragment> variableStatisticsList = getVariableStatisticsList(variableIdToUuidMap);
 		fragmentList.addAll(variableStatisticsList);
 
 		return fragmentList;
