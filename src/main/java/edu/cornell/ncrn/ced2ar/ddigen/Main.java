@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
-import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import java.util.Collections;
 import java.util.HashMap;
@@ -95,8 +94,15 @@ public class Main {
 
 		Util.fileCheck(dataFile);
 
-		GenerateDDI generateDDI = new GenerateDDI();
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit, formatOutput, agency, ddiLanguage, excludeVariableToStatMap);
+		AbstractGenerateDDI generateDDI;
+		if (formatOutput.equalsIgnoreCase("2.5")) {
+			generateDDI = new GenerateDDI();
+		} else {
+			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap);
+		}
+		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+
+
 		System.out.println("Finished. Exiting.");
 	}
 }
