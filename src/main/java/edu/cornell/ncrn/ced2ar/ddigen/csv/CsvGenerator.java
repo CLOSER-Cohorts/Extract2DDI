@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 
 /**
@@ -36,7 +37,7 @@ public class CsvGenerator {
 	 * @return
 	 */
 	protected long updateVariableStatistics(List<Ced2arVariableStat> variables,
-			String[] observation) {
+			Frequency frequency, String[] observation) {
 		long readErrors = 0;
 		for (Ced2arVariableStat variable : variables) {
 			String value = "";
@@ -61,6 +62,10 @@ public class CsvGenerator {
 								+ variable.getName() + " in the observation "
 								+ observation);
 					}
+				}
+
+				if (variable.isRepresentationTypeCodeList()) {
+					frequency.addValue(Long.parseLong(value));
 				}
 			} else {
 				variable.setInvalidCount(variable.getInvalidCount() + 1);

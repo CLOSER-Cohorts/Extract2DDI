@@ -7,6 +7,6 @@ public enum StatisticType {
 	MINIMUM,
 	MAXIMUM,
 	MEAN,
-	STANDARD_DEVIATION
-
+	STANDARD_DEVIATION,
+	FREQUENCY
 }

@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.data.FileFormatInfo.ASCIIFormat;
@@ -128,14 +129,14 @@ public class SpssCsvGenerator extends CsvGenerator {
 		logger.info("Metadata is loaded from spssFile");
 
 		List<Ced2arVariableStat> ced2arVariableStats = getVariableStats(spssFile);
+		Frequency frequency = new Frequency();
 
 		long endTime = System.currentTimeMillis();
 		logger.info("Time to process Meta Data "
 				+ ((endTime - startTime) / 1000) + " seconds");
 		long readErrors = 0;
 		if (includeSummaryStatistics) {
-			readErrors = setSummaryStatistics(spssFile, ced2arVariableStats,
-					recordLimit);
+			readErrors = setSummaryStatistics(spssFile, ced2arVariableStats, frequency, recordLimit);
 		}
 
 		endTime = System.currentTimeMillis();
@@ -166,6 +167,9 @@ public class SpssCsvGenerator extends CsvGenerator {
 			Ced2arVariableStat variable = new Ced2arVariableStat();
 			variable.setName(spssVariable.getName());
 			variable.setLabel(spssVariable.getLabel());
+			variable.setType(spssVariable.getDDI3DataType());
+			variable.setRepresentationType("" + spssVariable.getDDI3RepresentationType());
+
 			int width = spssVariable.variableRecord.getWriteFormatWidth();
 			variable.setStartPosition(startPosition);
 			startPosition += width;
@@ -215,9 +219,12 @@ public class SpssCsvGenerator extends CsvGenerator {
 	 *          the data set is converted from SAS or STATA and not in unicode.
 	 * 
 	 */
-	public long setSummaryStatistics(SPSSFile spssFile,
-			List<Ced2arVariableStat> variables, long recordLimit)
-			throws IOException, SPSSFileException {
+	public long setSummaryStatistics(
+		SPSSFile spssFile,
+		List<Ced2arVariableStat> variables,
+		Frequency frequency,
+		long recordLimit
+	) throws IOException, SPSSFileException {
 		long totalRecords = spssFile.getRecordCount();
 		long readErrors = 0;
 		logger.info("Total Records " + totalRecords);
@@ -236,7 +243,7 @@ public class SpssCsvGenerator extends CsvGenerator {
 				String record = spssFile
 						.getRecordFromDisk(fileFormatCSV, false);
 				String[] varValues = record.split(",");
-				readErrors = updateVariableStatistics(variables, varValues);
+				readErrors = updateVariableStatistics(variables, frequency, varValues);
 			} catch (Exception ex) {
 				logger.error("An error occured in reding observation " + i
 						+ ". Skipping this observation " + ex);

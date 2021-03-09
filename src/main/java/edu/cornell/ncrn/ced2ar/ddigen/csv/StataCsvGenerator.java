@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 
 import edu.cornell.ncrn.ced2ar.stata.StataReader;
@@ -59,9 +60,11 @@ public class StataCsvGenerator extends CsvGenerator {
 			ced2arVariableStat.setVariableNumber(variableNumber);
 			ced2arVariableStats.add(ced2arVariableStat);
 		}
+		Frequency frequency = new Frequency();
 		long readErrors = 0;
 		if (includeSummaryStatistics)
 			readErrors = setSummaryStatistics(stataReader, ced2arVariableStats,
+					frequency,
 					recordLimit);
 
 		String variableStatistics = getSummaryStatisticsVaribleCSV(
@@ -78,7 +81,7 @@ public class StataCsvGenerator extends CsvGenerator {
 	}
 
 	private long setSummaryStatistics(StataReader stataReader,
-			List<Ced2arVariableStat> ced2arVariableStats, long recordLimit)
+			List<Ced2arVariableStat> ced2arVariableStats, Frequency frequency, long recordLimit)
 			throws IOException {
 		long startTime = System.currentTimeMillis();
 		logger.info("Start reading stata observations");
@@ -97,6 +100,7 @@ public class StataCsvGenerator extends CsvGenerator {
 				String[] varValues = observation.toArray(new String[observation
 						.size()]);
 				readErrors = updateVariableStatistics(ced2arVariableStats,
+						frequency,
 						varValues);
 				// Observation is in CSV format that confirms to RFC 4180
 				// https://www.ietf.org/rfc/rfc4180.txt

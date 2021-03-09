@@ -16,7 +16,6 @@ public class SummaryStatistic implements Appendable {
 	public static final String NODE_VALUE_STANDARD_DEVIATION = "StandardDeviation";
 	public static final String NODE_VALUE_VALID_CASES = "ValidCases";
 
-
 	private StatisticType type;
 	private String statistic;
 
