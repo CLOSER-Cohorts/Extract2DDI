@@ -7,8 +7,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
-
 /**
  * This is a super class that abstracts the methods commonly used to convert
  * SPSS and STATA to CSV
@@ -34,7 +32,7 @@ public class CsvGenerator {
 	 * statistics from the observation
 	 * 
 	 * @param variables
-	 * @param record
+	 * @param observation
 	 * @return
 	 */
 	protected long updateVariableStatistics(List<Ced2arVariableStat> variables,

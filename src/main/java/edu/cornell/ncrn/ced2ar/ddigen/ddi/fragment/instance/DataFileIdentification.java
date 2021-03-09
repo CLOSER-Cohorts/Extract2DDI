@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Appendable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
