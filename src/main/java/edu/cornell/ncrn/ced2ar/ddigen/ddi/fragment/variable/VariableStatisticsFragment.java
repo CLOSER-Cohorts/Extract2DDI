@@ -15,8 +15,9 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	private VariableReferenceFragment variableReference;
 	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
 
-	public VariableStatisticsFragment(String id, String agency, int version) {
+	public VariableStatisticsFragment(String id, String agency, int version, int totalResponses) {
 		super(id, agency, version);
+		setTotalResponses(totalResponses);
 	}
 
 	public void addSummaryStatistic(SummaryStatistic statistic) {

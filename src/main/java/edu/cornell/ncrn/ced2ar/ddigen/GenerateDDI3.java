@@ -60,18 +60,22 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
 			List<Ced2arVariableStat> variableStatList = spssGen.getVariableStats(spssFile);
 
+
 			long readErrors = 0;
 			if (runSumStats) {
 				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, observationLimit);
 			}
 
+			int recordCount = spssFile.getRecordCount();
+
 			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 				logicalProduct,
 				variableStatList,
-				excludeVariableToStatMap,
-				agency,
-				ddiLanguage,
-				dataFile
+				getExcludeVariableToStatMap(),
+				getAgency(),
+				getDdiLanguage(),
+				dataFile,
+				recordCount
 			);
 			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 

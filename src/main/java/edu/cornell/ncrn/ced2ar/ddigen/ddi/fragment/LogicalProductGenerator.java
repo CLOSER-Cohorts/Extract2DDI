@@ -52,6 +52,7 @@ public class LogicalProductGenerator {
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
 	private LogicalProduct logicalProduct;
+	private int recordCount;
 	private String title;
 	private List<Ced2arVariableStat> variableStatList = new ArrayList<>();
 	private int version;
@@ -62,13 +63,15 @@ public class LogicalProductGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		int recordCount
 	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setTitle(title);
+		setRecordCount(recordCount);
 		setVariableStatList(variableStatList);
 		setVersion(1);
 	}
@@ -298,7 +301,7 @@ public class LogicalProductGenerator {
 					);
 					variableFragment.setRepresentation(numericVariableRepresentation);
 				} else if (representation instanceof DateTimeRepresentation) {
-					DateTimeVariableRepresentation dateTimeVariableRepresentation =new DateTimeVariableRepresentation(
+					DateTimeVariableRepresentation dateTimeVariableRepresentation = new DateTimeVariableRepresentation(
 						((DateTimeRepresentation) representation).getType()
 					);
 					variableFragment.setRepresentation(dateTimeVariableRepresentation);
@@ -314,6 +317,10 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public int getRecordCount() {
+		return recordCount;
+	}
+
 	public List<Ced2arVariableStat> getVariableStatList() {
 		return variableStatList;
 	}
@@ -327,7 +334,7 @@ public class LogicalProductGenerator {
 					new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
 
 				VariableStatisticsFragment variableStatistics =
-					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
+					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion(), getRecordCount());
 
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
@@ -481,6 +488,10 @@ public class LogicalProductGenerator {
 
 	public void setLogicalProduct(LogicalProduct logicalProduct) {
 		this.logicalProduct = logicalProduct;
+	}
+
+	public void setRecordCount(int recordCount) {
+		this.recordCount = recordCount;
 	}
 
 	public void setTitle(String title) {
