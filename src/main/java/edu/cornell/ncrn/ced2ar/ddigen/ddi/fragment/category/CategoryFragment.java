@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractVariableRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
 import org.w3c.dom.Document;
@@ -36,6 +37,8 @@ public class CategoryFragment extends FragmentWithUrn {
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+
 		Element variable = doc.createElementNS(namespace, NODE_NAME_CATEGORY);
 		fragment.appendChild(variable);
 		element.appendChild(fragment);

@@ -12,6 +12,9 @@ public class Ced2arVariableStat implements Serializable {
 
 	private String name;
 	private String label;
+	private String type;
+	private String representationType;
+
 	private Long validCount = 0L;
 	private Long invalidCount = 0L;
 	private Long possibleErrorValueCount = 0L;
@@ -152,6 +155,30 @@ public class Ced2arVariableStat implements Serializable {
 	public void setStats(SummaryStatistics stats) {
 		this.stats = stats;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getRepresentationType() {
+		return representationType;
+	}
+
+	public void setRepresentationType(String representationType) {
+		this.representationType = representationType;
+	}
+
+	public boolean isRepresentationTypeCodeList() {
+		return getType() != null
+			&& getType().equalsIgnoreCase("BigInteger")
+			&& getRepresentationType() != null
+			&& getRepresentationType().equalsIgnoreCase("NUMERIC");
+	}
+
 
 	public String getCSVValue(boolean summaryStats) {
 		String csvString = "";

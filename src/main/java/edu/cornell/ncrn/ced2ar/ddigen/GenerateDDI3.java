@@ -5,19 +5,16 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.CodebookVariable;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -59,20 +56,25 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 			Document logicalProductDocument = spssGen.getLogicalProduct(spssFile);
 			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
 			List<Ced2arVariableStat> variableStatList = spssGen.getVariableStats(spssFile);
+			Frequency frequency = new Frequency();
 
 			long readErrors = 0;
 			if (runSumStats) {
-				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, observationLimit);
+				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, frequency, observationLimit);
 			}
+
+			int recordCount = spssFile.getRecordCount();
 
 			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 				logicalProduct,
 				variableStatList,
-				excludeVariableToStatMap,
-				agency,
-				ddiLanguage,
-				dataFile
+				getExcludeVariableToStatMap(),
+				getAgency(),
+				getDdiLanguage(),
+				dataFile,
+				recordCount
 			);
+			logicalProductGenerator.setFrequency(frequency);
 			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 
 			FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);

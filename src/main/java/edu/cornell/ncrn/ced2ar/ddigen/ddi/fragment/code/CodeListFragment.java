@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class CodeListFragment extends FragmentWithUrn {
 		super.appendToElement(codeList, doc, namespace);
 
 		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+
 		fragment.appendChild(codeList);
 		element.appendChild(fragment);
 

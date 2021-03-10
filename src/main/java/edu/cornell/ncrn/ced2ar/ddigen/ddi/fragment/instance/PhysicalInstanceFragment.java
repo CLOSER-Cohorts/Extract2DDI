@@ -8,6 +8,9 @@ import org.w3c.dom.Element;
 
 public class PhysicalInstanceFragment extends FragmentWithUrn {
 
+	public static final String ATTRIBUTE_NAME_NAMESPACE = "xmlns";
+	public static final String ATTRIBUTE_VALUE_NAMESPACE = "ddi:physicalinstance:3_3";
+
 	public static final String NODE_NAME_PHYSICAL_INSTANCE = "PhysicalInstance";
 
 	private Citation citation;
@@ -22,7 +25,12 @@ public class PhysicalInstanceFragment extends FragmentWithUrn {
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+
 		Element physicalInstance = doc.createElementNS(namespace, NODE_NAME_PHYSICAL_INSTANCE);
+		physicalInstance.setAttribute(ATTRIBUTE_NAME_IS_UNIVERSALLY_UNIQUE, ATTRIBUTE_VALUE_TRUE);
+		physicalInstance.setAttribute(ATTRIBUTE_NAME_NAMESPACE, ATTRIBUTE_VALUE_NAMESPACE);
+
 		fragment.appendChild(physicalInstance);
 		element.appendChild(fragment);
 

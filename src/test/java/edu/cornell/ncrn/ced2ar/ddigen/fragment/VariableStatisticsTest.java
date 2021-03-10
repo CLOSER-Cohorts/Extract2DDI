@@ -18,7 +18,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
-		Assert.assertEquals("0", variableStatistics.getChildNodes().item(4).getTextContent());
+		Assert.assertEquals("3", variableStatistics.getChildNodes().item(4).getTextContent());
 
 		// Variable Reference
 		Node variableReference = variableStatistics.getChildNodes().item(5);
@@ -41,7 +41,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
-		Assert.assertEquals("0", variableStatistics.getChildNodes().item(4).getTextContent());
+		Assert.assertEquals("3", variableStatistics.getChildNodes().item(4).getTextContent());
 
 		// Variable Reference
 		Node variableReference = variableStatistics.getChildNodes().item(5);
