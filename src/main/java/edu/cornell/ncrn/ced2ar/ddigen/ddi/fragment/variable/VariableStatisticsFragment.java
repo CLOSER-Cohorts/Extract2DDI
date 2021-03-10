@@ -33,6 +33,8 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+
 		Element variableStatistics = doc.createElementNS(namespace, NODE_NAME_VARIABLE_STATISTICS);
 		super.appendToElement(variableStatistics, doc, namespace);
 		fragment.appendChild(variableStatistics);

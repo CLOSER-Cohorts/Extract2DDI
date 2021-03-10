@@ -5,6 +5,9 @@ import org.w3c.dom.Element;
 
 public abstract class Fragment implements Appendable {
 
+	public static final String ATTRIBUTE_NAME_NAMESPACE_R = "xmlns:r";
+	public static final String ATTRIBUTE_VALUE_NAMESPACE_R = "ddi:reusable:3_3";
+
 	public static final String NODE_NAME_FRAGMENT = "ddi:Fragment";
 	public static final String NODE_NAME_AGENCY = "r:Agency";
 	public static final String NODE_NAME_ID = "r:ID";

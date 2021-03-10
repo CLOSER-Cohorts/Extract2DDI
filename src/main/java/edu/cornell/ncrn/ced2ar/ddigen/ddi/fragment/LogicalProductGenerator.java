@@ -245,7 +245,7 @@ public class LogicalProductGenerator {
 				getAgency(),
 				getVersion()
 			);
-			resourcePackage.addPhysicalInstanceReferenceFragment(fragment);
+			resourcePackage.addPhysicalInstanceReference(fragment);
 		}
 
 		for (Map.Entry<String, UUID> categorySchemeEntry : categorySchemeIdToUuidMap.entrySet()) {
@@ -254,7 +254,7 @@ public class LogicalProductGenerator {
 				getAgency(),
 				getVersion()
 			);
-			resourcePackage.addCategorySchemeReferenceFragment(fragment);
+			resourcePackage.addCategorySchemeReference(fragment);
 		}
 
 		for (Map.Entry<String, UUID> variableSchemeEntry : variableSchemeIdToUuidMap.entrySet()) {
@@ -263,7 +263,7 @@ public class LogicalProductGenerator {
 				getAgency(),
 				getVersion()
 			);
-			resourcePackage.addVariableSchemeReferenceFragment(fragment);
+			resourcePackage.addVariableSchemeReference(fragment);
 		}
 
 		return resourcePackage;

@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class CategorySchemeFragment extends FragmentWithUrn {
 	@Override
 	public void appendToElement(Element element, Document doc, String namespace) {
 		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
+		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+
 		Element categoryScheme = doc.createElementNS(namespace, NODE_NAME_CATEGORY_SCHEME);
 
 		super.appendToElement(categoryScheme, doc, namespace);

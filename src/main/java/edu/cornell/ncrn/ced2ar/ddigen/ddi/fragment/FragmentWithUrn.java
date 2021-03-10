@@ -5,6 +5,8 @@ import org.w3c.dom.Element;
 
 public abstract class FragmentWithUrn extends Fragment {
 
+	public static final String ATTRIBUTE_NAME_IS_UNIVERSALLY_UNIQUE = "isUniversallyUnique";
+	public static final String ATTRIBUTE_VALUE_TRUE = "true";
 	public static final String NODE_NAME_URN = "r:URN";
 
 	private String urn;
