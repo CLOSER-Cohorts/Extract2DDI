@@ -130,6 +130,6 @@ public class FragmentInstanceGeneratorTest extends AbstractFragmentInstanceGener
 		Assert.assertEquals("ddi:TopLevelReference", topLevelReference.getNodeName());
 		testFragmentReference(topLevelReference);
 		Assert.assertEquals("r:TypeOfObject", topLevelReference.getChildNodes().item(3).getNodeName());
-		Assert.assertEquals("PackageReference", topLevelReference.getChildNodes().item(3).getTextContent());
+		Assert.assertEquals("ResourcePackage", topLevelReference.getChildNodes().item(3).getTextContent());
 	}
 }

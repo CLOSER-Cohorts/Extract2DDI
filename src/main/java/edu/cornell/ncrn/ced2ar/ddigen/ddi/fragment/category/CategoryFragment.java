@@ -37,9 +37,10 @@ public class CategoryFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element category = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_CATEGORY);
+		Element category = doc.createElement(NODE_NAME_CATEGORY);
 		setVersionDateAttribute(category);
 		setUniversallyUniqueAttribute(category);
+		setNamespace(category, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(category, doc);
 

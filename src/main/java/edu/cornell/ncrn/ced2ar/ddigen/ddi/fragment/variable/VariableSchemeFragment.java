@@ -31,9 +31,10 @@ public class VariableSchemeFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element variableScheme = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_VARIABLE_SCHEME);
+		Element variableScheme = doc.createElement(NODE_NAME_VARIABLE_SCHEME);
 		setVersionDateAttribute(variableScheme);
 		setUniversallyUniqueAttribute(variableScheme);
+		setNamespace(variableScheme, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(variableScheme, doc);
 

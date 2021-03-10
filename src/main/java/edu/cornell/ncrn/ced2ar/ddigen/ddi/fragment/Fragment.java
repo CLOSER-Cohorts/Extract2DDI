@@ -8,6 +8,8 @@ public abstract class Fragment implements Appendable {
 	public static final String ATTRIBUTE_NAME_NAMESPACE_R = "xmlns:r";
 	public static final String ATTRIBUTE_VALUE_NAMESPACE_R = "ddi:reusable:3_3";
 
+	public static final String NAMESPACE = "http://www.w3.org/2000/xmlns/";
+
 	public static final String NODE_NAME_FRAGMENT = "ddi:Fragment";
 	public static final String NODE_NAME_AGENCY = "r:Agency";
 	public static final String NODE_NAME_ID = "r:ID";
@@ -42,7 +44,9 @@ public abstract class Fragment implements Appendable {
 	}
 
 	protected Element createFragment(Document doc) {
-		return doc.createElementNS(ATTRIBUTE_VALUE_NAMESPACE_R, NODE_NAME_FRAGMENT);
+		Element element = doc.createElement(NODE_NAME_FRAGMENT);
+		element.setAttributeNS(NAMESPACE, ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+		return element;
 	}
 
 	public String getAgency() {

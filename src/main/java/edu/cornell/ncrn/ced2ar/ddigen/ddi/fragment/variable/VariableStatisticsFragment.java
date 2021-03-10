@@ -34,9 +34,10 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element variableStatistics = doc.createElementNS(NAMESPACE_PHYSICAL_INSTANCE, NODE_NAME_VARIABLE_STATISTICS);
+		Element variableStatistics = doc.createElement(NODE_NAME_VARIABLE_STATISTICS);
 		setVersionDateAttribute(variableStatistics);
 		setUniversallyUniqueAttribute(variableStatistics);
+		setNamespace(variableStatistics, NAMESPACE_PHYSICAL_INSTANCE);
 
 		super.appendToElement(variableStatistics, doc);
 

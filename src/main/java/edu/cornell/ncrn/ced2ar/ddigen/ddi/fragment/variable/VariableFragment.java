@@ -48,9 +48,10 @@ public class VariableFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element variable = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_VARIABLE);
+		Element variable = doc.createElement(NODE_NAME_VARIABLE);
 		setVersionDateAttribute(variable);
 		setUniversallyUniqueAttribute(variable);
+		setNamespace(variable, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(variable, doc);
 

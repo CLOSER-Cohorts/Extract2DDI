@@ -21,9 +21,10 @@ public class CodeListFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element codeList = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_CODE_LIST);
+		Element codeList = doc.createElement(NODE_NAME_CODE_LIST);
 		setVersionDateAttribute(codeList);
 		setUniversallyUniqueAttribute(codeList);
+		setNamespace(codeList, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(codeList, doc);
 

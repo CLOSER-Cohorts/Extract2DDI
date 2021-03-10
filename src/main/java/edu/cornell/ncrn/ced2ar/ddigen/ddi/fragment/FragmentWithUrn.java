@@ -38,6 +38,11 @@ public abstract class FragmentWithUrn extends Fragment {
 		return urn;
 	}
 
+
+	protected void setNamespace(Element element, String namespace) {
+		element.setAttributeNS(NAMESPACE, ATTRIBUTE_NAME_NAMESPACE, namespace);
+	}
+
 	protected void setVersionDateAttribute(Element element) {
 		element.setAttribute(ATTRIBUTE_NAME_VERSION_DATE, LocalDateTime.now().toString());
 	}

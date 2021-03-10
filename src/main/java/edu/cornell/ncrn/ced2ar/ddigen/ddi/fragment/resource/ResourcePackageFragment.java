@@ -35,9 +35,10 @@ public class ResourcePackageFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element resourcePackage = doc.createElementNS(NAMESPACE_GROUP, NODE_NAME_RESOURCE_PACKAGE);
+		Element resourcePackage = doc.createElement(NODE_NAME_RESOURCE_PACKAGE);
 		setUniversallyUniqueAttribute(resourcePackage);
 		setVersionDateAttribute(resourcePackage);
+		setNamespace(resourcePackage, NAMESPACE_GROUP);
 
 		super.appendToElement(resourcePackage, doc);
 

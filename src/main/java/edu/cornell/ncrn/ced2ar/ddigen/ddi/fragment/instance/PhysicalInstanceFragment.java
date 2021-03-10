@@ -23,9 +23,10 @@ public class PhysicalInstanceFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element physicalInstance = doc.createElementNS(NAMESPACE_PHYSICAL_INSTANCE, NODE_NAME_PHYSICAL_INSTANCE);
+		Element physicalInstance = doc.createElement(NODE_NAME_PHYSICAL_INSTANCE);
 		setUniversallyUniqueAttribute(element);
 		setVersionDateAttribute(physicalInstance);
+		setNamespace(physicalInstance, NAMESPACE_PHYSICAL_INSTANCE);
 
 		fragment.appendChild(physicalInstance);
 		element.appendChild(fragment);

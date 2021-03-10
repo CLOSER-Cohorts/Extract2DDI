@@ -19,9 +19,10 @@ public class DataRelationshipFragment extends FragmentWithUrn {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element dataRelationship = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_DATA_RELATIONSHIP);
+		Element dataRelationship = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
 		setVersionDateAttribute(dataRelationship);
 		setUniversallyUniqueAttribute(dataRelationship);
+		setNamespace(dataRelationship, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(dataRelationship, doc);
 

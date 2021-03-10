@@ -32,9 +32,10 @@ public class CategorySchemeFragment extends FragmentWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element fragment = createFragment(doc);
 
-		Element categoryScheme = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_CATEGORY_SCHEME);
+		Element categoryScheme = doc.createElement(NODE_NAME_CATEGORY_SCHEME);
 		setUniversallyUniqueAttribute(categoryScheme);
 		setVersionDateAttribute(categoryScheme);
+		setNamespace(categoryScheme, NAMESPACE_LOGICAL_PRODUCT);
 
 		super.appendToElement(categoryScheme, doc);
 
