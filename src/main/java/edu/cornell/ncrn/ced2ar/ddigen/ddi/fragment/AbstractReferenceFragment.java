@@ -12,13 +12,13 @@ public abstract class AbstractReferenceFragment extends Fragment {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element variable = doc.createElementNS(namespace, getNodeNameReference());
+	public void appendToElement(Element element, Document doc) {
+		Element variable = doc.createElement(getNodeNameReference());
 		element.appendChild(variable);
 
-		super.appendToElement(variable, doc, namespace);
+		super.appendToElement(variable, doc);
 
-		Element objectType = doc.createElementNS(namespace, NODE_NAME_OBJECT_TYPE);
+		Element objectType = doc.createElement(NODE_NAME_OBJECT_TYPE);
 		objectType.setTextContent(getObjectType());
 		variable.appendChild(objectType);
 	}

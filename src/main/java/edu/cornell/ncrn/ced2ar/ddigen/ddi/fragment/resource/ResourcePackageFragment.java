@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.resource;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Citation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.instance.PhysicalInstanceReferenceFragment;
@@ -12,9 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class ResourcePackageFragment extends FragmentWithUrn {
-
-	public static final String ATTRIBUTE_NAME_NAMESPACE = "xmlns";
-	public static final String ATTRIBUTE_VALUE_NAMESPACE = "ddi:group:3_3";
 
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "ResourcePackage";
 
@@ -36,33 +32,32 @@ public class ResourcePackageFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		Element resourcePackage = doc.createElementNS(namespace, NODE_NAME_RESOURCE_PACKAGE);
-		resourcePackage.setAttribute(ATTRIBUTE_NAME_IS_UNIVERSALLY_UNIQUE, ATTRIBUTE_VALUE_TRUE);
-		resourcePackage.setAttribute(ATTRIBUTE_NAME_NAMESPACE, ATTRIBUTE_VALUE_NAMESPACE);
-		fragment.appendChild(resourcePackage);
+		Element resourcePackage = doc.createElementNS(NAMESPACE_GROUP, NODE_NAME_RESOURCE_PACKAGE);
+		setUniversallyUniqueAttribute(resourcePackage);
+		setVersionDateAttribute(resourcePackage);
 
-		super.appendToElement(resourcePackage, doc, namespace);
+		super.appendToElement(resourcePackage, doc);
 
 		if (getCitation() != null) {
-			getCitation().appendToElement(resourcePackage, doc, namespace);
+			getCitation().appendToElement(resourcePackage, doc);
 		}
 
-		for (PhysicalInstanceReferenceFragment physicalInstanceReference : getPhysicalInstanceReferenceList()) {
-			physicalInstanceReference.appendToElement(resourcePackage, doc, namespace);
+		for (PhysicalInstanceReferenceFragment reference : getPhysicalInstanceReferenceList()) {
+			reference.appendToElement(resourcePackage, doc);
 		}
 
-		for (CategorySchemeReferenceFragment categorySchemeReference : getCategorySchemeReferenceList()) {
-			categorySchemeReference.appendToElement(resourcePackage, doc, namespace);
+		for (CategorySchemeReferenceFragment reference : getCategorySchemeReferenceList()) {
+			reference.appendToElement(resourcePackage, doc);
 		}
 
-		for (VariableSchemeReferenceFragment variableSchemeReference : getVariableSchemeReferenceList()) {
-			variableSchemeReference.appendToElement(resourcePackage, doc, namespace);
+		for (VariableSchemeReferenceFragment reference : getVariableSchemeReferenceList()) {
+			reference.appendToElement(resourcePackage, doc);
 		}
 
+		fragment.appendChild(resourcePackage);
 		element.appendChild(fragment);
 	}
 

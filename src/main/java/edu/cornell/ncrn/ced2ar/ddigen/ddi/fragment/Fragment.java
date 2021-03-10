@@ -48,20 +48,24 @@ public abstract class Fragment implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
+	public void appendToElement(Element element, Document doc) {
 		// Agency
-		Element agency = doc.createElementNS(namespace, NODE_NAME_AGENCY);
+		Element agency = doc.createElement(NODE_NAME_AGENCY);
 		agency.setTextContent(getAgency());
 		element.appendChild(agency);
 
 		// ID
-		Element id = doc.createElementNS(namespace, NODE_NAME_ID);
+		Element id = doc.createElement(NODE_NAME_ID);
 		id.setTextContent(getId());
 		element.appendChild(id);
 
 		// Version
-		Element version = doc.createElementNS(namespace, NODE_NAME_VERSION);
+		Element version = doc.createElement(NODE_NAME_VERSION);
 		version.setTextContent(Integer.toString(getVersion()));
 		element.appendChild(version);
+	}
+
+	protected Element createFragment(Document doc) {
+		return doc.createElementNS(ATTRIBUTE_VALUE_NAMESPACE_R, NODE_NAME_FRAGMENT);
 	}
 }

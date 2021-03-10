@@ -25,10 +25,10 @@ public class SummaryStatistic implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element summaryStatistic = doc.createElementNS(namespace, NODE_NAME_SUMMARY_STATISTIC);
+	public void appendToElement(Element element, Document doc) {
+		Element summaryStatistic = doc.createElement(NODE_NAME_SUMMARY_STATISTIC);
 
-		Element type = doc.createElementNS(namespace, NODE_NAME_TYPE);
+		Element type = doc.createElement(NODE_NAME_TYPE);
 
 		switch (getType()) {
 			case INVALID_CASES:
@@ -53,7 +53,7 @@ public class SummaryStatistic implements Appendable {
 
 		summaryStatistic.appendChild(type);
 
-		Element statistic = doc.createElementNS(namespace, NODE_NAME_STATISTIC);
+		Element statistic = doc.createElement(NODE_NAME_STATISTIC);
 		statistic.setTextContent(getStatistic());
 		summaryStatistic.appendChild(statistic);
 

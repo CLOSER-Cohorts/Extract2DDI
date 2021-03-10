@@ -22,10 +22,10 @@ public class Citation implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element citation = doc.createElementNS(namespace, NODE_NAME_CITATION);
+	public void appendToElement(Element element, Document doc) {
+		Element citation = doc.createElement(NODE_NAME_CITATION);
 		if (getTitle() != null) {
-			getTitle().appendToElement(citation, doc, namespace);
+			getTitle().appendToElement(citation, doc);
 		}
 		element.appendChild(citation);
 	}

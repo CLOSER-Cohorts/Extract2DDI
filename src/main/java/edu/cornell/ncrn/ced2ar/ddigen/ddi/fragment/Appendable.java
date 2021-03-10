@@ -5,5 +5,5 @@ import org.w3c.dom.Element;
 
 public interface Appendable {
 
-	public void appendToElement(Element element, Document doc, String namespace);
+	public void appendToElement(Element element, Document doc);
 }

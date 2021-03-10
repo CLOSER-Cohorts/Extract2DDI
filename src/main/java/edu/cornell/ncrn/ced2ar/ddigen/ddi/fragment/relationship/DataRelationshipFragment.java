@@ -18,21 +18,24 @@ public class DataRelationshipFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_DATA_RELATIONSHIP);
-		element.appendChild(fragment);
+	public void appendToElement(Element element, Document doc) {
+		Element dataRelationship = doc.createElementNS(NAMESPACE_LOGICAL_PRODUCT, NODE_NAME_DATA_RELATIONSHIP);
+		setVersionDateAttribute(dataRelationship);
+		setUniversallyUniqueAttribute(dataRelationship);
 
-		super.appendToElement(fragment, doc, namespace);
+		super.appendToElement(dataRelationship, doc);
 
 		if (getName() != null) {
-			Element dataRelationshipName = doc.createElementNS(namespace, NODE_NAME_DATA_RELATIONSHIP_NAME);
-			getName().appendToElement(dataRelationshipName, doc, namespace);
-			fragment.appendChild(dataRelationshipName);
+			Element dataRelationshipName = doc.createElement(NODE_NAME_DATA_RELATIONSHIP_NAME);
+			getName().appendToElement(dataRelationshipName, doc);
+			dataRelationship.appendChild(dataRelationshipName);
 		}
 
 		if (getLogicalRecord() != null) {
-			getLogicalRecord().appendToElement(fragment, doc, namespace);
+			getLogicalRecord().appendToElement(dataRelationship, doc);
 		}
+
+		element.appendChild(dataRelationship);
 	}
 
 	public LogicalRecordFragment getLogicalRecord() {

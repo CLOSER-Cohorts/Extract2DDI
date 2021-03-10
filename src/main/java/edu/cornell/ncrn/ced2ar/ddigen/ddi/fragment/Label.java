@@ -35,9 +35,9 @@ public class Label implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element label = doc.createElementNS(namespace, NODE_NAME_LABEL);
-		Element content = doc.createElementNS(namespace, NODE_NAME_CONTENT);
+	public void appendToElement(Element element, Document doc) {
+		Element label = doc.createElement(NODE_NAME_LABEL);
+		Element content = doc.createElement(NODE_NAME_CONTENT);
 		content.setAttribute(ATTRIBUTE_NAME_XML_LANG, getDdiLanguage());
 		content.setTextContent(getContent());
 		label.appendChild(content);

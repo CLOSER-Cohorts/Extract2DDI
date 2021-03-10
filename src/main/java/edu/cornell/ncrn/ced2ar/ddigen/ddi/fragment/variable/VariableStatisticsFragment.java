@@ -15,7 +15,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	private int totalResponses;
 	private VariableReferenceFragment variableReference;
 	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
-	private List<VariableCategoryFragment> variableCategoryFragmentList = new ArrayList<>();
+	private List<VariableCategoryFragment> variableCategoryList = new ArrayList<>();
 
 	public VariableStatisticsFragment(String id, String agency, int version, int totalResponses) {
 		super(id, agency, version);
@@ -27,38 +27,40 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	}
 
 	public void addVariableCategory(VariableCategoryFragment variableCategory) {
-		this.variableCategoryFragmentList.add(variableCategory);
+		this.variableCategoryList.add(variableCategory);
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		Element variableStatistics = doc.createElementNS(namespace, NODE_NAME_VARIABLE_STATISTICS);
-		super.appendToElement(variableStatistics, doc, namespace);
-		fragment.appendChild(variableStatistics);
+		Element variableStatistics = doc.createElementNS(NAMESPACE_PHYSICAL_INSTANCE, NODE_NAME_VARIABLE_STATISTICS);
+		setVersionDateAttribute(variableStatistics);
+		setUniversallyUniqueAttribute(variableStatistics);
 
-		Element totalResponses = doc.createElementNS(namespace, NODE_NAME_TOTAL_RESPONSES);
+		super.appendToElement(variableStatistics, doc);
+
+		Element totalResponses = doc.createElement(NODE_NAME_TOTAL_RESPONSES);
 		totalResponses.setTextContent(Integer.toString(getTotalResponses()));
 		variableStatistics.appendChild(totalResponses);
 
 		if (getVariableReference() != null) {
-			getVariableReference().appendToElement(variableStatistics, doc, namespace);
+			getVariableReference().appendToElement(variableStatistics, doc);
 		}
 
 		for (SummaryStatistic statistic : getSummaryStatisticList()) {
-			statistic.appendToElement(variableStatistics, doc, namespace);
+			statistic.appendToElement(variableStatistics, doc);
 		}
 
-		if (getVariableCategoryFragmentList().size() > 0) {
-			Element unfilteredCategoryStatistics = doc.createElementNS(namespace, NODE_NAME_UNFILTERED_CATEGORY_STATISTICS);
-			for (VariableCategoryFragment variableCategory : getVariableCategoryFragmentList()) {
-				variableCategory.appendToElement(unfilteredCategoryStatistics, doc, namespace);
+		if (getVariableCategoryList().size() > 0) {
+			Element unfilteredCategoryStatistics = doc.createElement(NODE_NAME_UNFILTERED_CATEGORY_STATISTICS);
+			for (VariableCategoryFragment variableCategory : getVariableCategoryList()) {
+				variableCategory.appendToElement(unfilteredCategoryStatistics, doc);
 			}
 			variableStatistics.appendChild(unfilteredCategoryStatistics);
 		}
 
+		fragment.appendChild(variableStatistics);
 		element.appendChild(fragment);
 	}
 
@@ -70,8 +72,8 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		return summaryStatisticList;
 	}
 
-	public List<VariableCategoryFragment> getVariableCategoryFragmentList() {
-		return variableCategoryFragmentList;
+	public List<VariableCategoryFragment> getVariableCategoryList() {
+		return variableCategoryList;
 	}
 
 	public VariableReferenceFragment getVariableReference() {
@@ -86,8 +88,8 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		this.summaryStatisticList = summaryStatisticList;
 	}
 
-	public void setVariableCategoryFragmentList(List<VariableCategoryFragment> variableCategoryFragmentList) {
-		this.variableCategoryFragmentList = variableCategoryFragmentList;
+	public void setVariableCategoryList(List<VariableCategoryFragment> variableCategoryList) {
+		this.variableCategoryList = variableCategoryList;
 	}
 
 	public void setVariableReference(VariableReferenceFragment variableReference) {

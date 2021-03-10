@@ -16,16 +16,16 @@ public class NumericVariableRepresentation extends AbstractVariableRepresentatio
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element representation = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
+	public void appendToElement(Element element, Document doc) {
+		Element representation = doc.createElement(NODE_NAME_VARIABLE_REPRESENTATION);
 
-		super.appendToElement(representation, doc, namespace);
+		super.appendToElement(representation, doc);
 		element.appendChild(representation);
 
-		Element numericTypeCode = doc.createElementNS(namespace, NODE_NAME_NUMERIC_TYPE_CODE);
+		Element numericTypeCode = doc.createElement(NODE_NAME_NUMERIC_TYPE_CODE);
 		numericTypeCode.setTextContent(getType());
 
-		Element numericRepresentation = doc.createElementNS(namespace, NODE_NAME_NUMERIC_REPRESENTATION);
+		Element numericRepresentation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
 		numericRepresentation.appendChild(numericTypeCode);
 		numericRepresentation.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
 		numericRepresentation.setAttribute(ATTRIBUTE_NAME_DECIMAL_POSITIONS, "4");

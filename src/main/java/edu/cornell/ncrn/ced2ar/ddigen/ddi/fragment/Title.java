@@ -22,10 +22,10 @@ public class Title implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element title = doc.createElementNS(namespace, NODE_NAME_TITLE);
+	public void appendToElement(Element element, Document doc) {
+		Element title = doc.createElement(NODE_NAME_TITLE);
 		if (getString() != null) {
-			getString().appendToElement(title, doc, namespace);
+			getString().appendToElement(title, doc);
 		}
 		element.appendChild(title);
 	}

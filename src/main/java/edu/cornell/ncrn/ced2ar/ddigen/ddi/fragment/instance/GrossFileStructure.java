@@ -17,11 +17,11 @@ public class GrossFileStructure extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_GROSS_FILE_STRUCTURE);
-		super.appendToElement(fragment, doc, namespace);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = doc.createElement(NODE_NAME_GROSS_FILE_STRUCTURE);
+		super.appendToElement(fragment, doc);
 
-		Element caseQuantity = doc.createElementNS(namespace, NODE_NAME_CASE_QUANTITY);
+		Element caseQuantity = doc.createElement(NODE_NAME_CASE_QUANTITY);
 		caseQuantity.setTextContent(Integer.toString(getCaseQuantity()));
 		fragment.appendChild(caseQuantity);
 

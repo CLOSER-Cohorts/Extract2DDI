@@ -25,23 +25,23 @@ public class LogicalRecordFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_LOGICAL_RECORD);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = doc.createElement(NODE_NAME_LOGICAL_RECORD);
 		element.appendChild(fragment);
 
-		super.appendToElement(fragment, doc, namespace);
+		super.appendToElement(fragment, doc);
 
 		if (getName() != null) {
-			Element logicalRecordName = doc.createElementNS(namespace, NODE_NAME_LOGICAL_RECORD_NAME);
-			getName().appendToElement(logicalRecordName, doc, namespace);
+			Element logicalRecordName = doc.createElement(NODE_NAME_LOGICAL_RECORD_NAME);
+			getName().appendToElement(logicalRecordName, doc);
 			fragment.appendChild(logicalRecordName);
 		}
 
-		Element variablesInRecord = doc.createElementNS(namespace, NODE_NAME_VARIABLES_IN_RECORD);
+		Element variablesInRecord = doc.createElement(NODE_NAME_VARIABLES_IN_RECORD);
 		fragment.appendChild(variablesInRecord);
 
-		for (VariableUsedReferenceFragment variableUsedReferenceFragment : getVariableUsedReferenceList()) {
-			variableUsedReferenceFragment.appendToElement(variablesInRecord, doc, namespace);
+		for (VariableUsedReferenceFragment reference : getVariableUsedReferenceList()) {
+			reference.appendToElement(variablesInRecord, doc);
 		}
 	}
 
