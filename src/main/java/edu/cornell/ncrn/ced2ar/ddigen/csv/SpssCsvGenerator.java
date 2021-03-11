@@ -181,6 +181,8 @@ public class SpssCsvGenerator extends CsvGenerator {
 					Map.Entry pair = (Map.Entry) it.next();
 					SPSSVariableCategory cat = (SPSSVariableCategory) pair
 						.getValue();
+					//System.out.println(" cat label " + cat.label + " cat value " + cat.value);
+
 					if (cat.isMissing()) {
 						HashMap hm = variable.getMissingValues();
 						hm.put(cat.strValue, cat.label);

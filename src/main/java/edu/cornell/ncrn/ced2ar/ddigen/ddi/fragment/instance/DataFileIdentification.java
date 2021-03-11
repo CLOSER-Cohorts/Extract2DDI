@@ -16,10 +16,10 @@ public class DataFileIdentification implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_DATA_FILE_IDENTIFICATION);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = doc.createElement(NODE_NAME_DATA_FILE_IDENTIFICATION);
 
-		Element dataFileUri = doc.createElementNS(namespace, NODE_NAME_DATA_FILE_URI);
+		Element dataFileUri = doc.createElement(NODE_NAME_DATA_FILE_URI);
 		dataFileUri.setTextContent(getDataFileUri());
 		fragment.appendChild(dataFileUri);
 

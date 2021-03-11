@@ -34,8 +34,8 @@ public class StringElement implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element string = doc.createElementNS(namespace, NODE_NAME_STRING);
+	public void appendToElement(Element element, Document doc) {
+		Element string = doc.createElement(NODE_NAME_STRING);
 		string.setAttribute(ATTRIBUTE_NAME_DDI_LANGUAGE, getDdiLanguage());
 		string.setTextContent(getContent());
 		element.appendChild(string);

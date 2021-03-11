@@ -17,6 +17,6 @@ public class TopLevelReferenceFragment extends AbstractReferenceFragment {
 
 	@Override
 	public String getObjectType() {
-		return "PackageReference";
+		return "ResourcePackage";
 	}
 }

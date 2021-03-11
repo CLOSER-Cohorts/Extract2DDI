@@ -7,8 +7,8 @@ import org.w3c.dom.Element;
 
 public class DataRelationshipFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_DATA_RELATIONSHIP = "r:DataRelationship";
-	public static final String NODE_NAME_DATA_RELATIONSHIP_NAME = "r:DataRelationshipName";
+	public static final String NODE_NAME_DATA_RELATIONSHIP = "DataRelationship";
+	public static final String NODE_NAME_DATA_RELATIONSHIP_NAME = "DataRelationshipName";
 
 	private StringElement name;
 	private LogicalRecordFragment logicalRecord;
@@ -18,21 +18,28 @@ public class DataRelationshipFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_DATA_RELATIONSHIP);
-		element.appendChild(fragment);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		super.appendToElement(fragment, doc, namespace);
+		Element dataRelationship = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
+		setVersionDateAttribute(dataRelationship);
+		setUniversallyUniqueAttribute(dataRelationship);
+		setNamespace(dataRelationship, NAMESPACE_LOGICAL_PRODUCT);
+
+		super.appendToElement(dataRelationship, doc);
 
 		if (getName() != null) {
-			Element dataRelationshipName = doc.createElementNS(namespace, NODE_NAME_DATA_RELATIONSHIP_NAME);
-			getName().appendToElement(dataRelationshipName, doc, namespace);
-			fragment.appendChild(dataRelationshipName);
+			Element dataRelationshipName = doc.createElement(NODE_NAME_DATA_RELATIONSHIP_NAME);
+			getName().appendToElement(dataRelationshipName, doc);
+			dataRelationship.appendChild(dataRelationshipName);
 		}
 
 		if (getLogicalRecord() != null) {
-			getLogicalRecord().appendToElement(fragment, doc, namespace);
+			getLogicalRecord().appendToElement(dataRelationship, doc);
 		}
+
+		fragment.appendChild(dataRelationship);
+		element.appendChild(fragment);
 	}
 
 	public LogicalRecordFragment getLogicalRecord() {

@@ -8,9 +8,6 @@ import org.w3c.dom.Element;
 
 public class PhysicalInstanceFragment extends FragmentWithUrn {
 
-	public static final String ATTRIBUTE_NAME_NAMESPACE = "xmlns";
-	public static final String ATTRIBUTE_VALUE_NAMESPACE = "ddi:physicalinstance:3_3";
-
 	public static final String NODE_NAME_PHYSICAL_INSTANCE = "PhysicalInstance";
 
 	private Citation citation;
@@ -23,33 +20,33 @@ public class PhysicalInstanceFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		Element physicalInstance = doc.createElementNS(namespace, NODE_NAME_PHYSICAL_INSTANCE);
-		physicalInstance.setAttribute(ATTRIBUTE_NAME_IS_UNIVERSALLY_UNIQUE, ATTRIBUTE_VALUE_TRUE);
-		physicalInstance.setAttribute(ATTRIBUTE_NAME_NAMESPACE, ATTRIBUTE_VALUE_NAMESPACE);
+		Element physicalInstance = doc.createElement(NODE_NAME_PHYSICAL_INSTANCE);
+		setUniversallyUniqueAttribute(element);
+		setVersionDateAttribute(physicalInstance);
+		setNamespace(physicalInstance, NAMESPACE_PHYSICAL_INSTANCE);
 
 		fragment.appendChild(physicalInstance);
 		element.appendChild(fragment);
 
-		super.appendToElement(physicalInstance, doc, namespace);
+		super.appendToElement(physicalInstance, doc);
 
 		if (getCitation() != null) {
-			getCitation().appendToElement(physicalInstance, doc, namespace);
+			getCitation().appendToElement(physicalInstance, doc);
 		}
 
 		if (getDataRelationshipReference() != null) {
-			getDataRelationshipReference().appendToElement(physicalInstance, doc, namespace);
+			getDataRelationshipReference().appendToElement(physicalInstance, doc);
 		}
 
 		if (getDataFileIdentification() != null) {
-			getDataFileIdentification().appendToElement(physicalInstance, doc, namespace);
+			getDataFileIdentification().appendToElement(physicalInstance, doc);
 		}
 
 		if (getGrossFileStructure() != null) {
-			getGrossFileStructure().appendToElement(physicalInstance, doc, namespace);
+			getGrossFileStructure().appendToElement(physicalInstance, doc);
 		}
 
 		element.appendChild(fragment);

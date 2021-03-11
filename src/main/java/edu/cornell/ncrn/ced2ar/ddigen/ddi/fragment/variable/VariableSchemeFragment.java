@@ -28,19 +28,21 @@ public class VariableSchemeFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element variableScheme = doc.createElementNS(namespace, NODE_NAME_VARIABLE_SCHEME);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		super.appendToElement(variableScheme, doc, namespace);
+		Element variableScheme = doc.createElement(NODE_NAME_VARIABLE_SCHEME);
+		setVersionDateAttribute(variableScheme);
+		setUniversallyUniqueAttribute(variableScheme);
+		setNamespace(variableScheme, NAMESPACE_LOGICAL_PRODUCT);
 
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+		super.appendToElement(variableScheme, doc);
+
+		for (VariableReferenceFragment variable : getVariableList()) {
+			variable.appendToElement(variableScheme, doc);
+		}
 
 		fragment.appendChild(variableScheme);
 		element.appendChild(fragment);
-
-		for (VariableReferenceFragment variable : getVariableList()) {
-			variable.appendToElement(variableScheme, doc, namespace);
-		}
 	}
 }

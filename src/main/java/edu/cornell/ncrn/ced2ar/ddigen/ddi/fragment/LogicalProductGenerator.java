@@ -96,6 +96,7 @@ public class LogicalProductGenerator {
 			CategorySchemeFragment fragment = new CategorySchemeFragment(categorySchemeId.toString(), getAgency(), getVersion());
 			fragmentList.add(fragment);
 			for (Category category : categoryScheme.getCategoryList()) {
+				//System.out.println(category.getId());
 				String id = categoryIdToUuidMap.get(category.getId()).toString();
 				CategoryReferenceFragment reference = new CategoryReferenceFragment(id, getAgency(), getVersion());
 				fragment.addCategoryReference(reference);
@@ -418,6 +419,7 @@ public class LogicalProductGenerator {
 		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
 		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
 			for (Category category : categoryScheme.getCategoryList()) {
+				//System.out.println(" cat scheme " + categoryScheme.getId() + " cat " + category.getId());
 				if (category.getId() != null) {
 					categoryIdToUuidMap.put(category.getId(), UUID.randomUUID());
 				}

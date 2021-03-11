@@ -13,7 +13,6 @@ public class FragmentInstanceGenerator {
 	public static final String ATTRIBUTE_VALUE_NAMESPACE_DDI = "ddi:instance:3_3";
 	public static final String NODE_NAME_FRAGMENT_INSTANCE = "ddi:FragmentInstance";
 
-	public String namespace = "";
 	private List<Fragment> fragmentList;
 
 	public FragmentInstanceGenerator(List<Fragment> fragmentList) {
@@ -27,10 +26,11 @@ public class FragmentInstanceGenerator {
 	public Document toDocument() throws ParserConfigurationException {
 		DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 		domFactory.setNamespaceAware(true);
+
 		DocumentBuilder domBuilder = domFactory.newDocumentBuilder();
 		Document doc = domBuilder.newDocument();
 
-		Element fragmentInstance = doc.createElementNS(namespace, NODE_NAME_FRAGMENT_INSTANCE);
+		Element fragmentInstance = doc.createElement(NODE_NAME_FRAGMENT_INSTANCE);
 		fragmentInstance.setAttribute(Fragment.ATTRIBUTE_NAME_NAMESPACE_R, Fragment.ATTRIBUTE_VALUE_NAMESPACE_R);
 		fragmentInstance.setAttribute(ATTRIBUTE_NAME_NAMESPACE_DDI, ATTRIBUTE_VALUE_NAMESPACE_DDI);
 
@@ -38,7 +38,7 @@ public class FragmentInstanceGenerator {
 		doc.getDocumentElement().normalize();
 
 		for (Fragment fragment : fragmentList) {
-			fragment.appendToElement(fragmentInstance, doc, namespace);
+			fragment.appendToElement(fragmentInstance, doc);
 		}
 		return doc;
 	}

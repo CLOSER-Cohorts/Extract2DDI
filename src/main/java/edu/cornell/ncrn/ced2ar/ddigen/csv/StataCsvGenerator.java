@@ -35,8 +35,7 @@ public class StataCsvGenerator extends CsvGenerator {
 			boolean includeSummaryStatistics, long recordLimit)
 			throws Exception {
 		StataReaderFactory stataReaderFactory = new StataReaderFactory();
-		StataReader stataReader = stataReaderFactory
-				.getStataReader(dataFileLocation);
+		StataReader stataReader = stataReaderFactory.getStataReader(dataFileLocation);
 		VariableCsv variableCSV = getVariablesCsv(stataReader,
 				includeSummaryStatistics, recordLimit);
 		return variableCSV;

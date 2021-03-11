@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.AbstractVariableRepresentation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
 import org.w3c.dom.Document;
@@ -35,17 +34,22 @@ public class CategoryFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		Element variable = doc.createElementNS(namespace, NODE_NAME_CATEGORY);
-		fragment.appendChild(variable);
-		element.appendChild(fragment);
+		Element category = doc.createElement(NODE_NAME_CATEGORY);
+		setVersionDateAttribute(category);
+		setUniversallyUniqueAttribute(category);
+		setNamespace(category, NAMESPACE_LOGICAL_PRODUCT);
 
-		super.appendToElement(variable, doc, namespace);
+		super.appendToElement(category, doc);
 
 		// Label
-		getLabel().appendToElement(variable, doc, namespace);
+		if (getLabel() != null) {
+			getLabel().appendToElement(category, doc);
+		}
+
+		fragment.appendChild(category);
+		element.appendChild(fragment);
 	}
 }

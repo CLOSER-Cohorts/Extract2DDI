@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.code;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Label;
 import java.util.ArrayList;
@@ -19,24 +18,26 @@ public class CodeListFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element codeList = doc.createElementNS(namespace, NODE_NAME_CODE_LIST);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		super.appendToElement(codeList, doc, namespace);
+		Element codeList = doc.createElement(NODE_NAME_CODE_LIST);
+		setVersionDateAttribute(codeList);
+		setUniversallyUniqueAttribute(codeList);
+		setNamespace(codeList, NAMESPACE_LOGICAL_PRODUCT);
 
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
-
-		fragment.appendChild(codeList);
-		element.appendChild(fragment);
+		super.appendToElement(codeList, doc);
 
 		if (getLabel() != null) {
-			getLabel().appendToElement(codeList, doc, namespace);
+			getLabel().appendToElement(codeList, doc);
 		}
 
 		for (CodeFragment variable : getCodeFragmentList()) {
-			variable.appendToElement(codeList, doc, namespace);
+			variable.appendToElement(codeList, doc);
 		}
+
+		fragment.appendChild(codeList);
+		element.appendChild(fragment);
 	}
 
 	public void addCode(CodeFragment code) {

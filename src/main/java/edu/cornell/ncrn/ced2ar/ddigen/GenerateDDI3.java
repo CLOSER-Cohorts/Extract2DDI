@@ -38,60 +38,67 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 		long observationLimit
 
 	) throws Exception {
-		if (dataFile.toLowerCase().endsWith(".sav")) {
-			long s = System.currentTimeMillis();
-			VariableCsv variableCsv = null;
-			if (dataFile.toLowerCase().endsWith(".dta")) {
-				StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
-				variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
-			} else if (dataFile.toLowerCase().endsWith(".sav")) {
-				SpssCsvGenerator spssGen = new SpssCsvGenerator();
-				variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
-			}
+		long s = System.currentTimeMillis();
+		VariableCsv variableCsv = null;
+		List<Ced2arVariableStat> variableStatList = null;
+		int recordCount = 0;
+		Frequency frequency = null;
+		Document logicalProductDocument = null;
 
+		if (dataFile.toLowerCase().endsWith(".dta")) {
+			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
+			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
+
+			throw new Exception("STATA files are not supported yet for DDI 3.3");
+		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
+			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
+
 			File serverFile = new File(dataFile);
 			SPSSFile spssFile = new SPSSFile(serverFile);
 
-			Document logicalProductDocument = spssGen.getLogicalProduct(spssFile);
-			LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
-			List<Ced2arVariableStat> variableStatList = spssGen.getVariableStats(spssFile);
-			Frequency frequency = new Frequency();
+			logicalProductDocument = spssGen.getLogicalProduct(spssFile);
+
+			variableStatList = spssGen.getVariableStats(spssFile);
+
+			frequency = new Frequency();
 
 			long readErrors = 0;
 			if (runSumStats) {
 				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, frequency, observationLimit);
 			}
 
-			int recordCount = spssFile.getRecordCount();
-
-			LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-				logicalProduct,
-				variableStatList,
-				getExcludeVariableToStatMap(),
-				getAgency(),
-				getDdiLanguage(),
-				dataFile,
-				recordCount
-			);
-			logicalProductGenerator.setFrequency(frequency);
-			List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
-
-			FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
-			Document fragmentInstanceDocument = transformer.toDocument();
-
-			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-			String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
-			createFile(xml, dataFile+".xml");
-			logger.info("Successfully created DDI file");
-
-			logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
-			createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
-			createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
-			logger.info("Successfully created csv files");
-
-			logger.info(observationLimit);
+			recordCount = spssFile.getRecordCount();
 		}
+
+		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
+
+		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+			logicalProduct,
+			variableStatList,
+			getExcludeVariableToStatMap(),
+			getAgency(),
+			getDdiLanguage(),
+			dataFile,
+			recordCount
+		);
+		logicalProductGenerator.setFrequency(frequency);
+		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+
+		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
+		Document fragmentInstanceDocument = transformer.toDocument();
+
+		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument, "UTF-8");
+		createFile(xml, dataFile+".xml");
+		logger.info("Successfully created DDI file");
+
+		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
+		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
+		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
+		logger.info("Successfully created csv files");
+
+		logger.info(observationLimit);
 	}
 
 	public String getAgency() {

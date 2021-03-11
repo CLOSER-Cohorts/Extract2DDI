@@ -25,16 +25,16 @@ public class CodeVariableRepresentation extends AbstractVariableRepresentation {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element representation = doc.createElementNS(namespace, NODE_NAME_VARIABLE_REPRESENTATION);
-		super.appendToElement(representation, doc, namespace);
+	public void appendToElement(Element element, Document doc) {
+		Element representation = doc.createElement(NODE_NAME_VARIABLE_REPRESENTATION);
+		super.appendToElement(representation, doc);
 		element.appendChild(representation);
 
-		Element codeRepresentation = doc.createElementNS(namespace, NODE_NAME_CODE_REPRESENTATION);
+		Element codeRepresentation = doc.createElement(NODE_NAME_CODE_REPRESENTATION);
 		codeRepresentation.setAttribute(ATTRIBUTE_NAME_BLANK_IS_MISSING_VALUE, ATTRIBUTE_VALUE_FALSE);
 		codeRepresentation.setAttribute(ATTRIBUTE_NAME_CLASSIFICATION_LEVEL, ATTRIBUTE_VALUE_NOMINAL);
 		representation.appendChild(codeRepresentation);
 
-		getCodeListReferenceFragment().appendToElement(codeRepresentation, doc, namespace);
+		getCodeListReferenceFragment().appendToElement(codeRepresentation, doc);
 	}
 }

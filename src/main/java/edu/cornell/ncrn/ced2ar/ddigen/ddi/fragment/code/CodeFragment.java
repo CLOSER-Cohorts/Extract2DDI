@@ -18,15 +18,15 @@ public class CodeFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element code = doc.createElementNS(namespace, NODE_NAME_CODE);
-		super.appendToElement(code, doc, namespace);
+	public void appendToElement(Element element, Document doc) {
+		Element code = doc.createElement(NODE_NAME_CODE);
+		super.appendToElement(code, doc);
 
 		if (getCategoryReference() != null) {
-			getCategoryReference().appendToElement(code, doc, namespace);
+			getCategoryReference().appendToElement(code, doc);
 		}
 
-		Element value = doc.createElementNS(namespace, NODE_NAME_VALUE);
+		Element value = doc.createElement(NODE_NAME_VALUE);
 		value.setTextContent(getValue());
 		code.appendChild(value);
 

@@ -38,23 +38,23 @@ public class VariableCategoryFragment implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element variableCategory = doc.createElementNS(namespace, NODE_NAME_VARIABLE_CATEGORY);
+	public void appendToElement(Element element, Document doc) {
+		Element variableCategory = doc.createElement(NODE_NAME_VARIABLE_CATEGORY);
 
-		Element categoryValue = doc.createElementNS(namespace, NODE_NAME_CATEGORY_VALUE);
-		Element value = doc.createElementNS(namespace, NODE_NAME_VALUE);
+		Element categoryValue = doc.createElement(NODE_NAME_CATEGORY_VALUE);
+		Element value = doc.createElement(NODE_NAME_VALUE);
 		value.setTextContent(getCategoryValue());
 		categoryValue.appendChild(value);
 
 		variableCategory.appendChild(categoryValue);
 
-		Element categoryStatisticType = doc.createElementNS(namespace, NODE_NAME_CATEGORY_STATISTIC_TYPE);
+		Element categoryStatisticType = doc.createElement(NODE_NAME_CATEGORY_STATISTIC_TYPE);
 		categoryStatisticType.setTextContent("Frequency");
 
-		Element statistic = doc.createElementNS(namespace, NODE_NAME_STATISTIC);
+		Element statistic = doc.createElement(NODE_NAME_STATISTIC);
 		statistic.setTextContent(getFrequency());
 
-		Element categoryStatistic = doc.createElementNS(namespace, NODE_NAME_CATEGORY_STATISTIC);
+		Element categoryStatistic = doc.createElement(NODE_NAME_CATEGORY_STATISTIC);
 		categoryStatistic.appendChild(categoryStatisticType);
 		categoryStatistic.appendChild(statistic);
 		variableCategory.appendChild(categoryStatistic);

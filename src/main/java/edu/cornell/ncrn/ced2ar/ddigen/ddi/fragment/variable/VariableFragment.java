@@ -45,28 +45,31 @@ public class VariableFragment extends FragmentWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc, String namespace) {
-		Element fragment = doc.createElementNS(namespace, NODE_NAME_FRAGMENT);
-		fragment.setAttribute(ATTRIBUTE_NAME_NAMESPACE_R, ATTRIBUTE_VALUE_NAMESPACE_R);
+	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
 
-		Element variable = doc.createElementNS(namespace, NODE_NAME_VARIABLE);
-		fragment.appendChild(variable);
-		element.appendChild(fragment);
+		Element variable = doc.createElement(NODE_NAME_VARIABLE);
+		setVersionDateAttribute(variable);
+		setUniversallyUniqueAttribute(variable);
+		setNamespace(variable, NAMESPACE_LOGICAL_PRODUCT);
 
-		super.appendToElement(variable, doc, namespace);
+		super.appendToElement(variable, doc);
 
 		// VariableName
-		Element variableName = doc.createElementNS(namespace, NODE_NAME_VARIABLE_NAME);
-		getName().appendToElement(variableName, doc, namespace);
+		Element variableName = doc.createElement(NODE_NAME_VARIABLE_NAME);
+		getName().appendToElement(variableName, doc);
 		variable.appendChild(variableName);
 
 		// Label
-		getLabel().appendToElement(variable, doc, namespace);
+		getLabel().appendToElement(variable, doc);
 
 		// VariableRepresentation
 		AbstractVariableRepresentation variableRepresentation = getVariableRepresentation();
 		if (variableRepresentation != null) {
-			variableRepresentation.appendToElement(variable, doc, namespace);
+			variableRepresentation.appendToElement(variable, doc);
 		}
+
+		fragment.appendChild(variable);
+		element.appendChild(fragment);
 	}
 }
