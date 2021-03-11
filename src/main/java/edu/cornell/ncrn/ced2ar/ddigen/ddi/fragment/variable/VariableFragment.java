@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
 
 public class VariableFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_VARIABLE = "ddi:Variable";
+	public static final String NODE_NAME_VARIABLE = "Variable";
 	public static final String NODE_NAME_VARIABLE_NAME = "VariableName";
 
 	private Label label;

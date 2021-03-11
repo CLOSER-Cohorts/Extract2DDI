@@ -15,15 +15,16 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 	public void testToDocument_ExcludeVariableStatistics() {
 		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument, 38);
 
-		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
+		Assert.assertEquals("VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
-		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(4).getTextContent());
 
 		// Variable Reference
-		Node variableReference = variableStatistics.getChildNodes().item(5);
+		Node variableReference = variableStatistics.getChildNodes().item(4);
 		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
 		testFragmentReference(variableReference);
+
+		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(5).getNodeName());
+		Assert.assertEquals("3", variableStatistics.getChildNodes().item(5).getTextContent());
 
 		// Summary Statistic
 		Node standardDeviation = variableStatistics.getChildNodes().item(6);
@@ -38,15 +39,16 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 	public void testToDocument_VariableStatistics() {
 		Node variableStatistics = getVariableStatistics(fragmentInstanceDocument, 39);
 
-		Assert.assertEquals("r:VariableStatistics", variableStatistics.getNodeName());
+		Assert.assertEquals("VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
-		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(4).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(4).getTextContent());
 
 		// Variable Reference
-		Node variableReference = variableStatistics.getChildNodes().item(5);
+		Node variableReference = variableStatistics.getChildNodes().item(4);
 		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
 		testFragmentReference(variableReference);
+
+		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(5).getNodeName());
+		Assert.assertEquals("3", variableStatistics.getChildNodes().item(5).getTextContent());
 
 		// Summary Statistic
 		Node validCases = variableStatistics.getChildNodes().item(6);

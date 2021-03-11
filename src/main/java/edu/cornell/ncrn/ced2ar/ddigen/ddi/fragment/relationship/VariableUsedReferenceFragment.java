@@ -5,7 +5,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.StringElement;
 
 public class VariableUsedReferenceFragment extends AbstractReferenceFragment {
 
-	public static final String NODE_NAME_VARIABLE_USED_REFERENCE = "r:VariableUsedReference";
+	public static final String NODE_NAME_VARIABLE_USED_REFERENCE = "VariableUsedReference";
 
 	private StringElement name;
 

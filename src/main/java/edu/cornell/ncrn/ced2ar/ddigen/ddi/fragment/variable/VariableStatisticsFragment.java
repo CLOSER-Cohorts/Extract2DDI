@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 public class VariableStatisticsFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_VARIABLE_STATISTICS = "ddi:VariableStatistics";
+	public static final String NODE_NAME_VARIABLE_STATISTICS = "VariableStatistics";
 	public static final String NODE_NAME_TOTAL_RESPONSES = "TotalResponses";
 	public static final String NODE_NAME_UNFILTERED_CATEGORY_STATISTICS = "UnfilteredCategoryStatistics";
 
