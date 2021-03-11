@@ -26,6 +26,7 @@ public class FragmentInstanceGenerator {
 	public Document toDocument() throws ParserConfigurationException {
 		DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 		domFactory.setNamespaceAware(true);
+
 		DocumentBuilder domBuilder = domFactory.newDocumentBuilder();
 		Document doc = domBuilder.newDocument();
 

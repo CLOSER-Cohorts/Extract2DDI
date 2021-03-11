@@ -9,8 +9,8 @@ import org.w3c.dom.Element;
 
 public class LogicalRecordFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_LOGICAL_RECORD = "r:LogicalRecord";
-	public static final String NODE_NAME_LOGICAL_RECORD_NAME = "r:LogicalRecordName";
+	public static final String NODE_NAME_LOGICAL_RECORD = "LogicalRecord";
+	public static final String NODE_NAME_LOGICAL_RECORD_NAME = "LogicalRecordName";
 	public static final String NODE_NAME_VARIABLES_IN_RECORD = "VariablesInRecord";
 
 	private StringElement name;

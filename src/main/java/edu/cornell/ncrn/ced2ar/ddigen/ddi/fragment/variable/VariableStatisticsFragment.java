@@ -8,7 +8,7 @@ import org.w3c.dom.Element;
 
 public class VariableStatisticsFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_VARIABLE_STATISTICS = "r:VariableStatistics";
+	public static final String NODE_NAME_VARIABLE_STATISTICS = "ddi:VariableStatistics";
 	public static final String NODE_NAME_TOTAL_RESPONSES = "TotalResponses";
 	public static final String NODE_NAME_UNFILTERED_CATEGORY_STATISTICS = "UnfilteredCategoryStatistics";
 
@@ -41,13 +41,13 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 
 		super.appendToElement(variableStatistics, doc);
 
-		Element totalResponses = doc.createElement(NODE_NAME_TOTAL_RESPONSES);
-		totalResponses.setTextContent(Integer.toString(getTotalResponses()));
-		variableStatistics.appendChild(totalResponses);
-
 		if (getVariableReference() != null) {
 			getVariableReference().appendToElement(variableStatistics, doc);
 		}
+
+		Element totalResponses = doc.createElement(NODE_NAME_TOTAL_RESPONSES);
+		totalResponses.setTextContent(Integer.toString(getTotalResponses()));
+		variableStatistics.appendChild(totalResponses);
 
 		for (SummaryStatistic statistic : getSummaryStatisticList()) {
 			statistic.appendToElement(variableStatistics, doc);

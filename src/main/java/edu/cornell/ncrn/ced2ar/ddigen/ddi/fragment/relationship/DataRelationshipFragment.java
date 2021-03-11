@@ -7,8 +7,8 @@ import org.w3c.dom.Element;
 
 public class DataRelationshipFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_DATA_RELATIONSHIP = "r:DataRelationship";
-	public static final String NODE_NAME_DATA_RELATIONSHIP_NAME = "r:DataRelationshipName";
+	public static final String NODE_NAME_DATA_RELATIONSHIP = "DataRelationship";
+	public static final String NODE_NAME_DATA_RELATIONSHIP_NAME = "DataRelationshipName";
 
 	private StringElement name;
 	private LogicalRecordFragment logicalRecord;
@@ -19,6 +19,8 @@ public class DataRelationshipFragment extends FragmentWithUrn {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
+		Element fragment = createFragment(doc);
+
 		Element dataRelationship = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
 		setVersionDateAttribute(dataRelationship);
 		setUniversallyUniqueAttribute(dataRelationship);
@@ -36,7 +38,8 @@ public class DataRelationshipFragment extends FragmentWithUrn {
 			getLogicalRecord().appendToElement(dataRelationship, doc);
 		}
 
-		element.appendChild(dataRelationship);
+		fragment.appendChild(dataRelationship);
+		element.appendChild(fragment);
 	}
 
 	public LogicalRecordFragment getLogicalRecord() {

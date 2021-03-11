@@ -1,5 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi;
 
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.ls.DOMImplementationLS;
+import org.w3c.dom.ls.LSOutput;
 import org.w3c.dom.ls.LSSerializer;
 
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
@@ -249,7 +252,29 @@ public class VariableDDIGenerator {
 	    LSSerializer serializer = domImplementation.createLSSerializer();
 	    serializer.getDomConfig().setParameter("format-pretty-print", true);
 	    serializer.setNewLine("\r\n");
-	    return serializer.writeToString(doc);   
+
+		LSOutput lsOutput = domImplementation.createLSOutput();
+		lsOutput.setEncoding("UTF-8");
+		Writer stringWriter = new StringWriter();
+		lsOutput.setCharacterStream(stringWriter);
+		serializer.write(doc, lsOutput);
+
+		return stringWriter.toString();
+	}
+
+	public String domToString(Document doc, String encoding){
+		DOMImplementationLS domImplementation = (DOMImplementationLS) doc.getImplementation();
+		LSSerializer serializer = domImplementation.createLSSerializer();
+		serializer.getDomConfig().setParameter("format-pretty-print", true);
+		serializer.setNewLine("\r\n");
+
+		LSOutput lsOutput = domImplementation.createLSOutput();
+		lsOutput.setEncoding(encoding);
+		Writer stringWriter = new StringWriter();
+		lsOutput.setCharacterStream(stringWriter);
+		serializer.write(doc, lsOutput);
+
+		return stringWriter.toString();
 	}
 
 	public String getUniqueID() {

@@ -8,7 +8,7 @@ import org.w3c.dom.Node;
 public class FragmentInstanceGeneratorTest extends AbstractFragmentInstanceGeneratorTest {
 
 	private Node getDataRelationship(Document document) {
-		return document.getFirstChild().getChildNodes().item(37);
+		return document.getFirstChild().getChildNodes().item(37).getFirstChild();
 	}
 
 	private Node getCode(Document document) {
@@ -34,17 +34,17 @@ public class FragmentInstanceGeneratorTest extends AbstractFragmentInstanceGener
 	@Test
 	public void testToDocument_DataRelationship() {
 		Node dataRelationship = getDataRelationship(fragmentInstanceDocument);
-		Assert.assertEquals("r:DataRelationship", dataRelationship.getNodeName());
+		Assert.assertEquals("DataRelationship", dataRelationship.getNodeName());
 		testFragment(dataRelationship);
-		Assert.assertEquals("r:DataRelationshipName", dataRelationship.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("DataRelationshipName", dataRelationship.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:String", dataRelationship.getChildNodes().item(4).getFirstChild().getNodeName());
 		Assert.assertEquals("test-file-data-types.sav", dataRelationship.getChildNodes().item(4).getFirstChild().getTextContent());
 
 		// Logical Record
 		Node logicalRecord = dataRelationship.getChildNodes().item(5);
-		Assert.assertEquals("r:LogicalRecord", logicalRecord.getNodeName());
+		Assert.assertEquals("LogicalRecord", logicalRecord.getNodeName());
 		testFragment(logicalRecord);
-		Assert.assertEquals("r:LogicalRecordName", logicalRecord.getChildNodes().item(4).getNodeName());
+		Assert.assertEquals("LogicalRecordName", logicalRecord.getChildNodes().item(4).getNodeName());
 		Assert.assertEquals("r:String", logicalRecord.getChildNodes().item(4).getFirstChild().getNodeName());
 		Assert.assertEquals("test-file-data-types.sav", logicalRecord.getChildNodes().item(4).getFirstChild().getTextContent());
 

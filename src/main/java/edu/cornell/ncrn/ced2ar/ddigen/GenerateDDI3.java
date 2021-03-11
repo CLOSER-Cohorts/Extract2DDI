@@ -89,7 +89,7 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 		Document fragmentInstanceDocument = transformer.toDocument();
 
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
+		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument, "UTF-8");
 		createFile(xml, dataFile+".xml");
 		logger.info("Successfully created DDI file");
 
