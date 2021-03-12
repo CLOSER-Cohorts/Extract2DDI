@@ -18,16 +18,24 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("VariableStatistics", variableStatistics.getNodeName());
 		testFragment(variableStatistics);
 
+		// User Attribute Pair
+		Node userAttributePair = variableStatistics.getChildNodes().item(4);
+		Assert.assertEquals("r:UserAttributePair", userAttributePair.getNodeName());
+		Assert.assertEquals("r:AttributeKey", userAttributePair.getFirstChild().getNodeName());
+		Assert.assertEquals("extension:redaction-information", userAttributePair.getFirstChild().getTextContent());
+		Assert.assertEquals("r:AttributeValue", userAttributePair.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("invalid,valid,max,min,mean", userAttributePair.getChildNodes().item(1).getTextContent());
+
 		// Variable Reference
-		Node variableReference = variableStatistics.getChildNodes().item(4);
+		Node variableReference = variableStatistics.getChildNodes().item(5);
 		Assert.assertEquals("r:VariableReference", variableReference.getNodeName());
 		testFragmentReference(variableReference);
 
-		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(5).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(5).getTextContent());
+		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(6).getNodeName());
+		Assert.assertEquals("3", variableStatistics.getChildNodes().item(6).getTextContent());
 
 		// Summary Statistic
-		Node standardDeviation = variableStatistics.getChildNodes().item(6);
+		Node standardDeviation = variableStatistics.getChildNodes().item(7);
 		Assert.assertEquals("SummaryStatistic", standardDeviation.getNodeName());
 		Assert.assertEquals("TypeOfSummaryStatistic", standardDeviation.getFirstChild().getNodeName());
 		Assert.assertEquals("StandardDeviation", standardDeviation.getFirstChild().getTextContent());

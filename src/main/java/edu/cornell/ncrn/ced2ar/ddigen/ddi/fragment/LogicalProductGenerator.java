@@ -161,7 +161,7 @@ public class LogicalProductGenerator {
 
 		logicalRecordFragment.setName(new StringElement(getTitle(), getDdiLanguage()));
 
-		for (Map.Entry<String, UUID> variableIdToUuidEntry : variableIdToUuidMap.entrySet()) {
+		for (Map.Entry variableIdToUuidEntry : variableIdToUuidMap.entrySet()) {
 			VariableUsedReferenceFragment fragment = new VariableUsedReferenceFragment(
 				variableIdToUuidEntry.getValue().toString(),
 				getAgency(),
@@ -240,7 +240,7 @@ public class LogicalProductGenerator {
 		Citation citation = new Citation(titleElement);
 		resourcePackage.setCitation(citation);
 
-		for (Map.Entry<String, UUID> physicalInstanceEntry : physicalInstanceIdToUuidMap.entrySet()) {
+		for (Map.Entry physicalInstanceEntry : physicalInstanceIdToUuidMap.entrySet()) {
 			PhysicalInstanceReferenceFragment fragment = new PhysicalInstanceReferenceFragment(
 				physicalInstanceEntry.getValue().toString(),
 				getAgency(),
@@ -249,7 +249,7 @@ public class LogicalProductGenerator {
 			resourcePackage.addPhysicalInstanceReference(fragment);
 		}
 
-		for (Map.Entry<String, UUID> categorySchemeEntry : categorySchemeIdToUuidMap.entrySet()) {
+		for (Map.Entry categorySchemeEntry : categorySchemeIdToUuidMap.entrySet()) {
 			CategorySchemeReferenceFragment fragment = new CategorySchemeReferenceFragment(
 				categorySchemeEntry.getValue().toString(),
 				getAgency(),
@@ -258,7 +258,7 @@ public class LogicalProductGenerator {
 			resourcePackage.addCategorySchemeReference(fragment);
 		}
 
-		for (Map.Entry<String, UUID> variableSchemeEntry : variableSchemeIdToUuidMap.entrySet()) {
+		for (Map.Entry variableSchemeEntry : variableSchemeIdToUuidMap.entrySet()) {
 			VariableSchemeReferenceFragment fragment = new VariableSchemeReferenceFragment(
 				variableSchemeEntry.getValue().toString(),
 				getAgency(),
@@ -345,6 +345,12 @@ public class LogicalProductGenerator {
 				VariableStatisticsFragment variableStatistics =
 					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion(), getRecordCount());
 
+				if (getExcludeVariableToStatMap().containsKey(variable.getName())) {
+					UserAttributePairFragment userAttributePair = new UserAttributePairFragment();
+					userAttributePair.addAttribute("extension:redaction-information", getExcludeVariableToStatMap().get(variable.getName()));
+					variableStatistics.setUserAttributePair(userAttributePair);
+				}
+
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 				for (Ced2arVariableStat variableStat : getVariableStatList()) {
@@ -369,6 +375,8 @@ public class LogicalProductGenerator {
 						}
 						if (excludeVariableStat == null || !excludeVariableStat.contains("max")) {
 							String statistic = BigDecimal.valueOf(max).toPlainString();
+							//String statistic = Double.toString(max);
+							//System.out.println(statistic);
 							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MAXIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
