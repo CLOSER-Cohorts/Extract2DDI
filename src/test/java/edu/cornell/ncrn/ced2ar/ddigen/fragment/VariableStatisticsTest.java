@@ -73,19 +73,19 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("Statistic", invalidCases.getChildNodes().item(1).getNodeName());
 		Assert.assertEquals("3", invalidCases.getChildNodes().item(1).getTextContent());
 
-		Node minimum = variableStatistics.getChildNodes().item(8);
-		Assert.assertEquals("SummaryStatistic", minimum.getNodeName());
-		Assert.assertEquals("TypeOfSummaryStatistic", minimum.getFirstChild().getNodeName());
-		Assert.assertEquals("Maximum", minimum.getFirstChild().getTextContent());
-		Assert.assertEquals("Statistic", minimum.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("3.0", minimum.getChildNodes().item(1).getTextContent());
-
-		Node maximum = variableStatistics.getChildNodes().item(9);
+		Node maximum = variableStatistics.getChildNodes().item(8);
 		Assert.assertEquals("SummaryStatistic", maximum.getNodeName());
 		Assert.assertEquals("TypeOfSummaryStatistic", maximum.getFirstChild().getNodeName());
 		Assert.assertEquals("Minimum", maximum.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", maximum.getChildNodes().item(1).getNodeName());
 		Assert.assertEquals("1.0", maximum.getChildNodes().item(1).getTextContent());
+
+		Node minimum = variableStatistics.getChildNodes().item(9);
+		Assert.assertEquals("SummaryStatistic", minimum.getNodeName());
+		Assert.assertEquals("TypeOfSummaryStatistic", minimum.getFirstChild().getNodeName());
+		Assert.assertEquals("Maximum", minimum.getFirstChild().getTextContent());
+		Assert.assertEquals("Statistic", minimum.getChildNodes().item(1).getNodeName());
+		Assert.assertEquals("3.0", minimum.getChildNodes().item(1).getTextContent());
 
 		Node mean = variableStatistics.getChildNodes().item(10);
 		Assert.assertEquals("SummaryStatistic", mean.getNodeName());

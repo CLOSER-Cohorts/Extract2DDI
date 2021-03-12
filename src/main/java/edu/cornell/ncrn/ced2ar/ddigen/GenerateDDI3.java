@@ -40,7 +40,6 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 	) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
-		List<Ced2arVariableStat> variableStatList = null;
 		int recordCount = 0;
 		Frequency frequency = null;
 		Document logicalProductDocument = null;
@@ -49,7 +48,7 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
 			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
-			throw new Exception("STATA files are not supported yet for DDI 3.3");
+			throw new Exception("STATA files are not supported yet for DDI 3.3Fragment");
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
@@ -59,15 +58,6 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 			logicalProductDocument = spssGen.getLogicalProduct(spssFile);
 
-			variableStatList = spssGen.getVariableStats(spssFile);
-
-			frequency = new Frequency();
-
-			long readErrors = 0;
-			if (runSumStats) {
-				readErrors = spssGen.setSummaryStatistics(spssFile, variableStatList, frequency, observationLimit);
-			}
-
 			recordCount = spssFile.getRecordCount();
 		}
 
@@ -75,7 +65,7 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
-			variableStatList,
+			variableCsv.getVariableStatistics(),
 			getExcludeVariableToStatMap(),
 			getAgency(),
 			getDdiLanguage(),
