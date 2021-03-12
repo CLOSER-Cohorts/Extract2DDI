@@ -151,6 +151,15 @@ public class SpssCsvGenerator extends CsvGenerator {
 		variablesCSV.setVariableStatistics(variableStatistics);
 		variablesCSV.setVariableValueLables(variableValueLabels);
 		variablesCSV.setReadErrors(readErrors);
+		variablesCSV.setFrequency(frequency);
+
+		List<String> representationTypeCodeList = new ArrayList<>();
+		for (Ced2arVariableStat variableStat : ced2arVariableStats) {
+			if (variableStat.isRepresentationTypeCodeList()) {
+				representationTypeCodeList.add(variableStat.getName());
+			}
+		}
+		variablesCSV.setRepresentationTypeCodeList(representationTypeCodeList);
 
 		return variablesCSV;
 	}

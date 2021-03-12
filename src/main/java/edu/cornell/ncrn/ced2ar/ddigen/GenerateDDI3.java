@@ -41,7 +41,6 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
 		int recordCount = 0;
-		Frequency frequency = null;
 		Document logicalProductDocument = null;
 
 		if (dataFile.toLowerCase().endsWith(".dta")) {
@@ -67,12 +66,13 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 			logicalProduct,
 			variableCsv.getVariableStatistics(),
 			getExcludeVariableToStatMap(),
+			variableCsv.getRepresentationTypeCodeList(),
 			getAgency(),
 			getDdiLanguage(),
 			dataFile,
 			recordCount
 		);
-		logicalProductGenerator.setFrequency(frequency);
+		logicalProductGenerator.setFrequency(variableCsv.getFrequency());
 		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);

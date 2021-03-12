@@ -22,6 +22,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.NumericVariableRepre
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.StatisticType;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.TextVariableRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableCategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable.VariableSchemeFragment;
@@ -54,6 +55,7 @@ public class LogicalProductGenerator {
 	private Frequency frequency;
 	private LogicalProduct logicalProduct;
 	private int recordCount;
+	private List<String> representationTypeCodeList;
 	private String title;
 	private String variableStatistics;
 	private int version;
@@ -62,6 +64,7 @@ public class LogicalProductGenerator {
 		LogicalProduct logicalProduct,
 		String variableStatistics,
 		Map<String, String> excludeVariableToStatMap,
+		List<String> representationTypeCodeList,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -73,6 +76,7 @@ public class LogicalProductGenerator {
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setTitle(title);
 		setRecordCount(recordCount);
+		setRepresentationTypeCodeList(representationTypeCodeList);
 		setVariableStatistics(variableStatistics);
 		setVersion(1);
 	}
@@ -327,6 +331,10 @@ public class LogicalProductGenerator {
 		return recordCount;
 	}
 
+	public List<String> getRepresentationTypeCodeList() {
+		return representationTypeCodeList;
+	}
+
 	public String getVariableStatistics() {
 		return variableStatistics;
 	}
@@ -403,8 +411,8 @@ public class LogicalProductGenerator {
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-/*						if (excludeVariableStat == null || !excludeVariableStat.contains("freq")) {
-							boolean isRepresentationTypeCodeList = variableStat.isRepresentationTypeCodeList();
+						if (excludeVariableStat == null || !excludeVariableStat.contains("freq")) {
+							boolean isRepresentationTypeCodeList = getRepresentationTypeCodeList().contains(variable.getName());
 							if (isRepresentationTypeCodeList) {
 								for (CodeList codeList : getLogicalProduct().getCodeListList()) {
 									for (Code code : codeList.getCodeList()) {
@@ -414,7 +422,7 @@ public class LogicalProductGenerator {
 									}
 								}
 							}
-						}*/
+						}
 
 						break;
 					}
@@ -543,6 +551,10 @@ public class LogicalProductGenerator {
 
 	public void setRecordCount(int recordCount) {
 		this.recordCount = recordCount;
+	}
+
+	public void setRepresentationTypeCodeList(List<String> representationTypeCodeList) {
+		this.representationTypeCodeList = representationTypeCodeList;
 	}
 
 	public void setTitle(String title) {

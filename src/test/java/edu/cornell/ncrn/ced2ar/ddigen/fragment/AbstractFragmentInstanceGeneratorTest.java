@@ -72,6 +72,7 @@ public class AbstractFragmentInstanceGeneratorTest {
 			logicalProduct,
 			builder.toString(),
 			excludeVariableToStatMap,
+			new ArrayList<>(),
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",
