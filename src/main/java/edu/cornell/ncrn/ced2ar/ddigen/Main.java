@@ -95,7 +95,7 @@ public class Main {
 		Util.fileCheck(dataFile);
 
 		AbstractGenerateDDI generateDDI;
-		if (formatOutput.equalsIgnoreCase("2.5")) {
+		if (formatOutput.equalsIgnoreCase("2.5Fragment")) {
 			generateDDI = new GenerateDDI();
 		} else {
 			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap);

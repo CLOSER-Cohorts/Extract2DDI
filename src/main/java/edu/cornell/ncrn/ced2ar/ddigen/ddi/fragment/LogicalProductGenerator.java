@@ -363,26 +363,42 @@ public class LogicalProductGenerator {
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getMax()) && !excludeVariableStat.contains("max")) {
-							String statistic = Double.toString(variableStat.getStats().getMax());
+						double max = variableStat.getStats().getMax();
+						if (Double.isNaN(max)) {
+							max = 0;
+						}
+						if (excludeVariableStat == null || !excludeVariableStat.contains("max")) {
+							String statistic = BigDecimal.valueOf(max).toPlainString();
 							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MAXIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getMin()) && !excludeVariableStat.contains("min")) {
-							String statistic = Double.toString(variableStat.getStats().getMin());
+						double min = variableStat.getStats().getMin();
+						if (Double.isNaN(min)) {
+							min = 0;
+						}
+						if (excludeVariableStat == null || !excludeVariableStat.contains("min")) {
+							String statistic = BigDecimal.valueOf(min).toPlainString();
 							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MINIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getStandardDeviation()) && !excludeVariableStat.contains("mean")) {
-							String statistic = Double.toString(variableStat.getStats().getMean());
+						double mean = variableStat.getStats().getMean();
+						if (Double.isNaN(mean)) {
+							mean = 0;
+						}
+						if (excludeVariableStat == null || !excludeVariableStat.contains("mean")) {
+							String statistic = BigDecimal.valueOf(mean).toPlainString();
 							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MEAN);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (excludeVariableStat == null || !Double.isNaN(variableStat.getStats().getStandardDeviation()) && !excludeVariableStat.contains("stddev")) {
-							String statistic = Double.toString(variableStat.getStats().getStandardDeviation());
+						double standardDeviation = variableStat.getStats().getStandardDeviation();
+						if (Double.isNaN(standardDeviation)) {
+							standardDeviation = 0;
+						}
+						if (excludeVariableStat == null || !excludeVariableStat.contains("stddev")) {
+							String statistic = BigDecimal.valueOf(standardDeviation).toPlainString();
 							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.STANDARD_DEVIATION);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
