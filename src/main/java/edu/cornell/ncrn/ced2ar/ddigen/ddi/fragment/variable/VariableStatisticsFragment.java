@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.variable;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.UserAttributePairFragment;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Document;
@@ -8,7 +9,7 @@ import org.w3c.dom.Element;
 
 public class VariableStatisticsFragment extends FragmentWithUrn {
 
-	public static final String NODE_NAME_VARIABLE_STATISTICS = "ddi:VariableStatistics";
+	public static final String NODE_NAME_VARIABLE_STATISTICS = "VariableStatistics";
 	public static final String NODE_NAME_TOTAL_RESPONSES = "TotalResponses";
 	public static final String NODE_NAME_UNFILTERED_CATEGORY_STATISTICS = "UnfilteredCategoryStatistics";
 
@@ -16,6 +17,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	private VariableReferenceFragment variableReference;
 	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
 	private List<VariableCategoryFragment> variableCategoryList = new ArrayList<>();
+	private UserAttributePairFragment userAttributePair;
 
 	public VariableStatisticsFragment(String id, String agency, int version, int totalResponses) {
 		super(id, agency, version);
@@ -40,6 +42,10 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		setNamespace(variableStatistics, NAMESPACE_PHYSICAL_INSTANCE);
 
 		super.appendToElement(variableStatistics, doc);
+
+		if (getUserAttributePair() != null) {
+			getUserAttributePair().appendToElement(variableStatistics, doc);
+		}
 
 		if (getVariableReference() != null) {
 			getVariableReference().appendToElement(variableStatistics, doc);
@@ -81,6 +87,10 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		return variableReference;
 	}
 
+	public UserAttributePairFragment getUserAttributePair() {
+		return userAttributePair;
+	}
+
 	public void setTotalResponses(int totalResponses) {
 		this.totalResponses = totalResponses;
 	}
@@ -95,5 +105,9 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 
 	public void setVariableReference(VariableReferenceFragment variableReference) {
 		this.variableReference = variableReference;
+	}
+
+	public void setUserAttributePair(UserAttributePairFragment userAttributePair) {
+		this.userAttributePair = userAttributePair;
 	}
 }

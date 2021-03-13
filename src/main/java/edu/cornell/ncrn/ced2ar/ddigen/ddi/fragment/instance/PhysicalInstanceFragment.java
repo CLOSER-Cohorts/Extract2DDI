@@ -24,7 +24,7 @@ public class PhysicalInstanceFragment extends FragmentWithUrn {
 		Element fragment = createFragment(doc);
 
 		Element physicalInstance = doc.createElement(NODE_NAME_PHYSICAL_INSTANCE);
-		setUniversallyUniqueAttribute(element);
+		setUniversallyUniqueAttribute(physicalInstance);
 		setVersionDateAttribute(physicalInstance);
 		setNamespace(physicalInstance, NAMESPACE_PHYSICAL_INSTANCE);
 

@@ -58,22 +58,11 @@ public class AbstractFragmentInstanceGeneratorTest {
 			AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
 
-		List<Ced2arVariableStat> variableStatList = new ArrayList<>();
-		Ced2arVariableStat variableStat1 = new Ced2arVariableStat();
-		variableStat1.setName("TestInteger");
-		variableStat1.setInvalidCount(3L);
-		variableStat1.setValidCount(3L);
-		variableStat1.getStats().addValue(3.);
-		variableStat1.getStats().addValue(1.);
-		variableStatList.add(variableStat1);
+		// valid,invalid,min,max,mean,stdev
 
-		Ced2arVariableStat variableStat2 = new Ced2arVariableStat();
-		variableStat2.setName("TestString");
-		variableStat2.setInvalidCount(3L);
-		variableStat2.setValidCount(3L);
-		variableStat2.getStats().addValue(3.);
-		variableStat2.getStats().addValue(1.);
-		variableStatList.add(variableStat2);
+		StringBuilder builder = new StringBuilder();
+		builder.append("TestInteger,TestInteger,3,3,1.0,3.0,2.0,1.4142135623730951\n");
+		builder.append("TestString,TestInteger,3,3,1.0,3.0,2.0,1.4142135623730951\n");
 
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestString", "invalid,valid,max,min,mean");
@@ -81,8 +70,9 @@ public class AbstractFragmentInstanceGeneratorTest {
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
-			variableStatList,
+			builder.toString(),
 			excludeVariableToStatMap,
+			new ArrayList<>(),
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",

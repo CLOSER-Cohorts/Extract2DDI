@@ -53,7 +53,7 @@ public class FragmentInstanceGeneratorTest extends AbstractFragmentInstanceGener
 		Assert.assertEquals("VariablesInRecord", variablesInRecord.getNodeName());
 
 		Node variableUsed = variablesInRecord.getFirstChild();
-		Assert.assertEquals("r:VariableUsedReference", variableUsed.getNodeName());
+		Assert.assertEquals("VariableUsedReference", variableUsed.getNodeName());
 		testFragmentReference(variableUsed);
 		Assert.assertEquals("r:TypeOfObject", variableUsed.getChildNodes().item(3).getNodeName());
 		Assert.assertEquals("Variable", variableUsed.getChildNodes().item(3).getTextContent());
