@@ -31,7 +31,7 @@ public class Util {
 		_options.addOption("s", true,
 				"(optional) [true|false] Generate summary statistics");
 		_options.addOption("l", true, "(optional) Observation limit");
-		_options.addOption("format", true, "(optional) DDI format (3.3Fragment or 2.5Fragment)");
+		_options.addOption("format", true, "(optional) DDI format (3.3Fragment or 2.5)");
 		_options.addOption("config", true, "(optional) Config file path");
 		_options.addOption("exclude", true, "(optional) Exclude variable statistics file path");
 	}
@@ -76,10 +76,10 @@ public class Util {
 			return "3.3Fragment";
 		}
 
-		if (format.equalsIgnoreCase("2.5Fragment") || format.equalsIgnoreCase("3.3Fragment")) {
+		if (format.equalsIgnoreCase("2.5") || format.equalsIgnoreCase("3.3Fragment")) {
 			return format;
 		} else {
-			System.out.println("Only following formats are supported: 2.5Fragment and 3.3Fragment");
+			System.out.println("Only following formats are supported: 2.5 and 3.3Fragment");
 			System.exit(1);
 			return "3.3Fragment";
 		}
