@@ -56,7 +56,6 @@ public class LogicalProductGenerator {
 	private Map<String, Frequency> variableToFrequencyMap;
 	private LogicalProduct logicalProduct;
 	private int recordCount;
-	private List<String> representationTypeCodeList;
 	private String title;
 	private List<Ced2arVariableStat> variableStatistics;
 	private int version;
@@ -330,10 +329,6 @@ public class LogicalProductGenerator {
 		return recordCount;
 	}
 
-	public List<String> getRepresentationTypeCodeList() {
-		return representationTypeCodeList;
-	}
-
 	public List<Ced2arVariableStat> getVariableStatistics() {
 		return variableStatistics;
 	}
@@ -385,6 +380,10 @@ public class LogicalProductGenerator {
 						}
 
 						String min = variableStat.getMinFormatted();
+						if (min != null && min.isEmpty()) {
+							//System.out.println("min is empty fo variable " + variable.getName());
+						}
+
 						if (!excludeMin && min != null) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(min, StatisticType.MINIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
@@ -408,24 +407,29 @@ public class LogicalProductGenerator {
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
-						if (excludeVariableStat == null || !excludeVariableStat.contains("freq")) {
-							//boolean isRepresentationTypeCodeList = getRepresentationTypeCodeList().contains(variable.getName());
+						if (excludeVariableStat == null || !excludeVariableStat.contains("freq") && getVariableToFrequencyMap() != null) {
 							if (variable.getRepresentation() instanceof CodeRepresentation) {
+								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 								for (CodeList codeList : getLogicalProduct().getCodeListList()) {
 									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
-										for (Code code : codeList.getCodeList()) {
-											//System.out.println(variable.getName());
-											for (Map.Entry entry : getVariableToFrequencyMap().entrySet()) {
-												//System.out.println(entry.getKey());
-											}
-											Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
-											long frequency = variableFrequency.getCount(code.getValue());
+										long invalidValueFrequency = variableFrequency.getCount(".");
+										if (invalidValueFrequency > 0) {
 											VariableCategoryFragment variableCategory = new VariableCategoryFragment(
-												code.getValue(),
-												Long.toString(frequency)
+												".",
+												Long.toString(invalidValueFrequency)
 											);
 											variableStatistics.addVariableCategory(variableCategory);
+										}
+										for (Code code : codeList.getCodeList()) {
+											long frequency = variableFrequency.getCount(code.getValue());
+											if (frequency > 0) {
+												VariableCategoryFragment variableCategory = new VariableCategoryFragment(
+													code.getValue(),
+													Long.toString(frequency)
+												);
+												variableStatistics.addVariableCategory(variableCategory);
+											}
 										}
 									}
 								}
@@ -555,10 +559,6 @@ public class LogicalProductGenerator {
 
 	public void setRecordCount(int recordCount) {
 		this.recordCount = recordCount;
-	}
-
-	public void setRepresentationTypeCodeList(List<String> representationTypeCodeList) {
-		this.representationTypeCodeList = representationTypeCodeList;
 	}
 
 	public void setTitle(String title) {

@@ -51,7 +51,8 @@ public class CsvGenerator {
 
 			if (isValidValue(variable, value)) {
 				variable.setValidCount(variable.getValidCount() + 1);
-				if (variable.isNumeric() && !variable.isDate()) {
+				if (variable.isNumeric()) {
+
 					try {
 						if (value.matches("-?\\d+(\\.\\d+)?"))
 							variable.getStats().addValue(
@@ -64,15 +65,12 @@ public class CsvGenerator {
 								+ observation);
 					}
 				}
-
-				//if (variable.isRepresentationTypeCodeList()) {
-				Frequency frequency = variableToFrequencyMap.get(variable.getName());
-
-				if (frequency != null && value != null) {
-					frequency.addValue(value);
-				}
 			} else {
 				variable.setInvalidCount(variable.getInvalidCount() + 1);
+			}
+			Frequency frequency = variableToFrequencyMap.get(variable.getName());
+			if (frequency != null && value != null && variable.isNumeric()) {
+				frequency.addValue(value);
 			}
 		}
 		return readErrors;

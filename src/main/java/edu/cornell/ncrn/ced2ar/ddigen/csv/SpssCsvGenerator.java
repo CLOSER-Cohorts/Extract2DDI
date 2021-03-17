@@ -131,7 +131,7 @@ public class SpssCsvGenerator extends CsvGenerator {
 		List<Ced2arVariableStat> ced2arVariableStats = getVariableStats(spssFile);
 		Map<String, Frequency> variableToFrequencyMap = new HashMap<>();
 		for (Ced2arVariableStat variableStat : ced2arVariableStats) {
-			if (variableStat.containsCategory()) {
+			if (variableStat.isNumeric()) {
 				variableToFrequencyMap.put(variableStat.getName(), new Frequency());
 			}
 		}
