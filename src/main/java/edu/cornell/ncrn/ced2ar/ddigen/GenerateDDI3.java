@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
-import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
@@ -14,7 +13,6 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -64,15 +62,15 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
-			variableCsv.getVariableStatistics(),
+			variableCsv.getVariableStatList(),
 			getExcludeVariableToStatMap(),
-			variableCsv.getRepresentationTypeCodeList(),
+			//variableCsv.getRepresentationTypeCodeList(),
 			getAgency(),
 			getDdiLanguage(),
 			dataFile,
 			recordCount
 		);
-		logicalProductGenerator.setFrequency(variableCsv.getFrequency());
+		logicalProductGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);

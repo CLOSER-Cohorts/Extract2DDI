@@ -129,14 +129,24 @@ public class SpssCsvGenerator extends CsvGenerator {
 		logger.info("Metadata is loaded from spssFile");
 
 		List<Ced2arVariableStat> ced2arVariableStats = getVariableStats(spssFile);
-		Frequency frequency = new Frequency();
+		//Frequency frequency = new Frequency();
+		Map<String, Frequency> variableToFrequencyMap = new HashMap<>();
+		for (Ced2arVariableStat variableStat : ced2arVariableStats) {
+/*			System.out.println("name : " + variableStat.getRepresentationType());
+			System.out.println("label : " + variableStat.getLabel());
+			System.out.println("type : " + variableStat.getType());
+			System.out.println("repres type : " + variableStat.getRepresentationType());*/
+			if (variableStat.getContainsCategory()) {
+				variableToFrequencyMap.put(variableStat.getName(), new Frequency());
+			}
+		}
 
 		long endTime = System.currentTimeMillis();
 		logger.info("Time to process Meta Data "
 				+ ((endTime - startTime) / 1000) + " seconds");
 		long readErrors = 0;
 		if (includeSummaryStatistics) {
-			readErrors = setSummaryStatistics(spssFile, ced2arVariableStats, frequency, recordLimit);
+			readErrors = setSummaryStatistics(spssFile, ced2arVariableStats, variableToFrequencyMap, recordLimit);
 		}
 
 		endTime = System.currentTimeMillis();
@@ -147,19 +157,22 @@ public class SpssCsvGenerator extends CsvGenerator {
 				ced2arVariableStats, includeSummaryStatistics);
 		String variableValueLabels = getVariableValueLabelCSV(ced2arVariableStats);
 
+		System.out.println(variableValueLabels);
+
 		VariableCsv variablesCSV = new VariableCsv();
 		variablesCSV.setVariableStatistics(variableStatistics);
 		variablesCSV.setVariableValueLables(variableValueLabels);
 		variablesCSV.setReadErrors(readErrors);
-		variablesCSV.setFrequency(frequency);
+		variablesCSV.setVariableToFrequencyMap(variableToFrequencyMap);
+		variablesCSV.setVariableStatList(ced2arVariableStats);
 
-		List<String> representationTypeCodeList = new ArrayList<>();
+/*		List<String> representationTypeCodeList = new ArrayList<>();
 		for (Ced2arVariableStat variableStat : ced2arVariableStats) {
-			if (variableStat.isRepresentationTypeCodeList()) {
+			if (variableStat.getContainsCategory()) {
 				representationTypeCodeList.add(variableStat.getName());
 			}
-		}
-		variablesCSV.setRepresentationTypeCodeList(representationTypeCodeList);
+		}*/
+		//variablesCSV.setRepresentationTypeCodeList(representationTypeCodeList);
 
 		return variablesCSV;
 	}
@@ -173,23 +186,34 @@ public class SpssCsvGenerator extends CsvGenerator {
 			if (i % 1001 == 1000)
 				logger.info("Reading  variable " + i + "of " + totalVariables);
 			SPSSVariable spssVariable = spssFile.getVariable(i);
+
 			Ced2arVariableStat variable = new Ced2arVariableStat();
 			variable.setName(spssVariable.getName());
 			variable.setLabel(spssVariable.getLabel());
 			variable.setType(spssVariable.getDDI3DataType());
-			variable.setRepresentationType("" + spssVariable.getDDI3RepresentationType());
+			//variable.setRepresentationType("" + spssVariable.getDDI3RepresentationType());
 
 			int width = spssVariable.variableRecord.getWriteFormatWidth();
+
+			//System.out.println(spssVariable.getValueAsString());
+
 			variable.setStartPosition(startPosition);
 			startPosition += width;
 			variable.setEndPosition(startPosition);
 			variable.setVariableNumber(spssVariable.getVariableNumber());
 			if (spssVariable.categoryMap != null) {
+				//System.out.println("name : " + variable.getName() + " category map count: " + spssVariable.categoryMap.size());
+
+				if (spssVariable.categoryMap.size() > 0) {
+					variable.setContainsCategory(true);
+				}
+
 				Iterator it = spssVariable.categoryMap.entrySet().iterator();
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry) it.next();
 					SPSSVariableCategory cat = (SPSSVariableCategory) pair
 						.getValue();
+					//System.out.println(cat.label);
 					//System.out.println(" cat label " + cat.label + " cat value " + cat.value);
 
 					if (cat.isMissing()) {
@@ -233,7 +257,7 @@ public class SpssCsvGenerator extends CsvGenerator {
 	public long setSummaryStatistics(
 		SPSSFile spssFile,
 		List<Ced2arVariableStat> variables,
-		Frequency frequency,
+		Map<String, Frequency> variableToFrequencyMap,
 		long recordLimit
 	) throws IOException, SPSSFileException {
 		long totalRecords = spssFile.getRecordCount();
@@ -241,6 +265,18 @@ public class SpssCsvGenerator extends CsvGenerator {
 		logger.info("Total Records " + totalRecords);
 		FileFormatInfo fileFormatCSV = new FileFormatInfo();
 		fileFormatCSV.asciiFormat = ASCIIFormat.CSV;
+
+/*		for (Ced2arVariableStat entry : variables) {
+			System.out.println("name : " + entry.getName());
+			System.out.println("label : " + entry.getLabel());
+			System.out.println("type : " + entry.getType());
+			System.out.println("repres type : " + entry.getRepresentationType());
+		}*/
+
+/*		for (Map.Entry entry : variableToFrequencyMap.entrySet()) {
+			System.out.println(entry.getKey());
+		}*/
+
 		for (int i = 1; i <= totalRecords; i++) {
 			if (i % 1000 == 999)
 				logger.info("Processing record " + (i + 1) + " of "
@@ -253,8 +289,9 @@ public class SpssCsvGenerator extends CsvGenerator {
 			try {
 				String record = spssFile
 						.getRecordFromDisk(fileFormatCSV, false);
+				//System.out.println(record);
 				String[] varValues = record.split(",");
-				readErrors = updateVariableStatistics(variables, frequency, varValues);
+				readErrors = updateVariableStatistics(variables, variableToFrequencyMap, varValues);
 			} catch (Exception ex) {
 				logger.error("An error occured in reding observation " + i
 						+ ". Skipping this observation " + ex);

@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment;
 
+import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategoryReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.category.CategorySchemeFragment;
@@ -52,19 +53,18 @@ public class LogicalProductGenerator {
 	private String agency;
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
-	private Frequency frequency;
+	private Map<String, Frequency> variableToFrequencyMap;
 	private LogicalProduct logicalProduct;
 	private int recordCount;
 	private List<String> representationTypeCodeList;
 	private String title;
-	private String variableStatistics;
+	private List<Ced2arVariableStat> variableStatistics;
 	private int version;
 
 	public LogicalProductGenerator(
 		LogicalProduct logicalProduct,
-		String variableStatistics,
+		List<Ced2arVariableStat> variableStatistics,
 		Map<String, String> excludeVariableToStatMap,
-		List<String> representationTypeCodeList,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -76,7 +76,6 @@ public class LogicalProductGenerator {
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setTitle(title);
 		setRecordCount(recordCount);
-		setRepresentationTypeCodeList(representationTypeCodeList);
 		setVariableStatistics(variableStatistics);
 		setVersion(1);
 	}
@@ -97,7 +96,6 @@ public class LogicalProductGenerator {
 			CategorySchemeFragment fragment = new CategorySchemeFragment(categorySchemeId.toString(), getAgency(), getVersion());
 			fragmentList.add(fragment);
 			for (Category category : categoryScheme.getCategoryList()) {
-				//System.out.println(category.getId());
 				String id = categoryIdToUuidMap.get(category.getId()).toString();
 				CategoryReferenceFragment reference = new CategoryReferenceFragment(id, getAgency(), getVersion());
 				fragment.addCategoryReference(reference);
@@ -143,11 +141,11 @@ public class LogicalProductGenerator {
 	}
 
 	private DataRelationshipFragment getDataRelationshipFragment(
-		String dataRelationshipId,
+		UUID dataRelationshipId,
 		Map<String, UUID> variableIdToUuidMap
 	) {
 		DataRelationshipFragment dataRelationshipFragment = new DataRelationshipFragment(
-			dataRelationshipId,
+			dataRelationshipId.toString(),
 			getAgency(),
 			getVersion()
 		);
@@ -183,17 +181,20 @@ public class LogicalProductGenerator {
 		return excludeVariableToStatMap;
 	}
 
-	public Frequency getFrequency() {
-		return frequency;
+	public Map<String, Frequency> getVariableToFrequencyMap() {
+		return variableToFrequencyMap;
 	}
 
 	public LogicalProduct getLogicalProduct() {
 		return logicalProduct;
 	}
 
-	private PhysicalInstanceFragment getPhysicalInstanceFragment(String dataRelationshipId) {
+	private PhysicalInstanceFragment getPhysicalInstanceFragment(
+		UUID physicalInstanceId,
+		UUID dataRelationshipId
+	) {
 		PhysicalInstanceFragment physicalInstanceReference = new PhysicalInstanceFragment(
-			UUID.randomUUID().toString(),
+			physicalInstanceId.toString(),
 			getAgency(),
 			getVersion()
 		);
@@ -204,7 +205,7 @@ public class LogicalProductGenerator {
 		physicalInstanceReference.setCitation(citation);
 
 		DataRelationshipReferenceFragment dataRelationshipReference = new DataRelationshipReferenceFragment(
-			dataRelationshipId,
+			dataRelationshipId.toString(),
 			getAgency(),
 			getVersion()
 		);
@@ -227,7 +228,7 @@ public class LogicalProductGenerator {
 	public Fragment getResourcePackageFragment(
 		String title,
 		Map<String, UUID> categorySchemeIdToUuidMap,
-		Map<String, UUID> physicalInstanceIdToUuidMap,
+		UUID physicalInstanceId,
 		Map<String, UUID> variableSchemeIdToUuidMap
 	) {
 		ResourcePackageFragment resourcePackage = new ResourcePackageFragment(
@@ -241,31 +242,29 @@ public class LogicalProductGenerator {
 		Citation citation = new Citation(titleElement);
 		resourcePackage.setCitation(citation);
 
-		for (Map.Entry physicalInstanceEntry : physicalInstanceIdToUuidMap.entrySet()) {
-			PhysicalInstanceReferenceFragment fragment = new PhysicalInstanceReferenceFragment(
-				physicalInstanceEntry.getValue().toString(),
-				getAgency(),
-				getVersion()
-			);
-			resourcePackage.addPhysicalInstanceReference(fragment);
-		}
+		PhysicalInstanceReferenceFragment fragment = new PhysicalInstanceReferenceFragment(
+			physicalInstanceId.toString(),
+			getAgency(),
+			getVersion()
+		);
+		resourcePackage.addPhysicalInstanceReference(fragment);
 
 		for (Map.Entry categorySchemeEntry : categorySchemeIdToUuidMap.entrySet()) {
-			CategorySchemeReferenceFragment fragment = new CategorySchemeReferenceFragment(
+			CategorySchemeReferenceFragment categorySchemeReference = new CategorySchemeReferenceFragment(
 				categorySchemeEntry.getValue().toString(),
 				getAgency(),
 				getVersion()
 			);
-			resourcePackage.addCategorySchemeReference(fragment);
+			resourcePackage.addCategorySchemeReference(categorySchemeReference);
 		}
 
 		for (Map.Entry variableSchemeEntry : variableSchemeIdToUuidMap.entrySet()) {
-			VariableSchemeReferenceFragment fragment = new VariableSchemeReferenceFragment(
+			VariableSchemeReferenceFragment variableSchemeReference = new VariableSchemeReferenceFragment(
 				variableSchemeEntry.getValue().toString(),
 				getAgency(),
 				getVersion()
 			);
-			resourcePackage.addVariableSchemeReference(fragment);
+			resourcePackage.addVariableSchemeReference(variableSchemeReference);
 		}
 
 		return resourcePackage;
@@ -335,7 +334,7 @@ public class LogicalProductGenerator {
 		return representationTypeCodeList;
 	}
 
-	public String getVariableStatistics() {
+	public List<Ced2arVariableStat> getVariableStatistics() {
 		return variableStatistics;
 	}
 
@@ -352,19 +351,21 @@ public class LogicalProductGenerator {
 
 				if (getExcludeVariableToStatMap().containsKey(variable.getName())) {
 					UserAttributePairFragment userAttributePair = new UserAttributePairFragment();
-					userAttributePair.addAttribute("extension:redaction-information", getExcludeVariableToStatMap().get(variable.getName()));
+					String excludeVariableMessage = getExcludeVariableToStatMap().get(variable.getName());
+					userAttributePair.addAttribute("extension:redaction-information", excludeVariableMessage);
 					variableStatistics.setUserAttributePair(userAttributePair);
 				}
 
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 
-				for (String variableStatistic : getVariableStatistics().split("\n")) {
-					if (variableStatistic.startsWith(variable.getName())) {
+				for (Ced2arVariableStat variableStat : getVariableStatistics()) {
+					System.out.println(variableStat.getName());
+					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
 						// valid,invalid,min,max,mean,stdev
 						//System.out.println(variableStatistic);
 
-						String[] variableStatisticArray = variableStatistic.split(",");
+						//String[] variableStatisticArray = variableStatistic.split(",");
 
 						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
 
@@ -375,64 +376,85 @@ public class LogicalProductGenerator {
 						boolean excludeMean = excludeVariableStat != null && excludeVariableStat.contains("mean");
 						boolean excludeStdDev = excludeVariableStat != null && excludeVariableStat.contains("stdev");
 
-						if (!excludeValid && variableStatisticArray.length > 2) {
-							String statistic = variableStatisticArray[2];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.VALID_CASES);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						Long validCount = variableStat.getValidCount();
+						if (!excludeValid && validCount != null) {
+							variableStatistics.addSummaryStatistic(
+								new SummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES)
+							);
 						}
 
-						if (!excludeInvalid && variableStatisticArray.length > 3) {
-							String statistic = variableStatisticArray[3];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.INVALID_CASES);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						Long invalidCount = variableStat.getInvalidCount();
+						if (!excludeInvalid && invalidCount != null) {
+							variableStatistics.addSummaryStatistic(
+								new SummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES)
+							);
 						}
 
-						if (!excludeMin && variableStatisticArray.length > 4) {
-							String statistic = variableStatisticArray[4];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MINIMUM);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						String min = variableStat.getMinFormatted();
+						if (!excludeMin && min != null) {
+							//String statistic = variableStatisticArray[4];
+							System.out.println(variableStat.getMinValue());
+							//SummaryStatistic summaryStatistic = ;
+							variableStatistics.addSummaryStatistic(
+								new SummaryStatistic(min, StatisticType.MINIMUM)
+							);
 						}
 
-						if (!excludeMax && variableStatisticArray.length > 5) {
-							String statistic = variableStatisticArray[5];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MAXIMUM);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						String max = variableStat.getMaxFormatted();
+						if (!excludeMax && max != null) {
+							//SummaryStatistic summaryStatistic = ;
+							variableStatistics.addSummaryStatistic(new SummaryStatistic(max, StatisticType.MAXIMUM));
 						}
 
-						if (!excludeMean && variableStatisticArray.length > 6) {
-							String statistic = variableStatisticArray[6];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.MEAN);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						String mean = variableStat.getMeanFormatted();
+						if (!excludeMean && mean != null) {
+							//String statistic = variableStatisticArray[6];
+
+							//SummaryStatistic summaryStatistic = ;
+							variableStatistics.addSummaryStatistic(new SummaryStatistic(mean, StatisticType.MEAN));
 						}
 
-						if (!excludeStdDev && variableStatisticArray.length > 7) {
-							String statistic = variableStatisticArray[7];
-							SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, StatisticType.STANDARD_DEVIATION);
-							variableStatistics.addSummaryStatistic(summaryStatistic);
+						String stdDeviation = variableStat.getStdDeviationFormatted();
+
+						if (!excludeStdDev && stdDeviation != null) {
+							//System.out.println(variableStatistic + " valid count: " + variableStatisticArray[2] + " std dev: " + variableStatisticArray[7]);
+
+
+						//SummaryStatistic summaryStatistic = ;
+							variableStatistics.addSummaryStatistic(
+								new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION)
+							);
+
+
 						}
 
 						if (excludeVariableStat == null || !excludeVariableStat.contains("freq")) {
-							boolean isRepresentationTypeCodeList = getRepresentationTypeCodeList().contains(variable.getName());
-							if (isRepresentationTypeCodeList) {
+							//boolean isRepresentationTypeCodeList = getRepresentationTypeCodeList().contains(variable.getName());
+							if (variable.getRepresentation() instanceof CodeRepresentation) {
+								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 								for (CodeList codeList : getLogicalProduct().getCodeListList()) {
-									for (Code code : codeList.getCodeList()) {
-										long frequency = getFrequency().getCount(Integer.parseInt(code.getValue()));
-										VariableCategoryFragment variableCategory = new VariableCategoryFragment(code.getValue(), Long.toString(frequency));
-										variableStatistics.addVariableCategory(variableCategory);
+									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
+										for (Code code : codeList.getCodeList()) {
+											//System.out.println(variable.getName());
+											for (Map.Entry entry : getVariableToFrequencyMap().entrySet()) {
+
+												//System.out.println(entry.getKey());
+											}
+											Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
+											long frequency = variableFrequency.getCount(code.getValue());
+											VariableCategoryFragment variableCategory = new VariableCategoryFragment(
+												code.getValue(),
+												Long.toString(frequency)
+											);
+											variableStatistics.addVariableCategory(variableCategory);
+										}
 									}
 								}
 							}
 						}
-
 						break;
 					}
 				}
-
-				/*for (Ced2arVariableStat variableStat : getVariableStatList()) {
-					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
-
-					}
-				}*/
 
 				fragmentList.add(variableStatistics);
 			}
@@ -482,6 +504,8 @@ public class LogicalProductGenerator {
 			variableSchemeIdToUuidMap.put(variableScheme.getId(), UUID.randomUUID());
 		}
 
+		UUID physicalInstanceId = UUID.randomUUID();
+
 		Fragment topLevelReferenceFragment = new TopLevelReferenceFragment(
 			UUID.randomUUID().toString(),
 			getAgency(),
@@ -492,7 +516,7 @@ public class LogicalProductGenerator {
 		Fragment resourcePackageFragment = getResourcePackageFragment(
 			getTitle(),
 			categorySchemeIdToUuidMap,
-			codeListIdToUuidMap,
+			physicalInstanceId,
 			variableSchemeIdToUuidMap
 		);
 
@@ -510,9 +534,10 @@ public class LogicalProductGenerator {
 			getVariableFragmentList(variableSchemeIdToUuidMap, variableIdToUuidMap);
 		fragmentList.addAll(variableFragmentList);
 
-		String dataRelationshipId = UUID.randomUUID().toString();
+		UUID dataRelationshipId = UUID.randomUUID();
 
 		PhysicalInstanceFragment physicalInstanceReference = getPhysicalInstanceFragment(
+			physicalInstanceId,
 			dataRelationshipId
 		);
 		fragmentList.add(physicalInstanceReference);
@@ -537,8 +562,8 @@ public class LogicalProductGenerator {
 		this.ddiLanguage = ddiLanguage;
 	}
 
-	public void setFrequency(Frequency frequency) {
-		this.frequency = frequency;
+	public void setVariableToFrequencyMap(Map<String, Frequency> map) {
+		this.variableToFrequencyMap = map;
 	}
 
 	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
@@ -561,7 +586,7 @@ public class LogicalProductGenerator {
 		this.title = title;
 	}
 
-	public void setVariableStatistics(String variableStatistics) {
+	public void setVariableStatistics(List<Ced2arVariableStat> variableStatistics) {
 		this.variableStatistics = variableStatistics;
 	}
 
