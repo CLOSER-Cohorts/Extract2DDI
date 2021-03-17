@@ -360,12 +360,8 @@ public class LogicalProductGenerator {
 
 
 				for (Ced2arVariableStat variableStat : getVariableStatistics()) {
-					System.out.println(variableStat.getName());
 					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
 						// valid,invalid,min,max,mean,stdev
-						//System.out.println(variableStatistic);
-
-						//String[] variableStatisticArray = variableStatistic.split(",");
 
 						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
 
@@ -378,54 +374,38 @@ public class LogicalProductGenerator {
 
 						Long validCount = variableStat.getValidCount();
 						if (!excludeValid && validCount != null) {
-							variableStatistics.addSummaryStatistic(
-								new SummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES)
-							);
+							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						Long invalidCount = variableStat.getInvalidCount();
 						if (!excludeInvalid && invalidCount != null) {
-							variableStatistics.addSummaryStatistic(
-								new SummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES)
-							);
+							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String min = variableStat.getMinFormatted();
 						if (!excludeMin && min != null) {
-							//String statistic = variableStatisticArray[4];
-							System.out.println(variableStat.getMinValue());
-							//SummaryStatistic summaryStatistic = ;
-							variableStatistics.addSummaryStatistic(
-								new SummaryStatistic(min, StatisticType.MINIMUM)
-							);
+							SummaryStatistic summaryStatistic = new SummaryStatistic(min, StatisticType.MINIMUM);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String max = variableStat.getMaxFormatted();
 						if (!excludeMax && max != null) {
-							//SummaryStatistic summaryStatistic = ;
-							variableStatistics.addSummaryStatistic(new SummaryStatistic(max, StatisticType.MAXIMUM));
+							SummaryStatistic summaryStatistic = new SummaryStatistic(max, StatisticType.MAXIMUM);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String mean = variableStat.getMeanFormatted();
 						if (!excludeMean && mean != null) {
-							//String statistic = variableStatisticArray[6];
-
-							//SummaryStatistic summaryStatistic = ;
-							variableStatistics.addSummaryStatistic(new SummaryStatistic(mean, StatisticType.MEAN));
+							SummaryStatistic summaryStatistic = new SummaryStatistic(mean, StatisticType.MEAN);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String stdDeviation = variableStat.getStdDeviationFormatted();
-
 						if (!excludeStdDev && stdDeviation != null) {
-							//System.out.println(variableStatistic + " valid count: " + variableStatisticArray[2] + " std dev: " + variableStatisticArray[7]);
-
-
-						//SummaryStatistic summaryStatistic = ;
-							variableStatistics.addSummaryStatistic(
-								new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION)
-							);
-
-
+							SummaryStatistic summaryStatistic = new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION);
+							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						if (excludeVariableStat == null || !excludeVariableStat.contains("freq")) {
@@ -437,7 +417,6 @@ public class LogicalProductGenerator {
 										for (Code code : codeList.getCodeList()) {
 											//System.out.println(variable.getName());
 											for (Map.Entry entry : getVariableToFrequencyMap().entrySet()) {
-
 												//System.out.println(entry.getKey());
 											}
 											Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());

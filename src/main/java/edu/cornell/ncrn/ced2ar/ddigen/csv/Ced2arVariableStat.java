@@ -191,7 +191,7 @@ public class Ced2arVariableStat implements Serializable {
 		this.type = type;
 	}
 
-	public boolean getContainsCategory() {
+	public boolean containsCategory() {
 		return containsCategory;
 	}
 

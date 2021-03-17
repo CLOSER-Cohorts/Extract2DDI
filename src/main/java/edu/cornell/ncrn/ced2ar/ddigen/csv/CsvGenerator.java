@@ -69,10 +69,8 @@ public class CsvGenerator {
 				Frequency frequency = variableToFrequencyMap.get(variable.getName());
 
 				if (frequency != null && value != null) {
-					//System.out.println("variable name " + variable.getLabel() + " start position: " + variable.getStartPosition());
 					frequency.addValue(value);
 				}
-				//}
 			} else {
 				variable.setInvalidCount(variable.getInvalidCount() + 1);
 			}
