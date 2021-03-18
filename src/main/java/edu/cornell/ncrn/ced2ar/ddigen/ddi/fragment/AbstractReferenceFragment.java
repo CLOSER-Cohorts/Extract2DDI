@@ -14,13 +14,13 @@ public abstract class AbstractReferenceFragment extends Fragment {
 	@Override
 	public void appendToElement(Element element, Document doc) {
 		Element variable = doc.createElement(getNodeNameReference());
-		element.appendChild(variable);
-
 		super.appendToElement(variable, doc);
 
 		Element objectType = doc.createElement(NODE_NAME_OBJECT_TYPE);
 		objectType.setTextContent(getObjectType());
 		variable.appendChild(objectType);
+
+		element.appendChild(variable);
 	}
 
 	protected abstract String getNodeNameReference();

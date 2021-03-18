@@ -373,19 +373,33 @@ public class LogicalProductGenerator {
 						boolean excludeInvalid = !statisticList.contains("invalid");
 						boolean excludeMin = !statisticList.contains("min");
 						boolean excludeMax = !statisticList.contains("max");
-						boolean excludeMean = !statisticList.contains("mean");
+						boolean excludeMean = !statisticList.contains("mean"); //false
 						boolean excludeStdDev = !statisticList.contains("stdev");
 
 						if (excludeVariableStat != null) {
-							String[] excludeVariableStatArray = excludeVariableStat.split(",");
-							List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray);
+							String[] excludeVariableStatArray = excludeVariableStat.split(":");
 
-							excludeValid = excludeVariableStatList.contains("valid");
-							excludeInvalid = excludeVariableStatList.contains("invalid");
-							excludeMin = excludeVariableStatList.contains("min");
-							excludeMax = excludeVariableStatList.contains("max");
-							excludeMean = excludeVariableStatList.contains("mean");
-							excludeStdDev = excludeVariableStatList.contains("stdev");
+							if (excludeVariableStatArray.length > 0 && !excludeVariableStatArray[0].isEmpty()) {
+								List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray[0].split(","));
+								if (!excludeValid) {
+									excludeValid = excludeVariableStatList.contains("valid");
+								}
+								if (!excludeInvalid) {
+									excludeInvalid = excludeVariableStatList.contains("invalid");
+								}
+								if (!excludeMin) {
+									excludeMin = excludeVariableStatList.contains("min");
+								}
+								if (!excludeMax) {
+									excludeMax = excludeVariableStatList.contains("max");
+								}
+								if (!excludeMean) {
+									excludeMean = excludeVariableStatList.contains("mean");
+								}
+								if (!excludeStdDev) {
+									excludeStdDev = excludeVariableStatList.contains("stdev");
+								}
+							}
 						}
 
 						Long validCount = variableStat.getValidCount();

@@ -27,6 +27,25 @@ import org.w3c.dom.Node;
 public class AbstractFragmentInstanceGeneratorTest {
 
 	protected static Document fragmentInstanceDocument;
+	protected static List<Ced2arVariableStat> variableStatList = new ArrayList<>();
+
+	static {
+		Ced2arVariableStat variableStat1 = new Ced2arVariableStat();
+		variableStat1.setName("TestInteger");
+		variableStat1.setValidCount(3L);
+		variableStat1.setInvalidCount(3L);
+		variableStat1.getStats().addValue(1L);
+		variableStat1.getStats().addValue(3L);
+		variableStatList.add(variableStat1);
+
+		Ced2arVariableStat variableStat2 = new Ced2arVariableStat();
+		variableStat2.setName("TestString");
+		variableStat2.setValidCount(3L);
+		variableStat1.setInvalidCount(3L);
+		variableStat2.getStats().addValue(1L);
+		variableStat2.getStats().addValue(3L);
+		variableStatList.add(variableStat2);
+	}
 
 	protected void testFragment(Node fragment) {
 		Assert.assertEquals("r:URN", fragment.getFirstChild().getNodeName());
@@ -56,23 +75,6 @@ public class AbstractFragmentInstanceGeneratorTest {
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
-
-		List<Ced2arVariableStat> variableStatList = new ArrayList<>();
-		Ced2arVariableStat variableStat1 = new Ced2arVariableStat();
-		variableStat1.setName("TestInteger");
-		variableStat1.setValidCount(3L);
-		variableStat1.setInvalidCount(3L);
-		variableStat1.getStats().addValue(1L);
-		variableStat1.getStats().addValue(3L);
-		variableStatList.add(variableStat1);
-
-		Ced2arVariableStat variableStat2 = new Ced2arVariableStat();
-		variableStat2.setName("TestString");
-		variableStat2.setValidCount(3L);
-		variableStat1.setInvalidCount(3L);
-		variableStat2.getStats().addValue(1L);
-		variableStat2.getStats().addValue(3L);
-		variableStatList.add(variableStat2);
 
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestString", "invalid,valid,max,min,mean");
