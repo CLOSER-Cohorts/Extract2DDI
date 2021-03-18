@@ -42,6 +42,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.TextRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.VariableScheme;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,12 +58,14 @@ public class LogicalProductGenerator {
 	private LogicalProduct logicalProduct;
 	private int recordCount;
 	private String title;
+	private String statistics;
 	private List<Ced2arVariableStat> variableStatistics;
 	private int version;
 
 	public LogicalProductGenerator(
 		LogicalProduct logicalProduct,
 		List<Ced2arVariableStat> variableStatistics,
+		String statistics,
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
@@ -73,6 +76,7 @@ public class LogicalProductGenerator {
 		setDdiLanguage(ddiLanguage);
 		setLogicalProduct(logicalProduct);
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
+		setStatistics(statistics);
 		setTitle(title);
 		setRecordCount(recordCount);
 		setVariableStatistics(variableStatistics);
@@ -269,6 +273,10 @@ public class LogicalProductGenerator {
 		return resourcePackage;
 	}
 
+	public String getStatistics() {
+		return statistics;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -354,18 +362,31 @@ public class LogicalProductGenerator {
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 
+				String[] statisticArray = getStatistics().split(",");
+				List<String> statisticList = Arrays.asList(statisticArray);
+
 				for (Ced2arVariableStat variableStat : getVariableStatistics()) {
 					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
-						// valid,invalid,min,max,mean,stdev
-
 						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
 
-						boolean excludeValid = excludeVariableStat != null && excludeVariableStat.contains("valid");
-						boolean excludeInvalid = excludeVariableStat != null && excludeVariableStat.contains("invalid");
-						boolean excludeMin = excludeVariableStat != null && excludeVariableStat.contains("min");
-						boolean excludeMax = excludeVariableStat != null && excludeVariableStat.contains("max");
-						boolean excludeMean = excludeVariableStat != null && excludeVariableStat.contains("mean");
-						boolean excludeStdDev = excludeVariableStat != null && excludeVariableStat.contains("stdev");
+						boolean excludeValid = !statisticList.contains("valid");
+						boolean excludeInvalid = !statisticList.contains("invalid");
+						boolean excludeMin = !statisticList.contains("min");
+						boolean excludeMax = !statisticList.contains("max");
+						boolean excludeMean = !statisticList.contains("mean");
+						boolean excludeStdDev = !statisticList.contains("stdev");
+
+						if (excludeVariableStat != null) {
+							String[] excludeVariableStatArray = excludeVariableStat.split(",");
+							List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray);
+
+							excludeValid = excludeVariableStatList.contains("valid");
+							excludeInvalid = excludeVariableStatList.contains("invalid");
+							excludeMin = excludeVariableStatList.contains("min");
+							excludeMax = excludeVariableStatList.contains("max");
+							excludeMean = excludeVariableStatList.contains("mean");
+							excludeStdDev = excludeVariableStatList.contains("stdev");
+						}
 
 						Long validCount = variableStat.getValidCount();
 						if (!excludeValid && validCount != null) {
@@ -380,10 +401,6 @@ public class LogicalProductGenerator {
 						}
 
 						String min = variableStat.getMinFormatted();
-						if (min != null && min.isEmpty()) {
-							//System.out.println("min is empty fo variable " + variable.getName());
-						}
-
 						if (!excludeMin && min != null) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(min, StatisticType.MINIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
@@ -456,7 +473,6 @@ public class LogicalProductGenerator {
 		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
 		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
 			for (Category category : categoryScheme.getCategoryList()) {
-				//System.out.println(" cat scheme " + categoryScheme.getId() + " cat " + category.getId());
 				if (category.getId() != null) {
 					categoryIdToUuidMap.put(category.getId(), UUID.randomUUID());
 				}
@@ -559,6 +575,10 @@ public class LogicalProductGenerator {
 
 	public void setRecordCount(int recordCount) {
 		this.recordCount = recordCount;
+	}
+
+	public void setStatistics(String statistics) {
+		this.statistics = statistics;
 	}
 
 	public void setTitle(String title) {

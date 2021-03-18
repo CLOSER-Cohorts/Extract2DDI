@@ -54,6 +54,8 @@ public class Main {
 		String formatOutput;
 		ConfigUtil configUtil;
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
+		String stats;
+		String outputFile;
 
 		if (config != null && !config.isEmpty()) {
 			Util.fileCheck(config);
@@ -65,7 +67,6 @@ public class Main {
 			obsLimit = configUtil.getObservationLimit();
 			formatOutput = configUtil.getDdiLanguage();
 			dataFile = configUtil.getFilename();
-
 		} else {
 			if (StringUtils.isEmpty(dataFile)) {
 				util.help();
@@ -91,6 +92,8 @@ public class Main {
 
 		String agency = configUtil.getAgency();
 		String ddiLanguage = configUtil.getDdiLanguage();
+		stats = configUtil.getStats();
+		outputFile = configUtil.getOutputFile();
 
 		Util.fileCheck(dataFile);
 
@@ -98,10 +101,9 @@ public class Main {
 		if (formatOutput.equalsIgnoreCase("2.5")) {
 			generateDDI = new GenerateDDI();
 		} else {
-			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap);
+			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 		}
 		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
-
 
 		System.out.println("Finished. Exiting.");
 	}

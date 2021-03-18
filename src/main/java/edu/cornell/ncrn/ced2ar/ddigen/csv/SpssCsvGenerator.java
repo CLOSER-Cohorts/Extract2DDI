@@ -176,7 +176,6 @@ public class SpssCsvGenerator extends CsvGenerator {
 			variable.setName(spssVariable.getName());
 			variable.setLabel(spssVariable.getLabel());
 			variable.setType(spssVariable.getDDI3DataType());
-			//variable.setRepresentationType("" + spssVariable.getDDI3RepresentationType());
 
 			int width = spssVariable.variableRecord.getWriteFormatWidth();
 

@@ -54,25 +54,16 @@ public class AbstractFragmentInstanceGeneratorTest {
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
 		Document document = spssGen.getLogicalProduct(file);
 
-		Properties properties = FileUtil.getPropertiesFromResource(
-			AbstractFragmentInstanceGeneratorTest.class);
+		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
 
-		// valid,invalid,min,max,mean,stdev
-
-		StringBuilder builder = new StringBuilder();
 		List<Ced2arVariableStat> variableStatList = new ArrayList<>();
 		Ced2arVariableStat variableStat1 = new Ced2arVariableStat();
 		variableStat1.setName("TestInteger");
 		variableStat1.setValidCount(3L);
 		variableStat1.setInvalidCount(3L);
-		//variableStat1.getStats().addValue(3L);
 		variableStat1.getStats().addValue(1L);
 		variableStat1.getStats().addValue(3L);
-		/*variableStat1.setMinFormatted("1.0");
-		variableStat1.setMaxFormatted("3.0");
-		variableStat1.setMeanFormatted("2.0");
-		variableStat1.setStdDeviationFormatted("1.4142135623730951");*/
 		variableStatList.add(variableStat1);
 
 		Ced2arVariableStat variableStat2 = new Ced2arVariableStat();
@@ -81,15 +72,7 @@ public class AbstractFragmentInstanceGeneratorTest {
 		variableStat1.setInvalidCount(3L);
 		variableStat2.getStats().addValue(1L);
 		variableStat2.getStats().addValue(3L);
-/*		variableStat2.setMinFormatted("1.0");
-		variableStat2.setMaxFormatted("3.0");
-		variableStat2.setMeanFormatted("2.0");
-		variableStat2.setStdDeviationFormatted("1.4142135623730951");*/
 		variableStatList.add(variableStat2);
-
-
-		//builder.append("TestInteger,TestInteger,3,3,1.0,3.0,2.0,1.4142135623730951\n");
-		//builder.append("TestString,TestInteger,3,3,1.0,3.0,2.0,1.4142135623730951\n");
 
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestString", "invalid,valid,max,min,mean");
@@ -98,6 +81,7 @@ public class AbstractFragmentInstanceGeneratorTest {
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
 			variableStatList,
+			configUtil.getStats(),
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
