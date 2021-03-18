@@ -378,6 +378,7 @@ public class LogicalProductGenerator {
 						boolean excludeMax = !statisticList.isEmpty() && !statisticList.contains("max");
 						boolean excludeMean = !statisticList.isEmpty() && !statisticList.contains("mean");
 						boolean excludeStdDev = !statisticList.isEmpty() && !statisticList.contains("stdev");
+						boolean excludeFrequency = !statisticList.isEmpty() && !statisticList.contains("freq");
 
 						if (excludeVariableStat != null) {
 							String[] excludeVariableStatArray = excludeVariableStat.split(":");
@@ -401,6 +402,9 @@ public class LogicalProductGenerator {
 								}
 								if (!excludeStdDev) {
 									excludeStdDev = excludeVariableStatList.contains("stdev");
+								}
+								if (!excludeFrequency) {
+									excludeFrequency = excludeVariableStatList.contains("freq");
 								}
 							}
 						}
@@ -440,8 +444,8 @@ public class LogicalProductGenerator {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
+						if (!excludeFrequency && getVariableToFrequencyMap() != null) {
 
-						if (excludeVariableStat == null || !excludeVariableStat.contains("freq") && getVariableToFrequencyMap() != null) {
 							if (variable.getRepresentation() instanceof CodeRepresentation) {
 								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
