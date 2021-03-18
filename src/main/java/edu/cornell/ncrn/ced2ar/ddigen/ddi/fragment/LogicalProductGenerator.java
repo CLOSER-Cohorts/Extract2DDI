@@ -362,19 +362,22 @@ public class LogicalProductGenerator {
 				variableStatistics.setVariableReference(variableReferenceFragment);
 
 
-				String[] statisticArray = getStatistics().split(",");
-				List<String> statisticList = Arrays.asList(statisticArray);
+				List<String> statisticList = new ArrayList<>();
+				if (getStatistics() != null && !getStatistics().trim().isEmpty()) {
+					String[] statisticArray = getStatistics().split(",");
+					statisticList.addAll(Arrays.asList(statisticArray));
+				}
 
 				for (Ced2arVariableStat variableStat : getVariableStatistics()) {
 					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
 						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
 
-						boolean excludeValid = !statisticList.contains("valid");
-						boolean excludeInvalid = !statisticList.contains("invalid");
-						boolean excludeMin = !statisticList.contains("min");
-						boolean excludeMax = !statisticList.contains("max");
-						boolean excludeMean = !statisticList.contains("mean"); //false
-						boolean excludeStdDev = !statisticList.contains("stdev");
+						boolean excludeValid = !statisticList.isEmpty() && !statisticList.contains("valid");
+						boolean excludeInvalid = !statisticList.isEmpty() && !statisticList.contains("invalid");
+						boolean excludeMin = !statisticList.isEmpty() && !statisticList.contains("min");
+						boolean excludeMax = !statisticList.isEmpty() && !statisticList.contains("max");
+						boolean excludeMean = !statisticList.isEmpty() && !statisticList.contains("mean");
+						boolean excludeStdDev = !statisticList.isEmpty() && !statisticList.contains("stdev");
 
 						if (excludeVariableStat != null) {
 							String[] excludeVariableStatArray = excludeVariableStat.split(":");

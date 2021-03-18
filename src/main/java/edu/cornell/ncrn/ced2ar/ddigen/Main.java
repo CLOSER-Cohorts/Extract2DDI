@@ -52,6 +52,9 @@ public class Main {
 		Boolean summaryStats;
 		Long obsLimit;
 		String formatOutput;
+		formatOutput = Util.formatCheck(format);
+		summaryStats = Util.runSumStatsCheck(processSummaryStatics);
+		obsLimit = Util.observationLimitCheck(observationLimit);
 		ConfigUtil configUtil;
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		String stats;
@@ -63,10 +66,18 @@ public class Main {
 			Properties properties = FileUtil.getPropertiesFromFile(config);
 			configUtil = new ConfigUtil(properties);
 
-			summaryStats = configUtil.getSumStats();
-			obsLimit = configUtil.getObservationLimit();
-			formatOutput = configUtil.getDdiLanguage();
-			dataFile = configUtil.getFilename();
+			if ((dataFile == null || dataFile.trim().isEmpty()) && configUtil.getFilename() != null) {
+				dataFile = configUtil.getFilename();
+			}
+			if (formatOutput.trim().isEmpty() && configUtil.getFormat() != null) {
+				formatOutput = configUtil.getFormat();
+			}
+			if (obsLimit == -1L) {
+				obsLimit = configUtil.getObservationLimit();
+			}
+			if (!summaryStats) {
+				summaryStats = configUtil.getSumStats();
+			}
 		} else {
 			if (StringUtils.isEmpty(dataFile)) {
 				util.help();
@@ -74,9 +85,6 @@ public class Main {
 
 			Properties properties = FileUtil.getPropertiesFromResource(LogicalProductGenerator.class);
 			configUtil = new ConfigUtil(properties);
-			summaryStats = Util.runSumStatsCheck(processSummaryStatics);
-			obsLimit = Util.observationLimitCheck(observationLimit);
-			formatOutput = Util.formatCheck(format);
 		}
 
 		if (exclude != null && !exclude.isEmpty()) {
@@ -95,6 +103,7 @@ public class Main {
 		stats = configUtil.getStats();
 		outputFile = configUtil.getOutputFile();
 
+		System.out.println(dataFile);
 		Util.fileCheck(dataFile);
 
 		AbstractGenerateDDI generateDDI;
