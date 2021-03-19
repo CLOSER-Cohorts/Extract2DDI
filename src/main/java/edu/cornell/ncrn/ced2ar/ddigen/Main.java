@@ -106,12 +106,7 @@ public class Main {
 		System.out.println(dataFile);
 		Util.fileCheck(dataFile);
 
-		AbstractGenerateDDI generateDDI;
-		if (formatOutput.equalsIgnoreCase("2.5")) {
-			generateDDI = new GenerateDDI();
-		} else {
-			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
-		}
+		GenerateDDI generateDDI = new GenerateDDI(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 
 		System.out.println("Finished. Exiting.");

@@ -1,13 +1,13 @@
-# CED2AR data file to DDI 2.5 Generator
+# CED2AR data file to DDI 3.3 Generator
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1186913.svg)](https://doi.org/10.5281/zenodo.1186913)
 
-This project contains java classes that will allow you to read several versions of **Stata** *or* **SPSS** data sets and generate out DDI 2.5 xml files.
+This project contains java classes that will allow you to read several versions of **Stata** *or* **SPSS** data sets and generate out DDI 3.3 xml files.
 
 This maven project generates *two* .jar files.  One is used by developers and the other by end users.  The jar files are:
-* **ced2arddigenerator.jar** (*Developers*) The *normal jar* file that you can include in other projects.  This jar depends on: [ced2ar-stata-reader](https://github.com/ncrncornell/ced2ar-stata-reader) and [ced2arspssreader](https://github.com/ncrncornell/ced2arspssreader).  (This is the maven project artifact.)  
+* **ced2arddi3generator.jar** (*Developers*) The *normal jar* file that you can include in other projects.  This jar depends on: [ced2ar-stata-reader](https://github.com/ncrncornell/ced2ar-stata-reader) and [ced2arspssreader](https://github.com/ncrncornell/ced2arspssreader).  (This is the maven project artifact.)  
 
-* **ced2arddigenerator-jar-with-dependencies.jar** (*End Users*) The *runnable jar* file you can use on a command line prompt.
+* **ced2arddi3generator-jar-with-dependencies.jar** (*End Users*) The *runnable jar* file you can use on a command line prompt.
 
 ## Artifacts
 
@@ -41,14 +41,14 @@ The following code is in: ced2ardata2ddi's DataFileRestController.java file
 ```
 
 *For End Users:* 
-1. Download ced2arddigenerator-jar-with-dependencies.jar
+1. Download ced2arddi3generator-jar-with-dependencies.jar
 2. See Run Instructions in next section.
 
 
 ### Run Instructions
 Run from a terminal:
 
-`java -jar ced2arddigenerator-jar-with-dependencies.jar  -f <filename>  [ -s <sumstats>  | -l <obsLimit> ]`
+`java -jar ced2arddi3generator-jar-with-dependencies.jar  -f <filename>  [ -s <sumstats>  | -l <obsLimit> ]`
 
 usage: Options are as follows...
 ```
@@ -59,7 +59,7 @@ usage: Options are as follows...
 
 **Example**
 
-`java -jar ced2arddigenerator-jar-with-dependencies.jar  -f dataset.dta -s TRUE -l 1000`
+`java -jar ced2arddi3generator-jar-with-dependencies.jar  -f dataset.dta -s TRUE -l 1000`
 
 
 This run example generates the following files:
