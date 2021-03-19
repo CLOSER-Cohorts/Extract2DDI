@@ -65,6 +65,9 @@ public class LogicalProductFactory {
 
 			Node categorySchemeNode = codeSchemeList.item(i);
 			if (nodeNameEquals(categorySchemeNode, "CodeScheme")) {
+				String codeSchemeId = categorySchemeNode.getAttributes().getNamedItem("id").getTextContent();
+				codeList.setId(codeSchemeId);
+
 				NodeList variableNodeList = categorySchemeNode.getChildNodes();
 				for (int j = 0; j < variableNodeList.getLength(); j++) {
 					Node codeNode = variableNodeList.item(j);
@@ -162,7 +165,8 @@ public class LogicalProductFactory {
 									}
 									representation = dateTimeRepresentation;
 								} else if (nodeNameEquals(representationNode, "CodeRepresentation")) {
-									representation = new CodeRepresentation();
+									String codeSchemeId = representationNode.getFirstChild().getTextContent();
+									representation = new CodeRepresentation(codeSchemeId);
 								}
 								variable.setRepresentation(representation);
 							}

@@ -37,8 +37,9 @@ public class CsvGenerator {
 	 * @return
 	 */
 	protected long updateVariableStatistics(List<Ced2arVariableStat> variables,
-			Frequency frequency, String[] observation) {
+			Map<String, Frequency> variableToFrequencyMap, String[] observation) {
 		long readErrors = 0;
+
 		for (Ced2arVariableStat variable : variables) {
 			String value = "";
 			try {
@@ -50,7 +51,8 @@ public class CsvGenerator {
 
 			if (isValidValue(variable, value)) {
 				variable.setValidCount(variable.getValidCount() + 1);
-				if (variable.isNumeric() && !variable.isDate()) {
+				if (variable.isNumeric()) {
+
 					try {
 						if (value.matches("-?\\d+(\\.\\d+)?"))
 							variable.getStats().addValue(
@@ -63,12 +65,12 @@ public class CsvGenerator {
 								+ observation);
 					}
 				}
-
-				if (variable.isRepresentationTypeCodeList()) {
-					frequency.addValue(Long.parseLong(value));
-				}
 			} else {
 				variable.setInvalidCount(variable.getInvalidCount() + 1);
+			}
+			Frequency frequency = variableToFrequencyMap.get(variable.getName());
+			if (frequency != null && value != null && variable.isNumeric()) {
+				frequency.addValue(value);
 			}
 		}
 		return readErrors;

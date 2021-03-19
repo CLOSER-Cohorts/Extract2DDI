@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
-import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
@@ -14,7 +13,6 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -25,11 +23,21 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 	private String agency;
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
+	private String outputFile;
+	private String statistics;
 
-	public GenerateDDI3(String agency, String ddiLanguage, Map<String, String> excludeVariableToStatMap) {
+	public GenerateDDI3(
+		String agency,
+		String ddiLanguage,
+		Map<String, String> excludeVariableToStatMap,
+		String statistics,
+		String outputFile
+	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
+		setOutputFile(outputFile);
+		setStatistics(statistics);
 	}
 
 	public void generateDDI(
@@ -64,15 +72,15 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
 			logicalProduct,
-			variableCsv.getVariableStatistics(),
+			variableCsv.getVariableStatList(),
+			getStatistics(),
 			getExcludeVariableToStatMap(),
-			variableCsv.getRepresentationTypeCodeList(),
 			getAgency(),
 			getDdiLanguage(),
 			dataFile,
 			recordCount
 		);
-		logicalProductGenerator.setFrequency(variableCsv.getFrequency());
+		logicalProductGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
 
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
@@ -80,7 +88,15 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument, "UTF-8");
-		createFile(xml, dataFile+".xml");
+
+		String fileName;
+		if (getOutputFile() != null && !getOutputFile().trim().isEmpty()) {
+			fileName = getOutputFile();
+		} else {
+			fileName = dataFile;
+		}
+
+		createFile(xml, fileName + ".xml");
 		logger.info("Successfully created DDI file");
 
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
@@ -107,6 +123,14 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 		return logger;
 	}
 
+	public String getOutputFile() {
+		return outputFile;
+	}
+
+	public String getStatistics() {
+		return statistics;
+	}
+
 	public void setAgency(String agency) {
 		this.agency = agency;
 	}
@@ -117,5 +141,13 @@ public class GenerateDDI3 extends AbstractGenerateDDI {
 
 	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
+	}
+
+	public void setOutputFile(String outputFile) {
+		this.outputFile = outputFile;
+	}
+
+	public void setStatistics(String statistics) {
+		this.statistics = statistics;
 	}
 }

@@ -2,7 +2,9 @@ package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.commons.math3.stat.Frequency;
 
 public class VariableCsv implements Serializable {
@@ -10,23 +12,23 @@ public class VariableCsv implements Serializable {
 	private String variableStatistics;
 	private String variableValueLables;
 	private long readErrors;
-	private Frequency frequency;
-	private List<String> representationTypeCodeList = new ArrayList<>();
+	private Map<String, Frequency> variableToFrequencyMap = new HashMap<>();
+	private List<Ced2arVariableStat> variableStatList = new ArrayList<>();
 
-	public Frequency getFrequency() {
-		return frequency;
+	public Map<String, Frequency> getVariableToFrequencyMap() {
+		return variableToFrequencyMap;
 	}
 
-	public void setFrequency(Frequency frequency) {
-		this.frequency = frequency;
+	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {
+		this.variableToFrequencyMap = variableToFrequencyMap;
 	}
 
-	public List<String> getRepresentationTypeCodeList() {
-		return representationTypeCodeList;
+	public List<Ced2arVariableStat> getVariableStatList() {
+		return variableStatList;
 	}
 
-	public void setRepresentationTypeCodeList(List<String> representationTypeCodeList) {
-		this.representationTypeCodeList = representationTypeCodeList;
+	public void setVariableStatList(List<Ced2arVariableStat> variableStatList) {
+		this.variableStatList = variableStatList;
 	}
 
 	public String getVariableStatistics() {

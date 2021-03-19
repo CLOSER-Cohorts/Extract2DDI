@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 //import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
@@ -13,7 +14,7 @@ public class Ced2arVariableStat implements Serializable {
 	private String name;
 	private String label;
 	private String type;
-	private String representationType;
+	private boolean containsCategory;
 
 	private Long validCount = 0L;
 	private Long invalidCount = 0L;
@@ -31,6 +32,11 @@ public class Ced2arVariableStat implements Serializable {
 	private int variableNumber;
 	//private DescriptiveStatistics stats = new DescriptiveStatistics();
 	private SummaryStatistics stats = new SummaryStatistics();
+
+	private String minFormatted;
+	private String maxFormatted;
+	private String meanFormatted;
+	private String stdDeviationFormatted;
 
 	public Long getPossibleErrorValueCount() {
 		return possibleErrorValueCount;
@@ -84,12 +90,33 @@ public class Ced2arVariableStat implements Serializable {
 		return maxValue;
 	}
 
+	public String getMeanFormatted() {
+		return ((Double) stats.getMean()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMean()).toPlainString();
+	}
+
 	public void setMaxValue(Double maxValue) {
 		this.maxValue = maxValue;
 	}
 
 	public HashMap<String, String> getMissingValues() {
 		return missingValues;
+	}
+
+	public Double getStdDeviation() {
+		return stdDeviation;
+	}
+
+	public String getMaxFormatted() {
+		return ((Double) stats.getMax()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMax()).toPlainString();
+	}
+
+	public String getMinFormatted() {
+		return ((Double) stats.getMin()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMin()).toPlainString();
+	}
+
+	public String getStdDeviationFormatted() {
+		return ((Double) stats.getStandardDeviation()).equals(Double.NaN) ? "" : "" + BigDecimal
+			.valueOf(stats.getStandardDeviation()).toPlainString();
 	}
 
 	public void setStdDeviation(double stdDeviation) {
@@ -164,19 +191,12 @@ public class Ced2arVariableStat implements Serializable {
 		this.type = type;
 	}
 
-	public String getRepresentationType() {
-		return representationType;
+	public boolean containsCategory() {
+		return containsCategory;
 	}
 
-	public void setRepresentationType(String representationType) {
-		this.representationType = representationType;
-	}
-
-	public boolean isRepresentationTypeCodeList() {
-		return getType() != null
-			&& getType().equalsIgnoreCase("BigInteger")
-			&& getRepresentationType() != null
-			&& getRepresentationType().equalsIgnoreCase("NUMERIC");
+	public void setContainsCategory(boolean containsCategory) {
+		this.containsCategory = containsCategory;
 	}
 
 

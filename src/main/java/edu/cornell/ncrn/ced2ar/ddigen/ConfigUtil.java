@@ -7,6 +7,7 @@ public class ConfigUtil {
 	public static final String KEY_AGENCY = "agency";
 	public static final String KEY_DDI_LANGUAGE = "ddilang";
 	public static final String KEY_FILENAME = "filename";
+	public static final String KEY_FORMAT = "format";
 	public static final String KEY_OUTPUT_FILE = "outputfile";
 	public static final String KEY_RENAME = "rename";
 	public static final String KEY_STATS = "stats";
@@ -32,6 +33,11 @@ public class ConfigUtil {
 	public String getFilename() {
 		String filename = getProperties().getProperty(KEY_FILENAME);
 		return filename;
+	}
+
+	public String getFormat() {
+		String format = getProperties().getProperty(KEY_FORMAT);
+		return format;
 	}
 
 	public long getObservationLimit() {

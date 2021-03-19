@@ -52,8 +52,13 @@ public class Main {
 		Boolean summaryStats;
 		Long obsLimit;
 		String formatOutput;
+		formatOutput = Util.formatCheck(format);
+		summaryStats = Util.runSumStatsCheck(processSummaryStatics);
+		obsLimit = Util.observationLimitCheck(observationLimit);
 		ConfigUtil configUtil;
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
+		String stats;
+		String outputFile;
 
 		if (config != null && !config.isEmpty()) {
 			Util.fileCheck(config);
@@ -61,11 +66,18 @@ public class Main {
 			Properties properties = FileUtil.getPropertiesFromFile(config);
 			configUtil = new ConfigUtil(properties);
 
-			summaryStats = configUtil.getSumStats();
-			obsLimit = configUtil.getObservationLimit();
-			formatOutput = configUtil.getDdiLanguage();
-			dataFile = configUtil.getFilename();
-
+			if ((dataFile == null || dataFile.trim().isEmpty()) && configUtil.getFilename() != null) {
+				dataFile = configUtil.getFilename();
+			}
+			if (formatOutput.trim().isEmpty() && configUtil.getFormat() != null) {
+				formatOutput = configUtil.getFormat();
+			}
+			if (obsLimit == -1L) {
+				obsLimit = configUtil.getObservationLimit();
+			}
+			if (!summaryStats) {
+				summaryStats = configUtil.getSumStats();
+			}
 		} else {
 			if (StringUtils.isEmpty(dataFile)) {
 				util.help();
@@ -73,9 +85,6 @@ public class Main {
 
 			Properties properties = FileUtil.getPropertiesFromResource(LogicalProductGenerator.class);
 			configUtil = new ConfigUtil(properties);
-			summaryStats = Util.runSumStatsCheck(processSummaryStatics);
-			obsLimit = Util.observationLimitCheck(observationLimit);
-			formatOutput = Util.formatCheck(format);
 		}
 
 		if (exclude != null && !exclude.isEmpty()) {
@@ -91,17 +100,19 @@ public class Main {
 
 		String agency = configUtil.getAgency();
 		String ddiLanguage = configUtil.getDdiLanguage();
+		stats = configUtil.getStats();
+		outputFile = configUtil.getOutputFile();
 
+		System.out.println(dataFile);
 		Util.fileCheck(dataFile);
 
 		AbstractGenerateDDI generateDDI;
-		if (formatOutput.equalsIgnoreCase("2.5Fragment")) {
+		if (formatOutput.equalsIgnoreCase("2.5")) {
 			generateDDI = new GenerateDDI();
 		} else {
-			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap);
+			generateDDI = new GenerateDDI3(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 		}
 		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
-
 
 		System.out.println("Finished. Exiting.");
 	}
