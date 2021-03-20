@@ -52,9 +52,23 @@ Run from a terminal:
 
 usage: Options are as follows...
 ```
- -f <arg>   (required) data file name and extension.
- -l <arg>   (optional) limit number of observations to process.   Default: Process all observations
- -s <arg>   (optional) generate summary statistics.  Values: TRUE|FALSE   Default: TRUE
+ -f <arg>      (required) data file name and extension.
+
+ -l <arg>      (optional) limit number of observations to process.   Default: Process all observations
+
+ -s <arg>      (optional) generate summary statistics.  Values: TRUE|FALSE   Default: TRUE
+ 
+-config <arg> (optional) use config file with specified path. Format of the config file:
+    agency=uk.examplle.agency
+    ddilang=en-GB
+    stats=max,min,mean,valid,invalid,freq,stdev
+    outputfile=example_file_name
+    sumstats=TRUE
+    obsLimit=1000
+
+ -exclude <arg> (optional) exclude statistics for variables specified in the file with specified path. Format for the exlude file:
+    var_1=max:user message
+    var_2=freq:removed frequencies
 ```
 
 **Example**
