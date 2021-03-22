@@ -3,15 +3,15 @@
   <!-- 
       This pom.xml will generate TWO .jar files.  It uses the maven repository naming convention of: artifactId-version(-classifier).type
       The two .jar files are:
-        1) ced2arddigenerator-1.x.x.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
-        2) ced2arddigenerator-1.x.x-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
+        1) ced2arddi3generator-1.x.x.jar - The project's main-artifact.  It is the normal jar that can be included in other maven projects.
+        2) ced2arddi3generator-1.x.x-jar-with-dependencies.jar - This jar file can run on the command line.  It is also called a full or fat jar file.  It is a secondary maven artifact containing all the dependencies needed to run the .jar.
    -->
   <groupId>edu.cornell.ncrn.ced2ar.ddigen</groupId>
-  <artifactId>ced2arddigenerator</artifactId>
+  <artifactId>ced2arddi3generator</artifactId>
   <version>1.3.0</version>
  <!--
-  <name>ced2arddigenerator</name>
-  <description>ced2arddigenerator</description>
+  <name>ced2arddi3generator</name>
+  <description>ced2arddi3generator</description>
  -->
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Read several versions of Stata or SPSS data sets and generate out DDI 2.5 xml files.  Can include in other projects or run as an executable jar file.</description>
@@ -90,7 +90,7 @@
 		<!-- svn finalName Rev 1823+
 			<finalName>ced2ar_ddi_generator</finalName>
 		 -->
-		<finalName>ced2arddigenerator</finalName>
+		<finalName>ced2arddi3generator</finalName>
 		<plugins>
 			<plugin>
 	    		<groupId>org.apache.maven.plugins</groupId>
