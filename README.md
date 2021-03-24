@@ -1,5 +1,17 @@
 # CED2AR data file to DDI 3.3 Generator
 
+## Purpose 
+
+The program will output DDI 3.3 Fragment format in line with [recommended best practice](https://ddialliance.org/Specification/DDI-Lifecycle/).
+It also adds functionality to mute summary statistics on selected variables (e.g. exclude frequencies) either where these are not appropriate or to redact for other reasons. An optional message can be associated with each variable to indicate the reasons why.
+
+## Known issues
+
+Currently this does not support 
+- DDI 3.3 Instance format
+- Stata
+- Should be considered as beta pending further testing
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1186913.svg)](https://doi.org/10.5281/zenodo.1186913)
 
 This project contains java classes that will allow you to read several versions of **Stata** *or* **SPSS** data sets and generate out DDI 3.3 xml files.
@@ -59,7 +71,7 @@ usage: Options are as follows...
  -s <arg>      (optional) generate summary statistics.  Values: TRUE|FALSE   Default: TRUE
  
 -config <arg> (optional) use config file with specified path. Format of the config file:
-    agency=uk.examplle.agency
+    agency=uk.closer
     ddilang=en-GB
     stats=max,min,mean,valid,invalid,freq,stdev
     outputfile=example_file_name
