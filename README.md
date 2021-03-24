@@ -85,14 +85,14 @@ usage: Options are as follows...
 
 **Example**
 
-`java -jar ced2arddi3generator-jar-with-dependencies.jar  -f dataset.dta -s TRUE -l 1000`
+`java -jar ced2arddi3generator-jar-with-dependencies.jar  -f dataset.sav -s TRUE -l 1000`
 
 
 This run example generates the following files:
-* One DDI xml file.  dataset.dta.xml
+* One DDI xml file.  dataset.sav.xml
 * Two csv files:
-  * dataset.dta.vars.csv
-  * dataset.dta_var_values.csv
+  * dataset.sav.vars.csv
+  * dataset.sav_var_values.csv
 * One log file.  ced2arstatareader.log
 
 ---
