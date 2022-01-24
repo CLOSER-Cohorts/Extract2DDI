@@ -8,7 +8,7 @@ It also adds functionality to mute summary statistics on selected variables (e.g
 ## Known issues
 
 Currently this does not support 
-- DDI 3.3 Instance format
+- DDI 3.2 Instance format
 - Stata
 - Should be considered as beta pending further testing
 
