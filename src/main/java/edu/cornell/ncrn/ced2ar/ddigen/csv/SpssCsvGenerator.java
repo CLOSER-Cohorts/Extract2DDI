@@ -82,17 +82,17 @@ public class SpssCsvGenerator extends CsvGenerator {
 		return variableCSV;
 	}
 
-	public Document getLogicalProduct(String dataFileLocation) throws IOException, SPSSFileException {
+	public Document getDDI3LogicalProduct(String dataFileLocation) throws IOException, SPSSFileException {
 		File serverFile = new File(dataFileLocation);
-		return getLogicalProduct(serverFile);
+		return getDDI3LogicalProduct(serverFile);
 	}
 
-	public Document getLogicalProduct(File serverFile) throws IOException, SPSSFileException {
+	public Document getDDI3LogicalProduct(File serverFile) throws IOException, SPSSFileException {
 		SPSSFile spssFile = new SPSSFile(serverFile);
-		return getLogicalProduct(spssFile);
+		return getDDI3LogicalProduct(spssFile);
 	}
 
-	public Document getLogicalProduct(SPSSFile spssFile) throws IOException, SPSSFileException {
+	public Document getDDI3LogicalProduct(SPSSFile spssFile) throws IOException, SPSSFileException {
 		/**
 		 * Override SPSSFile file logging if it does not match what we want.
 		 * (The SPSSFile class dumps out a ton of data via println by default.)

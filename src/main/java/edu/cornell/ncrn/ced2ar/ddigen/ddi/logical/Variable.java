@@ -7,6 +7,13 @@ public class Variable {
 	private String name;
 	private Representation representation;
 
+	public Variable() {
+	}
+
+	public Variable(String id) {
+		setId(id);
+	}
+
 	public String getId() {
 		return id;
 	}

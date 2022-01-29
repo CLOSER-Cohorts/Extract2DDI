@@ -26,6 +26,10 @@ import org.springframework.util.StringUtils;
  */
 
 public class Main {
+
+	private static String FORMAT_OUTPUT_2_5 = "2.5";
+	private static String FORMAT_OUTPUT_3_3_FRAGMENT = "3.3Fragment";
+
 	public static void main(String args[]) throws Exception {
 		Util util = new Util();
 		String observationLimit;
@@ -103,11 +107,15 @@ public class Main {
 		stats = configUtil.getStats();
 		outputFile = configUtil.getOutputFile();
 
-		System.out.println(dataFile);
 		Util.fileCheck(dataFile);
 
-		GenerateDDI generateDDI = new GenerateDDI(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
-		generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+		if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_2_5)) {
+			GenerateDDI generateDDI = new GenerateDDI();
+			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
+			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
+			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+		}
 
 		System.out.println("Finished. Exiting.");
 	}

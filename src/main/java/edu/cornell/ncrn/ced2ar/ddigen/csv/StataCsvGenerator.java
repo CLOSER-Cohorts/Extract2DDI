@@ -16,7 +16,6 @@ package edu.cornell.ncrn.ced2ar.ddigen.csv;
  *@author NCRN Project Team 
  */
 
-import edu.cornell.ncrn.ced2ar.stata.impl.DtaHeader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,16 +63,6 @@ public class StataCsvGenerator extends CsvGenerator {
 			ced2arVariableStat.setVariableNumber(variableNumber);
 			ced2arVariableStats.add(ced2arVariableStat);
 
-			System.out.println("-----------------");
-			System.out.println(dtaVariable.getName());
-			System.out.println(dtaVariable.getRawName());
-			System.out.println(dtaVariable.getRawVariableLabel());
-			System.out.println(dtaVariable.getVariableFormat());
-			System.out.println(dtaVariable.getVariableLabel());
-			System.out.println(dtaVariable.getVariableType());
-			System.out.println(dtaVariable.getVariableValueLabelName());
-			System.out.println(dtaVariable.getVariableValueLabels());
-
 			variableToFrequencyMap.put(dtaVariable.getName(), new Frequency());
 		}
 
@@ -91,6 +80,7 @@ public class StataCsvGenerator extends CsvGenerator {
 		variablesCSV.setVariableStatistics(variableStatistics);
 		variablesCSV.setVariableValueLables(variableValueLabels);
 		variablesCSV.setReadErrors(readErrors);
+		variablesCSV.setVariableStatList(ced2arVariableStats);
 
 		return variablesCSV;
 

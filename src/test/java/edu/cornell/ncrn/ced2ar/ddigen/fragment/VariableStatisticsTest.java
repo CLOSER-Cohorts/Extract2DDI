@@ -32,7 +32,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 	public void testToDocument_AllStatisticsExcluded() throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
@@ -42,7 +42,9 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			logicalProduct.getCategorySchemeList(),
+			logicalProduct.getCodeListList(),
+			logicalProduct.getVariableSchemeList(),
 			variableStatList,
 			"mean",
 			excludeVariableToStatMap,
@@ -119,14 +121,16 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			logicalProduct.getCategorySchemeList(),
+			logicalProduct.getCodeListList(),
+			logicalProduct.getVariableSchemeList(),
 			variableStatList,
 			"mean",
 			new HashMap<>(),
@@ -166,7 +170,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 	public void testToDocument_UserMessage() throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
@@ -176,7 +180,9 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 
 		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			logicalProduct.getCategorySchemeList(),
+			logicalProduct.getCodeListList(),
+			logicalProduct.getVariableSchemeList(),
 			variableStatList,
 			"mean",
 			excludeVariableToStatMap,
