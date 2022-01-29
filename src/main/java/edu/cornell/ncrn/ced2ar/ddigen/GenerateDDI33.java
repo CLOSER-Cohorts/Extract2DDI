@@ -9,10 +9,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Variable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.VariableScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.*;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -68,11 +65,25 @@ public class GenerateDDI33 {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
 		int recordCount = 0;
-		Document logicalProductDocument = null;
+		List<CategoryScheme> categorySchemeList = new ArrayList<>();
+		List<CodeList> codeListList = new ArrayList<>();
+		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		if (dataFile.toLowerCase().endsWith(".dta")) {
 			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
 			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
+
+			List<Variable> variableList = new ArrayList<>();
+			for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {
+				Variable variable = new Variable(UUID.randomUUID().toString());
+				variable.setName(stat.getName());
+				variableList.add(variable);
+			}
+
+			VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
+			defaultVariableScheme.setVariableList(variableList);
+			variableSchemeList.add(defaultVariableScheme);
+
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
@@ -80,28 +91,19 @@ public class GenerateDDI33 {
 			File serverFile = new File(dataFile);
 			SPSSFile spssFile = new SPSSFile(serverFile);
 
-			logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
+			Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
+
+			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
+			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
+			variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
 
 			recordCount = spssFile.getRecordCount();
 		}
 
-		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(logicalProductDocument);
-
-		List<Variable> variableList = new ArrayList<>();
-		for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {
-			System.out.println("VARIABLE NAME: " + stat.getName());
-			Variable variable = new Variable(UUID.randomUUID().toString());
-			variable.setName(stat.getName());
-			variableList.add(variable);
-		}
-
-		VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
-		defaultVariableScheme.setVariableList(variableList);
-
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct.getCategorySchemeList(),
-			logicalProduct.getCodeListList(),
-			Arrays.asList(defaultVariableScheme),
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableCsv.getVariableStatList(),
 			getStatistics(),
 			getExcludeVariableToStatMap(),

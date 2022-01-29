@@ -8,7 +8,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import javax.xml.parsers.ParserConfigurationException;
+
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.VariableScheme;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.w3c.dom.Document;
@@ -79,11 +82,14 @@ public class AbstractFragmentInstanceGeneratorTest {
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestString", "invalid,valid,max,min,mean");
 
-		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
+		List<CategoryScheme> categorySchemeList = LogicalProductFactory.createCategorySchemeList(document);
+		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
+		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
+
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct.getCategorySchemeList(),
-			logicalProduct.getCodeListList(),
-			logicalProduct.getVariableSchemeList(),
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableStatList,
 			configUtil.getStats(),
 			excludeVariableToStatMap,

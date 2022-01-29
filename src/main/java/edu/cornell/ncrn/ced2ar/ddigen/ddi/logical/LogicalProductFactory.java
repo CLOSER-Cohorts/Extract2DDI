@@ -102,20 +102,20 @@ public class LogicalProductFactory {
 		return codeListList;
 	}
 
-	public static LogicalProduct createLogicalProduct(Document document) {
-		LogicalProduct logicalProduct = new LogicalProduct();
-		List<CategoryScheme> categoryList = createCategorySchemeList(document);
-		List<CodeList> codeListList = createCodeListList(document);
-		List<VariableScheme> variableList = createVariableSchemeList(document);
+//	public static LogicalProduct createLogicalProduct(Document document) {
+//		LogicalProduct logicalProduct = new LogicalProduct();
+//		List<CategoryScheme> categoryList = createCategorySchemeList(document);
+//		List<CodeList> codeListList = createCodeListList(document);
+//		List<VariableScheme> variableList = createVariableSchemeList(document);
+//
+//		logicalProduct.setCategorySchemeList(categoryList);
+//		logicalProduct.setCodeListList(codeListList);
+//		logicalProduct.setVariableSchemeList(variableList);
+//
+//		return logicalProduct;
+//	}
 
-		logicalProduct.setCategorySchemeList(categoryList);
-		logicalProduct.setCodeListList(codeListList);
-		logicalProduct.setVariableSchemeList(variableList);
-
-		return logicalProduct;
-	}
-
-	private static List<VariableScheme> createVariableSchemeList(Document document) {
+	public static List<VariableScheme> createVariableSchemeList(Document document) {
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		if (document != null) {
