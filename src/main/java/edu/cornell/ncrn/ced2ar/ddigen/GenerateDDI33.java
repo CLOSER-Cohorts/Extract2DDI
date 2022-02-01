@@ -77,6 +77,7 @@ public class GenerateDDI33 {
 			for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {
 				Variable variable = new Variable(UUID.randomUUID().toString());
 				variable.setName(stat.getName());
+				variable.setLabel(stat.getLabel());
 				variableList.add(variable);
 			}
 

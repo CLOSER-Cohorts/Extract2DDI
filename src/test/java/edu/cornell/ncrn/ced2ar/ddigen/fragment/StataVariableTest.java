@@ -17,7 +17,6 @@ public class StataVariableTest extends AbstractStataFragmentInstanceGeneratorTes
 	}
 
 	@Test
-	@Ignore
 	public void testToDocument() {
 		Node variable = getVariable(fragmentInstanceDocument);
 
