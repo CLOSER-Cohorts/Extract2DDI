@@ -5,6 +5,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.CodebookVariable;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
@@ -72,6 +73,30 @@ public class GenerateDDI33 {
 		if (dataFile.toLowerCase().endsWith(".dta")) {
 			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
 			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
+
+			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
+			List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
+
+			for (CodebookVariable codebookVariable : codebookVariables) {
+				List<Category> categoryList = new ArrayList<>();
+				for (String variableCode : codebookVariable.getVariableCodes()) {
+					if (variableCode.equalsIgnoreCase(codebookVariable.getName()))
+						continue;
+
+					String splits[] = variableCode.split("=");
+					if (splits.length < 2)
+						continue;
+
+					Category category = new Category(UUID.randomUUID().toString());
+					category.setLabel(splits[1]);
+					categoryList.add(category);
+				}
+				if (!categoryList.isEmpty()) {
+					CategoryScheme categoryScheme = new CategoryScheme();
+					categoryScheme.setCategoryList(categoryList);
+					categorySchemeList.add(categoryScheme);
+				}
+			}
 
 			List<Variable> variableList = new ArrayList<>();
 			for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {

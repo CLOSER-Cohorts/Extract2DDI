@@ -91,7 +91,7 @@ public class Ced2arVariableStat implements Serializable {
 	}
 
 	public String getMeanFormatted() {
-		return ((Double) stats.getMean()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMean()).toPlainString();
+		return ((Double) stats.getMean()).equals(Double.NaN) ? "" : "" + stats.getMean();
 	}
 
 	public void setMaxValue(Double maxValue) {
@@ -107,16 +107,15 @@ public class Ced2arVariableStat implements Serializable {
 	}
 
 	public String getMaxFormatted() {
-		return ((Double) stats.getMax()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMax()).toPlainString();
+		return ((Double) stats.getMax()).equals(Double.NaN) ? "" : "" + stats.getMax();
 	}
 
 	public String getMinFormatted() {
-		return ((Double) stats.getMin()).equals(Double.NaN) ? "" : "" + new BigDecimal(stats.getMin()).toPlainString();
+		return ((Double) stats.getMin()).equals(Double.NaN) ? "" : "" + stats.getMin();
 	}
 
 	public String getStdDeviationFormatted() {
-		return ((Double) stats.getStandardDeviation()).equals(Double.NaN) ? "" : "" + BigDecimal
-			.valueOf(stats.getStandardDeviation()).toPlainString();
+		return ((Double) stats.getStandardDeviation()).equals(Double.NaN) ? "" : "" + stats.getStandardDeviation();
 	}
 
 	public void setStdDeviation(double stdDeviation) {
