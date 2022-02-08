@@ -4,6 +4,13 @@ public class Code {
 	private String categoryId;
 	private String value;
 
+	public Code() {
+	}
+
+	public Code(String categoryId) {
+		setCategoryId(categoryId);
+	}
+
 	public String getCategoryId() {
 		return categoryId;
 	}

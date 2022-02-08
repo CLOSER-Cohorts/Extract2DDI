@@ -79,6 +79,7 @@ public class GenerateDDI33 {
 
 			for (CodebookVariable codebookVariable : codebookVariables) {
 				List<Category> categoryList = new ArrayList<>();
+				List<Code> codeList = new ArrayList<>();
 				for (String variableCode : codebookVariable.getVariableCodes()) {
 					if (variableCode.equalsIgnoreCase(codebookVariable.getName()))
 						continue;
@@ -87,14 +88,24 @@ public class GenerateDDI33 {
 					if (splits.length < 2)
 						continue;
 
-					Category category = new Category(UUID.randomUUID().toString());
+					Category category = new Category(splits[0]);
 					category.setLabel(splits[1]);
 					categoryList.add(category);
+
+					Code code = new Code(splits[0]);
+					code.setValue(splits[1]);
+					codeList.add(code);
 				}
 				if (!categoryList.isEmpty()) {
 					CategoryScheme categoryScheme = new CategoryScheme();
 					categoryScheme.setCategoryList(categoryList);
 					categorySchemeList.add(categoryScheme);
+				}
+
+				if (!codeList.isEmpty()) {
+					CodeList localCodeList = new CodeList();
+					localCodeList.setCodeList(codeList);
+					codeListList.add(localCodeList);
 				}
 			}
 
