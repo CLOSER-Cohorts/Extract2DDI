@@ -2,6 +2,8 @@ package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,6 +21,8 @@ import edu.cornell.ncrn.ced2ar.data.spss.SPSSStringVariable;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariable;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSVariableCategory;
 import org.w3c.dom.Document;
+
+import javax.xml.transform.TransformerException;
 
 /**
  * @author Cornell University, Copyright 2012-2015
@@ -105,6 +109,24 @@ public class SpssCsvGenerator extends CsvGenerator {
 		spssFile.loadMetadata();
 
 		return spssFile.getDDI3LogicalProduct();
+	}
+
+	public Document getDDI3PhysicalDataProduct(SPSSFile spssFile) throws IOException, SPSSFileException, URISyntaxException, TransformerException {
+		/**
+		 * Override SPSSFile file logging if it does not match what we want.
+		 * (The SPSSFile class dumps out a ton of data via println by default.)
+		 */
+		if (spssFileLogFlag != spssFile.logFlag) {
+			spssFile.logFlag = spssFileLogFlag;
+			logger.info("Changed SPSSFile logging flag. spssFile.logFlag set to: " + spssFile.logFlag);
+		}
+
+		//spssFile.loadMetadata();
+
+		spssFile.logFlag = true;
+		spssFile.dumpDDI3();
+
+		return spssFile.getDDI3PhysicalInstance(new URI("uri"), new FileFormatInfo());
 	}
 
 	/**

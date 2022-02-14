@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +28,7 @@ import org.springframework.util.StringUtils;
 public class Main {
 
 	private static String FORMAT_OUTPUT_2_5 = "2.5";
+	private static String FORMAT_OUTPUT_3_2 = "3.2";
 	private static String FORMAT_OUTPUT_3_3_FRAGMENT = "3.3Fragment";
 
 	public static void main(String args[]) throws Exception {
@@ -111,6 +112,9 @@ public class Main {
 
 		if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_2_5)) {
 			GenerateDDI generateDDI = new GenerateDDI();
+			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_2)) {
+			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
 			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);

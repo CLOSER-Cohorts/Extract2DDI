@@ -1,32 +1,37 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
-import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Code;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class GenerateDDI33 {
+public class GenerateDDI32 {
 
-	private static final Logger logger = Logger.getLogger(GenerateDDI33.class);
+	private static final Logger logger = Logger.getLogger(GenerateDDI32.class);
 
 	private String agency;
 	private String ddiLanguage;
@@ -34,7 +39,7 @@ public class GenerateDDI33 {
 	private String outputFile;
 	private String statistics;
 
-	public GenerateDDI33(
+	public GenerateDDI32(
 		String agency,
 		String ddiLanguage,
 		Map<String, String> excludeVariableToStatMap,
@@ -75,55 +80,7 @@ public class GenerateDDI33 {
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		if (dataFile.toLowerCase().endsWith(".dta")) {
-			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
-			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
-
-			VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-			List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
-
-			for (CodebookVariable codebookVariable : codebookVariables) {
-				List<Category> categoryList = new ArrayList<>();
-				List<Code> codeList = new ArrayList<>();
-				for (String variableCode : codebookVariable.getVariableCodes()) {
-					if (variableCode.equalsIgnoreCase(codebookVariable.getName()))
-						continue;
-
-					String splits[] = variableCode.split("=");
-					if (splits.length < 2)
-						continue;
-
-					Category category = new Category(splits[0]);
-					category.setLabel(splits[1]);
-					categoryList.add(category);
-
-					Code code = new Code(splits[0]);
-					code.setValue(splits[1]);
-					codeList.add(code);
-				}
-				if (!categoryList.isEmpty()) {
-					CategoryScheme categoryScheme = new CategoryScheme();
-					categoryScheme.setCategoryList(categoryList);
-					categorySchemeList.add(categoryScheme);
-				}
-
-				if (!codeList.isEmpty()) {
-					CodeList localCodeList = new CodeList();
-					localCodeList.setCodeList(codeList);
-					codeListList.add(localCodeList);
-				}
-			}
-
-			List<Variable> variableList = new ArrayList<>();
-			for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {
-				Variable variable = new Variable(UUID.randomUUID().toString());
-				variable.setName(stat.getName());
-				variable.setLabel(stat.getLabel());
-				variableList.add(variable);
-			}
-
-			VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
-			defaultVariableScheme.setVariableList(variableList);
-			variableSchemeList.add(defaultVariableScheme);
+			System.out.println("STATA files are not yet supported in 3.2 format");
 
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
@@ -133,6 +90,19 @@ public class GenerateDDI33 {
 			SPSSFile spssFile = new SPSSFile(serverFile);
 
 			Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
+			//Document physicalDataProduct = spssGen.getDDI3PhysicalDataProduct(spssFile);
+
+//			OutputFormat format = new OutputFormat();
+//			format.setLineWidth(65);
+//			format.setIndenting(true);
+//			format.setIndent(2);
+//			Writer out = new StringWriter();
+//			XMLSerializer serializer = new XMLSerializer(out, format);
+//			serializer.serialize(logicalProductDocument);
+
+
+			//System.out.println("xmlString");
+			//printDocument(physicalDataProduct, System.out);
 
 			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
@@ -154,12 +124,11 @@ public class GenerateDDI33 {
 			recordCount
 		);
 		logicalProductGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		DDIInstance ddiInstance = logicalProductGenerator.toDDIInstance();
 
-		FragmentInstanceGenerator generator = new FragmentInstanceGenerator(fragmentList);
+		DDI32DocumentGenerator generator = new DDI32DocumentGenerator(ddiInstance);
 		Document fragmentInstanceDocument = generator.toDocument();
 
-		// We need VariableDDIGenerator to translate XML document to string
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument, "UTF-8");
 
@@ -179,6 +148,19 @@ public class GenerateDDI33 {
 		logger.info("Successfully created csv files");
 
 		logger.info(observationLimit);
+	}
+
+	public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer transformer = tf.newTransformer();
+		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+		transformer.transform(new DOMSource(doc),
+				new StreamResult(new OutputStreamWriter(out, "UTF-8")));
 	}
 
 	public String getAgency() {
