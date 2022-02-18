@@ -1,10 +1,10 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Appendable;
+import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class Purpose implements Appendable {
+public class PurposeElement implements Appendable {
 
 	public static final String NODE_NAME_PURPOSE = "r:Purpose";
 	public static final String NODE_NAME_CONTENT = "r:Content";

@@ -4,9 +4,9 @@ import edu.cornell.ncrn.ced2ar.data.spss.SPSSFileException;
 import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.FragmentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
@@ -47,7 +47,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
 		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator logicalProductGenerator = new FragmentGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -60,7 +60,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			3
 		);
 
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 		Document fragmentInstanceDocument = transformer.toDocument();
 
@@ -136,7 +136,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
 		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator logicalProductGenerator = new FragmentGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -149,7 +149,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			3
 		);
 
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 		Document fragmentInstanceDocument = transformer.toDocument();
 
@@ -191,7 +191,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
 		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator logicalProductGenerator = new FragmentGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -204,7 +204,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			3
 		);
 
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 		Document fragmentInstanceDocument = transformer.toDocument();
 

@@ -1,8 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Citation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.relationship.DataRelationshipReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.relationship.DataRelationshipReferenceFragment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

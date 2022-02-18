@@ -5,11 +5,11 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDIInstance;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -111,7 +111,7 @@ public class GenerateDDI32 {
 			recordCount = spssFile.getRecordCount();
 		}
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		ElementGenerator elementGenerator = new ElementGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -123,8 +123,8 @@ public class GenerateDDI32 {
 			dataFile,
 			recordCount
 		);
-		logicalProductGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
-		DDIInstance ddiInstance = logicalProductGenerator.toDDIInstance();
+		elementGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
+		DDIInstance ddiInstance = elementGenerator.getInstance();
 
 		DDI32DocumentGenerator generator = new DDI32DocumentGenerator(ddiInstance);
 		Document fragmentInstanceDocument = generator.toDocument();

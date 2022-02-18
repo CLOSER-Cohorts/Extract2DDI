@@ -5,9 +5,9 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.FragmentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Code;
@@ -141,7 +141,7 @@ public class GenerateDDI33 {
 			recordCount = spssFile.getRecordCount();
 		}
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator fragmentGenerator = new FragmentGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -153,8 +153,8 @@ public class GenerateDDI33 {
 			dataFile,
 			recordCount
 		);
-		logicalProductGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		fragmentGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
+		List<Fragment> fragmentList = fragmentGenerator.getFragmentList();
 
 		FragmentInstanceGenerator generator = new FragmentInstanceGenerator(fragmentList);
 		Document fragmentInstanceDocument = generator.toDocument();

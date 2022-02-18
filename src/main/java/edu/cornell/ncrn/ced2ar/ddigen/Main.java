@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -88,7 +87,7 @@ public class Main {
 				util.help();
 			}
 
-			Properties properties = FileUtil.getPropertiesFromResource(LogicalProductGenerator.class);
+			Properties properties = FileUtil.getPropertiesFromResource(AbstractSchemaGenerator.class);
 			configUtil = new ConfigUtil(properties);
 		}
 

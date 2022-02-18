@@ -3,9 +3,9 @@ package edu.cornell.ncrn.ced2ar.ddigen.fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.FragmentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.LogicalProductGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
 import org.junit.Assert;
@@ -78,7 +78,7 @@ public class AbstractStataFragmentInstanceGeneratorTest {
 		VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
 		defaultVariableScheme.setVariableList(variableList);
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator logicalProductGenerator = new FragmentGenerator(
 			Collections.emptyList(),
 			Collections.emptyList(),
 			Arrays.asList(defaultVariableScheme),
@@ -91,7 +91,7 @@ public class AbstractStataFragmentInstanceGeneratorTest {
 			3
 		);
 
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 		fragmentInstanceDocument = transformer.toDocument();
 	}

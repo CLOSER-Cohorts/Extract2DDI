@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Appendable;
+import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

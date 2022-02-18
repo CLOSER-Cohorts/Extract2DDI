@@ -2,6 +2,8 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

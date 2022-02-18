@@ -1,9 +1,9 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
