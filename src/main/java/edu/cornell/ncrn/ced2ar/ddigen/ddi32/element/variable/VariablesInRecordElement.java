@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
 import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -11,24 +12,26 @@ public class VariablesInRecordElement implements Appendable {
 
 	public static final String NODE_NAME_LOGICAL_PRODUCT = "ddi:VariablesInRecord";
 
-	private List<VariableUsedReferenceElement> variableUsedReferenceList = new ArrayList<>();
+	private List<VariableUsedReference> variableUsedReferenceList = new ArrayList<>();
+
+	public void addReference(VariableUsedReference reference) {
+		synchronized (variableUsedReferenceList)  {
+			variableUsedReferenceList.add(reference);
+		}
+	}
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
 		Element variablesInRecord = doc.createElement(NODE_NAME_LOGICAL_PRODUCT);
 
-		for (VariableUsedReferenceElement variableUsedReference : variableUsedReferenceList) {
+		for (Reference variableUsedReference : variableUsedReferenceList) {
 			variableUsedReference.appendToElement(variablesInRecord, doc);
 		}
 
 		element.appendChild(variablesInRecord);
 	}
 
-	public List<VariableUsedReferenceElement> getVariableUsedReferenceList() {
+	public List<VariableUsedReference> getVariableUsedReferenceList() {
 		return variableUsedReferenceList;
-	}
-
-	public void setVariableUsedReferenceList(List<VariableUsedReferenceElement> variableUsedReferenceList) {
-		this.variableUsedReferenceList = variableUsedReferenceList;
 	}
 }

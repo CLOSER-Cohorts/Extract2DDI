@@ -8,15 +8,6 @@ public class LogicalProductElement extends ElementWithUrn {
 	public static final String NODE_NAME_LOGICAL_PRODUCT = "ddi:LogicalProduct";
 	public static final String NODE_NAME_LOGICAL_PRODUCT_NAME = "ddi:LogicalProductName";
 
-	public static final String ATTRIBUTE_NAMESPACE_XML_LANG_NAME = "xml:lang";
-	public static final String ATTRIBUTE_NAMESPACE_XML_LANG_VALUE = "en-GB";
-
-	public static final String ATTRIBUTE_NAMESPACE_IS_MAINTAINABLE_NAME = "isMaintainable";
-	public static final String ATTRIBUTE_NAMESPACE_IS_MAINTAINABLE_VALUE = "true";
-
-	public static final String ATTRIBUTE_NAMESPACE_SCOPE_OF_UNIQUENESS_NAME = "scopeOfUniqueness";
-	public static final String ATTRIBUTE_NAMESPACE_SCOPE_OF_UNIQUENESS_VALUE = "Agency";
-
 	private LogicalRecordElement logicalRecord;
 
 	public LogicalProductElement(String id, String agency, int version) {

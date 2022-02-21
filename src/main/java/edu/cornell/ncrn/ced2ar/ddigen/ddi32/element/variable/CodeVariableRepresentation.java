@@ -1,11 +1,15 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 public class CodeVariableRepresentation extends VariableRepresentation {
 
 	public static final String NODE_NAME_NUMERIC_REPRESENTATION = "r:CodeRepresentation";
+	public static final String NODE_NAME_CODE_LIST_REFERENCE = "r:CodeListReference";
+
+	private Reference referenceElement;
 
 	public CodeVariableRepresentation(String recommendedDataType) {
 		super(recommendedDataType);
@@ -14,14 +18,21 @@ public class CodeVariableRepresentation extends VariableRepresentation {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element variableRepresentation = doc.createElement(NODE_NAME_VARIABLE_REPRESENTATION);
+		Element representation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
 
-		Element numericRepresentation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
+		super.appendToElement(representation, doc);
 
-		variableRepresentation.appendChild(numericRepresentation);
+		// Code List Reference
+		getReferenceElement().appendToElement(representation, doc);
 
-		super.appendToElement(numericRepresentation, doc);
+		element.appendChild(representation);
+	}
 
-		element.appendChild(variableRepresentation);
+	public Reference getReferenceElement() {
+		return referenceElement;
+	}
+
+	public void setReferenceElement(Reference referenceElement) {
+		this.referenceElement = referenceElement;
 	}
 }

@@ -1,9 +1,11 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.RecordLayoutScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ResourcePackageElement extends ElementWithUrn {
@@ -12,10 +14,17 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	private PurposeElement purpose;
 	private LogicalProductElement logicalProduct;
-	private List<VariableSchemeElement> variableSchemeList;
+	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
+	private RecordLayoutScheme recordLayoutScheme;
 
 	public ResourcePackageElement(String id, String agency, int version) {
 		super(id, agency, version);
+	}
+
+	public void addVariableSchemeList(VariableSchemeElement variableSchemeElement) {
+		synchronized (variableSchemeList) {
+			variableSchemeList.add(variableSchemeElement);
+		}
 	}
 
 	@Override
@@ -29,6 +38,9 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 		// Logical product
 		getLogicalProduct().appendToElement(resourcePackage, doc);
+
+		// Record Layout Scheme
+		getRecordLayoutScheme().appendToElement(resourcePackage, doc);
 
 		// Variable Scheme
 		for (VariableSchemeElement variableSchemeElement : getVariableSchemeList()) {
@@ -46,6 +58,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return purpose;
 	}
 
+	public RecordLayoutScheme getRecordLayoutScheme() {
+		return recordLayoutScheme;
+	}
+
 	public List<VariableSchemeElement> getVariableSchemeList() {
 		return variableSchemeList;
 	}
@@ -58,7 +74,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		this.purpose = purpose;
 	}
 
-	public void setVariableSchemeList(List<VariableSchemeElement> variableSchemeList) {
-		this.variableSchemeList = variableSchemeList;
+	public void setRecordLayoutScheme(RecordLayoutScheme recordLayoutScheme) {
+		this.recordLayoutScheme = recordLayoutScheme;
 	}
 }

@@ -6,13 +6,15 @@ import org.w3c.dom.Element;
 
 public class Label implements Appendable {
 
-	public static final String NODE_NAME_LABEL = "ddi:Variable";
-	public static final String NODE_NAME_CONTENT = "ddi:Content";
+	public static final String NODE_NAME_LABEL = "r:Label";
+	public static final String NODE_NAME_CONTENT = "r:Content";
 
 	private String content;
+	private String ddiLanguage;
 
-	public Label(String content) {
+	public Label(String content, String ddiLanguage) {
 		setContent(content);
+		setDdiLanguage(ddiLanguage);
 	}
 
 	@Override
@@ -31,7 +33,15 @@ public class Label implements Appendable {
 		return content;
 	}
 
+	public String getDdiLanguage() {
+		return ddiLanguage;
+	}
+
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
 	}
 }
