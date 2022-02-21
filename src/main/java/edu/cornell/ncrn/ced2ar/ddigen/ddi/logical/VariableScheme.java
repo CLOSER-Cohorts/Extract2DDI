@@ -8,6 +8,14 @@ public class VariableScheme {
 	private String id;
 	private List<Variable> variableList = new ArrayList<>();
 
+	public VariableScheme() {
+
+	}
+
+	public VariableScheme(String id) {
+		setId(id);
+	}
+
 	public String getId() {
 		return id;
 	}

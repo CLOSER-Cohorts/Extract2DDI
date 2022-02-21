@@ -7,7 +7,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import javax.xml.parsers.ParserConfigurationException;
+
+import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.VariableScheme;
 import org.junit.Assert;
 import org.junit.Test;
 import org.w3c.dom.Document;
@@ -32,7 +35,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 	public void testToDocument_AllStatisticsExcluded() throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
@@ -40,9 +43,14 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestInteger", "mean:excluding mean");
 
-		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
+		List<CategoryScheme> categorySchemeList = LogicalProductFactory.createCategorySchemeList(document);
+		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
+		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
+
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableStatList,
 			"mean",
 			excludeVariableToStatMap,
@@ -119,14 +127,19 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
 
-		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
+		List<CategoryScheme> categorySchemeList = LogicalProductFactory.createCategorySchemeList(document);
+		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
+		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
+
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableStatList,
 			"mean",
 			new HashMap<>(),
@@ -159,14 +172,14 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("TypeOfSummaryStatistic", standardDeviation.getFirstChild().getNodeName());
 		Assert.assertEquals("Mean", standardDeviation.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", standardDeviation.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("2", standardDeviation.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("2.0", standardDeviation.getChildNodes().item(1).getTextContent());
 	}
 
 	@Test
 	public void testToDocument_UserMessage() throws ParserConfigurationException, URISyntaxException, IOException, SPSSFileException {
 		SpssCsvGenerator spssGen = new SpssCsvGenerator();
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
-		Document document = spssGen.getLogicalProduct(file);
+		Document document = spssGen.getDDI3LogicalProduct(file);
 
 		Properties properties = FileUtil.getPropertiesFromResource(AbstractFragmentInstanceGeneratorTest.class);
 		ConfigUtil configUtil = new ConfigUtil(properties);
@@ -174,9 +187,14 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Map<String, String> excludeVariableToStatMap = new HashMap<>();
 		excludeVariableToStatMap.put("TestInteger", ":custom user message");
 
-		LogicalProduct logicalProduct = LogicalProductFactory.createLogicalProduct(document);
+		List<CategoryScheme> categorySchemeList = LogicalProductFactory.createCategorySchemeList(document);
+		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
+		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
+
 		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
-			logicalProduct,
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableStatList,
 			"mean",
 			excludeVariableToStatMap,
@@ -217,7 +235,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("TypeOfSummaryStatistic", standardDeviation.getFirstChild().getNodeName());
 		Assert.assertEquals("Mean", standardDeviation.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", standardDeviation.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("2", standardDeviation.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("2.0", standardDeviation.getChildNodes().item(1).getTextContent());
 	}
 
 	@Test
@@ -255,21 +273,21 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		Assert.assertEquals("TypeOfSummaryStatistic", maximum.getFirstChild().getNodeName());
 		Assert.assertEquals("Minimum", maximum.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", maximum.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("1", maximum.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("1.0", maximum.getChildNodes().item(1).getTextContent());
 
 		Node minimum = variableStatistics.getChildNodes().item(9);
 		Assert.assertEquals("SummaryStatistic", minimum.getNodeName());
 		Assert.assertEquals("TypeOfSummaryStatistic", minimum.getFirstChild().getNodeName());
 		Assert.assertEquals("Maximum", minimum.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", minimum.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("3", minimum.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("3.0", minimum.getChildNodes().item(1).getTextContent());
 
 		Node mean = variableStatistics.getChildNodes().item(10);
 		Assert.assertEquals("SummaryStatistic", mean.getNodeName());
 		Assert.assertEquals("TypeOfSummaryStatistic", mean.getFirstChild().getNodeName());
 		Assert.assertEquals("Mean", mean.getFirstChild().getTextContent());
 		Assert.assertEquals("Statistic", mean.getChildNodes().item(1).getNodeName());
-		Assert.assertEquals("2", mean.getChildNodes().item(1).getTextContent());
+		Assert.assertEquals("2.0", mean.getChildNodes().item(1).getTextContent());
 
 		Node standardDeviation = variableStatistics.getChildNodes().item(11);
 		Assert.assertEquals("SummaryStatistic", standardDeviation.getNodeName());

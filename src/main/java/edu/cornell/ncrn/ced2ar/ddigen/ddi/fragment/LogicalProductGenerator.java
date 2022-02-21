@@ -35,7 +35,6 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Code;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CodeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.DateTimeRepresentation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.NumericRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.Representation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.TextRepresentation;
@@ -55,15 +54,19 @@ public class LogicalProductGenerator {
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
 	private Map<String, Frequency> variableToFrequencyMap;
-	private LogicalProduct logicalProduct;
+	private List<CategoryScheme> categorySchemeList = new ArrayList<>();
+	private List<CodeList> codeListList = new ArrayList<>();
+	private List<VariableScheme> variableSchemeList = new ArrayList<>();
 	private int recordCount;
 	private String title;
 	private String statistics;
-	private List<Ced2arVariableStat> variableStatistics;
+	private List<Ced2arVariableStat> variableStatisticList;
 	private int version;
 
 	public LogicalProductGenerator(
-		LogicalProduct logicalProduct,
+		List<CategoryScheme> categorySchemeList,
+		List<CodeList> codeListList,
+		List<VariableScheme> variableSchemeList,
 		List<Ced2arVariableStat> variableStatistics,
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
@@ -74,7 +77,9 @@ public class LogicalProductGenerator {
 	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
-		setLogicalProduct(logicalProduct);
+		setCodeListList(codeListList);
+		setVariableSchemeList(variableSchemeList);
+		setCategorySchemeList(categorySchemeList);
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setStatistics(statistics);
 		setTitle(title);
@@ -94,7 +99,7 @@ public class LogicalProductGenerator {
 		List<Fragment> fragmentList = new ArrayList<>();
 		List<Fragment> categoryFragmentList = new ArrayList<>();
 
-		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
+		for (CategoryScheme categoryScheme : categorySchemeList) {
 			UUID categorySchemeId = categorySchemeIdToUuidMap.get(categoryScheme.getId());
 			CategorySchemeFragment fragment = new CategorySchemeFragment(categorySchemeId.toString(), getAgency(), getVersion());
 			fragmentList.add(fragment);
@@ -116,12 +121,16 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public List<CategoryScheme> getCategorySchemeList() {
+		return categorySchemeList;
+	}
+
 	public List<Fragment> getCodeListFragmentList(
 		Map<String, UUID> codeListIdToUuidMap,
 		Map<String, UUID> categoryIdToUuidMap
 	) {
 		List<Fragment> fragmentList = new ArrayList<>();
-		for (CodeList codeList : getLogicalProduct().getCodeListList()) {
+		for (CodeList codeList : codeListList) {
 			UUID categorySchemeId = codeListIdToUuidMap.get(codeList.getId());
 			CodeListFragment codeListFragment = new CodeListFragment(categorySchemeId.toString(), getAgency(), getVersion());
 
@@ -141,6 +150,10 @@ public class LogicalProductGenerator {
 		}
 
 		return fragmentList;
+	}
+
+	public List<CodeList> getCodeListList() {
+		return codeListList;
 	}
 
 	private DataRelationshipFragment getDataRelationshipFragment(
@@ -182,14 +195,6 @@ public class LogicalProductGenerator {
 
 	public Map<String, String> getExcludeVariableToStatMap() {
 		return excludeVariableToStatMap;
-	}
-
-	public Map<String, Frequency> getVariableToFrequencyMap() {
-		return variableToFrequencyMap;
-	}
-
-	public LogicalProduct getLogicalProduct() {
-		return logicalProduct;
 	}
 
 	private PhysicalInstanceFragment getPhysicalInstanceFragment(
@@ -286,7 +291,8 @@ public class LogicalProductGenerator {
 		Map<String, UUID> variableIdToUuidMap
 	) {
 		List<Fragment> fragmentList = new ArrayList<>();
-		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+
+		for (VariableScheme variableScheme : variableSchemeList) {
 			UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
 			VariableSchemeFragment variableSchemeFragment = new VariableSchemeFragment(
 				variableSchemeId.toString(),
@@ -330,6 +336,8 @@ public class LogicalProductGenerator {
 			}
 		}
 
+
+
 		return fragmentList;
 	}
 
@@ -337,13 +345,13 @@ public class LogicalProductGenerator {
 		return recordCount;
 	}
 
-	public List<Ced2arVariableStat> getVariableStatistics() {
-		return variableStatistics;
+	public List<Ced2arVariableStat> getVariableStatisticList() {
+		return variableStatisticList;
 	}
 
 	public List<Fragment> getVariableStatisticsList(Map<String, UUID> variableIdToUuidMap) {
 		List<Fragment> fragmentList = new ArrayList<>();
-		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+		for (VariableScheme variableScheme : variableSchemeList) {
 			for (Variable variable : variableScheme.getVariableList()) {
 				UUID id = variableIdToUuidMap.get(variable.getId());
 				VariableReferenceFragment variableReferenceFragment =
@@ -368,7 +376,7 @@ public class LogicalProductGenerator {
 					statisticList.addAll(Arrays.asList(statisticArray));
 				}
 
-				for (Ced2arVariableStat variableStat : getVariableStatistics()) {
+				for (Ced2arVariableStat variableStat : getVariableStatisticList()) {
 					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
 						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
 
@@ -449,7 +457,7 @@ public class LogicalProductGenerator {
 							if (variable.getRepresentation() instanceof CodeRepresentation) {
 								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
-								for (CodeList codeList : getLogicalProduct().getCodeListList()) {
+								for (CodeList codeList : codeListList) {
 									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
 										long invalidValueFrequency = variableFrequency.getCount(".");
 										if (invalidValueFrequency > 0) {
@@ -484,6 +492,14 @@ public class LogicalProductGenerator {
 		return fragmentList;
 	}
 
+	public Map<String, Frequency> getVariableToFrequencyMap() {
+		return variableToFrequencyMap;
+	}
+
+	public List<VariableScheme> getVariableSchemeList() {
+		return variableSchemeList;
+	}
+
 	public int getVersion() {
 		return version;
 	}
@@ -492,7 +508,7 @@ public class LogicalProductGenerator {
 		List<Fragment> fragmentList = new ArrayList<>();
 
 		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
-		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
 			for (Category category : categoryScheme.getCategoryList()) {
 				if (category.getId() != null) {
 					categoryIdToUuidMap.put(category.getId(), UUID.randomUUID());
@@ -501,7 +517,7 @@ public class LogicalProductGenerator {
 		}
 
 		Map<String, UUID> variableIdToUuidMap = new HashMap<>();
-		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
 			for (Variable variable : variableScheme.getVariableList()) {
 				if (variable.getId() != null) {
 					variableIdToUuidMap.put(variable.getId(), UUID.randomUUID());
@@ -510,17 +526,17 @@ public class LogicalProductGenerator {
 		}
 
 		Map<String, UUID> categorySchemeIdToUuidMap = new HashMap<>();
-		for (CategoryScheme categoryScheme : getLogicalProduct().getCategorySchemeList()) {
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
 			categorySchemeIdToUuidMap.put(categoryScheme.getId(), UUID.randomUUID());
 		}
 
 		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
-		for (CodeList codeList : getLogicalProduct().getCodeListList()) {
+		for (CodeList codeList : getCodeListList()) {
 			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
 		}
 
 		Map<String, UUID> variableSchemeIdToUuidMap = new HashMap<>();
-		for (VariableScheme variableScheme : getLogicalProduct().getVariableSchemeList()) {
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
 			variableSchemeIdToUuidMap.put(variableScheme.getId(), UUID.randomUUID());
 		}
 
@@ -578,20 +594,20 @@ public class LogicalProductGenerator {
 		this.agency = agency;
 	}
 
+	public void setCategorySchemeList(List<CategoryScheme> categorySchemeList) {
+		this.categorySchemeList = categorySchemeList;
+	}
+
+	public void setCodeListList(List<CodeList> codeListList) {
+		this.codeListList = codeListList;
+	}
+
 	public void setDdiLanguage(String ddiLanguage) {
 		this.ddiLanguage = ddiLanguage;
 	}
 
-	public void setVariableToFrequencyMap(Map<String, Frequency> map) {
-		this.variableToFrequencyMap = map;
-	}
-
 	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
-	}
-
-	public void setLogicalProduct(LogicalProduct logicalProduct) {
-		this.logicalProduct = logicalProduct;
 	}
 
 	public void setRecordCount(int recordCount) {
@@ -606,8 +622,16 @@ public class LogicalProductGenerator {
 		this.title = title;
 	}
 
-	public void setVariableStatistics(List<Ced2arVariableStat> variableStatistics) {
-		this.variableStatistics = variableStatistics;
+	public void setVariableSchemeList(List<VariableScheme> variableSchemeList) {
+		this.variableSchemeList = variableSchemeList;
+	}
+
+	public void setVariableStatistics(List<Ced2arVariableStat> variableStatisticList) {
+		this.variableStatisticList = variableStatisticList;
+	}
+
+	public void setVariableToFrequencyMap(Map<String, Frequency> map) {
+		this.variableToFrequencyMap = map;
 	}
 
 	public void setVersion(int version) {

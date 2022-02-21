@@ -4,6 +4,13 @@ public class Category {
 	private String id;
 	private String label;
 
+	public Category() {
+	}
+
+	public Category(String id) {
+		setId(id);
+	}
+
 	public String getId() {
 		return id;
 	}
