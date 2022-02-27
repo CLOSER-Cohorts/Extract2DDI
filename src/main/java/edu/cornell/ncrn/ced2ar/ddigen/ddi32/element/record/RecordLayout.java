@@ -16,9 +16,9 @@ public class RecordLayout extends ElementWithUrn {
 	private DefaultVariableSchemeReference defaultVariableSchemeReference;
 	private List<DataItem> dataItemList = new ArrayList<>();
 
-	public RecordLayout(String id, String agency, int version, String variableSchemeId) {
-		super(id, agency, version);
-		setDefaultVariableSchemeReference(new DefaultVariableSchemeReference(variableSchemeId, agency, version));
+	public RecordLayout(String agency, String variableSchemeId) {
+		super(agency);
+		setDefaultVariableSchemeReference(new DefaultVariableSchemeReference(variableSchemeId, agency));
 	}
 
 	public void addDataItem(DataItem dataItem) {

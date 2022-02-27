@@ -5,12 +5,12 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ReferenceObjectType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class DefaultVariableSchemeReference extends Reference {
+public class VariableSchemeReference extends Reference {
 
-	public static final String NODE_NAME_DEFAULT_VARIABLE_SCHEME_REFERENCE = "r:DefaultVariableSchemeReference";
+	public static final String NODE_NAME_VARIABLE_SCHEME_REFERENCE = "r:VariableSchemeReference";
 
-	public DefaultVariableSchemeReference(String id, String agency) {
-		super(id, agency, NODE_NAME_DEFAULT_VARIABLE_SCHEME_REFERENCE, ReferenceObjectType.VariableScheme);
+	public VariableSchemeReference(String id, String agency) {
+		super(id, agency, NODE_NAME_VARIABLE_SCHEME_REFERENCE, ReferenceObjectType.VariableScheme);
 	}
 
 	@Override

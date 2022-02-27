@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.RecordLayoutScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,11 +14,11 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	private PurposeElement purpose;
 	private LogicalProductElement logicalProduct;
+	private PhysicalDataProduct physicalDataProduct;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
-	private RecordLayoutScheme recordLayoutScheme;
 
-	public ResourcePackageElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public ResourcePackageElement(String agency) {
+		super(agency);
 	}
 
 	public void addVariableSchemeList(VariableSchemeElement variableSchemeElement) {
@@ -39,8 +39,8 @@ public class ResourcePackageElement extends ElementWithUrn {
 		// Logical product
 		getLogicalProduct().appendToElement(resourcePackage, doc);
 
-		// Record Layout Scheme
-		getRecordLayoutScheme().appendToElement(resourcePackage, doc);
+		// Physical Data Product
+		getPhysicalDataProduct().appendToElement(resourcePackage, doc);
 
 		// Variable Scheme
 		for (VariableSchemeElement variableSchemeElement : getVariableSchemeList()) {
@@ -54,12 +54,12 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return logicalProduct;
 	}
 
-	public PurposeElement getPurpose() {
-		return purpose;
+	public PhysicalDataProduct getPhysicalDataProduct() {
+		return physicalDataProduct;
 	}
 
-	public RecordLayoutScheme getRecordLayoutScheme() {
-		return recordLayoutScheme;
+	public PurposeElement getPurpose() {
+		return purpose;
 	}
 
 	public List<VariableSchemeElement> getVariableSchemeList() {
@@ -70,11 +70,11 @@ public class ResourcePackageElement extends ElementWithUrn {
 		this.logicalProduct = logicalProduct;
 	}
 
-	public void setPurpose(PurposeElement purpose) {
-		this.purpose = purpose;
+	public void setPhysicalDataProduct(PhysicalDataProduct physicalDataProduct) {
+		this.physicalDataProduct = physicalDataProduct;
 	}
 
-	public void setRecordLayoutScheme(RecordLayoutScheme recordLayoutScheme) {
-		this.recordLayoutScheme = recordLayoutScheme;
+	public void setPurpose(PurposeElement purpose) {
+		this.purpose = purpose;
 	}
 }

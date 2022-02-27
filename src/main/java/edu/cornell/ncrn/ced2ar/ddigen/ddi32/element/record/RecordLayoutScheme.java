@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -11,8 +10,8 @@ public class RecordLayoutScheme extends ElementWithUrn {
 
 	private RecordLayout recordLayout;
 
-	public RecordLayoutScheme(String id, String agency, int version) {
-		super(id, agency, version);
+	public RecordLayoutScheme(String agency) {
+		super(agency);
 	}
 
 	public RecordLayout getRecordLayout() {

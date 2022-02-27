@@ -10,8 +10,8 @@ public class PhysicalStructureLinkReference extends Reference {
 	public static final String NODE_NAME_PHYSICAL_STRUCTURE_LINK_REFERENCE = "p:PhysicalStructureLinkReference";
 	public static final String NODE_NAME_PHYSICAL_RECORD_SEGMENT_USED = "p:PhysicalRecordSegmentUsed";
 
-	public PhysicalStructureLinkReference(String id, String agency, int version) {
-		super(id, agency, version, NODE_NAME_PHYSICAL_STRUCTURE_LINK_REFERENCE, ReferenceObjectType.PhysicalRecordSegment);
+	public PhysicalStructureLinkReference(String id, String agency) {
+		super(id, agency, NODE_NAME_PHYSICAL_STRUCTURE_LINK_REFERENCE, ReferenceObjectType.PhysicalRecordSegment);
 	}
 
 	@Override
