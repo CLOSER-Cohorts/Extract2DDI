@@ -127,7 +127,10 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		resourcePackage.setCodeListScheme(codeListScheme);
 
 		// Variable Scheme
-		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(variableIdToUuidMap, variableSchemeIdToUuidMap);
+		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(
+			variableIdToUuidMap,
+			variableSchemeIdToUuidMap
+		);
 
 		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
 			resourcePackage.addVariableSchemeList(variableSchemeElement);
