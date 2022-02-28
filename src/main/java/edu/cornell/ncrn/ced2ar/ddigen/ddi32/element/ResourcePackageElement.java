@@ -1,6 +1,7 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
@@ -14,7 +15,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "g:ResourcePackage";
 
 	private CodeListScheme codeListScheme;
-	private PurposeElement purpose;
+	private Purpose purpose;
 	private LogicalProductElement logicalProduct;
 	private PhysicalDataProduct physicalDataProduct;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
@@ -69,7 +70,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return physicalDataProduct;
 	}
 
-	public PurposeElement getPurpose() {
+	public Purpose getPurpose() {
 		return purpose;
 	}
 
@@ -89,7 +90,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		this.physicalDataProduct = physicalDataProduct;
 	}
 
-	public void setPurpose(PurposeElement purpose) {
+	public void setPurpose(Purpose purpose) {
 		this.purpose = purpose;
 	}
 }

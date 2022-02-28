@@ -1,7 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ReferenceObjectType;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ReferenceObjectType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

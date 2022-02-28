@@ -2,6 +2,12 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.DataRelationshipElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalRecordElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Purpose;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ResourcePackageElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListElement;
@@ -78,7 +84,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		ResourcePackageElement resourcePackage = new ResourcePackageElement(getAgency());
 
 		// Purpose
-		resourcePackage.setPurpose(new PurposeElement());
+		resourcePackage.setPurpose(new Purpose());
 
 		// Logical Product
 		resourcePackage.setLogicalProduct(

@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

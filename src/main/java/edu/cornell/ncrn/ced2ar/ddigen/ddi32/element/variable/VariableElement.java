@@ -1,8 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Label;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Name;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Label;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

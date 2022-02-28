@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListReference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

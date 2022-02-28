@@ -6,7 +6,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDIInstance;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;

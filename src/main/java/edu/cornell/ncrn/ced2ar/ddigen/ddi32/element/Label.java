@@ -1,4 +1,4 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
 import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
 import org.w3c.dom.Document;

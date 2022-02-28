@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

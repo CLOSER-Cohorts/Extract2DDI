@@ -1,7 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ReferenceObjectType;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ReferenceObjectType;
 
 public class VariableUsedReference extends Reference {
 

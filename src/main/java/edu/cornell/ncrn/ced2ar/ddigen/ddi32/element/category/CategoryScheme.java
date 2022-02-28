@@ -1,8 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ReferenceObjectType;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 
 public class CategoryScheme extends ElementWithUrn {
 
