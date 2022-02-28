@@ -17,8 +17,8 @@ public class VariableSchemeElement extends ElementWithUrn {
 
 	private List<VariableElement> variableElementList = new ArrayList<>();
 
-	public VariableSchemeElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public VariableSchemeElement(String id, String agency) {
+		super(id, agency);
 	}
 
 	public void addVariableElement(VariableElement variableElement) {

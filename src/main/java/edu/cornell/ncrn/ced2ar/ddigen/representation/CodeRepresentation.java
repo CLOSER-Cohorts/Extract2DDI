@@ -1,4 +1,4 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
+package edu.cornell.ncrn.ced2ar.ddigen.representation;
 
 public class CodeRepresentation extends Representation {
 	private String codeSchemeId;

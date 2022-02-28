@@ -18,15 +18,15 @@ public abstract class Reference extends ElementWithUrn {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element variableUsedReference = doc.createElement(getName());
+		Element reference = doc.createElement(getName());
 
-		super.appendToElement(variableUsedReference, doc);
+		super.appendToElement(reference, doc);
 
 		Element objectType = doc.createElement(NODE_NAME_TYPE_OF_OBJECT);
 		objectType.setTextContent(getObjectType().toString());
-		variableUsedReference.appendChild(objectType);
+		reference.appendChild(objectType);
 
-		element.appendChild(variableUsedReference);
+		element.appendChild(reference);
 	}
 
 	public String getName() {

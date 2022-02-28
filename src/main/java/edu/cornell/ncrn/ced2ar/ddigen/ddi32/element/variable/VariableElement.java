@@ -15,8 +15,8 @@ public class VariableElement extends ElementWithUrn {
 	private Label label;
 	private VariableRepresentation variableRepresentation;
 
-	public VariableElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public VariableElement(String id, String agency) {
+		super(id, agency);
 	}
 
 	@Override

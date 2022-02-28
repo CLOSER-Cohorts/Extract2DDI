@@ -1,6 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
+package edu.cornell.ncrn.ced2ar.ddigen.representation;
 
-public class NumericRepresentation extends Representation {
+public class DateTimeRepresentation extends Representation {
 	private String type;
 
 	public String getType() {

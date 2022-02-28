@@ -60,7 +60,7 @@ public class RecordLayout extends ElementWithUrn {
 		this.defaultVariableSchemeReference = defaultVariableSchemeReference;
 	}
 
-	public void setReference(PhysicalStructureLinkReference reference) {
-		this.reference = reference;
+	public void setReference(String physicalStructureLinkReferenceId) {
+		this.reference = new PhysicalStructureLinkReference(physicalStructureLinkReferenceId, getAgency());
 	}
 }

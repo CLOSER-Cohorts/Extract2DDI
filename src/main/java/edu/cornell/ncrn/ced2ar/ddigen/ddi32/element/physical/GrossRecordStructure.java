@@ -4,6 +4,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.UUID;
+
 public class GrossRecordStructure extends ElementWithUrn {
 
 	public static final String NODE_NAME_GROSS_RECORD_STRUCTURE = "p:GrossRecordStructure";
@@ -33,8 +35,8 @@ public class GrossRecordStructure extends ElementWithUrn {
 		return physicalRecordSegment;
 	}
 
-	public void setLogicalRecordReference(LogicalRecordReference logicalRecordReference) {
-		this.logicalRecordReference = logicalRecordReference;
+	public void setLogicalRecordReference(String logicalRecordId) {
+		this.logicalRecordReference = new LogicalRecordReference(logicalRecordId, getAgency());
 	}
 
 	public void setPhysicalRecordSegment(PhysicalRecordSegment physicalRecordSegment) {

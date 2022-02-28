@@ -4,6 +4,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.UUID;
+
 public class BasedOnObject extends ElementWithUrn {
 
 	public static final String NODE_NAME_BASED_ON_OBJECT = "r:BasedOnObject";
@@ -27,7 +29,7 @@ public class BasedOnObject extends ElementWithUrn {
 		return basedOnReference;
 	}
 
-	public void setBasedOnReference(BasedOnReference basedOnReference) {
-		this.basedOnReference = basedOnReference;
+	public void setBasedOnReference(String id) {
+		this.basedOnReference = new BasedOnReference(id, getAgency());
 	}
 }

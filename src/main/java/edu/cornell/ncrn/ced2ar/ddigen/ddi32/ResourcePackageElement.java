@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
@@ -12,6 +13,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "g:ResourcePackage";
 
+	private CodeListScheme codeListScheme;
 	private PurposeElement purpose;
 	private LogicalProductElement logicalProduct;
 	private PhysicalDataProduct physicalDataProduct;
@@ -42,12 +44,21 @@ public class ResourcePackageElement extends ElementWithUrn {
 		// Physical Data Product
 		getPhysicalDataProduct().appendToElement(resourcePackage, doc);
 
+		// Category Scheme
+
+		// Code List Scheme
+		getCodeListScheme().appendToElement(resourcePackage, doc);
+
 		// Variable Scheme
 		for (VariableSchemeElement variableSchemeElement : getVariableSchemeList()) {
 			variableSchemeElement.appendToElement(resourcePackage, doc);
 		}
 
 		element.appendChild(resourcePackage);
+	}
+
+	public CodeListScheme getCodeListScheme() {
+		return codeListScheme;
 	}
 
 	public LogicalProductElement getLogicalProduct() {
@@ -64,6 +75,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public List<VariableSchemeElement> getVariableSchemeList() {
 		return variableSchemeList;
+	}
+
+	public void setCodeListScheme(CodeListScheme codeListScheme) {
+		this.codeListScheme = codeListScheme;
 	}
 
 	public void setLogicalProduct(LogicalProductElement logicalProduct) {

@@ -1,4 +1,4 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
+package edu.cornell.ncrn.ced2ar.ddigen.variable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,6 @@ public class VariableScheme {
 
 	private String id;
 	private List<Variable> variableList = new ArrayList<>();
-
-	public VariableScheme() {
-
-	}
 
 	public VariableScheme(String id) {
 		setId(id);

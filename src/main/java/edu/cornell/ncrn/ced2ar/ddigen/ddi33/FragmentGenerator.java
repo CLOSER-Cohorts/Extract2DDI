@@ -1,6 +1,10 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Citation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
@@ -36,6 +40,13 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableReferenceF
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableSchemeFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableSchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableStatisticsFragment;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.NumericRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.TextRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.commons.math3.stat.Frequency;
 
 import java.util.ArrayList;

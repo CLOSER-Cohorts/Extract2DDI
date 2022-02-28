@@ -1,6 +1,7 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
+package edu.cornell.ncrn.ced2ar.ddigen.category;
 
 public class Category {
+
 	private String id;
 	private String label;
 
