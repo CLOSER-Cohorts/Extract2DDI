@@ -21,6 +21,12 @@ public class VariableSchemeElement extends ElementWithUrn {
 		super(id, agency, version);
 	}
 
+	public void addVariableElement(VariableElement variableElement) {
+		synchronized (variableElementList) {
+			variableElementList.add(variableElement);
+		}
+	}
+
 	@Override
 	public void appendToElement(Element element, Document doc) {
 		Element variableScheme = doc.createElement(NODE_NAME_VARIABLE_SCHEME);
@@ -42,10 +48,6 @@ public class VariableSchemeElement extends ElementWithUrn {
 
 	public Name getVariableSchemeName() {
 		return variableSchemeName;
-	}
-
-	public void setVariableElementList(List<VariableElement> variableElementList) {
-		this.variableElementList = variableElementList;
 	}
 
 	public void setVariableSchemeName(String variableSchemeName) {

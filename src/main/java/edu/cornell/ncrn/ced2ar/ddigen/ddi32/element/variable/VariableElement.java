@@ -46,8 +46,8 @@ public class VariableElement extends ElementWithUrn {
 		return variableRepresentation;
 	}
 
-	public void setLabel(String label) {
-		this.label = new Label(label);
+	public void setLabel(String label, String ddiLanguage) {
+		this.label = new Label(label, ddiLanguage);
 	}
 
 	public void setName(String name) {

@@ -2,13 +2,21 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.DataItem;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.PhysicalStructureLinkReference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.ProprietaryInfo;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.ProprietaryProperty;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.RecordLayout;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.RecordLayoutScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.CodeListReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.CodeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.DateTimeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.NumericVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.TextVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableUsedReferenceElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableUsedReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariablesInRecordElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
@@ -188,10 +196,18 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 		resourcePackage.setLogicalProduct(logicalProduct);
 
+		UUID variableSchemeId = UUID.randomUUID();
+
+		// Record Layout Scheme
+		RecordLayoutScheme recordLayoutScheme = getRecordLayoutScheme(variableSchemeId, variableIdToUuidMap);
+		resourcePackage.setRecordLayoutScheme(recordLayoutScheme);
+
 		// Variable Scheme
 		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(variableIdToUuidMap);
 
-		resourcePackage.setVariableSchemeList(variableSchemeElementList);
+		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
+			resourcePackage.addVariableSchemeList(variableSchemeElement);
+		}
 
 		ddiInstance.setResourcePackage(resourcePackage);
 
@@ -202,19 +218,15 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		LogicalRecordElement logicalRecord = new LogicalRecordElement("id", getAgency(), getVersion());
 
 		VariablesInRecordElement variablesInRecord = new VariablesInRecordElement();
-
-		List<VariableUsedReferenceElement> variableUsedReferenceList = new ArrayList<>();
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
 			for (Variable variable : variableScheme.getVariableList()) {
 				if (variable.getId() != null) {
 					UUID id = variableIdToUuidMap.get(variable.getId());
-					VariableUsedReferenceElement variableUsedReference = new VariableUsedReferenceElement(id.toString(), getAgency(), getVersion());
-					variableUsedReferenceList.add(variableUsedReference);
+					VariableUsedReference variableUsedReference = new VariableUsedReference(id.toString(), getAgency(), getVersion());
+					variablesInRecord.addReference(variableUsedReference);
 				}
 			}
 		}
-
-		variablesInRecord.setVariableUsedReferenceList(variableUsedReferenceList);
 		logicalRecord.setVariablesInRecord(variablesInRecord);
 
 		logicalRecord.setLogicalProductName(new Name(LogicalRecordElement.NODE_NAME_LOGICAL_PRODUCT_NAME, getTitle()));
@@ -222,18 +234,45 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return logicalRecord;
 	}
 
+	protected RecordLayoutScheme getRecordLayoutScheme(UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap) {
+		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme("id", getAgency(), getVersion());
+
+		RecordLayout recordLayout = new RecordLayout("id", getAgency(), getVersion(), variableSchemeId.toString());
+
+		// Physical Structure Link Reference
+		recordLayout.setReference(new PhysicalStructureLinkReference("id", getAgency(), getVersion()));
+
+		// Data List Item
+		for (Map.Entry<String, UUID> entry : variableIdToUuidMap.entrySet()) {
+			DataItem dataItem = new DataItem();
+
+			dataItem.setReference(new VariableReference(entry.getValue().toString(), getAgency(), getVersion()));
+
+			ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
+			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Width", "???"));
+			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Decimals", "???"));
+			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("WriteFormatType", "???"));
+			dataItem.setProprietaryInfo(proprietaryInfo);
+
+			recordLayout.addDataItem(dataItem);
+		}
+
+		recordLayoutScheme.setRecordLayout(recordLayout);
+
+		return recordLayoutScheme;
+	}
+
 	protected List<VariableSchemeElement> getVariableSchemeElementList(Map<String, UUID> variableIdToUuidMap) {
 		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
 			VariableSchemeElement variableSchemeElement = new VariableSchemeElement("id", getAgency(), getVersion());
 			variableSchemeElement.setVariableSchemeName(getTitle());
-			List<VariableElement> variableElementList = new ArrayList<>();
 
 			for (Variable variable : variableScheme.getVariableList()) {
 				UUID id = variableIdToUuidMap.get(variable.getId());
 				VariableElement variableElement = new VariableElement(id.toString(), getAgency(), getVersion());
 				variableElement.setName(variable.getName());
-				variableElement.setLabel(variable.getLabel());
+				variableElement.setLabel(variable.getLabel(), getDdiLanguage());
 
 				if (variable.getRepresentation() instanceof NumericRepresentation) {
 					NumericRepresentation representation = (NumericRepresentation) variable.getRepresentation();
@@ -256,14 +295,13 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 				} else if (variable.getRepresentation() instanceof CodeRepresentation) {
 					CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 
-					variableElement.setVariableRepresentation(
-						new CodeVariableRepresentation("type")
-					);
+					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("type");
+					codeVariableRepresentation.setReferenceElement(new CodeListReference("id", getAgency(), getVersion()));
+					variableElement.setVariableRepresentation(codeVariableRepresentation);
 				}
 
-				variableElementList.add(variableElement);
+				variableSchemeElement.addVariableElement(variableElement);
 			}
-			variableSchemeElement.setVariableElementList(variableElementList);
 			variableSchemeElementList.add(variableSchemeElement);
 		}
 
