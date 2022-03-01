@@ -5,12 +5,12 @@ import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.Fragment;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.fragment.LogicalProductGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.CodeList;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.LogicalProductFactory;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.FragmentGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Properties;
 import javax.xml.parsers.ParserConfigurationException;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.logical.VariableScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.w3c.dom.Document;
@@ -86,7 +86,7 @@ public class AbstractFragmentInstanceGeneratorTest {
 		List<CodeList> codeListList = LogicalProductFactory.createCodeListList(document);
 		List<VariableScheme> variableSchemeList = LogicalProductFactory.createVariableSchemeList(document);
 
-		LogicalProductGenerator logicalProductGenerator = new LogicalProductGenerator(
+		FragmentGenerator logicalProductGenerator = new FragmentGenerator(
 			categorySchemeList,
 			codeListList,
 			variableSchemeList,
@@ -99,7 +99,7 @@ public class AbstractFragmentInstanceGeneratorTest {
 			3
 		);
 
-		List<Fragment> fragmentList = logicalProductGenerator.toFragmentList();
+		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
 		FragmentInstanceGenerator transformer = new FragmentInstanceGenerator(fragmentList);
 		fragmentInstanceDocument = transformer.toDocument();
 	}

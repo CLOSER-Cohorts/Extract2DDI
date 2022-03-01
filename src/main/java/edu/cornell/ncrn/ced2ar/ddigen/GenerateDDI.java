@@ -12,8 +12,6 @@ import org.w3c.dom.Document;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.CodebookVariable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi.VariableDDIGenerator;
 
 /**
  *

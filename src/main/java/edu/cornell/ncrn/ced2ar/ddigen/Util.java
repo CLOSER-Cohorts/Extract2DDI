@@ -76,7 +76,7 @@ public class Util {
 			return "3.3Fragment";
 		}
 
-		if (format.equalsIgnoreCase("2.5") || format.equalsIgnoreCase("3.3Fragment")) {
+		if (format.equalsIgnoreCase("2.5") || format.equalsIgnoreCase("3.2") || format.equalsIgnoreCase("3.3Fragment")) {
 			return format;
 		} else {
 			System.out.println("Only following formats are supported: 2.5 and 3.3Fragment");
