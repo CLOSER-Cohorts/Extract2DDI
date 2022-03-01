@@ -10,8 +10,8 @@ public abstract class Reference extends ElementWithUrn {
 	private String name;
 	private ReferenceObjectType objectType;
 
-	public Reference(String id, String agency, int version, String name, ReferenceObjectType objectType) {
-		super(id, agency, version);
+	public Reference(String id, String agency, String name, ReferenceObjectType objectType) {
+		super(id, agency);
 		setName(name);
 		setObjectType(objectType);
 	}

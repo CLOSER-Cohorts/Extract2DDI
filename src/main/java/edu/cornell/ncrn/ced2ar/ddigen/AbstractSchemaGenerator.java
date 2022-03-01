@@ -57,6 +57,14 @@ public class AbstractSchemaGenerator {
 		return agency;
 	}
 
+	protected Map<String, UUID> getCategorySchemeIdToUuidMap() {
+		Map<String, UUID> categorySchemeIdToUuidMap = new HashMap<>();
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
+			categorySchemeIdToUuidMap.put(categoryScheme.getId(), UUID.randomUUID());
+		}
+		return categorySchemeIdToUuidMap;
+	}
+
 	public List<CategoryScheme> getCategorySchemeList() {
 		return categorySchemeList;
 	}

@@ -7,26 +7,26 @@ public class DataRelationshipElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_DATA_RELATIONSHIP = "ddi:DataRelationship";
 
-	private String fileName;
+	private LogicalRecordElement logicalRecord;
 
-	public DataRelationshipElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public DataRelationshipElement(String agency) {
+		super(agency);
 	}
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element logicalProduct = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
+		Element dataRelationship = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
 
-		logicalProduct.appendChild(logicalProduct);
+		getLogicalRecord().appendToElement(dataRelationship, doc);
 
-		element.appendChild(logicalProduct);
+		element.appendChild(dataRelationship);
 	}
 
-	public String getFileName() {
-		return fileName;
+	public LogicalRecordElement getLogicalRecord() {
+		return logicalRecord;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setLogicalRecord(LogicalRecordElement logicalRecord) {
+		this.logicalRecord = logicalRecord;
 	}
 }

@@ -7,7 +7,7 @@ public class VariableReference extends Reference {
 
 	public static final String NODE_NAME_VARIABLE_REFERENCE = "r:VariableReference";
 
-	public VariableReference(String id, String agency, int version) {
-		super(id, agency, version, NODE_NAME_VARIABLE_REFERENCE, ReferenceObjectType.Variable);
+	public VariableReference(String id, String agency) {
+		super(id, agency, NODE_NAME_VARIABLE_REFERENCE, ReferenceObjectType.Variable);
 	}
 }

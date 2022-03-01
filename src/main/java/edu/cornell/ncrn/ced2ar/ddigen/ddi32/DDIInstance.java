@@ -15,8 +15,8 @@ public class DDIInstance extends ElementWithUrn {
 
 	private ResourcePackageElement resourcePackage;
 
-	public DDIInstance(String id, String agency, int version) {
-		super(id, agency, version);
+	public DDIInstance(String agency) {
+		super(agency);
 	}
 
 	@Override

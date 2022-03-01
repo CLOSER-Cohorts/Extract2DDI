@@ -12,8 +12,8 @@ public class LogicalRecordElement extends ElementWithUrn {
 	private VariablesInRecordElement variablesInRecord;
 	private Name logicalProductName;
 
-	public LogicalRecordElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public LogicalRecordElement(String agency) {
+		super(agency);
 	}
 
 	@Override
