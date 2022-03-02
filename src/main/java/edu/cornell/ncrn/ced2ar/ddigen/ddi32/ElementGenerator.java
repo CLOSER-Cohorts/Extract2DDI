@@ -119,9 +119,8 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 				CodeElement codeElement = new CodeElement(getAgency());
 				UUID categoryId = categoryIdToUuidMap.get(code.getCategoryId());
 				codeElement.setCategoryReference(categoryId.toString());
-				codeListElement.addCodeListName(codeElement);
+				codeListElement.addCode(codeElement);
 			}
-
 			codeListScheme.addCodeList(codeListElement);
 		}
 		resourcePackage.setCodeListScheme(codeListScheme);

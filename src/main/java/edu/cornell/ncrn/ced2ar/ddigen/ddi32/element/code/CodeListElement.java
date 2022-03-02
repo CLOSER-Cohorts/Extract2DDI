@@ -20,7 +20,7 @@ public class CodeListElement extends ElementWithUrn {
 		super(id, agency);
 	}
 
-	public void addCodeListName(CodeElement codeElement) {
+	public void addCode(CodeElement codeElement) {
 		synchronized (codeElementList) {
 			codeElementList.add(codeElement);
 		}
