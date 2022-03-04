@@ -1,6 +1,10 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
@@ -8,13 +12,9 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.FragmentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Fragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentInstanceGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Category;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Code;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Variable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 

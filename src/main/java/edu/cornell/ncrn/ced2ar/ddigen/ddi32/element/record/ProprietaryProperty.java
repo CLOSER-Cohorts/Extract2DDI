@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
 import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

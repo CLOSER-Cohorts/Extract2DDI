@@ -1,5 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.VariableSchemeReference;
@@ -52,17 +53,17 @@ public class LogicalProductElement extends ElementWithUrn {
 
 		// Category Scheme References
 		for (CategorySchemeReference categorySchemeReference : getCategorySchemeReferenceList()) {
-			categorySchemeReference.appendToElement(element, doc);
+			categorySchemeReference.appendToElement(logicalProduct, doc);
 		}
 
 		// Code List Scheme Reference
 		for (CodeListSchemeReference codeListSchemeReference : getCodeListSchemeReferencesList()) {
-			codeListSchemeReference.appendToElement(element, doc);
+			codeListSchemeReference.appendToElement(logicalProduct, doc);
 		}
 
 		// Variable Scheme Reference
 		for (VariableSchemeReference variableSchemeReference : getVariableSchemeReferenceList()) {
-			variableSchemeReference.appendToElement(element, doc);
+			variableSchemeReference.appendToElement(logicalProduct, doc);
 		}
 
 		element.appendChild(logicalProduct);

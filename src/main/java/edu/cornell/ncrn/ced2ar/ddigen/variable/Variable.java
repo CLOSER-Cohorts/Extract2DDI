@@ -1,4 +1,6 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
+package edu.cornell.ncrn.ced2ar.ddigen.variable;
+
+import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
 
 public class Variable {
 

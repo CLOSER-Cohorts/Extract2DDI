@@ -1,5 +1,8 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
@@ -12,7 +15,9 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "g:ResourcePackage";
 
-	private PurposeElement purpose;
+	private List<CategorySchemeElement> categorySchemeList = new ArrayList<>();
+	private CodeListScheme codeListScheme;
+	private Purpose purpose;
 	private LogicalProductElement logicalProduct;
 	private PhysicalDataProduct physicalDataProduct;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
@@ -21,7 +26,13 @@ public class ResourcePackageElement extends ElementWithUrn {
 		super(agency);
 	}
 
-	public void addVariableSchemeList(VariableSchemeElement variableSchemeElement) {
+	public void addCategoryScheme(CategorySchemeElement categoryScheme) {
+		synchronized (categorySchemeList) {
+			categorySchemeList.add(categoryScheme);
+		}
+	}
+
+	public void addVariableScheme(VariableSchemeElement variableSchemeElement) {
 		synchronized (variableSchemeList) {
 			variableSchemeList.add(variableSchemeElement);
 		}
@@ -42,12 +53,28 @@ public class ResourcePackageElement extends ElementWithUrn {
 		// Physical Data Product
 		getPhysicalDataProduct().appendToElement(resourcePackage, doc);
 
+		// Category Scheme
+		for (CategorySchemeElement categorySchemeElement : getCategorySchemeList()) {
+			categorySchemeElement.appendToElement(resourcePackage, doc);
+		}
+
+		// Code List Scheme
+		getCodeListScheme().appendToElement(resourcePackage, doc);
+
 		// Variable Scheme
 		for (VariableSchemeElement variableSchemeElement : getVariableSchemeList()) {
 			variableSchemeElement.appendToElement(resourcePackage, doc);
 		}
 
 		element.appendChild(resourcePackage);
+	}
+
+	public List<CategorySchemeElement> getCategorySchemeList() {
+		return categorySchemeList;
+	}
+
+	public CodeListScheme getCodeListScheme() {
+		return codeListScheme;
 	}
 
 	public LogicalProductElement getLogicalProduct() {
@@ -58,12 +85,16 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return physicalDataProduct;
 	}
 
-	public PurposeElement getPurpose() {
+	public Purpose getPurpose() {
 		return purpose;
 	}
 
 	public List<VariableSchemeElement> getVariableSchemeList() {
 		return variableSchemeList;
+	}
+
+	public void setCodeListScheme(CodeListScheme codeListScheme) {
+		this.codeListScheme = codeListScheme;
 	}
 
 	public void setLogicalProduct(LogicalProductElement logicalProduct) {
@@ -74,7 +105,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		this.physicalDataProduct = physicalDataProduct;
 	}
 
-	public void setPurpose(PurposeElement purpose) {
+	public void setPurpose(Purpose purpose) {
 		this.purpose = purpose;
 	}
 }

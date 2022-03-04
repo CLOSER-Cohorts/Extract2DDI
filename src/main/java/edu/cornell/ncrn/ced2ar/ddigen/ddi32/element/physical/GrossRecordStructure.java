@@ -1,6 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -33,8 +33,8 @@ public class GrossRecordStructure extends ElementWithUrn {
 		return physicalRecordSegment;
 	}
 
-	public void setLogicalRecordReference(LogicalRecordReference logicalRecordReference) {
-		this.logicalRecordReference = logicalRecordReference;
+	public void setLogicalRecordReference(String logicalRecordId) {
+		this.logicalRecordReference = new LogicalRecordReference(logicalRecordId, getAgency());
 	}
 
 	public void setPhysicalRecordSegment(PhysicalRecordSegment physicalRecordSegment) {

@@ -1,7 +1,8 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
 import edu.cornell.ncrn.ced2ar.ddigen.Appendable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableReference;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -39,7 +40,7 @@ public class DataItem implements Appendable {
 		this.proprietaryInfo = proprietaryInfo;
 	}
 
-	public void setReference(Reference reference) {
-		this.reference = reference;
+	public void setReference(String variableId, String agency) {
+		this.reference = new VariableReference(variableId, agency);
 	}
 }

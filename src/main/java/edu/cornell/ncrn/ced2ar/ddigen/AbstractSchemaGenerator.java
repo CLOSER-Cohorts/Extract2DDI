@@ -1,10 +1,11 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.CodeList;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.Variable;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.VariableScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.commons.math3.stat.Frequency;
 
 import java.util.ArrayList;
@@ -57,12 +58,30 @@ public class AbstractSchemaGenerator {
 		return agency;
 	}
 
+	protected Map<String, UUID> getCategoryIdToUuidMap() {
+		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
+			for (Category category : categoryScheme.getCategoryList()) {
+				categoryIdToUuidMap.put(category.getId(), UUID.randomUUID());
+			}
+		}
+		return categoryIdToUuidMap;
+	}
+
 	protected Map<String, UUID> getCategorySchemeIdToUuidMap() {
 		Map<String, UUID> categorySchemeIdToUuidMap = new HashMap<>();
 		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
 			categorySchemeIdToUuidMap.put(categoryScheme.getId(), UUID.randomUUID());
 		}
 		return categorySchemeIdToUuidMap;
+	}
+
+	protected Map<String, UUID> getCodeListIdToUuidMap() {
+		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
+		for (CodeList codeList : getCodeListList()) {
+			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
+		}
+		return codeListIdToUuidMap;
 	}
 
 	public List<CategoryScheme> getCategorySchemeList() {
@@ -104,6 +123,14 @@ public class AbstractSchemaGenerator {
 		}
 
 		return variableIdToUuidMap;
+	}
+
+	protected Map<String, UUID> getVariableSchemeIdToUuidMap() {
+		Map<String, UUID> variableSchemeIdToUuidMap = new HashMap<>();
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
+			variableSchemeIdToUuidMap.put(variableScheme.getId(), UUID.randomUUID());
+		}
+		return variableSchemeIdToUuidMap;
 	}
 
 	public List<Ced2arVariableStat> getVariableStatisticList() {

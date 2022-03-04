@@ -1,7 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementWithUrn;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.Name;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -17,8 +17,8 @@ public class VariableSchemeElement extends ElementWithUrn {
 
 	private List<VariableElement> variableElementList = new ArrayList<>();
 
-	public VariableSchemeElement(String id, String agency, int version) {
-		super(id, agency, version);
+	public VariableSchemeElement(String id, String agency) {
+		super(id, agency);
 	}
 
 	public void addVariableElement(VariableElement variableElement) {

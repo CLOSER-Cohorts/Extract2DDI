@@ -1,5 +1,7 @@
-package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
+package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariablesInRecordElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -39,8 +41,8 @@ public class LogicalRecordElement extends ElementWithUrn {
 		return variablesInRecord;
 	}
 
-	public void setLogicalProductName(Name logicalProductName) {
-		this.logicalProductName = logicalProductName;
+	public void setLogicalProductName(String variableSchemeName) {
+		this.logicalProductName = new Name(NODE_NAME_LOGICAL_PRODUCT_NAME, variableSchemeName);
 	}
 
 	public void setVariablesInRecord(VariablesInRecordElement variablesInRecord) {

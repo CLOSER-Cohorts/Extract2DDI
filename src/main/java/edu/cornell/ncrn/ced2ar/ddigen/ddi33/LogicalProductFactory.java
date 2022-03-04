@@ -2,6 +2,18 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.NumericRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.TextRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
