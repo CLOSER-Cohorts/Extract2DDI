@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
@@ -14,6 +15,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "g:ResourcePackage";
 
+	private List<CategorySchemeElement> categorySchemeList = new ArrayList<>();
 	private CodeListScheme codeListScheme;
 	private Purpose purpose;
 	private LogicalProductElement logicalProduct;
@@ -24,7 +26,13 @@ public class ResourcePackageElement extends ElementWithUrn {
 		super(agency);
 	}
 
-	public void addVariableSchemeList(VariableSchemeElement variableSchemeElement) {
+	public void addCategoryScheme(CategorySchemeElement categoryScheme) {
+		synchronized (categorySchemeList) {
+			categorySchemeList.add(categoryScheme);
+		}
+	}
+
+	public void addVariableScheme(VariableSchemeElement variableSchemeElement) {
 		synchronized (variableSchemeList) {
 			variableSchemeList.add(variableSchemeElement);
 		}
@@ -46,6 +54,9 @@ public class ResourcePackageElement extends ElementWithUrn {
 		getPhysicalDataProduct().appendToElement(resourcePackage, doc);
 
 		// Category Scheme
+		for (CategorySchemeElement categorySchemeElement : getCategorySchemeList()) {
+			categorySchemeElement.appendToElement(resourcePackage, doc);
+		}
 
 		// Code List Scheme
 		getCodeListScheme().appendToElement(resourcePackage, doc);
@@ -56,6 +67,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 		}
 
 		element.appendChild(resourcePackage);
+	}
+
+	public List<CategorySchemeElement> getCategorySchemeList() {
+		return categorySchemeList;
 	}
 
 	public CodeListScheme getCodeListScheme() {

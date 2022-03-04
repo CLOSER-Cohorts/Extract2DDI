@@ -1,8 +1,13 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Label;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategoryElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.DataRelationshipElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalRecordElement;
@@ -106,7 +111,19 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 		// TODO: Physical Instance
 
-		// TODO: Category Scheme
+		// Category Scheme
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
+			UUID categorySchemeId = categorySchemeIdToUuidMap.get(categoryScheme.getId());
+			CategorySchemeElement categorySchemeElement = new CategorySchemeElement(categorySchemeId.toString(), getAgency());
+			categorySchemeElement.setName(categoryScheme.getId());
+			for (Category category : categoryScheme.getCategoryList()) {
+				UUID categoryId = categoryIdToUuidMap.get(category.getId());
+				CategoryElement categoryElement = new CategoryElement(categoryId.toString(), getAgency());
+				categoryElement.setLabel(new Label(category.getLabel(), getDdiLanguage()));
+				categorySchemeElement.addCategory(categoryElement);
+			}
+			resourcePackage.addCategoryScheme(categorySchemeElement);
+		}
 
 		// Code List Schemes
 		CodeListScheme codeListScheme = new CodeListScheme(getAgency());
@@ -132,7 +149,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		);
 
 		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
-			resourcePackage.addVariableSchemeList(variableSchemeElement);
+			resourcePackage.addVariableScheme(variableSchemeElement);
 		}
 
 		ddiInstance.setResourcePackage(resourcePackage);
