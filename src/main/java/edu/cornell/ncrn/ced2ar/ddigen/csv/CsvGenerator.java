@@ -128,6 +128,23 @@ public class CsvGenerator {
 		return sb.toString();
 	}
 
+	protected String getStatisticsCSV(List<Ced2arVariableStat> ced2arVariableStats, boolean includeSummaryStatistics) {
+		StringBuilder sb = new StringBuilder("Variable,Label,Max,Min,Mean,Mode,Valid,Invalid,StdDev\n");
+		for (Ced2arVariableStat v : ced2arVariableStats) {
+			sb.append(v.getStatisticCSVValue(includeSummaryStatistics) + "\n");
+		}
+		return sb.toString();
+	}
+
+	protected String getFrequenciesCSV(List<DdiFrequency> frequencyList) {
+		StringBuilder sb = new StringBuilder("Variable,Label,Code,Category,Frequency,Percent,Means\n");
+		for (DdiFrequency frequency : frequencyList) {
+			frequency.appendToStringBuilder(sb);
+		}
+
+		return sb.toString();
+	}
+
 	/**
 	 * This method generates CSV in the format of variable name, value,label,
 	 * [value , label ... repeat]

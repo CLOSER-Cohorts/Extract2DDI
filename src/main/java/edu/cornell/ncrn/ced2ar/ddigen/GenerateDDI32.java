@@ -13,18 +13,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,19 +40,6 @@ public class GenerateDDI32 {
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setOutputFile(outputFile);
 		setStatistics(statistics);
-	}
-
-	protected void createFile(String csv, String fileName) throws IOException {
-		BufferedWriter bw = null;
-		try {
-			File varsFile = new File(fileName);
-			varsFile.createNewFile();
-			FileWriter fw = new FileWriter(varsFile.getAbsoluteFile());
-			bw = new BufferedWriter(fw);
-			bw.write(csv);
-		} finally {
-			bw.close();
-		}
 	}
 
 	public void generateDDI(
@@ -139,28 +115,15 @@ public class GenerateDDI32 {
 			fileName = dataFile;
 		}
 
-		createFile(xml, fileName + ".xml");
+		FileUtil.createFile(xml, fileName + ".xml");
 		logger.info("Successfully created DDI file");
 
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
-		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
-		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
+		FileUtil.createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
+		FileUtil.createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
 		logger.info("Successfully created csv files");
 
 		logger.info(observationLimit);
-	}
-
-	public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException {
-		TransformerFactory tf = TransformerFactory.newInstance();
-		Transformer transformer = tf.newTransformer();
-		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
-		transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-
-		transformer.transform(new DOMSource(doc),
-				new StreamResult(new OutputStreamWriter(out, "UTF-8")));
 	}
 
 	public String getAgency() {

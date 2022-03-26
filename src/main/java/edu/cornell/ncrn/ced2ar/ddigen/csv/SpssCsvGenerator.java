@@ -170,12 +170,22 @@ public class SpssCsvGenerator extends CsvGenerator {
 		logger.info("Time to process variable statistics  "
 				+ ((endTime - startTime) / 1000) + " seconds");
 
-		String variableStatistics = getSummaryStatisticsVaribleCSV(
-				ced2arVariableStats, includeSummaryStatistics);
+		String variableStatistics = getSummaryStatisticsVaribleCSV(ced2arVariableStats, includeSummaryStatistics);
+		String statistics = getStatisticsCSV(ced2arVariableStats, includeSummaryStatistics);
+		List<DdiFrequency> ddiFrequencyList = new ArrayList<>();
+		for (Map.Entry<String, Frequency> entry : variableToFrequencyMap.entrySet()) {
+			ddiFrequencyList.add(new DdiFrequency(entry.getKey(), entry.getKey(), entry.getValue()));
+		}
+
+		String frequencies = getFrequenciesCSV(ddiFrequencyList);
+
 		String variableValueLabels = getVariableValueLabelCSV(ced2arVariableStats);
 
 		VariableCsv variablesCSV = new VariableCsv();
 		variablesCSV.setVariableStatistics(variableStatistics);
+		variablesCSV.setStatistics(statistics);
+		variablesCSV.setFrequencies(frequencies);
+
 		variablesCSV.setVariableValueLables(variableValueLabels);
 		variablesCSV.setReadErrors(readErrors);
 		variablesCSV.setVariableToFrequencyMap(variableToFrequencyMap);

@@ -70,7 +70,7 @@ usage: Options are as follows...
 
  -s <arg>      (optional) generate summary statistics.  Values: TRUE|FALSE   Default: TRUE
  
--config <arg> (optional) use config file with specified path. Format of the config file:
+--config <arg> (optional) use config file with specified path. Format of the config file:
     agency=uk.closer
     ddilang=en-GB
     stats=max,min,mean,valid,invalid,freq,stdev
@@ -78,9 +78,13 @@ usage: Options are as follows...
     sumstats=TRUE
     obsLimit=1000
 
- -exclude <arg> (optional) exclude statistics for variables specified in the file with specified path. Format for the exlude file:
+ --exclude <arg> (optional) exclude statistics for variables specified in the file with specified path. Format for the exlude file:
     var_1=max:user message
     var_2=freq:removed frequencies
+    
+ --statistics (optional) Produce statistics file
+ 
+ --frequencies (optional) Produce frequency file
 ```
 
 **Example**

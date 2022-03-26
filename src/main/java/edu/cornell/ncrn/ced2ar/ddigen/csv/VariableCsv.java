@@ -10,10 +10,20 @@ import org.apache.commons.math3.stat.Frequency;
 public class VariableCsv implements Serializable {
 	private static final long serialVersionUID = 3064037465077888018L;
 	private String variableStatistics;
+	private String frequencies;
+	private String statistics;
 	private String variableValueLables;
 	private long readErrors;
 	private Map<String, Frequency> variableToFrequencyMap = new HashMap<>();
 	private List<Ced2arVariableStat> variableStatList = new ArrayList<>();
+
+	public String getStatistics() {
+		return statistics;
+	}
+
+	public String getFrequencies() {
+		return frequencies;
+	}
 
 	public Map<String, Frequency> getVariableToFrequencyMap() {
 		return variableToFrequencyMap;
@@ -53,5 +63,13 @@ public class VariableCsv implements Serializable {
 
 	public void setReadErrors(long readErrors) {
 		this.readErrors = readErrors;
+	}
+
+	public void setFrequencies(String frequencies) {
+		this.frequencies = frequencies;
+	}
+
+	public void setStatistics(String statistics) {
+		this.statistics = statistics;
 	}
 }

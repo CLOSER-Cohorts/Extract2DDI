@@ -18,11 +18,11 @@ import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class GenerateDDI33 {
 
@@ -48,24 +48,12 @@ public class GenerateDDI33 {
 		setStatistics(statistics);
 	}
 
-	protected void createFile(String csv, String fileName) throws IOException {
-		BufferedWriter bw = null;
-		try {
-			File varsFile = new File(fileName);
-			varsFile.createNewFile();
-			FileWriter fw = new FileWriter(varsFile.getAbsoluteFile());
-			bw = new BufferedWriter(fw);
-			bw.write(csv);
-		} finally {
-			bw.close();
-		}
-	}
-
 	public void generateDDI(
 		String dataFile,
 		boolean runSumStats,
-		long observationLimit
-
+		long observationLimit,
+		boolean isStatisticFileEnabled,
+		boolean isFrequencyFileEnabled
 	) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
@@ -75,6 +63,7 @@ public class GenerateDDI33 {
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		if (dataFile.toLowerCase().endsWith(".dta")) {
+			// STATA
 			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
 			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
@@ -126,6 +115,7 @@ public class GenerateDDI33 {
 			variableSchemeList.add(defaultVariableScheme);
 
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
+			// SPSS
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();
 			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
@@ -170,12 +160,21 @@ public class GenerateDDI33 {
 			fileName = dataFile;
 		}
 
-		createFile(xml, fileName + ".xml");
+		FileUtil.createFile(xml, fileName + ".xml");
 		logger.info("Successfully created DDI file");
 
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
-		createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
-		createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
+		FileUtil.createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
+
+		if (isFrequencyFileEnabled) {
+			FileUtil.createFile(variableCsv.getFrequencies(), dataFile+".freq.csv");
+		}
+
+		if (isStatisticFileEnabled) {
+			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
+		}
+
+		FileUtil.createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
 		logger.info("Successfully created csv files");
 
 		logger.info(observationLimit);

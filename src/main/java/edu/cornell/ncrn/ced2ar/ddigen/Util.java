@@ -34,6 +34,8 @@ public class Util {
 		_options.addOption("format", true, "(optional) DDI format (3.3Fragment or 2.5)");
 		_options.addOption("config", true, "(optional) Config file path");
 		_options.addOption("exclude", true, "(optional) Exclude variable statistics file path");
+		_options.addOption("frequencies", false, "(optional) Produce frequencies file");
+		_options.addOption("statistics", false, "(optional) Produce statistics file");
 	}
 
 	public CommandLineParser getParser() {

@@ -226,6 +226,29 @@ public class Ced2arVariableStat implements Serializable {
 		return csvString;
 	}
 
+	public String getStatisticCSVValue(boolean summaryStats) {
+		String csvString = "";
+		String emptyString = "";
+		String min = "";
+		String max = "";
+		String stdDev = "";
+		String mean = "";
+		if (isNumeric && summaryStats) {
+			min = ((Double) stats.getMin()).equals(Double.NaN) ? emptyString
+					: "" + stats.getMin();
+			max = ((Double) stats.getMax()).equals(Double.NaN) ? emptyString
+					: "" + stats.getMax();
+			stdDev = ((Double) stats.getStandardDeviation()).equals(Double.NaN) ? emptyString
+					: "" + stats.getStandardDeviation();
+			mean = ((Double) stats.getMean()).equals(Double.NaN) ? emptyString
+					: "" + stats.getMean();
+		}
+		csvString = name + "," + getLabel() + "," + max + "," + min + ","
+				+ mean + ",0," + validCount + "," + invalidCount + stdDev;
+
+		return csvString;
+	}
+
 	@Override
 	public String toString() {
 		return getCSVValue(true);
