@@ -177,7 +177,7 @@ public class SpssCsvGenerator extends CsvGenerator {
 			ddiFrequencyList.add(new DdiFrequency(entry.getKey(), entry.getKey(), entry.getValue()));
 		}
 
-		String frequencies = getFrequenciesCSV(ddiFrequencyList);
+		String frequencies = getFrequenciesCSV(ddiFrequencyList, ced2arVariableStats);
 
 		String variableValueLabels = getVariableValueLabelCSV(ced2arVariableStats);
 

@@ -243,9 +243,8 @@ public class Ced2arVariableStat implements Serializable {
 			mean = ((Double) stats.getMean()).equals(Double.NaN) ? emptyString
 					: "" + stats.getMean();
 		}
-		csvString = name + "," + getLabel() + "," + max + "," + min + ","
-				+ mean + ",0," + validCount + "," + invalidCount + stdDev;
 
+		csvString = String.format("%s,%s,%s,%s,%s,%s,%s", name, getLabel(), max, min, mean, 0, validCount, invalidCount, stdDev);
 		return csvString;
 	}
 

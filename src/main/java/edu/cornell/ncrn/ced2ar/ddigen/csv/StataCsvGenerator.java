@@ -87,7 +87,7 @@ public class StataCsvGenerator extends CsvGenerator {
 			ddiFrequencyList.add(new DdiFrequency(entry.getKey(), entry.getKey(), entry.getValue()));
 		}
 
-		String frequencies = getFrequenciesCSV(ddiFrequencyList);
+		String frequencies = getFrequenciesCSV(ddiFrequencyList, ced2arVariableStats);
 		variablesCSV.setFrequencies(frequencies);
 
 		variablesCSV.setVariableValueLables(variableValueLabels);

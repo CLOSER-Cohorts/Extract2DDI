@@ -3,7 +3,7 @@ package edu.cornell.ncrn.ced2ar.ddigen.csv;
 import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DdiFrequency {
@@ -19,16 +19,22 @@ public class DdiFrequency {
 		setFrequency(frequency);
 	}
 
-	public void appendToStringBuilder(StringBuilder sb) {
+	public void appendToStringBuilder(StringBuilder sb, Ced2arVariableStat stat) {
 		Frequency freq = getFrequency();
-		Iterator<Map.Entry<Comparable<?>, Long>> iterator = freq.entrySetIterator();
-		while (iterator.hasNext()) {
-			Map.Entry<Comparable<?>, Long> element = iterator.next();
-			String frequencyCSV = getVariableName() + "," + getVariableLabel()
-					+ ",code,category," + freq.getCount(element.getKey())
-					+ "," + freq.getPct(element.getKey())
-					+ "," + freq.getCumFreq(element.getKey());
-			sb.append(frequencyCSV+ "\n");
+
+		HashMap<String, String> validValues = stat.getValidValues();
+		for (Map.Entry<String, String> mapEntry : validValues.entrySet()) {
+			String frequencyCSV = String.format(
+				"%s,%s,%s,%s,%s,%s,%s",
+				getVariableName(),
+				getVariableLabel(),
+				mapEntry.getKey(),
+				mapEntry.getValue(),
+				freq.getCount(mapEntry.getKey()),
+				freq.getPct(mapEntry.getKey()),
+				freq.getCumFreq(mapEntry.getKey())
+			);
+			sb.append(frequencyCSV + "\n");
 		}
 	}
 
