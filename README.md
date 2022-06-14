@@ -1,18 +1,26 @@
-# CED2AR data file to DDI 3.3 Generator
+# Extract2DDI
 
 ## Purpose 
 
-The program will output DDI 3.3 Fragment format in line with [recommended best practice](https://ddialliance.org/Specification/DDI-Lifecycle/).
-It also adds functionality to mute summary statistics on selected variables (e.g. exclude frequencies) either where these are not appropriate or to redact for other reasons. An optional message can be associated with each variable to indicate the reasons why.
+To extract DDI metadata from SPSS and Stata files. It supports the most commonly used version of the DDI metadata standard version: 
+- DDI-Codebook 2.5
+- DDI-Lifecycle 3.2 (Instance)
+- DDI-Lifecycle 3.3 (Fragment)
+
+It also adds functionality (for DDI-Lifecycle variants) to mute summary statistics on selected variables (e.g. exclude frequencies) either where these are not appropriate or to redact for other reasons. An optional message can be associated with each variable to indicate the reasons why.
+
+## Development History
+
+This code base was originally forked from https://github.com/ncrncornell/ced2arddigenerator and uses the reader libraries:
+- https://github.com/ncrncornell/ced2arspssreader (SPSS)
+- https://github.com/ncrncornell/ced2ar-stata-reader (Stata)
+
+- DDI-Lifecycle was added
+- Redaction of summary statistics
 
 ## Known issues
 
-Currently this does not support 
-- DDI 3.2 Instance format
-- Stata
-- Should be considered as beta pending further testing
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1186913.svg)](https://doi.org/10.5281/zenodo.1186913)
+- No support for redaction of summary statistics on the DDI-Codebook variant
 
 This project contains java classes that will allow you to read several versions of **Stata** *or* **SPSS** data sets and generate out DDI 3.3 xml files.
 
@@ -23,8 +31,9 @@ This maven project generates *two* .jar files.  One is used by developers and th
 
 ## Artifacts
 
+
 ### Maven Central
-[![rdb](https://maven-badges.herokuapp.com/maven-central/edu.cornell.ncrn.ced2ar.ddigen/ced2arddigenerator/badge.svg)](https://maven-badges.herokuapp.com/maven-central/edu.cornell.ncrn.ced2ar.ddigen/ced2arddigenerator)
+
 
 ### Build
 
@@ -38,7 +47,6 @@ If publishing, omit the `-Dgpg.skip`.
 
 ### Usage 
 *For Developers:* 
-
 
 The best way to use this code is to include the jar file in an existing project, such as [ced2ardata2ddi](https://github.com/ncrncornell/ced2ardata2ddi) 
 The following code is in: ced2ardata2ddi's DataFileRestController.java file
