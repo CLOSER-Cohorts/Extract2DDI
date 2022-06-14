@@ -105,6 +105,8 @@
 	    	      <descriptorRefs>
 	    	        <descriptorRef>jar-with-dependencies</descriptorRef>
 	    	      </descriptorRefs>
+					<finalName>Extract2DDI</finalName>
+					<appendAssemblyId>false</appendAssemblyId>
     	          <!-- Set appendAssemblyId to false IF you want this full jar to replace the normal jar in the maven repo. -->
 	    	      <!-- <appendAssemblyId>false</appendAssemblyId>  -->
 	    	      <archive>
