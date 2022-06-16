@@ -67,10 +67,10 @@ public class StataCsvGenerator extends CsvGenerator {
 		}
 
 		long readErrors = 0;
-		if (includeSummaryStatistics)
-			readErrors = setSummaryStatistics(stataReader, ced2arVariableStats,
-					variableToFrequencyMap,
-					recordLimit);
+
+		if (includeSummaryStatistics) {
+			readErrors = setSummaryStatistics(stataReader, ced2arVariableStats, variableToFrequencyMap, recordLimit);
+		}
 
 		String variableStatistics = getSummaryStatisticsVaribleCSV(
 				ced2arVariableStats, includeSummaryStatistics);
@@ -106,13 +106,12 @@ public class StataCsvGenerator extends CsvGenerator {
 		long observationsToProcess = recordLimit;
 		long readErrors = 0;
 		if (observationsToProcess == PROCESS_ALL_RECORDS)
-			observationsToProcess = stataReader.getDtaHeader()
-					.getNumberOfObservations();
+			observationsToProcess = stataReader.getDtaHeader().getNumberOfObservations();
 		try {
 			stataReader.openDtaFile();
 			for (long l = 1; l <= observationsToProcess; l++) {
 				if (l % 100 == 0)
-					logger.debug("Processing observation " + l);
+					logger.debug("Processing observation " + 500);
 
 				List<String> observation = stataReader.getObservation(l);
 				String[] varValues = observation.toArray(new String[observation

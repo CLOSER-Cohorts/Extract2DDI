@@ -31,7 +31,7 @@ public class DdiFrequency {
 				mapEntry.getKey(),
 				mapEntry.getValue(),
 				freq.getCount(mapEntry.getKey()),
-				freq.getPct(mapEntry.getKey()),
+				Math.round(freq.getPct(mapEntry.getKey()) * 100.0) / 100.0,
 				freq.getCumFreq(mapEntry.getKey())
 			);
 			sb.append(frequencyCSV + "\n");

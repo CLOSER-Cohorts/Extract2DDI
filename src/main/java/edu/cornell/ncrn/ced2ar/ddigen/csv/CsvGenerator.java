@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen.csv;
 
-import java.rmi.ServerException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -71,7 +70,9 @@ public class CsvGenerator {
 			}
 			Frequency frequency = variableToFrequencyMap.get(variable.getName());
 			if (frequency != null && value != null && variable.isNumeric()) {
-				frequency.addValue(value);
+				double d = Double.parseDouble(value);
+				int i = (int) d;
+				frequency.addValue(Integer.toString(i));
 			}
 		}
 		return readErrors;
@@ -137,7 +138,7 @@ public class CsvGenerator {
 		return sb.toString();
 	}
 
-	protected String getFrequenciesCSV(List<DdiFrequency> frequencyList, List<Ced2arVariableStat> ced2arVariableStats) throws ServerException {
+	protected String getFrequenciesCSV(List<DdiFrequency> frequencyList, List<Ced2arVariableStat> ced2arVariableStats) {
 		StringBuilder sb = new StringBuilder("Variable,Label,Code,Category,Frequency,Percent,Means\n");
 		for (DdiFrequency frequency : frequencyList) {
 			Ced2arVariableStat stat = null;
