@@ -117,9 +117,27 @@ public class Main {
 			GenerateDDI generateDDI = new GenerateDDI();
 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_2)) {
+			if (agency == null || agency.isEmpty()) {
+				System.out.println("Agency is required...");
+				return;
+			}
+			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
+				System.out.println("DDI language is required...");
+				return;
+			}
 			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
+			if (agency == null || agency.isEmpty()) {
+				System.out.println("Agency is required...");
+				System.exit(1);
+				return;
+			}
+			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
+				System.out.println("DDI language is required...");
+				System.exit(1);
+				return;
+			}
 			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
  			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled, isStatisticFileEnabled);
 		}
