@@ -95,6 +95,19 @@ usage: Options are as follows...
  --frequencies (optional) Produce frequency file
 ```
 
+####2.5 format
+`java -jar Extract2DDI.jar -f filename.sav --format 2.5`
+
+####3.2 format
+`java -jar Extract2DDI.jar -f filename.sav --format 3.2`
+
+####3.3 Fragment format
+`java -jar Extract2DDI.jar -f filename.sav`
+
+or
+
+`java -jar Extract2DDI.jar -f filename.sav --format 3.3Fragment`
+
 **Example**
 
 `java -jar Extract2DDI.jar  -f dataset.sav -s TRUE -l 1000`
