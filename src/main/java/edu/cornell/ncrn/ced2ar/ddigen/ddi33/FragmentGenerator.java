@@ -379,25 +379,25 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 						}
 
 						String min = variableStat.getMinFormatted();
-						if (!excludeMin && min != null) {
+						if (!excludeMin && min != null && !min.isEmpty()) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(min, StatisticType.MINIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String max = variableStat.getMaxFormatted();
-						if (!excludeMax && max != null) {
+						if (!excludeMax && max != null && !max.isEmpty()) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(max, StatisticType.MAXIMUM);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String mean = variableStat.getMeanFormatted();
-						if (!excludeMean && mean != null) {
+						if (!excludeMean && mean != null && !mean.isEmpty()) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(mean, StatisticType.MEAN);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						String stdDeviation = variableStat.getStdDeviationFormatted();
-						if (!excludeStdDev && stdDeviation != null) {
+						if (!excludeStdDev && stdDeviation != null && !stdDeviation.isEmpty()) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}

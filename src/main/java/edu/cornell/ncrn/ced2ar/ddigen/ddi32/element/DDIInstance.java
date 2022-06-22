@@ -21,14 +21,9 @@ public class DDIInstance extends ElementWithUrn {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element ddiInstance = doc.createElement(NODE_NAME_DDI_INSTANCE);
-
-		super.appendToElement(element, doc);
-
 		// Resource Package
-		getResourcePackage().appendToElement(ddiInstance, doc);
-
-		element.appendChild(ddiInstance);
+		super.appendToElement(element, doc);
+		getResourcePackage().appendToElement(element, doc);
 	}
 
 	public ResourcePackageElement getResourcePackage() {

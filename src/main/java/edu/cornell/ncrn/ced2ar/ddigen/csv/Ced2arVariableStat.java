@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
-//import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.springframework.util.StringUtils;
 
@@ -91,7 +90,12 @@ public class Ced2arVariableStat implements Serializable {
 	}
 
 	public String getMeanFormatted() {
-		return ((Double) stats.getMean()).equals(Double.NaN) ? "" : "" + stats.getMean();
+		if (!Double.isNaN(stats.getMean())) {
+			BigDecimal mean = BigDecimal.valueOf(stats.getMean());
+			return mean.toPlainString();
+		} else {
+			return "";
+		}
 	}
 
 	public void setMaxValue(Double maxValue) {
@@ -107,15 +111,30 @@ public class Ced2arVariableStat implements Serializable {
 	}
 
 	public String getMaxFormatted() {
-		return ((Double) stats.getMax()).equals(Double.NaN) ? "" : "" + stats.getMax();
+		if (!Double.isNaN(stats.getMin())) {
+			BigDecimal max = BigDecimal.valueOf(stats.getMax());
+			return max.toPlainString();
+		} else {
+			return "";
+		}
 	}
 
 	public String getMinFormatted() {
-		return ((Double) stats.getMin()).equals(Double.NaN) ? "" : "" + stats.getMin();
+		if (!Double.isNaN(stats.getMin())) {
+			BigDecimal min = BigDecimal.valueOf(stats.getMin());
+			return min.toPlainString();
+		} else {
+			return "";
+		}
 	}
 
 	public String getStdDeviationFormatted() {
-		return ((Double) stats.getStandardDeviation()).equals(Double.NaN) ? "" : "" + stats.getStandardDeviation();
+		if (!Double.isNaN(stats.getStandardDeviation())) {
+			BigDecimal std = BigDecimal.valueOf(stats.getStandardDeviation());
+			return std.toPlainString();
+		} else {
+			return "";
+		}
 	}
 
 	public void setStdDeviation(double stdDeviation) {

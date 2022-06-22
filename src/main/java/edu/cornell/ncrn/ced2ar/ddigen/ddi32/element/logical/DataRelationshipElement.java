@@ -18,6 +18,8 @@ public class DataRelationshipElement extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element dataRelationship = doc.createElement(NODE_NAME_DATA_RELATIONSHIP);
 
+		super.appendToElement(dataRelationship, doc);
+
 		getLogicalRecord().appendToElement(dataRelationship, doc);
 
 		element.appendChild(dataRelationship);

@@ -18,6 +18,8 @@ public class PhysicalStructureScheme extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element physicalStructureScheme = doc.createElement(NODE_NAME_PHYSICAL_STRUCTURE_SCHEME);
 
+		super.appendToElement(physicalStructureScheme, doc);
+
 		getPhysicalStructure().appendToElement(physicalStructureScheme, doc);
 
 		element.appendChild(physicalStructureScheme);

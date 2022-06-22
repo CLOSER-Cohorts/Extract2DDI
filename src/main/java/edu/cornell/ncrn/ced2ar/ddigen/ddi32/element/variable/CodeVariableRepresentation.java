@@ -19,14 +19,16 @@ public class CodeVariableRepresentation extends VariableRepresentation {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
-		Element representation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
+		Element variableRepresentation = doc.createElement(NODE_NAME_VARIABLE_REPRESENTATION);
 
+		Element representation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
 		super.appendToElement(representation, doc);
 
 		// Code List Reference
 		getReferenceElement().appendToElement(representation, doc);
 
-		element.appendChild(representation);
+		variableRepresentation.appendChild(representation);
+		element.appendChild(variableRepresentation);
 	}
 
 	public Reference getReferenceElement() {

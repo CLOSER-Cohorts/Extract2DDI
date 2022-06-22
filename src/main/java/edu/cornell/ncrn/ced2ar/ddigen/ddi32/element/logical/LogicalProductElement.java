@@ -46,7 +46,7 @@ public class LogicalProductElement extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element logicalProduct = doc.createElement(NODE_NAME_LOGICAL_PRODUCT);
 
-		super.appendToElement(element, doc);
+		super.appendToElement(logicalProduct, doc);
 
 		// Logical Record
 		getDataRelationship().appendToElement(logicalProduct, doc);

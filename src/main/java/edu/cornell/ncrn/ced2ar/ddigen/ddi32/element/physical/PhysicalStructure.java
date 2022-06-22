@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
 
 public class PhysicalStructure extends ElementWithUrn {
 
-	public static final String NODE_NAME_PHYSICAL_STRUCTURE = "ddi:PhysicalStructure";
+	public static final String NODE_NAME_PHYSICAL_STRUCTURE = "p:PhysicalStructure";
 	public static final String NODE_NAME_FILE_FORMAT = "p:FileFormat";
 
 	private BasedOnObject basedOnObject;

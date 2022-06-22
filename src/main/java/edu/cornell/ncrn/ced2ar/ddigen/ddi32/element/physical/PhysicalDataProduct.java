@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 
 public class PhysicalDataProduct extends ElementWithUrn {
 
-	public static final String NODE_NAME_PHYSICAL_DATA_PRODUCT = "ddi:PhysicalDataProduct";
+	public static final String NODE_NAME_PHYSICAL_DATA_PRODUCT = "p:PhysicalDataProduct";
 
 	private PhysicalStructureScheme physicalStructureScheme;
 	private RecordLayoutScheme recordLayoutScheme;

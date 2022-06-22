@@ -42,7 +42,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element resourcePackage = doc.createElement(NODE_NAME_RESOURCE_PACKAGE);
 
-		super.appendToElement(element, doc);
+		super.appendToElement(resourcePackage, doc);
 
 		// Purpose
 		getPurpose().appendToElement(resourcePackage, doc);

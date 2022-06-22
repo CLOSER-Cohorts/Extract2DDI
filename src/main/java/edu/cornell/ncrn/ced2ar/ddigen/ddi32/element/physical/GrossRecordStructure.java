@@ -19,6 +19,8 @@ public class GrossRecordStructure extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element grossRecordStructure = doc.createElement(NODE_NAME_GROSS_RECORD_STRUCTURE);
 
+		super.appendToElement(grossRecordStructure, doc);
+
 		getLogicalRecordReference().appendToElement(grossRecordStructure, doc);
 		getPhysicalRecordSegment().appendToElement(grossRecordStructure, doc);
 

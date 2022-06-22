@@ -133,7 +133,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			codeListElement.setName(codeList.getLabel());
 
 			for (Code code : codeList.getCodeList()) {
-				CodeElement codeElement = new CodeElement(getAgency());
+				CodeElement codeElement = new CodeElement(getAgency(), code.getValue());
 				UUID categoryId = categoryIdToUuidMap.get(code.getCategoryId());
 				codeElement.setCategoryReference(categoryId.toString());
 				codeListElement.addCode(codeElement);
@@ -145,7 +145,8 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		// Variable Scheme
 		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(
 			variableIdToUuidMap,
-			variableSchemeIdToUuidMap
+			variableSchemeIdToUuidMap,
+			codeListIdToUuidMap
 		);
 
 		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
@@ -269,7 +270,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return recordLayoutScheme;
 	}
 
-	protected List<VariableSchemeElement> getVariableSchemeElementList(Map<String, UUID> variableIdToUuidMap, Map<String, UUID> variableSchemeIdToUuidMap) {
+	protected List<VariableSchemeElement> getVariableSchemeElementList(Map<String, UUID> variableIdToUuidMap, Map<String, UUID> variableSchemeIdToUuidMap, Map<String, UUID> codeListIdToUuidMap) {
 		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
 
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
@@ -305,8 +306,10 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 				} else if (variable.getRepresentation() instanceof CodeRepresentation) {
 					CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 
+					UUID codeSchemeId = codeListIdToUuidMap.get(representation.getCodeSchemeId());
+
 					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("type");
-					codeVariableRepresentation.setReferenceElement("id", getAgency());
+					codeVariableRepresentation.setReferenceElement(codeSchemeId.toString(), getAgency());
 					variableElement.setVariableRepresentation(codeVariableRepresentation);
 				}
 

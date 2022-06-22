@@ -9,10 +9,10 @@ import org.w3c.dom.Element;
 public class LogicalRecordElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_LOGICAL_RECORD = "ddi:LogicalRecord";
-	public static final String NODE_NAME_LOGICAL_PRODUCT_NAME = "ddi:LogicalProductName";
+	public static final String NODE_NAME_LOGICAL_RECORD_NAME = "ddi:LogicalRecordName";
 
 	private VariablesInRecordElement variablesInRecord;
-	private Name logicalProductName;
+	private Name logicalRecordName;
 
 	public LogicalRecordElement(String agency) {
 		super(agency);
@@ -22,10 +22,10 @@ public class LogicalRecordElement extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		Element logicalRecord = doc.createElement(NODE_NAME_LOGICAL_RECORD);
 
-		super.appendToElement(element, doc);
+		super.appendToElement(logicalRecord, doc);
 
 		// Logical Product Name
-		getLogicalProductName().appendToElement(element, doc);
+		getLogicalRecordName().appendToElement(logicalRecord, doc);
 
 		// Variables In Record
 		getVariablesInRecord().appendToElement(logicalRecord, doc);
@@ -33,8 +33,8 @@ public class LogicalRecordElement extends ElementWithUrn {
 		element.appendChild(logicalRecord);
 	}
 
-	public Name getLogicalProductName() {
-		return logicalProductName;
+	public Name getLogicalRecordName() {
+		return logicalRecordName;
 	}
 
 	public VariablesInRecordElement getVariablesInRecord() {
@@ -42,7 +42,7 @@ public class LogicalRecordElement extends ElementWithUrn {
 	}
 
 	public void setLogicalProductName(String variableSchemeName) {
-		this.logicalProductName = new Name(NODE_NAME_LOGICAL_PRODUCT_NAME, variableSchemeName);
+		this.logicalRecordName = new Name(NODE_NAME_LOGICAL_RECORD_NAME, variableSchemeName);
 	}
 
 	public void setVariablesInRecord(VariablesInRecordElement variablesInRecord) {

@@ -15,10 +15,13 @@ public class NumericVariableRepresentation extends VariableRepresentation {
 
 	@Override
 	public void appendToElement(Element element, Document doc) {
+		Element variableRepresentation = doc.createElement(NODE_NAME_VARIABLE_REPRESENTATION);
+
 		Element representation = doc.createElement(NODE_NAME_NUMERIC_REPRESENTATION);
 
 		super.appendToElement(representation, doc);
 
-		element.appendChild(representation);
+		variableRepresentation.appendChild(representation);
+		element.appendChild(variableRepresentation);
 	}
 }

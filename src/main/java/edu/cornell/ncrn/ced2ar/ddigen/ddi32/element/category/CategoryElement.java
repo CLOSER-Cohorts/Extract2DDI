@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 
 public class CategoryElement extends ElementWithUrn {
 
-	public static final String NODE_NAME_CATEGORY = "r:Category";
+	public static final String NODE_NAME_CATEGORY = "ddi:Category";
 
 	private Label label;
 
