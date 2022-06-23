@@ -18,7 +18,6 @@ public class StataVariableTest extends AbstractStataFragmentInstanceGeneratorTes
 
 	@Test
 	public void testToDocument() {
-
 		Node variable = getVariable(fragmentInstanceDocument);
 
 		Assert.assertEquals(9, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
