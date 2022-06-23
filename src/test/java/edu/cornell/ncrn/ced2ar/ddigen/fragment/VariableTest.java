@@ -30,7 +30,6 @@ public class VariableTest extends AbstractFragmentInstanceGeneratorTest {
 	@Test
 	public void testToDocument() {
 		Node variable = getVariable(fragmentInstanceDocument);
-		Assert.fail();
 		Assert.assertEquals(52, fragmentInstanceDocument.getFirstChild().getChildNodes().getLength());
 		testFragment(variable);
 		Assert.assertEquals("VariableName", variable.getChildNodes().item(4).getNodeName());
