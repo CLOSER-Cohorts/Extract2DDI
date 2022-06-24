@@ -18,7 +18,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class VariableDDIGenerator {
 
-	public String namespace = "";
+	public String namespace = "ddi:codebook:2_5";
 
 	/*
 	 * <var ID="V5" name="MSC"> <labl>Metropolitan Status Code (provided by
@@ -45,7 +45,9 @@ public class VariableDDIGenerator {
 			doc = domBuilder.newDocument();
 
 			Element codeBook = doc.createElementNS(namespace, "codeBook");
-			codeBook.setAttribute("version", "1.0");
+			codeBook.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+			codeBook.setAttribute("xmlns:xs", "http://www.w3.org/2001/XMLSchema");
+			codeBook.setAttribute("xsi:schemaLocation", "ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd");
 
 			//We shouldn't give the codebook a random id
 			//codeBook.setAttribute("ID", getUniqueID());
