@@ -21,7 +21,6 @@ public class CategoryTest extends AbstractFragmentInstanceGeneratorTest {
 
 	@Test
 	public void testToDocument_Category() {
-		Assert.fail();
 		Node category = getCategory(fragmentInstanceDocument);
 		Assert.assertEquals("Category", category.getNodeName());
 		testFragment(category);
