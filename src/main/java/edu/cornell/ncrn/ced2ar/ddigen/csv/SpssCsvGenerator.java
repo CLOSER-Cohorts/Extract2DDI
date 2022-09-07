@@ -292,7 +292,7 @@ public class SpssCsvGenerator extends CsvGenerator {
 				String[] varValues = record.split(",");
 				readErrors = updateVariableStatistics(variables, variableToFrequencyMap, varValues);
 			} catch (Exception ex) {
-				logger.error("An error occured in reding observation " + i
+				logger.error("An error occured in reading observation " + i
 						+ ". Skipping this observation " + ex);
 			}
 		}
