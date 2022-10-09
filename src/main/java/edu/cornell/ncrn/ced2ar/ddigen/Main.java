@@ -139,7 +139,7 @@ public class Main {
 				return;
 			}
 			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
- 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled, isStatisticFileEnabled);
+ 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isStatisticFileEnabled, isFrequencyFileEnabled);
 		}
 
 		System.out.println("Finished. Exiting.");

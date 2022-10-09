@@ -83,8 +83,6 @@ public class GenerateDDI32 {
 			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
 			variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
-
-			recordCount = spssFile.getRecordCount();
 		}
 
 		ElementGenerator elementGenerator = new ElementGenerator(
@@ -96,8 +94,7 @@ public class GenerateDDI32 {
 			getExcludeVariableToStatMap(),
 			getAgency(),
 			getDdiLanguage(),
-			dataFile,
-			recordCount
+			dataFile
 		);
 		elementGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		DDIInstance ddiInstance = elementGenerator.getInstance();

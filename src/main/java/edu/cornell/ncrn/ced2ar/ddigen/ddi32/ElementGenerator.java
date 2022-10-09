@@ -5,7 +5,6 @@ import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Label;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategoryElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.DataRelationshipElement;
@@ -64,10 +63,9 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title,
-		int recordCount
+		String title
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, recordCount);
+		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title);
 	}
 
 	protected DataRelationshipElement getDataRelationshipElement(Map<String, UUID> variableIdToUuidMap) {
@@ -108,8 +106,6 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			getRecordLayoutScheme(variableSchemeId, variableIdToUuidMap)
 		);
 		resourcePackage.setPhysicalDataProduct(physicalDataProduct);
-
-		// TODO: Physical Instance
 
 		// Category Scheme
 		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
@@ -292,8 +288,6 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 						new NumericVariableRepresentation(representation.getType())
 					);
 				} else if (variable.getRepresentation() instanceof TextRepresentation) {
-					TextRepresentation representation = (TextRepresentation) variable.getRepresentation();
-
 					variableElement.setVariableRepresentation(
 						new TextVariableRepresentation("text")
 					);

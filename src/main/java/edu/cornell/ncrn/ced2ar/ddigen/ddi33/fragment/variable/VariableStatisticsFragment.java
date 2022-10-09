@@ -14,15 +14,14 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	public static final String NODE_NAME_TOTAL_RESPONSES = "TotalResponses";
 	public static final String NODE_NAME_UNFILTERED_CATEGORY_STATISTICS = "UnfilteredCategoryStatistics";
 
-	private int totalResponses;
+	private long totalResponses;
 	private VariableReferenceFragment variableReference;
 	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
 	private List<VariableCategoryFragment> variableCategoryList = new ArrayList<>();
 	private UserAttributePairFragment userAttributePair;
 
-	public VariableStatisticsFragment(String id, String agency, int version, int totalResponses) {
+	public VariableStatisticsFragment(String id, String agency, int version) {
 		super(id, agency, version);
-		setTotalResponses(totalResponses);
 	}
 
 	public void addSummaryStatistic(SummaryStatistic statistic) {
@@ -53,7 +52,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		}
 
 		Element totalResponses = doc.createElement(NODE_NAME_TOTAL_RESPONSES);
-		totalResponses.setTextContent(Integer.toString(getTotalResponses()));
+		totalResponses.setTextContent(Long.toString(getTotalResponses()));
 		variableStatistics.appendChild(totalResponses);
 
 		for (SummaryStatistic statistic : getSummaryStatisticList()) {
@@ -72,7 +71,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		element.appendChild(fragment);
 	}
 
-	public int getTotalResponses() {
+	public long getTotalResponses() {
 		return totalResponses;
 	}
 
@@ -92,7 +91,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		return userAttributePair;
 	}
 
-	public void setTotalResponses(int totalResponses) {
+	public void setTotalResponses(long totalResponses) {
 		this.totalResponses = totalResponses;
 	}
 

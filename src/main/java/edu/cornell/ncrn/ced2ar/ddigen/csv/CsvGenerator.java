@@ -49,14 +49,14 @@ public class CsvGenerator {
 				// does not contain commas
 			}
 
-			if (isValidValue(variable, value)) {
+			boolean isValidValue = isValidValue(variable, value);
+			if (isValidValue) {
 				variable.setValidCount(variable.getValidCount() + 1);
 				if (variable.isNumeric()) {
-
 					try {
+						value = value.replaceAll("[^\\d.]", "");
 						if (value.matches("-?\\d+(\\.\\d+)?"))
-							variable.getStats().addValue(
-									Double.parseDouble(value));
+							variable.getStats().addValue(Double.parseDouble(value));
 						else
 							readErrors++;
 					} catch (Exception ex) {
@@ -69,7 +69,7 @@ public class CsvGenerator {
 				variable.setInvalidCount(variable.getInvalidCount() + 1);
 			}
 			Frequency frequency = variableToFrequencyMap.get(variable.getName());
-			if (frequency != null && value != null && variable.isNumeric()) {
+			if (frequency != null && value != null && variable.isNumeric() && isValidValue) {
 				double d = Double.parseDouble(value);
 				int i = (int) d;
 				frequency.addValue(Integer.toString(i));
