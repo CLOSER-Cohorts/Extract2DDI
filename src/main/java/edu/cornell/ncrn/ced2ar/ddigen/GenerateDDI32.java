@@ -56,7 +56,7 @@ public class GenerateDDI32 {
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
 
 		if (dataFile.toLowerCase().endsWith(".dta")) {
-			System.out.println("STATA files are not yet supported in 3.2 format");
+			logger.error("STATA files are not yet supported in 3.2 format");
 
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			SpssCsvGenerator spssGen = new SpssCsvGenerator();

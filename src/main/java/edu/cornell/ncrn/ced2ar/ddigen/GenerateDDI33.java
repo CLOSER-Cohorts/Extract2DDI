@@ -57,7 +57,6 @@ public class GenerateDDI33 {
 	) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
-		int recordCount = 0;
 		List<CategoryScheme> categorySchemeList = new ArrayList<>();
 		List<CodeList> codeListList = new ArrayList<>();
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
@@ -167,7 +166,6 @@ public class GenerateDDI33 {
 			FileUtil.createFile(variableCsv.getFrequencies(), dataFile+".freq.csv");
 		}
 
-		System.out.println("ALEX " + isStatisticFileEnabled);
 		if (isStatisticFileEnabled) {
 			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
 		}
