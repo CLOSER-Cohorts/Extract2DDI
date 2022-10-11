@@ -42,7 +42,6 @@ public class Main {
 		String config;
 		String exclude;
 		Boolean isFrequencyFileEnabled;
-		Boolean isStatisticFileEnabled;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -54,7 +53,6 @@ public class Main {
 			config = cmd.getOptionValue("config");
 			exclude = cmd.getOptionValue("exclude");
 			isFrequencyFileEnabled = cmd.hasOption("frequencies");
-			isStatisticFileEnabled = cmd.hasOption("statistics");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -142,7 +140,7 @@ public class Main {
 				return;
 			}
 			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
- 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isStatisticFileEnabled, isFrequencyFileEnabled);
+ 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled);
 		}
 
 		System.out.println("Finished. Exiting.");

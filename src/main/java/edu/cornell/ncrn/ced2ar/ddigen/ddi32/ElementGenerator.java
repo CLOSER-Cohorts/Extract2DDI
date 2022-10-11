@@ -279,7 +279,16 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 				UUID variableId = variableIdToUuidMap.get(variable.getId());
 				VariableElement variableElement = new VariableElement(variableId.toString(), getAgency());
 				variableElement.setName(variable.getName());
-				variableElement.setLabel(variable.getLabel(), getDdiLanguage());
+
+				Ced2arVariableStat variableStat = getVariableStatisticList()
+						.stream()
+						.filter(variableStatistic -> variableStatistic.getName().equalsIgnoreCase(variable.getName()))
+						.findFirst()
+						.orElse(null);
+
+				String labelContent = variableStat != null ? variableStat.getLabel() : variable.getLabel();
+
+				variableElement.setLabel(labelContent, getDdiLanguage());
 
 				if (variable.getRepresentation() instanceof NumericRepresentation) {
 					NumericRepresentation representation = (NumericRepresentation) variable.getRepresentation();

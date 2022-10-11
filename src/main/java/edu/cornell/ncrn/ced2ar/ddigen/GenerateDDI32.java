@@ -42,15 +42,9 @@ public class GenerateDDI32 {
 		setStatistics(statistics);
 	}
 
-	public void generateDDI(
-		String dataFile,
-		boolean runSumStats,
-		long observationLimit
-
-	) throws Exception {
+	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
-		int recordCount = 0;
 		List<CategoryScheme> categorySchemeList = new ArrayList<>();
 		List<CodeList> codeListList = new ArrayList<>();
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
@@ -118,6 +112,9 @@ public class GenerateDDI32 {
 		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
 		FileUtil.createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
 		FileUtil.createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
+		if (runSumStats) {
+			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
+		}
 		logger.info("Successfully created csv files");
 
 		logger.info(observationLimit);

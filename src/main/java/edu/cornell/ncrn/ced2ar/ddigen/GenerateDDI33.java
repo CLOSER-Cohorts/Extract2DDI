@@ -48,13 +48,7 @@ public class GenerateDDI33 {
 		setStatistics(statistics);
 	}
 
-	public void generateDDI(
-		String dataFile,
-		boolean runSumStats,
-		long observationLimit,
-		boolean isStatisticFileEnabled,
-		boolean isFrequencyFileEnabled
-	) throws Exception {
+	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit, boolean isFrequencyFileEnabled) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
 		List<CategoryScheme> categorySchemeList = new ArrayList<>();
@@ -166,7 +160,7 @@ public class GenerateDDI33 {
 			FileUtil.createFile(variableCsv.getFrequencies(), dataFile+".freq.csv");
 		}
 
-		if (isStatisticFileEnabled) {
+		if (runSumStats) {
 			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
 		}
 
