@@ -60,19 +60,6 @@ public class GenerateDDI32 {
 			SPSSFile spssFile = new SPSSFile(serverFile);
 
 			Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
-			//Document physicalDataProduct = spssGen.getDDI3PhysicalDataProduct(spssFile);
-
-//			OutputFormat format = new OutputFormat();
-//			format.setLineWidth(65);
-//			format.setIndenting(true);
-//			format.setIndent(2);
-//			Writer out = new StringWriter();
-//			XMLSerializer serializer = new XMLSerializer(out, format);
-//			serializer.serialize(logicalProductDocument);
-
-
-			//System.out.println("xmlString");
-			//printDocument(physicalDataProduct, System.out);
 
 			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));

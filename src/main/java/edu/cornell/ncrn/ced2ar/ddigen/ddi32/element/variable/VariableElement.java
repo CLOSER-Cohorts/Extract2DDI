@@ -9,7 +9,7 @@ import org.w3c.dom.Element;
 public class VariableElement extends ElementWithUrn {
 
 	public static final String NODE_NAME_VARIABLE = "ddi:Variable";
-	public static final String NODE_NAME_VARIABLE_NAME = "VariableName";
+	public static final String NODE_NAME_VARIABLE_NAME = "ddi:VariableName";
 
 	private Name name;
 	private Label label;
