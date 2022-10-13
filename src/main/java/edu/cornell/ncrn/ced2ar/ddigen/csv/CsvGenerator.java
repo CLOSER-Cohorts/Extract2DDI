@@ -36,8 +36,7 @@ public class CsvGenerator {
 	 * @param observation
 	 * @return
 	 */
-	protected long updateVariableStatistics(List<Ced2arVariableStat> variables,
-			Map<String, Frequency> variableToFrequencyMap, String[] observation) {
+	protected long updateVariableStatistics(List<Ced2arVariableStat> variables, Map<String, Frequency> variableToFrequencyMap, String[] observation) {
 		long readErrors = 0;
 
 		for (Ced2arVariableStat variable : variables) {
@@ -49,33 +48,42 @@ public class CsvGenerator {
 				// does not contain commas
 			}
 
-			if (isValidValue(variable, value)) {
-				variable.setValidCount(variable.getValidCount() + 1);
-				if (variable.isNumeric()) {
-
-					try {
-						if (value.matches("-?\\d+(\\.\\d+)?"))
-							variable.getStats().addValue(
-									Double.parseDouble(value));
-						else
-							readErrors++;
-					} catch (Exception ex) {
-						logger.error("Invalid numeric value for the variable "
-								+ variable.getName() + " in the observation "
-								+ observation);
-					}
+			String valueSanitized = value.replaceAll("[^\\d.]", "");
+			try {
+				if (!updateVariableStatistics(variable, variableToFrequencyMap, valueSanitized)) {
+					readErrors++;
 				}
-			} else {
-				variable.setInvalidCount(variable.getInvalidCount() + 1);
-			}
-			Frequency frequency = variableToFrequencyMap.get(variable.getName());
-			if (frequency != null && value != null && variable.isNumeric()) {
-				double d = Double.parseDouble(value);
-				int i = (int) d;
-				frequency.addValue(Integer.toString(i));
+			} catch (Exception ex) {
+				logger.error("Invalid numeric value for the variable "
+						+ variable.getName() + " in the observation "
+						+ observation);
 			}
 		}
 		return readErrors;
+	}
+
+	protected boolean updateVariableStatistics(Ced2arVariableStat variable, Map<String, Frequency> variableToFrequencyMap, String value) {
+		String valueSanitized = value.replaceAll("[^\\d.]", "");
+		boolean isValidValue = isValidValue(variable, valueSanitized);
+		if (isValidValue) {
+			variable.setValidCount(variable.getValidCount() + 1);
+			if (variable.isNumeric()) {
+				if (value.matches("-?\\d+(\\.\\d+)?"))
+					variable.getStats().addValue(Double.parseDouble(value));
+				else
+					return false;
+			}
+		} else {
+			variable.setInvalidCount(variable.getInvalidCount() + 1);
+		}
+
+		Frequency frequency = variableToFrequencyMap.get(variable.getName());
+		if (frequency != null && variable.isNumeric() && isValidValue) {
+			double d = Double.parseDouble(value);
+			int i = (int) d;
+			frequency.addValue(Integer.toString(i));
+		}
+		return true;
 	}
 
 	/**
@@ -98,7 +106,7 @@ public class CsvGenerator {
 			return validLabels.containsKey(value);
 		}
 		// SPSS Reader sometimes reads '.' as this long value 
-		if (value.equalsIgnoreCase(".") || value.equalsIgnoreCase("-179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000")) {
+		if (value.equalsIgnoreCase(".") || value.equalsIgnoreCase("-179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000") || value.trim().isEmpty()) {
 			return false;
 		}
 		if (missingValues.containsKey(value)) {

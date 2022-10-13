@@ -48,16 +48,9 @@ public class GenerateDDI33 {
 		setStatistics(statistics);
 	}
 
-	public void generateDDI(
-		String dataFile,
-		boolean runSumStats,
-		long observationLimit,
-		boolean isStatisticFileEnabled,
-		boolean isFrequencyFileEnabled
-	) throws Exception {
+	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit, boolean isFrequencyFileEnabled) throws Exception {
 		long s = System.currentTimeMillis();
 		VariableCsv variableCsv = null;
-		int recordCount = 0;
 		List<CategoryScheme> categorySchemeList = new ArrayList<>();
 		List<CodeList> codeListList = new ArrayList<>();
 		List<VariableScheme> variableSchemeList = new ArrayList<>();
@@ -127,8 +120,6 @@ public class GenerateDDI33 {
 			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
 			variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
-
-			recordCount = spssFile.getRecordCount();
 		}
 
 		FragmentGenerator fragmentGenerator = new FragmentGenerator(
@@ -140,8 +131,7 @@ public class GenerateDDI33 {
 			getExcludeVariableToStatMap(),
 			getAgency(),
 			getDdiLanguage(),
-			dataFile,
-			recordCount
+			dataFile
 		);
 		fragmentGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		List<Fragment> fragmentList = fragmentGenerator.getFragmentList();
@@ -170,7 +160,7 @@ public class GenerateDDI33 {
 			FileUtil.createFile(variableCsv.getFrequencies(), dataFile+".freq.csv");
 		}
 
-		if (isStatisticFileEnabled) {
+		if (runSumStats) {
 			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
 		}
 

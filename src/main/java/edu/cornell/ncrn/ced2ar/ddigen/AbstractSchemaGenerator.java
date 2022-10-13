@@ -23,7 +23,6 @@ public class AbstractSchemaGenerator {
 	private List<CategoryScheme> categorySchemeList = new ArrayList<>();
 	private List<CodeList> codeListList = new ArrayList<>();
 	private List<VariableScheme> variableSchemeList = new ArrayList<>();
-	private int recordCount;
 	private String title;
 	private String statistics;
 	private List<Ced2arVariableStat> variableStatisticList;
@@ -38,8 +37,7 @@ public class AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title,
-		int recordCount
+		String title
 	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
@@ -49,7 +47,6 @@ public class AbstractSchemaGenerator {
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
 		setStatistics(statistics);
 		setTitle(title);
-		setRecordCount(recordCount);
 		setVariableStatistics(variableStatistics);
 		setVersion(1);
 	}
@@ -108,10 +105,6 @@ public class AbstractSchemaGenerator {
 		return title;
 	}
 
-	public int getRecordCount() {
-		return recordCount;
-	}
-
 	protected Map<String, UUID> getVariableIdToUuidMap() {
 		Map<String, UUID> variableIdToUuidMap = new HashMap<>();
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
@@ -167,10 +160,6 @@ public class AbstractSchemaGenerator {
 
 	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
-	}
-
-	public void setRecordCount(int recordCount) {
-		this.recordCount = recordCount;
 	}
 
 	public void setStatistics(String statistics) {

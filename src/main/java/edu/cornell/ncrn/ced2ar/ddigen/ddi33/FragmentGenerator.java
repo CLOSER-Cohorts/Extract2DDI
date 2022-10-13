@@ -67,10 +67,9 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title,
-		int recordCount
+		String title
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, recordCount);
+		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title);
 	}
 
 	public List<Fragment> getCategoryFragmentList(
@@ -264,7 +263,15 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 
 				VariableFragment variableFragment = new VariableFragment(id.toString(), getAgency(), getVersion());
 
-				Label label = new Label(variable.getLabel(), getDdiLanguage());
+				Ced2arVariableStat variableStat = getVariableStatisticList()
+						.stream()
+						.filter(variableStatistic -> variableStatistic.getName().equalsIgnoreCase(variable.getName()))
+						.findFirst()
+						.orElse(null);
+
+				String labelContent = variableStat != null ? variableStat.getLabel() : variable.getLabel();
+
+				Label label = new Label(labelContent, getDdiLanguage());
 				variableFragment.setLabel(label);
 
 				StringElement string = new StringElement(variable.getName(), getDdiLanguage());
@@ -307,7 +314,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 					new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
 
 				VariableStatisticsFragment variableStatistics =
-					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion(), getRecordCount());
+					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
 
 				if (getExcludeVariableToStatMap().containsKey(variable.getName())) {
 					UserAttributePairFragment userAttributePair = new UserAttributePairFragment();
@@ -369,12 +376,14 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 						Long validCount = variableStat.getValidCount();
 						if (!excludeValid && validCount != null) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES);
+							variableStatistics.setTotalResponses(variableStatistics.getTotalResponses() + validCount);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 
 						Long invalidCount = variableStat.getInvalidCount();
 						if (!excludeInvalid && invalidCount != null) {
 							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES);
+							variableStatistics.setTotalResponses(variableStatistics.getTotalResponses() + invalidCount);
 							variableStatistics.addSummaryStatistic(summaryStatistic);
 						}
 

@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
+import org.apache.log4j.Logger;
 import org.springframework.util.StringUtils;
 
 /**
@@ -26,6 +27,8 @@ import org.springframework.util.StringUtils;
 
 public class Main {
 
+	private static final Logger logger = Logger.getLogger(GenerateDDI33.class);
+
 	private static String FORMAT_OUTPUT_2_5 = "2.5";
 	private static String FORMAT_OUTPUT_3_2 = "3.2";
 	private static String FORMAT_OUTPUT_3_3_FRAGMENT = "3.3Fragment";
@@ -39,7 +42,6 @@ public class Main {
 		String config;
 		String exclude;
 		Boolean isFrequencyFileEnabled;
-		Boolean isStatisticFileEnabled;
 
 		CommandLineParser parser = new BasicParser();
 		try {
@@ -51,7 +53,6 @@ public class Main {
 			config = cmd.getOptionValue("config");
 			exclude = cmd.getOptionValue("exclude");
 			isFrequencyFileEnabled = cmd.hasOption("frequencies");
-			isStatisticFileEnabled = cmd.hasOption("statistics");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -118,28 +119,28 @@ public class Main {
 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_2)) {
 			if (agency == null || agency.isEmpty()) {
-				System.out.println("Agency is required...");
+				logger.error("Agency is required...");
 				return;
 			}
 			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
-				System.out.println("DDI language is required...");
+				logger.error("DDI language is required...");
 				return;
 			}
 			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
 			if (agency == null || agency.isEmpty()) {
-				System.out.println("Agency is required...");
+				logger.error("Agency is required...");
 				System.exit(1);
 				return;
 			}
 			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
-				System.out.println("DDI language is required...");
+				logger.error("DDI language is required...");
 				System.exit(1);
 				return;
 			}
 			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
- 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled, isStatisticFileEnabled);
+ 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled);
 		}
 
 		System.out.println("Finished. Exiting.");

@@ -56,8 +56,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav",
-			3
+			"test-file-data-types.sav"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
@@ -83,7 +82,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		testFragmentReference(variableReference);
 
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(6).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(6).getTextContent());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(6).getTextContent());
 
 		// Mean
 		Node statistic = variableStatistics.getChildNodes().item(7);
@@ -111,7 +110,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		testFragmentReference(variableReference);
 
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(6).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(6).getTextContent());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(6).getTextContent());
 
 		// Summary Statistic
 		Node standardDeviation = variableStatistics.getChildNodes().item(7);
@@ -145,8 +144,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			new HashMap<>(),
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav",
-			3
+			"test-file-data-types.sav"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
@@ -164,7 +162,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		testFragmentReference(variableReference);
 
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(5).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(5).getTextContent());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(5).getTextContent());
 
 		// Mean
 		Node standardDeviation = variableStatistics.getChildNodes().item(6);
@@ -200,8 +198,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav",
-			3
+			"test-file-data-types.sav"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
@@ -227,7 +224,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		testFragmentReference(variableReference);
 
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(6).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(6).getTextContent());
+		Assert.assertEquals("0", variableStatistics.getChildNodes().item(6).getTextContent());
 
 		// Mean
 		Node standardDeviation = variableStatistics.getChildNodes().item(7);
@@ -251,7 +248,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 		testFragmentReference(variableReference);
 
 		Assert.assertEquals("TotalResponses", variableStatistics.getChildNodes().item(5).getNodeName());
-		Assert.assertEquals("3", variableStatistics.getChildNodes().item(5).getTextContent());
+		Assert.assertEquals("6", variableStatistics.getChildNodes().item(5).getTextContent());
 
 		// Summary Statistic
 		Node validCases = variableStatistics.getChildNodes().item(6);
