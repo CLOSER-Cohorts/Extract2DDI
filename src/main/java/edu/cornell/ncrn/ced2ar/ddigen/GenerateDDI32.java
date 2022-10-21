@@ -1,75 +1,42 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
-import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
-import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
-import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementGenerator;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
-import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-public class GenerateDDI32 {
+public class GenerateDDI32 extends DdiLifecycleGenerator {
 
 	private static final Logger logger = Logger.getLogger(GenerateDDI32.class);
 
 	private String agency;
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
-	private String outputFile;
 	private String statistics;
 
 	public GenerateDDI32(
 		String agency,
 		String ddiLanguage,
 		Map<String, String> excludeVariableToStatMap,
-		String statistics,
-		String outputFile
+		String statistics
 	) {
 		setAgency(agency);
 		setDdiLanguage(ddiLanguage);
 		setExcludeVariableToStatMap(excludeVariableToStatMap);
-		setOutputFile(outputFile);
 		setStatistics(statistics);
 	}
 
-	public void generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
-		long s = System.currentTimeMillis();
-		VariableCsv variableCsv = null;
-		List<CategoryScheme> categorySchemeList = new ArrayList<>();
-		List<CodeList> codeListList = new ArrayList<>();
-		List<VariableScheme> variableSchemeList = new ArrayList<>();
-
-		if (dataFile.toLowerCase().endsWith(".dta")) {
-			logger.error("STATA files are not yet supported in 3.2 format");
-
-		} else if (dataFile.toLowerCase().endsWith(".sav")) {
-			SpssCsvGenerator spssGen = new SpssCsvGenerator();
-			variableCsv = spssGen.generateVariablesCsv(dataFile, runSumStats, observationLimit);
-
-			File serverFile = new File(dataFile);
-			SPSSFile spssFile = new SPSSFile(serverFile);
-
-			Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
-
-			categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
-			codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
-			variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
-		}
+	public DDI generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
+		VariableCsv variableCsv = generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
 		ElementGenerator elementGenerator = new ElementGenerator(
-			categorySchemeList,
-			codeListList,
-			variableSchemeList,
+			getCategorySchemeList(),
+			getCodeListList(),
+			getVariableSchemeList(),
 			variableCsv.getVariableStatList(),
 			getStatistics(),
 			getExcludeVariableToStatMap(),
@@ -84,27 +51,9 @@ public class GenerateDDI32 {
 		Document fragmentInstanceDocument = generator.toDocument();
 
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
-		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument, "UTF-8");
 
-		String fileName;
-		if (getOutputFile() != null && !getOutputFile().trim().isEmpty()) {
-			fileName = getOutputFile();
-		} else {
-			fileName = dataFile;
-		}
-
-		FileUtil.createFile(xml, fileName + ".xml");
-		logger.info("Successfully created DDI file");
-
-		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
-		FileUtil.createFile(variableCsv.getVariableStatistics(), dataFile+".vars.csv");
-		FileUtil.createFile(variableCsv.getVariableValueLables(), dataFile+"_var_values.csv");
-		if (runSumStats) {
-			FileUtil.createFile(variableCsv.getStatistics(), dataFile+".stats.csv");
-		}
-		logger.info("Successfully created csv files");
-
-		logger.info(observationLimit);
+		String xml = variableDDIGenerator.domToString(fragmentInstanceDocument);
+		return new DDI(xml, variableCsv);
 	}
 
 	public String getAgency() {
@@ -123,10 +72,6 @@ public class GenerateDDI32 {
 		return logger;
 	}
 
-	public String getOutputFile() {
-		return outputFile;
-	}
-
 	public String getStatistics() {
 		return statistics;
 	}
@@ -141,10 +86,6 @@ public class GenerateDDI32 {
 
 	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
-	}
-
-	public void setOutputFile(String outputFile) {
-		this.outputFile = outputFile;
 	}
 
 	public void setStatistics(String statistics) {

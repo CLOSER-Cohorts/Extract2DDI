@@ -114,9 +114,11 @@ public class Main {
 
 		Util.fileCheck(dataFile);
 
+		long s = System.currentTimeMillis();
+		DDI ddi;
 		if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_2_5)) {
 			GenerateDDI generateDDI = new GenerateDDI();
-			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_2)) {
 			if (agency == null || agency.isEmpty()) {
 				logger.error("Agency is required...");
@@ -126,8 +128,12 @@ public class Main {
 				logger.error("DDI language is required...");
 				return;
 			}
-			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
-			generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats);
+			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+
+			if (summaryStats) {
+				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
+			}
 		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
 			if (agency == null || agency.isEmpty()) {
 				logger.error("Agency is required...");
@@ -139,9 +145,33 @@ public class Main {
 				System.exit(1);
 				return;
 			}
-			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats, outputFile);
- 			generateDDI.generateDDI(dataFile, summaryStats, obsLimit, isFrequencyFileEnabled);
+			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats);
+			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+
+			if (isFrequencyFileEnabled) {
+				FileUtil.createFile(ddi.getVariableCsv().getFrequencies(), dataFile+".freq.csv");
+			}
+
+			if (summaryStats) {
+				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
+			}
+		} else {
+			throw new IllegalArgumentException("Unknown formatOutput: " + formatOutput);
 		}
+		FileUtil.createFile(ddi.getVariableCsv().getVariableStatistics(), dataFile+".vars.csv");
+		FileUtil.createFile(ddi.getVariableCsv().getVariableValueLables(), dataFile+"_var_values.csv");
+		logger.info("Successfully created csv files");
+		logger.info("CSV created in: "+ ((System.currentTimeMillis() - s) / 1000.0) + " seconds ");
+
+		String fileName;
+		if (outputFile != null && !outputFile.trim().isEmpty()) {
+			fileName = outputFile;
+		} else {
+			fileName = dataFile;
+		}
+		FileUtil.createFile(ddi.getXml(), fileName+".xml");
+		logger.info("Successfully created DDI file");
+		logger.info(observationLimit);
 
 		System.out.println("Finished. Exiting.");
 	}
