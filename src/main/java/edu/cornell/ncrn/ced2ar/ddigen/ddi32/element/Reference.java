@@ -17,7 +17,7 @@ public abstract class Reference extends ElementWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc) {
+	public void appendToElement(Element parent, Document doc) {
 		Element reference = doc.createElement(getName());
 
 		super.appendToElement(reference, doc);
@@ -26,7 +26,7 @@ public abstract class Reference extends ElementWithUrn {
 		objectType.setTextContent(getObjectType().toString());
 		reference.appendChild(objectType);
 
-		element.appendChild(reference);
+		parent.appendChild(reference);
 	}
 
 	public String getName() {

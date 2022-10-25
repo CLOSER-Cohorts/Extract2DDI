@@ -23,6 +23,7 @@ public abstract class DdiLifecycleGenerator {
 	private final List<CategoryScheme> categorySchemeList = new ArrayList<>();
 	private final List<CodeList> codeListList = new ArrayList<>();
 	private final List<VariableScheme> variableSchemeList = new ArrayList<>();
+	private String dataType;
 
 	public List<CategoryScheme> getCategorySchemeList() {
 		return categorySchemeList;
@@ -42,6 +43,8 @@ public abstract class DdiLifecycleGenerator {
 		categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 		codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
 		variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
+
+		dataType = "SPSS";
 	}
 
 	protected VariableCsv generateVariablesCsv(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
@@ -115,5 +118,7 @@ public abstract class DdiLifecycleGenerator {
 		VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
 		defaultVariableScheme.setVariableList(variableList);
 		variableSchemeList.add(defaultVariableScheme);
+
+		dataType = "STATA";
 	}
 }

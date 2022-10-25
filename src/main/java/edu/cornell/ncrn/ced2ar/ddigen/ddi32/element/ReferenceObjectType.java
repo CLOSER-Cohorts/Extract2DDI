@@ -8,6 +8,7 @@ public enum ReferenceObjectType {
 	CodeListScheme,
 	LogicalProduct,
 	PhysicalRecordSegment,
+	RecordLayout,
 	Variable,
 	VariableScheme,
 

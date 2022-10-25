@@ -39,16 +39,16 @@ public class AbstractSchemaGenerator {
 		String ddiLanguage,
 		String title
 	) {
-		setAgency(agency);
-		setDdiLanguage(ddiLanguage);
-		setCodeListList(codeListList);
-		setVariableSchemeList(variableSchemeList);
-		setCategorySchemeList(categorySchemeList);
-		setExcludeVariableToStatMap(excludeVariableToStatMap);
-		setStatistics(statistics);
-		setTitle(title);
-		setVariableStatistics(variableStatistics);
-		setVersion(1);
+		this.agency = agency;
+		this.ddiLanguage = ddiLanguage;
+		this.codeListList = codeListList;
+		this.variableSchemeList = variableSchemeList;
+		this.categorySchemeList = categorySchemeList;
+		this.excludeVariableToStatMap = excludeVariableToStatMap;
+		this.statistics = statistics;
+		this.title = title;
+		this.variableStatisticList = variableStatistics;
+		this.version = 1;
 	}
 
 	public String getAgency() {
@@ -142,47 +142,7 @@ public class AbstractSchemaGenerator {
 		return version;
 	}
 
-	public void setAgency(String agency) {
-		this.agency = agency;
-	}
-
-	public void setCategorySchemeList(List<CategoryScheme> categorySchemeList) {
-		this.categorySchemeList = categorySchemeList;
-	}
-
-	public void setCodeListList(List<CodeList> codeListList) {
-		this.codeListList = codeListList;
-	}
-
-	public void setDdiLanguage(String ddiLanguage) {
-		this.ddiLanguage = ddiLanguage;
-	}
-
-	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
-		this.excludeVariableToStatMap = excludeVariableToStatMap;
-	}
-
-	public void setStatistics(String statistics) {
-		this.statistics = statistics;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public void setVariableSchemeList(List<VariableScheme> variableSchemeList) {
-		this.variableSchemeList = variableSchemeList;
-	}
-
-	public void setVariableStatistics(List<Ced2arVariableStat> variableStatisticList) {
-		this.variableStatisticList = variableStatisticList;
-	}
-
-	public void setVariableToFrequencyMap(Map<String, Frequency> map) {
-		this.variableToFrequencyMap = map;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
+	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {
+		this.variableToFrequencyMap = variableToFrequencyMap;
 	}
 }

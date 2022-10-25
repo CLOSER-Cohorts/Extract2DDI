@@ -9,8 +9,8 @@ public class DefaultVariableSchemeReference extends Reference {
 
 	public static final String NODE_NAME_DEFAULT_VARIABLE_SCHEME_REFERENCE = "r:DefaultVariableSchemeReference";
 
-	public DefaultVariableSchemeReference(String id, String agency) {
-		super(id, agency, NODE_NAME_DEFAULT_VARIABLE_SCHEME_REFERENCE, ReferenceObjectType.VariableScheme);
+	public DefaultVariableSchemeReference(String defaultVariableSchemeId, String agency) {
+		super(defaultVariableSchemeId, agency, NODE_NAME_DEFAULT_VARIABLE_SCHEME_REFERENCE, ReferenceObjectType.VariableScheme);
 	}
 
 	@Override

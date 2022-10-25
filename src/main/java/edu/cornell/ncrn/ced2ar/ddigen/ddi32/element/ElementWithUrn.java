@@ -36,11 +36,11 @@ public abstract class ElementWithUrn implements Appendable {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc) {
+	public void appendToElement(Element parent, Document doc) {
 		Element urn = doc.createElement(NODE_NAME_URN);
 		urn.setAttribute(ATTRIBUTE_NAME_TYPE_OF_IDENTIFIER, getIdentifierType());
 		urn.setTextContent(getUrn());
-		element.appendChild(urn);
+		parent.appendChild(urn);
 	}
 
 	public String getAgency() {

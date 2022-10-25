@@ -1,5 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable;
 
+import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
+import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.UserAttributePairFragment;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	private long totalResponses;
 	private VariableReferenceFragment variableReference;
 	private List<SummaryStatistic> summaryStatisticList = new ArrayList<>();
-	private List<VariableCategoryFragment> variableCategoryList = new ArrayList<>();
+	private List<VariableCategory> variableCategoryList = new ArrayList<>();
 	private UserAttributePairFragment userAttributePair;
 
 	public VariableStatisticsFragment(String id, String agency, int version) {
@@ -28,7 +30,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		this.summaryStatisticList.add(statistic);
 	}
 
-	public void addVariableCategory(VariableCategoryFragment variableCategory) {
+	public void addVariableCategory(VariableCategory variableCategory) {
 		this.variableCategoryList.add(variableCategory);
 	}
 
@@ -61,7 +63,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 
 		if (getVariableCategoryList().size() > 0) {
 			Element unfilteredCategoryStatistics = doc.createElement(NODE_NAME_UNFILTERED_CATEGORY_STATISTICS);
-			for (VariableCategoryFragment variableCategory : getVariableCategoryList()) {
+			for (VariableCategory variableCategory : getVariableCategoryList()) {
 				variableCategory.appendToElement(unfilteredCategoryStatistics, doc);
 			}
 			variableStatistics.appendChild(unfilteredCategoryStatistics);
@@ -79,7 +81,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		return summaryStatisticList;
 	}
 
-	public List<VariableCategoryFragment> getVariableCategoryList() {
+	public List<VariableCategory> getVariableCategoryList() {
 		return variableCategoryList;
 	}
 
@@ -99,7 +101,7 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 		this.summaryStatisticList = summaryStatisticList;
 	}
 
-	public void setVariableCategoryList(List<VariableCategoryFragment> variableCategoryList) {
+	public void setVariableCategoryList(List<VariableCategory> variableCategoryList) {
 		this.variableCategoryList = variableCategoryList;
 	}
 

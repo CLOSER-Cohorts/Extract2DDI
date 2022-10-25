@@ -4,6 +4,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeEleme
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -20,6 +21,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 	private Purpose purpose;
 	private LogicalProductElement logicalProduct;
 	private PhysicalDataProduct physicalDataProduct;
+	private PhysicalInstance physicalInstance;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
 
 	public ResourcePackageElement(String agency) {
@@ -52,6 +54,9 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 		// Physical Data Product
 		getPhysicalDataProduct().appendToElement(resourcePackage, doc);
+
+		// Physical Instance
+		physicalInstance.appendToElement(resourcePackage, doc);
 
 		// Category Scheme
 		for (CategorySchemeElement categorySchemeElement : getCategorySchemeList()) {
@@ -103,6 +108,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public void setPhysicalDataProduct(PhysicalDataProduct physicalDataProduct) {
 		this.physicalDataProduct = physicalDataProduct;
+	}
+
+	public void setPhysicalInstance(PhysicalInstance physicalInstance) {
+		this.physicalInstance = physicalInstance;
 	}
 
 	public void setPurpose(Purpose purpose) {
