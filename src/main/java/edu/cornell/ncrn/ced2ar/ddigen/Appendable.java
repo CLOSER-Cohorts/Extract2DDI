@@ -7,5 +7,5 @@ public interface Appendable {
 
 	public static final String ATTRIBUTE_NAME_VERSION_DATE = "versionDate";
 
-	public void appendToElement(Element element, Document doc);
+	public void appendToElement(Element parent, Document doc);
 }

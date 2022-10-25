@@ -1,7 +1,11 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Description;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.Software;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.SoftwareType;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.StringElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -13,12 +17,14 @@ public class RecordLayout extends ElementWithUrn {
 	public static final String NODE_NAME_RECORD_LAYOUT = "ddi1:RecordLayout";
 
 	private PhysicalStructureLinkReference reference;
+	private Software software;
 	private DefaultVariableSchemeReference defaultVariableSchemeReference;
 	private List<DataItem> dataItemList = new ArrayList<>();
 
-	public RecordLayout(String agency, String variableSchemeId) {
-		super(agency);
-		setDefaultVariableSchemeReference(new DefaultVariableSchemeReference(variableSchemeId, agency));
+	public RecordLayout(String id, String agency, String variableSchemeId, String ddiLang, String softwareName) {
+		super(id, agency);
+		this.defaultVariableSchemeReference = new DefaultVariableSchemeReference(variableSchemeId, agency);
+		this.software = new Software(new StringElement(softwareName, ddiLang), "@(#) IBM SPSS STATISTICS 64-bit Macintosh 26.0.0.0", "ddi1", SoftwareType.System);
 	}
 
 	public void addDataItem(DataItem dataItem) {
@@ -34,6 +40,8 @@ public class RecordLayout extends ElementWithUrn {
 		super.appendToElement(recordLayout, doc);
 
 		getReference().appendToElement(recordLayout, doc);
+
+		software.appendToElement(recordLayout, doc);
 
 		getDefaultVariableSchemeReference().appendToElement(recordLayout, doc);
 

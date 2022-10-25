@@ -1,12 +1,15 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
+import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Label;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategoryElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.RecordLayoutReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.DataRelationshipElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalRecordElement;
@@ -20,9 +23,11 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.BasedOnObject;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.GrossRecordStructure;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalRecordSegment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalStructure;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalStructureScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.StatisticalSummary;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.DataItem;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.ProprietaryInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.ProprietaryProperty;
@@ -35,19 +40,23 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.NumericVariableRepr
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.TextVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableStatistics;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableUsedReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariablesInRecordElement;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
 import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.StatisticType;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.NumericRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.TextRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
+import org.apache.commons.math3.stat.Frequency;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -65,7 +74,17 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		String ddiLanguage,
 		String title
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title);
+		super(
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
+			variableStatistics,
+			statistics,
+			excludeVariableToStatMap,
+			agency,
+			ddiLanguage,
+			title
+		);
 	}
 
 	protected DataRelationshipElement getDataRelationshipElement(Map<String, UUID> variableIdToUuidMap) {
@@ -99,13 +118,23 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			)
 		);
 
+		UUID physicalRecordSegmentId = UUID.randomUUID();
+
 		// Physical Data Product
-		PhysicalDataProduct physicalDataProduct = getPhysicalDataProduct();
-		UUID variableSchemeId = UUID.randomUUID();
+		PhysicalDataProduct physicalDataProduct = getPhysicalDataProduct(physicalRecordSegmentId);
+
+		Map.Entry<String,UUID> entry = variableSchemeIdToUuidMap.entrySet().iterator().next();
+		UUID variableSchemeId = entry.getValue();
+		UUID recordLayoutId = UUID.randomUUID();
 		physicalDataProduct.setRecordLayoutScheme(
-			getRecordLayoutScheme(variableSchemeId, variableIdToUuidMap)
+			getRecordLayoutScheme(recordLayoutId, variableSchemeId, variableIdToUuidMap, physicalRecordSegmentId)
 		);
 		resourcePackage.setPhysicalDataProduct(physicalDataProduct);
+
+		// Physical Instance
+		PhysicalInstance physicalInstance = getPhysicalInstance(variableIdToUuidMap);
+		physicalInstance.setRecordLayoutReference(new RecordLayoutReference(recordLayoutId.toString(), getAgency()));
+		resourcePackage.setPhysicalInstance(physicalInstance);
 
 		// Category Scheme
 		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
@@ -210,7 +239,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return logicalRecord;
 	}
 
-	protected PhysicalDataProduct getPhysicalDataProduct() {
+	protected PhysicalDataProduct getPhysicalDataProduct(UUID physicalRecordSegmentId) {
 		PhysicalDataProduct physicalDataProduct = new PhysicalDataProduct(getAgency());
 
 		PhysicalStructureScheme physicalStructureScheme = new PhysicalStructureScheme(getAgency());
@@ -227,7 +256,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		GrossRecordStructure grossRecordStructure = new GrossRecordStructure(getAgency());
 
 		grossRecordStructure.setLogicalRecordReference(UUID.randomUUID().toString());
-		grossRecordStructure.setPhysicalRecordSegment(new PhysicalRecordSegment(getAgency()));
+		grossRecordStructure.setPhysicalRecordSegment(new PhysicalRecordSegment(physicalRecordSegmentId.toString(), getAgency()));
 
 		physicalStructure.setGrossRecordStructure(grossRecordStructure);
 
@@ -238,13 +267,147 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return physicalDataProduct;
 	}
 
-	protected RecordLayoutScheme getRecordLayoutScheme(UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap) {
+	protected PhysicalInstance getPhysicalInstance(Map<String, UUID> variableIdToUuidMap) {
+		StatisticalSummary statisticalSummary = new StatisticalSummary();
+
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
+			for (Variable variable : variableScheme.getVariableList()) {
+				if (variable.getId() == null) {
+					continue;
+				}
+
+				UUID variableId = variableIdToUuidMap.get(variable.getId());
+				VariableStatistics variableStatistics = new VariableStatistics(getAgency(), variableId.toString());
+
+				List<String> statisticList = new ArrayList<>();
+				if (getStatistics() != null && !getStatistics().trim().isEmpty()) {
+					String[] statisticArray = getStatistics().split(",");
+					statisticList.addAll(Arrays.asList(statisticArray));
+				}
+
+				for (Ced2arVariableStat variableStat : getVariableStatisticList()) {
+					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
+						String excludeVariableStat = getExcludeVariableToStatMap().get(variable.getName());
+
+						boolean excludeValid = !statisticList.isEmpty() && !statisticList.contains("valid");
+						boolean excludeInvalid = !statisticList.isEmpty() && !statisticList.contains("invalid");
+						boolean excludeMin = !statisticList.isEmpty() && !statisticList.contains("min");
+						boolean excludeMax = !statisticList.isEmpty() && !statisticList.contains("max");
+						boolean excludeMean = !statisticList.isEmpty() && !statisticList.contains("mean");
+						boolean excludeStdDev = !statisticList.isEmpty() && !statisticList.contains("stdev");
+						boolean excludeFrequency = !statisticList.isEmpty() && !statisticList.contains("freq");
+
+						if (excludeVariableStat != null) {
+							String[] excludeVariableStatArray = excludeVariableStat.split(":");
+
+							if (excludeVariableStatArray.length > 0 && !excludeVariableStatArray[0].isEmpty()) {
+								List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray[0].split(","));
+								if (!excludeValid) {
+									excludeValid = excludeVariableStatList.contains("valid");
+								}
+								if (!excludeInvalid) {
+									excludeInvalid = excludeVariableStatList.contains("invalid");
+								}
+								if (!excludeMin) {
+									excludeMin = excludeVariableStatList.contains("min");
+								}
+								if (!excludeMax) {
+									excludeMax = excludeVariableStatList.contains("max");
+								}
+								if (!excludeMean) {
+									excludeMean = excludeVariableStatList.contains("mean");
+								}
+								if (!excludeStdDev) {
+									excludeStdDev = excludeVariableStatList.contains("stdev");
+								}
+								if (!excludeFrequency) {
+									excludeFrequency = excludeVariableStatList.contains("freq");
+								}
+							}
+						}
+
+						Long validCount = variableStat.getValidCount();
+						if (!excludeValid && validCount != null) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						Long invalidCount = variableStat.getInvalidCount();
+						if (!excludeInvalid && invalidCount != null) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						String min = variableStat.getMinFormatted();
+						if (!excludeMin && min != null && !min.isEmpty()) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(min, StatisticType.MINIMUM, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						String max = variableStat.getMaxFormatted();
+						if (!excludeMax && max != null && !max.isEmpty()) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(max, StatisticType.MAXIMUM, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						String mean = variableStat.getMeanFormatted();
+						if (!excludeMean && mean != null && !mean.isEmpty()) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(mean, StatisticType.MEAN, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						String stdDeviation = variableStat.getStdDeviationFormatted();
+						if (!excludeStdDev && stdDeviation != null && !stdDeviation.isEmpty()) {
+							SummaryStatistic summaryStatistic = new SummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION, "pi");
+							variableStatistics.addSummaryStatistic(summaryStatistic);
+						}
+
+						if (!excludeFrequency && getVariableToFrequencyMap() != null) {
+
+							if (variable.getRepresentation() instanceof CodeRepresentation) {
+								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
+								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
+								for (CodeList codeList : getCodeListList()) {
+									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
+										long invalidValueFrequency = variableFrequency.getCount(".");
+										if (invalidValueFrequency > 0) {
+											VariableCategory variableCategory = new VariableCategory(".", Long.toString(invalidValueFrequency), "pi");
+											variableStatistics.addVariableCategory(variableCategory);
+										}
+										for (Code code : codeList.getCodeList()) {
+											long frequency = variableFrequency.getCount(code.getValue());
+											if (frequency > 0) {
+												VariableCategory variableCategory = new VariableCategory(
+														code.getValue(),
+														Long.toString(frequency)
+												);
+												variableStatistics.addVariableCategory(variableCategory);
+											}
+										}
+									}
+								}
+							}
+						}
+						break;
+					}
+				}
+				statisticalSummary.addVariableStatistics(variableStatistics);
+			}
+		}
+
+		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
+
+		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, dataType);
+	}
+
+	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
 		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(getAgency());
 
-		RecordLayout recordLayout = new RecordLayout(getAgency(), variableSchemeId.toString());
+		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
+		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), dataType);
 
 		// Physical Structure Link Reference
-		recordLayout.setReference("id");
+		recordLayout.setReference(physicalRecordSegmentId.toString());
 
 		// Data List Item
 		for (Map.Entry<String, UUID> entry : variableIdToUuidMap.entrySet()) {

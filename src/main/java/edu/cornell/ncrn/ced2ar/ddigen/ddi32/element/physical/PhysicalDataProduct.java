@@ -23,6 +23,8 @@ public class PhysicalDataProduct extends ElementWithUrn {
 
 		getPhysicalStructureScheme().appendToElement(physicalDataProduct, doc);
 
+		getRecordLayoutScheme().appendToElement(physicalDataProduct, doc);
+
 		element.appendChild(physicalDataProduct);
 	}
 

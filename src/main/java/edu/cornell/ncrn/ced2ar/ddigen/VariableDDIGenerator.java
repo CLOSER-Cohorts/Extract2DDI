@@ -250,21 +250,10 @@ public class VariableDDIGenerator {
 	}
 	
 	public String domToString(Document doc){
-		DOMImplementationLS domImplementation = (DOMImplementationLS) doc.getImplementation();
-	    LSSerializer serializer = domImplementation.createLSSerializer();
-	    serializer.getDomConfig().setParameter("format-pretty-print", true);
-	    serializer.setNewLine("\r\n");
-
-		LSOutput lsOutput = domImplementation.createLSOutput();
-		lsOutput.setEncoding("UTF-8");
-		Writer stringWriter = new StringWriter();
-		lsOutput.setCharacterStream(stringWriter);
-		serializer.write(doc, lsOutput);
-
-		return stringWriter.toString();
+		return domToString(doc, "UTF-8");
 	}
 
-	public String domToString(Document doc, String encoding){
+	public String domToString(Document doc, String encoding) {
 		DOMImplementationLS domImplementation = (DOMImplementationLS) doc.getImplementation();
 		LSSerializer serializer = domImplementation.createLSSerializer();
 		serializer.getDomConfig().setParameter("format-pretty-print", true);

@@ -1,5 +1,7 @@
 # Extract2DDI
 
+![Extract2DDI workflow](https://github.com/CLOSER-Cohorts/Extract2DDI/actions/workflows/main.yml/badge.svg)
+
 ## Purpose 
 
 To extract DDI metadata from SPSS and Stata files. It supports the most commonly used version of the DDI metadata standard version: 

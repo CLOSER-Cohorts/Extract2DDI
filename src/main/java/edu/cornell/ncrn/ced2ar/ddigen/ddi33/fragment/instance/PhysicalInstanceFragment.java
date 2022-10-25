@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance;
 
+import edu.cornell.ncrn.ced2ar.ddigen.DataFileIdentification;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.Citation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.relationship.DataRelationshipReferenceFragment;

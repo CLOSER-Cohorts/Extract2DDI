@@ -29,7 +29,9 @@ public class VariableElement extends ElementWithUrn {
 
 		getLabel().appendToElement(variableElement, doc);
 
-		getVariableRepresentation().appendToElement(variableElement, doc);
+		if (getVariableRepresentation() != null) {
+			getVariableRepresentation().appendToElement(variableElement, doc);
+		}
 
 		element.appendChild(variableElement);
 	}

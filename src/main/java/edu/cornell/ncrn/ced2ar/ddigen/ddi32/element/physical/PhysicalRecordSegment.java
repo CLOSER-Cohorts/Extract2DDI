@@ -11,8 +11,8 @@ public class PhysicalRecordSegment extends ElementWithUrn {
 	public static final String NODE_NAME_ID = "r:ID";
 	public static final String NODE_NAME_VERSION = "r:Version";
 
-	public PhysicalRecordSegment(String agency) {
-		super(agency);
+	public PhysicalRecordSegment(String id, String agency) {
+		super(id, agency);
 	}
 
 	@Override

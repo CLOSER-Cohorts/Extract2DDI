@@ -1,6 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
 
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
+import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
@@ -18,7 +19,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.category.CategorySchemeFrag
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.category.CategorySchemeReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.code.CodeFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.code.CodeListFragment;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance.DataFileIdentification;
+import edu.cornell.ncrn.ced2ar.ddigen.DataFileIdentification;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance.GrossFileStructure;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance.PhysicalInstanceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.instance.PhysicalInstanceReferenceFragment;
@@ -32,9 +33,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.CodeVariableRepres
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.DateTimeVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.NumericVariableRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.StatisticType;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.SummaryStatistic;
+import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.TextVariableRepresentation;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableCategoryFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableReferenceFragment;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.VariableSchemeFragment;
@@ -419,7 +419,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
 										long invalidValueFrequency = variableFrequency.getCount(".");
 										if (invalidValueFrequency > 0) {
-											VariableCategoryFragment variableCategory = new VariableCategoryFragment(
+											VariableCategory variableCategory = new VariableCategory(
 												".",
 												Long.toString(invalidValueFrequency)
 											);
@@ -428,7 +428,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 										for (Code code : codeList.getCodeList()) {
 											long frequency = variableFrequency.getCount(code.getValue());
 											if (frequency > 0) {
-												VariableCategoryFragment variableCategory = new VariableCategoryFragment(
+												VariableCategory variableCategory = new VariableCategory(
 													code.getValue(),
 													Long.toString(frequency)
 												);
