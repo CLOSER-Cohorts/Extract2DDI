@@ -72,7 +72,8 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		String productIdentification
 	) {
 		super(
 			categorySchemeList,
@@ -83,7 +84,8 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			excludeVariableToStatMap,
 			agency,
 			ddiLanguage,
-			title
+			title,
+			productIdentification
 		);
 	}
 
@@ -397,14 +399,14 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
 
-		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, dataType);
+		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getProductIdentification());
 	}
 
 	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
 		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(getAgency());
 
 		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), dataType);
+		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), getProductIdentification());
 
 		// Physical Structure Link Reference
 		recordLayout.setReference(physicalRecordSegmentId.toString());

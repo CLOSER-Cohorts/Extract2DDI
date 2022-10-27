@@ -25,25 +25,26 @@ public class GenerateDDI33 extends DdiLifecycleGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String statistics
 	) {
-		setAgency(agency);
-		setDdiLanguage(ddiLanguage);
-		setExcludeVariableToStatMap(excludeVariableToStatMap);
-		setStatistics(statistics);
+		this.agency = agency;
+		this.ddiLanguage = ddiLanguage;
+		this.excludeVariableToStatMap = excludeVariableToStatMap;
+		this.statistics = statistics;
 	}
 
 	public DDI generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
 		VariableCsv variableCsv = generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
 		FragmentGenerator fragmentGenerator = new FragmentGenerator(
-			getCategorySchemeList(),
-			getCodeListList(),
-			getVariableSchemeList(),
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableCsv.getVariableStatList(),
 			getStatistics(),
 			getExcludeVariableToStatMap(),
 			getAgency(),
 			getDdiLanguage(),
-			dataFile
+			dataFile,
+			productIdentification
 		);
 		fragmentGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		List<Fragment> fragmentList = fragmentGenerator.getFragmentList();
@@ -75,21 +76,5 @@ public class GenerateDDI33 extends DdiLifecycleGenerator {
 
 	public String getStatistics() {
 		return statistics;
-	}
-
-	public void setAgency(String agency) {
-		this.agency = agency;
-	}
-
-	public void setDdiLanguage(String ddiLanguage) {
-		this.ddiLanguage = ddiLanguage;
-	}
-
-	public void setExcludeVariableToStatMap(Map<String, String> excludeVariableToStatMap) {
-		this.excludeVariableToStatMap = excludeVariableToStatMap;
-	}
-
-	public void setStatistics(String statistics) {
-		this.statistics = statistics;
 	}
 }

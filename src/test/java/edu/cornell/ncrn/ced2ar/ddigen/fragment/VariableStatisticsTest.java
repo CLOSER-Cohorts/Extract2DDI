@@ -56,7 +56,8 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav"
+			"test-file-data-types.sav",
+			"productIdentification"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
@@ -144,7 +145,8 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			new HashMap<>(),
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav"
+			"test-file-data-types.sav",
+			"productIdentification"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();
@@ -198,7 +200,8 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav"
+			"test-file-data-types.sav",
+			"productIdentification"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();

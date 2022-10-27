@@ -95,7 +95,8 @@ public class AbstractFragmentInstanceGeneratorTest {
 			excludeVariableToStatMap,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
-			"test-file-data-types.sav"
+			"test-file-data-types.sav",
+			"productIdentification"
 		);
 
 		List<Fragment> fragmentList = logicalProductGenerator.getFragmentList();

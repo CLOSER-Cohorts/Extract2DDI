@@ -1,0 +1,15 @@
+Variable,Label,Max,Min,Mean,Mode,Valid,Invalid,StdDev
+TestString,String (32 characters),,,,0,5
+TestInteger,Integer,5.0,1.0,3.0,0,5
+TestDouble4dp,Numeric 4 decimal points,5.5555,1.1111,3.0555250000000003,0,4
+TestDouble2dp,Fake Currency,5.55,1.11,3.0525,0,4
+TestCustomCurrency,Custom £ Currency,5.55,1.11,3.0525,0,4
+TestRealCurrency,Dollar,5.55,1.11,3.0525,0,4
+TestDate1,Date dd/mmm/yy,505.0,101.0,277.75,0,4
+TestDate2,Date Jan,Feb,Mar,,,,0,0
+TestDate3,Date Q1 2000,203.0,101.0,127.5,0,4
+TestTime,Time mm:ss,5.0,1.0,2.75,0,4
+TestDateTime,DateTime dd.mm.yyyy.mm.ss,5.20050505059E10,1.200101010189E10,2.95027777786475E10,0,4
+TestCodedValue1,Coded Value basic,2.0,1.0,1.5,0,4
+TestCodeValue2,Coded Value Basic plus missing,2.0,1.0,1.5,0,4
+TestCodeValue3,Coded Value Basic plus range missing,2.0,1.0,1.3333333333333333,0,3

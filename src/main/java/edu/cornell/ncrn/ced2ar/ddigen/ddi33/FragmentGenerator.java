@@ -67,9 +67,10 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		String productIdentification
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title);
+		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, productIdentification);
 	}
 
 	public List<Fragment> getCategoryFragmentList(

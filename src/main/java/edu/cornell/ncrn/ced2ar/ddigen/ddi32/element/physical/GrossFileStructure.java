@@ -13,9 +13,9 @@ public class GrossFileStructure extends ElementWithUrn {
 	private Software software;
 	private long caseQuantity;
 
-	public GrossFileStructure(String agency, String ddiLanguage, long caseQuantity, String softwareName) {
+	public GrossFileStructure(String agency, String ddiLanguage, long caseQuantity, String productIdentification) {
 		super(agency);
-		this.software = new Software(new StringElement(softwareName, ddiLanguage), "dataFileUri", "pi", SoftwareType.Creation);
+		this.software = new Software(new StringElement("SPSS", ddiLanguage), productIdentification, "pi", SoftwareType.Creation);
 		this.caseQuantity = caseQuantity;
 	}
 

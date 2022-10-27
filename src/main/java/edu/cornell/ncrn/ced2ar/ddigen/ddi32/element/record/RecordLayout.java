@@ -1,6 +1,5 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Description;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.Software;
@@ -21,10 +20,10 @@ public class RecordLayout extends ElementWithUrn {
 	private DefaultVariableSchemeReference defaultVariableSchemeReference;
 	private List<DataItem> dataItemList = new ArrayList<>();
 
-	public RecordLayout(String id, String agency, String variableSchemeId, String ddiLang, String softwareName) {
+	public RecordLayout(String id, String agency, String variableSchemeId, String ddiLang, String productIdentification) {
 		super(id, agency);
 		this.defaultVariableSchemeReference = new DefaultVariableSchemeReference(variableSchemeId, agency);
-		this.software = new Software(new StringElement(softwareName, ddiLang), "@(#) IBM SPSS STATISTICS 64-bit Macintosh 26.0.0.0", "ddi1", SoftwareType.System);
+		this.software = new Software(new StringElement("SPSS", ddiLang), productIdentification, "ddi1", SoftwareType.System);
 	}
 
 	public void addDataItem(DataItem dataItem) {
@@ -34,7 +33,7 @@ public class RecordLayout extends ElementWithUrn {
 	}
 
 	@Override
-	public void appendToElement(Element element, Document doc) {
+	public void appendToElement(Element parent, Document doc) {
 		Element recordLayout = doc.createElement(NODE_NAME_RECORD_LAYOUT);
 
 		super.appendToElement(recordLayout, doc);
@@ -49,7 +48,7 @@ public class RecordLayout extends ElementWithUrn {
 			dataItem.appendToElement(recordLayout, doc);
 		}
 
-		element.appendChild(recordLayout);
+		parent.appendChild(recordLayout);
 	}
 
 	public List<DataItem> getDataItemList() {

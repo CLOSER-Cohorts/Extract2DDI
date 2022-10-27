@@ -34,15 +34,16 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 		VariableCsv variableCsv = generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
 		ElementGenerator elementGenerator = new ElementGenerator(
-			getCategorySchemeList(),
-			getCodeListList(),
-			getVariableSchemeList(),
+			categorySchemeList,
+			codeListList,
+			variableSchemeList,
 			variableCsv.getVariableStatList(),
 			statistics,
 			excludeVariableToStatMap,
 			agency,
 			ddiLanguage,
-			dataFile
+			dataFile,
+			productIdentification
 		);
 		elementGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
 		DDIInstance ddiInstance = elementGenerator.getInstance();

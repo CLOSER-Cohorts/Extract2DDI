@@ -23,6 +23,7 @@ public class AbstractSchemaGenerator {
 	private List<CategoryScheme> categorySchemeList = new ArrayList<>();
 	private List<CodeList> codeListList = new ArrayList<>();
 	private List<VariableScheme> variableSchemeList = new ArrayList<>();
+	private String productIdentification;
 	private String title;
 	private String statistics;
 	private List<Ced2arVariableStat> variableStatisticList;
@@ -37,7 +38,8 @@ public class AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		String productIdentification
 	) {
 		this.agency = agency;
 		this.ddiLanguage = ddiLanguage;
@@ -49,6 +51,7 @@ public class AbstractSchemaGenerator {
 		this.title = title;
 		this.variableStatisticList = variableStatistics;
 		this.version = 1;
+		this.productIdentification = productIdentification;
 	}
 
 	public String getAgency() {
@@ -95,6 +98,10 @@ public class AbstractSchemaGenerator {
 
 	public Map<String, String> getExcludeVariableToStatMap() {
 		return excludeVariableToStatMap;
+	}
+
+	public String getProductIdentification() {
+		return productIdentification;
 	}
 
 	public String getStatistics() {
