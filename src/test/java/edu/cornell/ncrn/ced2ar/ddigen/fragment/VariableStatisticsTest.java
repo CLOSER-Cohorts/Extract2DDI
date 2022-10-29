@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.fragment;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFileException;
 import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
@@ -57,6 +58,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",
+			FileFormatInfo.Format.SPSS,
 			"productIdentification"
 		);
 
@@ -146,6 +148,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",
+			FileFormatInfo.Format.SPSS,
 			"productIdentification"
 		);
 
@@ -201,6 +204,7 @@ public class VariableStatisticsTest extends AbstractFragmentInstanceGeneratorTes
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",
+			FileFormatInfo.Format.SPSS,
 			"productIdentification"
 		);
 

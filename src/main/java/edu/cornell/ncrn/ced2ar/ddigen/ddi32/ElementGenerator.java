@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
@@ -73,6 +74,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		String agency,
 		String ddiLanguage,
 		String title,
+		FileFormatInfo.Format dataFormat,
 		String productIdentification
 	) {
 		super(
@@ -85,6 +87,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			agency,
 			ddiLanguage,
 			title,
+			dataFormat,
 			productIdentification
 		);
 	}
@@ -397,16 +400,14 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			}
 		}
 
-		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-
-		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getProductIdentification());
+		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getDataFormat(), getProductIdentification());
 	}
 
 	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
 		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(getAgency());
 
-		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), getProductIdentification());
+		//FileFormatInfo.Format dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
+		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), getDataFormat(), getProductIdentification());
 
 		// Physical Structure Link Reference
 		recordLayout.setReference(physicalRecordSegmentId.toString());

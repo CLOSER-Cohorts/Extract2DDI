@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.RecordLayoutReference;
 import edu.cornell.ncrn.ced2ar.ddigen.DataFileIdentification;
@@ -16,10 +17,10 @@ public class PhysicalInstance extends ElementWithUrn {
 	private final GrossFileStructure grossFileStructure;
 	private final StatisticalSummary statisticalSummary;
 
-	public PhysicalInstance(String agency, String dataFileUri, String ddiLang, long caseQuantity, StatisticalSummary statisticalSummary, String softwareName) {
+	public PhysicalInstance(String agency, String dataFileUri, String ddiLang, long caseQuantity, StatisticalSummary statisticalSummary, FileFormatInfo.Format dataFormat, String productIdentification) {
 		super(agency);
 		this.dataFileIdentification = new DataFileIdentification(dataFileUri, "pi");
-		this.grossFileStructure = new GrossFileStructure(agency, ddiLang, caseQuantity, softwareName);
+		this.grossFileStructure = new GrossFileStructure(agency, ddiLang, caseQuantity, dataFormat, productIdentification);
 		this.statisticalSummary = statisticalSummary;
 	}
 

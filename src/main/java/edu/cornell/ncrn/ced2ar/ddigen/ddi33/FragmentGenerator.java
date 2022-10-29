@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
@@ -68,9 +69,10 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		String agency,
 		String ddiLanguage,
 		String title,
+		FileFormatInfo.Format dataFormat,
 		String productIdentification
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, productIdentification);
+		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, dataFormat, productIdentification);
 	}
 
 	public List<Fragment> getCategoryFragmentList(

@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.fragment;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.ConfigUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.FileUtil;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
@@ -95,6 +96,7 @@ public class AbstractStataFragmentInstanceGeneratorTest {
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",
+			FileFormatInfo.Format.SPSS,
 			"productIdentification"
 		);
 

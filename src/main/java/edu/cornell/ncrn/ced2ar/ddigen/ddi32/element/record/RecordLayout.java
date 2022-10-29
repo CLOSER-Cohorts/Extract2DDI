@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.Software;
@@ -20,10 +21,10 @@ public class RecordLayout extends ElementWithUrn {
 	private DefaultVariableSchemeReference defaultVariableSchemeReference;
 	private List<DataItem> dataItemList = new ArrayList<>();
 
-	public RecordLayout(String id, String agency, String variableSchemeId, String ddiLang, String productIdentification) {
+	public RecordLayout(String id, String agency, String variableSchemeId, String ddiLang, FileFormatInfo.Format dataFormat, String productIdentification) {
 		super(id, agency);
 		this.defaultVariableSchemeReference = new DefaultVariableSchemeReference(variableSchemeId, agency);
-		this.software = new Software(new StringElement("SPSS", ddiLang), productIdentification, "ddi1", SoftwareType.System);
+		this.software = new Software(new StringElement(dataFormat.toString(), ddiLang), productIdentification, "ddi1", SoftwareType.System);
 	}
 
 	public void addDataItem(DataItem dataItem) {

@@ -44,6 +44,7 @@ public class GenerateDDI33 extends DdiLifecycleGenerator {
 			getAgency(),
 			getDdiLanguage(),
 			dataFile,
+			dataFormat,
 			productIdentification
 		);
 		fragmentGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());

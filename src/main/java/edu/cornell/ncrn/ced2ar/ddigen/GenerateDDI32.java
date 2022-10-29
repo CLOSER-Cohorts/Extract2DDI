@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
@@ -43,6 +44,7 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 			agency,
 			ddiLanguage,
 			dataFile,
+			dataFormat,
 			productIdentification
 		);
 		elementGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
