@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
@@ -72,7 +73,9 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		FileFormatInfo.Format dataFormat,
+		String productIdentification
 	) {
 		super(
 			categorySchemeList,
@@ -83,7 +86,9 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			excludeVariableToStatMap,
 			agency,
 			ddiLanguage,
-			title
+			title,
+			dataFormat,
+			productIdentification
 		);
 	}
 
@@ -395,16 +400,14 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			}
 		}
 
-		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-
-		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, dataType);
+		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getDataFormat(), getProductIdentification());
 	}
 
 	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
 		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(getAgency());
 
-		String dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), dataType);
+		//FileFormatInfo.Format dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
+		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), getDataFormat(), getProductIdentification());
 
 		// Physical Structure Link Reference
 		recordLayout.setReference(physicalRecordSegmentId.toString());

@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.data.spss.SPSSFile;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
@@ -20,22 +21,11 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class DdiLifecycleGenerator {
-	private final List<CategoryScheme> categorySchemeList = new ArrayList<>();
-	private final List<CodeList> codeListList = new ArrayList<>();
-	private final List<VariableScheme> variableSchemeList = new ArrayList<>();
-	private String dataType;
-
-	public List<CategoryScheme> getCategorySchemeList() {
-		return categorySchemeList;
-	}
-
-	public List<CodeList> getCodeListList() {
-		return codeListList;
-	}
-
-	public List<VariableScheme> getVariableSchemeList() {
-		return variableSchemeList;
-	}
+	protected final List<CategoryScheme> categorySchemeList = new ArrayList<>();
+	protected final List<CodeList> codeListList = new ArrayList<>();
+	protected final List<VariableScheme> variableSchemeList = new ArrayList<>();
+	protected FileFormatInfo.Format dataFormat;
+	protected String productIdentification;
 
 	protected void populateSpss(SpssCsvGenerator spssGen, SPSSFile spssFile) throws Exception {
 		Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
@@ -43,8 +33,6 @@ public abstract class DdiLifecycleGenerator {
 		categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 		codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
 		variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
-
-		dataType = "SPSS";
 	}
 
 	protected VariableCsv generateVariablesCsv(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
@@ -54,6 +42,7 @@ public abstract class DdiLifecycleGenerator {
 			StataCsvGenerator stataCsvGenerator = new StataCsvGenerator();
 			variableCsv = stataCsvGenerator.generateVariablesCsv(dataFile, runSumStats, observationLimit);
 			populateStata(variableCsv);
+			dataFormat = FileFormatInfo.Format.STATA;
 
 		} else if (dataFile.toLowerCase().endsWith(".sav")) {
 			// SPSS
@@ -63,13 +52,14 @@ public abstract class DdiLifecycleGenerator {
 			File serverFile = new File(dataFile);
 			SPSSFile spssFile = new SPSSFile(serverFile);
 			populateSpss(spssGen, spssFile);
+			productIdentification = spssFile.getDDI2().getElementsByTagName("software").item(1).getTextContent();
+			dataFormat = FileFormatInfo.Format.SPSS;
 		} else {
 			throw new IllegalArgumentException("Unknown data file extension");
 		}
 
 		return variableCsv;
 	}
-
 
 	protected void populateStata(VariableCsv variableCsv) throws Exception {
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
@@ -118,7 +108,5 @@ public abstract class DdiLifecycleGenerator {
 		VariableScheme defaultVariableScheme = new VariableScheme(UUID.randomUUID().toString());
 		defaultVariableScheme.setVariableList(variableList);
 		variableSchemeList.add(defaultVariableScheme);
-
-		dataType = "STATA";
 	}
 }

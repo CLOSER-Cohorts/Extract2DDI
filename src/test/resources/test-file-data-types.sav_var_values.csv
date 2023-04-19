@@ -1,0 +1,14 @@
+TestString
+TestInteger
+TestDouble4dp
+TestDouble2dp
+TestCustomCurrency
+TestRealCurrency
+TestDate1
+TestDate2
+TestDate3
+TestTime
+TestDateTime
+TestCodedValue1,1=Yes,2=No
+TestCodeValue2,1=Oui,2=Non
+TestCodeValue3,1=Yes,2=No

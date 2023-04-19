@@ -1,0 +1,14 @@
+TestString
+TestInteger
+TestDouble4dp
+TestDouble2dp
+TestCustomCurrency
+TestRealCurrency
+TestDate1
+TestDate2,11=November,1=January,12=December,2=February,3=March,4=April,5=May,6=June,7=July,8=August,9=September,10=October
+TestDate3
+TestTime
+TestDateTime
+TestCodedValue1,1=Yes,2=No
+TestCodeValue2,1=Oui,2=Non,-1=Refused,-2=Dont Know,-3=Huh
+TestCodeValue3,99=Huh,1=Yes,100=Not applicable,2=No,97=Refusal,98=Dont Know

@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
@@ -8,7 +9,6 @@ import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.apache.commons.math3.stat.Frequency;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +20,11 @@ public class AbstractSchemaGenerator {
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
 	private Map<String, Frequency> variableToFrequencyMap;
-	private List<CategoryScheme> categorySchemeList = new ArrayList<>();
-	private List<CodeList> codeListList = new ArrayList<>();
-	private List<VariableScheme> variableSchemeList = new ArrayList<>();
+	private List<CategoryScheme> categorySchemeList;
+	private List<CodeList> codeListList;
+	private List<VariableScheme> variableSchemeList;
+	private FileFormatInfo.Format dataFormat;
+	private String productIdentification;
 	private String title;
 	private String statistics;
 	private List<Ced2arVariableStat> variableStatisticList;
@@ -37,7 +39,9 @@ public class AbstractSchemaGenerator {
 		Map<String, String> excludeVariableToStatMap,
 		String agency,
 		String ddiLanguage,
-		String title
+		String title,
+		FileFormatInfo.Format dataFormat,
+		String productIdentification
 	) {
 		this.agency = agency;
 		this.ddiLanguage = ddiLanguage;
@@ -49,6 +53,8 @@ public class AbstractSchemaGenerator {
 		this.title = title;
 		this.variableStatisticList = variableStatistics;
 		this.version = 1;
+		this.dataFormat = dataFormat;
+		this.productIdentification = productIdentification;
 	}
 
 	public String getAgency() {
@@ -89,12 +95,20 @@ public class AbstractSchemaGenerator {
 		return codeListList;
 	}
 
+	public FileFormatInfo.Format getDataFormat() {
+		return dataFormat;
+	}
+
 	public String getDdiLanguage() {
 		return ddiLanguage;
 	}
 
 	public Map<String, String> getExcludeVariableToStatMap() {
 		return excludeVariableToStatMap;
+	}
+
+	public String getProductIdentification() {
+		return productIdentification;
 	}
 
 	public String getStatistics() {

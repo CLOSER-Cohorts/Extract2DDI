@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.StringElement;
 import org.w3c.dom.Document;
@@ -13,9 +14,9 @@ public class GrossFileStructure extends ElementWithUrn {
 	private Software software;
 	private long caseQuantity;
 
-	public GrossFileStructure(String agency, String ddiLanguage, long caseQuantity, String softwareName) {
+	public GrossFileStructure(String agency, String ddiLanguage, long caseQuantity, FileFormatInfo.Format dataFormat, String productIdentification) {
 		super(agency);
-		this.software = new Software(new StringElement(softwareName, ddiLanguage), "dataFileUri", "pi", SoftwareType.Creation);
+		this.software = new Software(new StringElement(dataFormat.toString(), ddiLanguage), productIdentification, "pi", SoftwareType.Creation);
 		this.caseQuantity = caseQuantity;
 	}
 

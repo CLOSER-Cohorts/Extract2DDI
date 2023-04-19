@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><codeBook xmlns="ddi:codebook:2_5" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
+    <docDscr/>
+    <stdyDscr>
+        <citation>
+            <titlStmt>
+                <titl>src/test/resources/test-file-data-types.sav</titl>
+            </titlStmt>
+        </citation>
+    </stdyDscr>
+    <dataDscr>
+        <var ID="V1" name="TestString">
+            <labl>String (32 characters)</labl>
+            <sumStat type="vald">5</sumStat>
+            <sumStat type="invd">0</sumStat>
+            <sumStat type="min"/>
+            <sumStat type="max"/>
+            <sumStat type="mean"/>
+            <sumStat type="stdev"/>
+        </var>
+        <var ID="V2" name="TestInteger">
+            <labl>Integer</labl>
+            <sumStat type="vald">5</sumStat>
+            <sumStat type="invd">0</sumStat>
+            <sumStat type="min">1.0</sumStat>
+            <sumStat type="max">5.0</sumStat>
+            <sumStat type="mean">3.0</sumStat>
+            <sumStat type="stdev">1.5811388300841898</sumStat>
+        </var>
+        <var ID="V3" name="TestDouble4dp">
+            <labl>Numeric 4 decimal points</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.1111</sumStat>
+            <sumStat type="max">5.5555</sumStat>
+            <sumStat type="mean">3.0555250000000003</sumStat>
+            <sumStat type="stdev">1.8975644993429517</sumStat>
+        </var>
+        <var ID="V4" name="TestDouble2dp">
+            <labl>Fake Currency</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.11</sumStat>
+            <sumStat type="max">5.55</sumStat>
+            <sumStat type="mean">3.0525</sumStat>
+            <sumStat type="stdev">1.8956858917025254</sumStat>
+        </var>
+        <var ID="V5" name="TestCustomCurrency">
+            <labl>Custom &amp;#163; Currency</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.11</sumStat>
+            <sumStat type="max">5.55</sumStat>
+            <sumStat type="mean">3.0525</sumStat>
+            <sumStat type="stdev">1.8956858917025254</sumStat>
+        </var>
+        <var ID="V6" name="TestRealCurrency">
+            <labl>Dollar</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.11</sumStat>
+            <sumStat type="max">5.55</sumStat>
+            <sumStat type="mean">3.0525</sumStat>
+            <sumStat type="stdev">1.8956858917025254</sumStat>
+        </var>
+        <var ID="V7" name="TestDate1">
+            <labl>Date dd/mmm/yy</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">101.0</sumStat>
+            <sumStat type="max">505.0</sumStat>
+            <sumStat type="mean">277.75</sumStat>
+            <sumStat type="stdev">172.49033789365325</sumStat>
+        </var>
+        <var ID="V8" name="TestDate2">
+            <labl>Date Jan</labl>
+            <sumStat type="vald">Feb</sumStat>
+            <sumStat type="invd">Mar</sumStat>
+            <sumStat type="min">0</sumStat>
+            <sumStat type="max">5</sumStat>
+            <sumStat type="mean"/>
+            <sumStat type="stdev"/>
+        </var>
+        <var ID="V9" name="TestDate3">
+            <labl>Date Q1 2000</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">101.0</sumStat>
+            <sumStat type="max">203.0</sumStat>
+            <sumStat type="mean">127.5</sumStat>
+            <sumStat type="stdev">50.34878350069643</sumStat>
+        </var>
+        <var ID="V10" name="TestTime">
+            <labl>Time mm:ss</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.0</sumStat>
+            <sumStat type="max">5.0</sumStat>
+            <sumStat type="mean">2.75</sumStat>
+            <sumStat type="stdev">1.707825127659933</sumStat>
+        </var>
+        <var ID="V11" name="TestDateTime">
+            <labl>DateTime dd.mm.yyyy.mm.ss</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.200101010164E10</sumStat>
+            <sumStat type="max">5.200505050565E10</sumStat>
+            <sumStat type="mean">2.95027777783975E10</sumStat>
+            <sumStat type="stdev">1.7079976352472023E10</sumStat>
+        </var>
+        <var ID="V12" name="TestCodedValue1">
+            <labl>Coded Value basic</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.0</sumStat>
+            <sumStat type="max">2.0</sumStat>
+            <sumStat type="mean">1.5</sumStat>
+            <sumStat type="stdev">0.5773502691896257</sumStat>
+            <catgry>
+                <catValu>1</catValu>
+                <labl>Yes</labl>
+            </catgry>
+            <catgry>
+                <catValu>2</catValu>
+                <labl>No</labl>
+            </catgry>
+        </var>
+        <var ID="V13" name="TestCodeValue2">
+            <labl>Coded Value Basic plus missing</labl>
+            <sumStat type="vald">4</sumStat>
+            <sumStat type="invd">1</sumStat>
+            <sumStat type="min">1.0</sumStat>
+            <sumStat type="max">2.0</sumStat>
+            <sumStat type="mean">1.5</sumStat>
+            <sumStat type="stdev">0.5773502691896257</sumStat>
+            <catgry>
+                <catValu>1</catValu>
+                <labl>Oui</labl>
+            </catgry>
+            <catgry>
+                <catValu>2</catValu>
+                <labl>Non</labl>
+            </catgry>
+        </var>
+        <var ID="V14" name="TestCodeValue3">
+            <labl>Coded Value Basic plus range missing</labl>
+            <sumStat type="vald">3</sumStat>
+            <sumStat type="invd">2</sumStat>
+            <sumStat type="min">1.0</sumStat>
+            <sumStat type="max">2.0</sumStat>
+            <sumStat type="mean">1.3333333333333333</sumStat>
+            <sumStat type="stdev">0.5773502691896257</sumStat>
+            <catgry>
+                <catValu>1</catValu>
+                <labl>Yes</labl>
+            </catgry>
+            <catgry>
+                <catValu>2</catValu>
+                <labl>No</labl>
+            </catgry>
+        </var>
+    </dataDscr>
+</codeBook>

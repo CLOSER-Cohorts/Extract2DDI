@@ -1,0 +1,1718 @@
+<?xml version="1.0" encoding="UTF-8"?><ddi:FragmentInstance xmlns:ddi="ddi:instance:3_3" xmlns:r="ddi:reusable:3_3">
+    <ddi:TopLevelReference>
+        <r:Agency>uk.closer</r:Agency>
+        <r:ID>f380d441-f24e-4389-946b-421dd486d1fc</r:ID>
+        <r:Version>1</r:Version>
+        <r:TypeOfObject>ResourcePackage</r:TypeOfObject>
+    </ddi:TopLevelReference>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <ResourcePackage isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.834626" xmlns="ddi:group:3_3">
+            <r:URN>urn:ddi:uk.closer:73b9b81d-0883-4827-bef7-1812764878c3:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>73b9b81d-0883-4827-bef7-1812764878c3</r:ID>
+            <r:Version>1</r:Version>
+            <r:Citation>
+                <r:Title>
+                    <r:String xml:lang="en-GB">src/test/resources/test-file-data-types.dta</r:String>
+                </r:Title>
+            </r:Citation>
+            <r:PhysicalInstanceReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>e85e18de-a1ba-4fc6-89dd-e456776275dc</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>PhysicalInstance</r:TypeOfObject>
+            </r:PhysicalInstanceReference>
+            <r:CategorySchemeReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>cd5e7177-8206-45a0-8ff9-2f9bf4e7b765</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>CategoryScheme</r:TypeOfObject>
+            </r:CategorySchemeReference>
+            <r:VariableSchemeReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>0ea8a806-3db2-4a86-b471-1f5c42741c64</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>VariableScheme</r:TypeOfObject>
+            </r:VariableSchemeReference>
+        </ResourcePackage>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CategoryScheme isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835309" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:cd5e7177-8206-45a0-8ff9-2f9bf4e7b765:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cd5e7177-8206-45a0-8ff9-2f9bf4e7b765</r:ID>
+            <r:Version>1</r:Version>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>2a38f84b-8625-442f-b12b-f6f9e46961e0</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>61754089-241d-4846-a7c7-7bb94c61af4c</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7f502b9b-2ee2-4736-b087-83850ec4f07a</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>442f1193-55a8-463e-9be9-f102c0c8aef9</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>06f0522d-271d-4392-b87e-6619e1836fa2</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b10a1336-81e8-4f43-ae90-d8606ba28a23</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>24db5171-6fc5-4d9d-9d11-ac3e5feed117</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>fd904fb5-2e10-44ef-ba3f-6ddc84d62661</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>c38261c4-5bd8-471d-b4ad-81dcd90d9137</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>f403d7dc-ed6f-40da-8a8e-f7bcf902430d</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+        </CategoryScheme>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CategoryScheme isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835521" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:cd5e7177-8206-45a0-8ff9-2f9bf4e7b765:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cd5e7177-8206-45a0-8ff9-2f9bf4e7b765</r:ID>
+            <r:Version>1</r:Version>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+        </CategoryScheme>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CategoryScheme isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835582" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:cd5e7177-8206-45a0-8ff9-2f9bf4e7b765:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cd5e7177-8206-45a0-8ff9-2f9bf4e7b765</r:ID>
+            <r:Version>1</r:Version>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>9564ae24-ccfe-4dc1-b7f1-463a1312e1ef</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>c4011eb8-4d4f-4f53-9e0e-28d6e4b93120</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>8f220e9c-46ba-420d-b071-8d5592ce5963</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+        </CategoryScheme>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CategoryScheme isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835676" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:cd5e7177-8206-45a0-8ff9-2f9bf4e7b765:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cd5e7177-8206-45a0-8ff9-2f9bf4e7b765</r:ID>
+            <r:Version>1</r:Version>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>6c68f210-063d-4a30-bff6-a545cf283bfd</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>c77c41a9-c44b-424a-89ab-97d8ac193660</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>67ffcfd2-ac40-4591-86ea-bc9fae4db494</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+            <r:CategoryReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>e99f5bdc-2f25-4e13-81df-bb906c1767ee</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Category</r:TypeOfObject>
+            </r:CategoryReference>
+        </CategoryScheme>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835775" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:2a38f84b-8625-442f-b12b-f6f9e46961e0:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>2a38f84b-8625-442f-b12b-f6f9e46961e0</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">November</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835821" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:b962c6d2-6234-4590-baef-1e79a65ed16e:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">January</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835861" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:61754089-241d-4846-a7c7-7bb94c61af4c:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>61754089-241d-4846-a7c7-7bb94c61af4c</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">December</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835901" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:adafe662-4f60-466b-a382-b586f1840f2c:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">February</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835940" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:7f502b9b-2ee2-4736-b087-83850ec4f07a:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>7f502b9b-2ee2-4736-b087-83850ec4f07a</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">March</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.835977" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:442f1193-55a8-463e-9be9-f102c0c8aef9:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>442f1193-55a8-463e-9be9-f102c0c8aef9</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">April</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836015" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:06f0522d-271d-4392-b87e-6619e1836fa2:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>06f0522d-271d-4392-b87e-6619e1836fa2</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">May</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836050" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:b10a1336-81e8-4f43-ae90-d8606ba28a23:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>b10a1336-81e8-4f43-ae90-d8606ba28a23</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">June</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836086" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:24db5171-6fc5-4d9d-9d11-ac3e5feed117:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>24db5171-6fc5-4d9d-9d11-ac3e5feed117</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">July</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836122" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:fd904fb5-2e10-44ef-ba3f-6ddc84d62661:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>fd904fb5-2e10-44ef-ba3f-6ddc84d62661</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">August</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836159" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:c38261c4-5bd8-471d-b4ad-81dcd90d9137:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>c38261c4-5bd8-471d-b4ad-81dcd90d9137</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">September</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836196" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:f403d7dc-ed6f-40da-8a8e-f7bcf902430d:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>f403d7dc-ed6f-40da-8a8e-f7bcf902430d</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">October</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836232" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:b962c6d2-6234-4590-baef-1e79a65ed16e:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Yes</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836273" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:adafe662-4f60-466b-a382-b586f1840f2c:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">No</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836313" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:b962c6d2-6234-4590-baef-1e79a65ed16e:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Oui</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836345" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:adafe662-4f60-466b-a382-b586f1840f2c:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Non</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836383" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:9564ae24-ccfe-4dc1-b7f1-463a1312e1ef:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>9564ae24-ccfe-4dc1-b7f1-463a1312e1ef</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Refused</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836418" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:c4011eb8-4d4f-4f53-9e0e-28d6e4b93120:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>c4011eb8-4d4f-4f53-9e0e-28d6e4b93120</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Dont Know</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836450" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:8f220e9c-46ba-420d-b071-8d5592ce5963:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>8f220e9c-46ba-420d-b071-8d5592ce5963</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Huh</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836479" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:6c68f210-063d-4a30-bff6-a545cf283bfd:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>6c68f210-063d-4a30-bff6-a545cf283bfd</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Huh</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836521" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:b962c6d2-6234-4590-baef-1e79a65ed16e:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Yes</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836555" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:c77c41a9-c44b-424a-89ab-97d8ac193660:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>c77c41a9-c44b-424a-89ab-97d8ac193660</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Not applicable</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836585" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:adafe662-4f60-466b-a382-b586f1840f2c:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">No</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836615" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:67ffcfd2-ac40-4591-86ea-bc9fae4db494:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>67ffcfd2-ac40-4591-86ea-bc9fae4db494</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Refusal</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Category isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836646" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:e99f5bdc-2f25-4e13-81df-bb906c1767ee:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>e99f5bdc-2f25-4e13-81df-bb906c1767ee</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Dont Know</r:Content>
+            </r:Label>
+        </Category>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CodeList isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836678" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:1a253b41-b1a4-432a-aea3-af1f4509f862:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1a253b41-b1a4-432a-aea3-af1f4509f862</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB"/>
+            </r:Label>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:1b75d692-61dd-4d80-a045-57e2008a0d14:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>1b75d692-61dd-4d80-a045-57e2008a0d14</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>2a38f84b-8625-442f-b12b-f6f9e46961e0</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>November</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:911b2a78-c422-4145-a336-cda5ac9d673b:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>911b2a78-c422-4145-a336-cda5ac9d673b</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>January</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:7cedcf79-210b-4845-9843-8391c0c5c145:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7cedcf79-210b-4845-9843-8391c0c5c145</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>61754089-241d-4846-a7c7-7bb94c61af4c</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>December</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:7be56024-2d2c-4c0f-a89e-5f448edd0891:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7be56024-2d2c-4c0f-a89e-5f448edd0891</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>February</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:d0b7f64f-e000-47f9-9b01-864897c28ff9:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>d0b7f64f-e000-47f9-9b01-864897c28ff9</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>7f502b9b-2ee2-4736-b087-83850ec4f07a</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>March</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:8bbfe4bc-c3ce-4a9e-ac65-e89790c2610c:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>8bbfe4bc-c3ce-4a9e-ac65-e89790c2610c</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>442f1193-55a8-463e-9be9-f102c0c8aef9</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>April</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:bb39e8b0-bde4-44bb-bd71-5a8d50b1f55a:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>bb39e8b0-bde4-44bb-bd71-5a8d50b1f55a</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>06f0522d-271d-4392-b87e-6619e1836fa2</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>May</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:ec6e805d-1835-4e15-bcc0-8372c41df74a:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>ec6e805d-1835-4e15-bcc0-8372c41df74a</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>b10a1336-81e8-4f43-ae90-d8606ba28a23</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>June</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:be70d08e-5d95-4f27-9a94-a9b61e999d0e:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>be70d08e-5d95-4f27-9a94-a9b61e999d0e</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>24db5171-6fc5-4d9d-9d11-ac3e5feed117</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>July</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:66a1439f-b40a-4fd1-954e-d7dd0af7265c:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>66a1439f-b40a-4fd1-954e-d7dd0af7265c</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>fd904fb5-2e10-44ef-ba3f-6ddc84d62661</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>August</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:d3fa561a-bda8-4fbe-b0e4-54caab7898ea:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>d3fa561a-bda8-4fbe-b0e4-54caab7898ea</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>c38261c4-5bd8-471d-b4ad-81dcd90d9137</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>September</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:c88e6e8d-4c7d-413d-ba98-27576a3e0640:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>c88e6e8d-4c7d-413d-ba98-27576a3e0640</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>f403d7dc-ed6f-40da-8a8e-f7bcf902430d</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>October</r:Value>
+            </Code>
+        </CodeList>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CodeList isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836916" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:1a253b41-b1a4-432a-aea3-af1f4509f862:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1a253b41-b1a4-432a-aea3-af1f4509f862</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB"/>
+            </r:Label>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:c9b5d3a8-7f97-4bdd-9ac4-361e424e78a5:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>c9b5d3a8-7f97-4bdd-9ac4-361e424e78a5</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Yes</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:66a3056d-7571-43ac-b84d-98834451b013:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>66a3056d-7571-43ac-b84d-98834451b013</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>No</r:Value>
+            </Code>
+        </CodeList>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CodeList isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.836982" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:1a253b41-b1a4-432a-aea3-af1f4509f862:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1a253b41-b1a4-432a-aea3-af1f4509f862</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB"/>
+            </r:Label>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:47521c5a-361e-4eb1-931f-3deeef78ff70:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>47521c5a-361e-4eb1-931f-3deeef78ff70</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Oui</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:80a37167-088a-46d0-957c-b7c823a7f7ec:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>80a37167-088a-46d0-957c-b7c823a7f7ec</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Non</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:58c11aa3-794f-455f-9caa-e25c08d45ae8:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>58c11aa3-794f-455f-9caa-e25c08d45ae8</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>9564ae24-ccfe-4dc1-b7f1-463a1312e1ef</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Refused</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:5054f1fa-8c6c-48aa-b237-b945867b4fe5:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>5054f1fa-8c6c-48aa-b237-b945867b4fe5</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>c4011eb8-4d4f-4f53-9e0e-28d6e4b93120</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Dont Know</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:8299d57d-f303-44d1-a781-f97c6bcc2765:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>8299d57d-f303-44d1-a781-f97c6bcc2765</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>8f220e9c-46ba-420d-b071-8d5592ce5963</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Huh</r:Value>
+            </Code>
+        </CodeList>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <CodeList isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837092" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:1a253b41-b1a4-432a-aea3-af1f4509f862:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1a253b41-b1a4-432a-aea3-af1f4509f862</r:ID>
+            <r:Version>1</r:Version>
+            <r:Label>
+                <r:Content xml:lang="en-GB"/>
+            </r:Label>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:5d729b78-e499-47a6-abbc-ff176e772c07:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>5d729b78-e499-47a6-abbc-ff176e772c07</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>6c68f210-063d-4a30-bff6-a545cf283bfd</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Huh</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:7024e152-a5a2-4eaa-b59c-2ee862581f67:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7024e152-a5a2-4eaa-b59c-2ee862581f67</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>b962c6d2-6234-4590-baef-1e79a65ed16e</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Yes</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:04350e00-368f-4f61-9b96-7b154b7fe9fe:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>04350e00-368f-4f61-9b96-7b154b7fe9fe</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>c77c41a9-c44b-424a-89ab-97d8ac193660</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Not applicable</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:5b194038-0425-409e-9ebe-a5624ca2d6a1:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>5b194038-0425-409e-9ebe-a5624ca2d6a1</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>adafe662-4f60-466b-a382-b586f1840f2c</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>No</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:a3bed67d-5f4d-4cee-bc81-0c0b79891bec:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>a3bed67d-5f4d-4cee-bc81-0c0b79891bec</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>67ffcfd2-ac40-4591-86ea-bc9fae4db494</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Refusal</r:Value>
+            </Code>
+            <Code>
+                <r:URN>urn:ddi:uk.closer:5b07f5c6-feef-4b55-9157-7422ff16b840:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>5b07f5c6-feef-4b55-9157-7422ff16b840</r:ID>
+                <r:Version>1</r:Version>
+                <r:CategoryReference>
+                    <r:Agency>uk.closer</r:Agency>
+                    <r:ID>e99f5bdc-2f25-4e13-81df-bb906c1767ee</r:ID>
+                    <r:Version>1</r:Version>
+                    <r:TypeOfObject>Category</r:TypeOfObject>
+                </r:CategoryReference>
+                <r:Value>Dont Know</r:Value>
+            </Code>
+        </CodeList>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableScheme isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837218" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:0ea8a806-3db2-4a86-b471-1f5c42741c64:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>0ea8a806-3db2-4a86-b471-1f5c42741c64</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>677a8fd7-f7f2-4a94-a898-80d4ee44e215</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>1d3a3a67-7a06-4d3c-a9a7-34f975426302</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>6342666d-d4ec-4aac-b699-0f68fa77da00</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7b04fc25-b80c-47db-b3e0-a3f92c5caaeb</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>37754f52-270d-4acf-b6be-3569b04b4348</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>88a3c76e-cfbc-4187-af42-ff8be0666786</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>86ea036d-3ae1-4987-a936-89196b3d3487</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>f33d687d-3f8a-461c-89ff-70ab0aa351c0</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>d63a7e97-df40-4083-9359-66b169fec7d1</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>af9c821d-5734-4919-9337-0e0c78ea8c0a</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>81fd9d18-650c-4f58-921e-9c744dc20844</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>859fa05f-079a-416b-80fb-caf2db15d700</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>cb35376b-8921-43b4-9e13-572b9dd8195d</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>41d5dc97-8cd8-4f29-88ae-345c335ee0ec</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+        </VariableScheme>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837356" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:677a8fd7-f7f2-4a94-a898-80d4ee44e215:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>677a8fd7-f7f2-4a94-a898-80d4ee44e215</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestString</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">String (32 characters)</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837398" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:1d3a3a67-7a06-4d3c-a9a7-34f975426302:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1d3a3a67-7a06-4d3c-a9a7-34f975426302</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestInteger</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Integer</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837432" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:6342666d-d4ec-4aac-b699-0f68fa77da00:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>6342666d-d4ec-4aac-b699-0f68fa77da00</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDouble4dp</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Numeric 4 decimal points</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837467" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:7b04fc25-b80c-47db-b3e0-a3f92c5caaeb:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>7b04fc25-b80c-47db-b3e0-a3f92c5caaeb</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDouble2dp</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Fake Currency</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837501" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:37754f52-270d-4acf-b6be-3569b04b4348:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>37754f52-270d-4acf-b6be-3569b04b4348</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestCustomCurrency</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Custom Currency</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837534" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:88a3c76e-cfbc-4187-af42-ff8be0666786:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>88a3c76e-cfbc-4187-af42-ff8be0666786</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestRealCurrency</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Dollar</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837568" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:86ea036d-3ae1-4987-a936-89196b3d3487:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>86ea036d-3ae1-4987-a936-89196b3d3487</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDate1</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Date dd/mmm/yy</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837606" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:f33d687d-3f8a-461c-89ff-70ab0aa351c0:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>f33d687d-3f8a-461c-89ff-70ab0aa351c0</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDate2</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">"Date Jan,Feb,Mar"</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837641" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:d63a7e97-df40-4083-9359-66b169fec7d1:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>d63a7e97-df40-4083-9359-66b169fec7d1</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDate3</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Date Q1 2000</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837795" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:af9c821d-5734-4919-9337-0e0c78ea8c0a:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>af9c821d-5734-4919-9337-0e0c78ea8c0a</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestTime</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Time mm:ss</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837836" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:81fd9d18-650c-4f58-921e-9c744dc20844:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>81fd9d18-650c-4f58-921e-9c744dc20844</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestDateTime</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">DateTime dd.mm.yyyy.mm.ss</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837878" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:859fa05f-079a-416b-80fb-caf2db15d700:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>859fa05f-079a-416b-80fb-caf2db15d700</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestCodedValue1</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Coded Value basic</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837908" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:cb35376b-8921-43b4-9e13-572b9dd8195d:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cb35376b-8921-43b4-9e13-572b9dd8195d</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestCodeValue2</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Coded Value Basic plus missing</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <Variable isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837940" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:41d5dc97-8cd8-4f29-88ae-345c335ee0ec:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>41d5dc97-8cd8-4f29-88ae-345c335ee0ec</r:ID>
+            <r:Version>1</r:Version>
+            <VariableName>
+                <r:String xml:lang="en-GB">TestCodeValue3</r:String>
+            </VariableName>
+            <r:Label>
+                <r:Content xml:lang="en-GB">Coded Value Basic plus range missing</r:Content>
+            </r:Label>
+        </Variable>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <PhysicalInstance isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.837981" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:e85e18de-a1ba-4fc6-89dd-e456776275dc:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>e85e18de-a1ba-4fc6-89dd-e456776275dc</r:ID>
+            <r:Version>1</r:Version>
+            <r:Citation>
+                <r:Title>
+                    <r:String xml:lang="en-GB">src/test/resources/test-file-data-types.dta</r:String>
+                </r:Title>
+            </r:Citation>
+            <r:DataRelationshipReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>6ad7d4c6-4f43-41a1-a8fa-7a182595cf6a</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>DataRelationship</r:TypeOfObject>
+            </r:DataRelationshipReference>
+            <DataFileIdentificationDataFileIdentification>
+                <DataFileURI>src/test/resources/test-file-data-types.dta</DataFileURI>
+            </DataFileIdentificationDataFileIdentification>
+            <GrossFileStructure>
+                <r:URN>urn:ddi:uk.closer:13ce004c-2c8e-458a-ad1d-f32119165eda:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>13ce004c-2c8e-458a-ad1d-f32119165eda</r:ID>
+                <r:Version>1</r:Version>
+                <CaseQuantity>3</CaseQuantity>
+            </GrossFileStructure>
+        </PhysicalInstance>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <DataRelationship isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838053" xmlns="ddi:logicalproduct:3_3">
+            <r:URN>urn:ddi:uk.closer:6ad7d4c6-4f43-41a1-a8fa-7a182595cf6a:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>6ad7d4c6-4f43-41a1-a8fa-7a182595cf6a</r:ID>
+            <r:Version>1</r:Version>
+            <DataRelationshipName>
+                <r:String xml:lang="en-GB">src/test/resources/test-file-data-types.dta</r:String>
+            </DataRelationshipName>
+            <LogicalRecord>
+                <r:URN>urn:ddi:uk.closer:b126fa0b-fb1d-4d5c-80bf-7fa293aab0b3:1</r:URN>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>b126fa0b-fb1d-4d5c-80bf-7fa293aab0b3</r:ID>
+                <r:Version>1</r:Version>
+                <LogicalRecordName>
+                    <r:String xml:lang="en-GB">src/test/resources/test-file-data-types.dta</r:String>
+                </LogicalRecordName>
+                <VariablesInRecord>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>37754f52-270d-4acf-b6be-3569b04b4348</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>6342666d-d4ec-4aac-b699-0f68fa77da00</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>f33d687d-3f8a-461c-89ff-70ab0aa351c0</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>41d5dc97-8cd8-4f29-88ae-345c335ee0ec</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>d63a7e97-df40-4083-9359-66b169fec7d1</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>677a8fd7-f7f2-4a94-a898-80d4ee44e215</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>7b04fc25-b80c-47db-b3e0-a3f92c5caaeb</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>86ea036d-3ae1-4987-a936-89196b3d3487</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>88a3c76e-cfbc-4187-af42-ff8be0666786</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>859fa05f-079a-416b-80fb-caf2db15d700</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>1d3a3a67-7a06-4d3c-a9a7-34f975426302</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>cb35376b-8921-43b4-9e13-572b9dd8195d</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>af9c821d-5734-4919-9337-0e0c78ea8c0a</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                    <VariableUsedReference>
+                        <r:Agency>uk.closer</r:Agency>
+                        <r:ID>81fd9d18-650c-4f58-921e-9c744dc20844</r:ID>
+                        <r:Version>1</r:Version>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </VariableUsedReference>
+                </VariablesInRecord>
+            </LogicalRecord>
+        </DataRelationship>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838150" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:677a8fd7-f7f2-4a94-a898-80d4ee44e215:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>677a8fd7-f7f2-4a94-a898-80d4ee44e215</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>677a8fd7-f7f2-4a94-a898-80d4ee44e215</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838384" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:1d3a3a67-7a06-4d3c-a9a7-34f975426302:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>1d3a3a67-7a06-4d3c-a9a7-34f975426302</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>1d3a3a67-7a06-4d3c-a9a7-34f975426302</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>1.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>3.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>1.0</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838427" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:6342666d-d4ec-4aac-b699-0f68fa77da00:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>6342666d-d4ec-4aac-b699-0f68fa77da00</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>6342666d-d4ec-4aac-b699-0f68fa77da00</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>1.1111</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>3.3333</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>1.1111</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838467" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:7b04fc25-b80c-47db-b3e0-a3f92c5caaeb:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>7b04fc25-b80c-47db-b3e0-a3f92c5caaeb</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>7b04fc25-b80c-47db-b3e0-a3f92c5caaeb</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>3.33</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838500" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:37754f52-270d-4acf-b6be-3569b04b4348:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>37754f52-270d-4acf-b6be-3569b04b4348</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>37754f52-270d-4acf-b6be-3569b04b4348</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>3.33</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838534" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:88a3c76e-cfbc-4187-af42-ff8be0666786:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>88a3c76e-cfbc-4187-af42-ff8be0666786</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>88a3c76e-cfbc-4187-af42-ff8be0666786</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>3.33</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>1.11</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838571" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:86ea036d-3ae1-4987-a936-89196b3d3487:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>86ea036d-3ae1-4987-a936-89196b3d3487</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>86ea036d-3ae1-4987-a936-89196b3d3487</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>14976.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>15767.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>395.5009481657408</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838601" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:f33d687d-3f8a-461c-89ff-70ab0aa351c0:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>f33d687d-3f8a-461c-89ff-70ab0aa351c0</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>f33d687d-3f8a-461c-89ff-70ab0aa351c0</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838626" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:d63a7e97-df40-4083-9359-66b169fec7d1:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>d63a7e97-df40-4083-9359-66b169fec7d1</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>d63a7e97-df40-4083-9359-66b169fec7d1</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>14976.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>15887.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>455.5000914745609</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838655" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:af9c821d-5734-4919-9337-0e0c78ea8c0a:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>af9c821d-5734-4919-9337-0e0c78ea8c0a</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>af9c821d-5734-4919-9337-0e0c78ea8c0a</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>61.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>183.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>61.0</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838685" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:81fd9d18-650c-4f58-921e-9c744dc20844:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>81fd9d18-650c-4f58-921e-9c744dc20844</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>81fd9d18-650c-4f58-921e-9c744dc20844</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Minimum</TypeOfSummaryStatistic>
+                <Statistic>14976.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>Maximum</TypeOfSummaryStatistic>
+                <Statistic>15767.0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>StandardDeviation</TypeOfSummaryStatistic>
+                <Statistic>395.5009481657408</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838718" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:859fa05f-079a-416b-80fb-caf2db15d700:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>859fa05f-079a-416b-80fb-caf2db15d700</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>859fa05f-079a-416b-80fb-caf2db15d700</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838740" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:cb35376b-8921-43b4-9e13-572b9dd8195d:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>cb35376b-8921-43b4-9e13-572b9dd8195d</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>cb35376b-8921-43b4-9e13-572b9dd8195d</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+    <ddi:Fragment xmlns:r="ddi:reusable:3_3">
+        <VariableStatistics isUniversallyUnique="true" versionDate="2022-10-23T13:09:56.838793" xmlns="ddi:physicalinstance:3_3">
+            <r:URN>urn:ddi:uk.closer:41d5dc97-8cd8-4f29-88ae-345c335ee0ec:1</r:URN>
+            <r:Agency>uk.closer</r:Agency>
+            <r:ID>41d5dc97-8cd8-4f29-88ae-345c335ee0ec</r:ID>
+            <r:Version>1</r:Version>
+            <r:VariableReference>
+                <r:Agency>uk.closer</r:Agency>
+                <r:ID>41d5dc97-8cd8-4f29-88ae-345c335ee0ec</r:ID>
+                <r:Version>1</r:Version>
+                <r:TypeOfObject>Variable</r:TypeOfObject>
+            </r:VariableReference>
+            <TotalResponses>3</TotalResponses>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>ValidCases</TypeOfSummaryStatistic>
+                <Statistic>0</Statistic>
+            </SummaryStatistic>
+            <SummaryStatistic>
+                <TypeOfSummaryStatistic>InvalidCases</TypeOfSummaryStatistic>
+                <Statistic>3</Statistic>
+            </SummaryStatistic>
+        </VariableStatistics>
+    </ddi:Fragment>
+</ddi:FragmentInstance>
