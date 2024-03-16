@@ -41,6 +41,7 @@ public class GenerateDDI33 extends DdiLifecycleGenerator {
 			variableCsv.getVariableStatList(),
 			getStatistics(),
 			getExcludeVariableToStatMap(),
+			null,
 			getAgency(),
 			getDdiLanguage(),
 			dataFile,

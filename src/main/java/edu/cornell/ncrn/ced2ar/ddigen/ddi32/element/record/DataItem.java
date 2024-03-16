@@ -23,7 +23,9 @@ public class DataItem implements Appendable {
 
 		getReference().appendToElement(dataItem, doc);
 
-		getProprietaryInfo().appendToElement(dataItem, doc);
+		if (getProprietaryInfo() != null) {
+			getProprietaryInfo().appendToElement(dataItem, doc);
+		}
 
 		element.appendChild(dataItem);
 	}

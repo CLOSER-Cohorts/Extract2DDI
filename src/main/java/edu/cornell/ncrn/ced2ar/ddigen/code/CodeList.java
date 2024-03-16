@@ -9,6 +9,13 @@ public class CodeList {
 	private String id;
 	private String label;
 
+	public CodeList() {
+	}
+
+	public CodeList(String id) {
+		this.id = id;
+	}
+
 	public List<Code> getCodeList() {
 		return codeList;
 	}

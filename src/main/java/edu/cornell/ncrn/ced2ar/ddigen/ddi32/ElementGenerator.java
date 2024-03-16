@@ -71,6 +71,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		List<Ced2arVariableStat> variableStatistics,
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
+		Map<String, String> attributeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -84,6 +85,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			variableStatistics,
 			statistics,
 			excludeVariableToStatMap,
+			attributeMap,
 			agency,
 			ddiLanguage,
 			title,
@@ -373,7 +375,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 								for (CodeList codeList : getCodeListList()) {
-									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
+									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId()) && variableFrequency != null) {
 										long invalidValueFrequency = variableFrequency.getCount(".");
 										if (invalidValueFrequency > 0) {
 											VariableCategory variableCategory = new VariableCategory(".", Long.toString(invalidValueFrequency), "pi");
@@ -418,11 +420,15 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 			dataItem.setReference(entry.getValue().toString(), getAgency());
 
-			ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Width", "???"));
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Decimals", "???"));
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("WriteFormatType", "???"));
-			dataItem.setProprietaryInfo(proprietaryInfo);
+			if (!getAttributeMap().isEmpty()) {
+				ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
+
+				// Anticipating the following properties: Width, Decimals, WriteFormatType etc
+				for (Map.Entry<String, String> attribute : getAttributeMap().entrySet()) {
+					proprietaryInfo.addProprietaryProperty(new ProprietaryProperty(attribute.getKey(), attribute.getValue()));
+				}
+				dataItem.setProprietaryInfo(proprietaryInfo);
+			}
 
 			recordLayout.addDataItem(dataItem);
 		}
