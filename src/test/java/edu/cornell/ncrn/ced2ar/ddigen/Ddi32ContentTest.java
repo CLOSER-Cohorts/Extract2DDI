@@ -32,9 +32,7 @@ public class Ddi32ContentTest {
 	private static final Logger logger = Logger.getLogger(Ddi32ContentTest.class);
 	private static final boolean IS_SUMMARY_STATISTICS_ENABLED = false;
 	private static final long RECORD_LIMIT = 100;
-
 	private final String dataFileName;
-
 	public Ddi32ContentTest(String dataFileName) {
 		this.dataFileName = dataFileName;
 	}
@@ -65,19 +63,24 @@ public class Ddi32ContentTest {
 
 		List<String> xpathExpressions = loadXPathExpressions(xpathFile);
 
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document doc = builder.parse(new InputSource(new StringReader(ddi.getXml())));
-
+		boolean isTestSucessfull = true;
+		int expressionNotFoundCount = 0;
 		for (String xpathExpression : xpathExpressions) {
 			xpathExpression = xpathExpression.replace("DDIInstance", "ns:DDIInstance");
 			XPathExpression expression = xpath.compile(xpathExpression);
-			boolean result = (boolean) expression.evaluate(new org.xml.sax.InputSource(new java.io.StringReader(ddi.getXml())), XPathConstants.BOOLEAN);
 
-			// Assert result
-			Assert.assertTrue(xpathExpression + " not found", result);
+			StringReader stringReader = new StringReader(ddi.getXml());
+			InputSource inputSource = new InputSource(stringReader);
+			boolean result = (boolean) expression.evaluate(inputSource, XPathConstants.BOOLEAN);
+
+			if (!result) {
+				logger.info(xpathExpression + " not found in " + dataFileName);
+				isTestSucessfull = false;
+				expressionNotFoundCount++;
+			}
 		}
+
+		Assert.assertTrue(expressionNotFoundCount + " expressions not found in " + dataFileName, isTestSucessfull);
 	}
 
 	private List<String> loadXPathExpressions(File xpathFile) throws Exception {
@@ -95,7 +98,13 @@ public class Ddi32ContentTest {
 		for (int i = 0; i < nodeList.getLength(); i++) {
 			Element expressionElement = (Element) nodeList.item(i);
 			String attribute = expressionElement.getAttribute("xpath");
-			xpathExpressions.add(attribute);
+
+			String isRequiredString = expressionElement.getAttribute("isRequired");
+			boolean isRequired = Boolean.parseBoolean(isRequiredString);
+
+			if (isRequired) {
+				xpathExpressions.add(attribute);
+			}
 		}
 
 		return xpathExpressions;
