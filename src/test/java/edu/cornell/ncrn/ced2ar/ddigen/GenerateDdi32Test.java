@@ -64,5 +64,12 @@ public class GenerateDdi32Test {
 		// Expecting at least 3 citations
 		NodeList citationNodeList = document.getElementsByTagName("r:Citation");
 		Assert.assertEquals(3, citationNodeList.getLength());
+
+		// Ensure no representation with RecommendedDataType = type
+		NodeList recommendedDataTypeNodeList = document.getElementsByTagName("r:RecommendedDataType");
+		Assert.assertEquals(14, recommendedDataTypeNodeList.getLength());
+		for (int i = 0; i < recommendedDataTypeNodeList.getLength(); i++) {
+			Assert.assertNotEquals("type", recommendedDataTypeNodeList.item(i).getTextContent());
+		}
 	}
 }

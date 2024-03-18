@@ -492,7 +492,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 					UUID codeSchemeId = codeListIdToUuidMap.get(representation.getCodeSchemeId());
 
-					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("type");
+					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("Numeric");
 					codeVariableRepresentation.setReferenceElement(codeSchemeId.toString(), getAgency());
 					variableElement.setVariableRepresentation(codeVariableRepresentation);
 				}
