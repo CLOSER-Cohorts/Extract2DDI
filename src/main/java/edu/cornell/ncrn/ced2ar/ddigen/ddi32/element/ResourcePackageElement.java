@@ -17,6 +17,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 	public static final String NODE_NAME_RESOURCE_PACKAGE = "g:ResourcePackage";
 
 	private List<CategorySchemeElement> categorySchemeList = new ArrayList<>();
+	private Citation citation;
 	private CodeListScheme codeListScheme;
 	private Purpose purpose;
 	private LogicalProductElement logicalProduct;
@@ -24,8 +25,11 @@ public class ResourcePackageElement extends ElementWithUrn {
 	private PhysicalInstance physicalInstance;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
 
-	public ResourcePackageElement(String agency) {
+	public ResourcePackageElement(String agency, String ddiLanguage, String citationTitle, String citationAlternateTitle) {
 		super(agency);
+
+		Citation citation = new Citation(citationTitle, citationAlternateTitle, ddiLanguage);
+		setCitation(citation);
 	}
 
 	public void addCategoryScheme(CategorySchemeElement categoryScheme) {
@@ -45,6 +49,11 @@ public class ResourcePackageElement extends ElementWithUrn {
 		Element resourcePackage = doc.createElement(NODE_NAME_RESOURCE_PACKAGE);
 
 		super.appendToElement(resourcePackage, doc);
+
+		// Citation
+		if (getCitation() != null) {
+			getCitation().appendToElement(resourcePackage, doc);
+		}
 
 		// Purpose
 		getPurpose().appendToElement(resourcePackage, doc);
@@ -78,6 +87,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return categorySchemeList;
 	}
 
+	public Citation getCitation() {
+		return citation;
+	}
+
 	public CodeListScheme getCodeListScheme() {
 		return codeListScheme;
 	}
@@ -102,6 +115,9 @@ public class ResourcePackageElement extends ElementWithUrn {
 		this.codeListScheme = codeListScheme;
 	}
 
+	public void setCitation(Citation citation) {
+		this.citation = citation;
+	}
 	public void setLogicalProduct(LogicalProductElement logicalProduct) {
 		this.logicalProduct = logicalProduct;
 	}

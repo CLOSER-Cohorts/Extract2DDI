@@ -66,13 +66,27 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		List<Ced2arVariableStat> variableStatistics,
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
+		Map<String, String> attributeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
 		FileFormatInfo.Format dataFormat,
 		String productIdentification
 	) {
-		super(categorySchemeList, codeListList, variableSchemeList, variableStatistics, statistics, excludeVariableToStatMap, agency, ddiLanguage, title, dataFormat, productIdentification);
+		super(
+				categorySchemeList,
+				codeListList,
+				variableSchemeList,
+				variableStatistics,
+				statistics,
+				excludeVariableToStatMap,
+				attributeMap,
+				agency,
+				ddiLanguage,
+				title,
+				dataFormat,
+				productIdentification
+		);
 	}
 
 	public List<Fragment> getCategoryFragmentList(
@@ -419,7 +433,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 								for (CodeList codeList : getCodeListList()) {
-									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
+									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId()) && variableFrequency != null) {
 										long invalidValueFrequency = variableFrequency.getCount(".");
 										if (invalidValueFrequency > 0) {
 											VariableCategory variableCategory = new VariableCategory(

@@ -6,6 +6,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.AlternateTitle;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Label;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategoryElement;
@@ -47,6 +48,9 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariablesInRecordEl
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
 import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Citation;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.StringElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Title;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.StatisticType;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
@@ -71,6 +75,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		List<Ced2arVariableStat> variableStatistics,
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
+		Map<String, String> attributeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -84,6 +89,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			variableStatistics,
 			statistics,
 			excludeVariableToStatMap,
+			attributeMap,
 			agency,
 			ddiLanguage,
 			title,
@@ -105,10 +111,15 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		Map<String, UUID> variableIdToUuidMap = getVariableIdToUuidMap();
 		Map<String, UUID> variableSchemeIdToUuidMap = getVariableSchemeIdToUuidMap();
 
-		DDIInstance ddiInstance = new DDIInstance(getAgency());
+		DDIInstance ddiInstance = new DDIInstance(getAgency(), getDdiLanguage(), "", "");
 
 		// Resource package
-		ResourcePackageElement resourcePackage = new ResourcePackageElement(getAgency());
+		ResourcePackageElement resourcePackage = new ResourcePackageElement(
+				getAgency(),
+				getDdiLanguage(),
+				"",
+				""
+		);
 
 		// Purpose
 		resourcePackage.setPurpose(new Purpose());
@@ -373,7 +384,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 								Frequency variableFrequency = getVariableToFrequencyMap().get(variable.getName());
 								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
 								for (CodeList codeList : getCodeListList()) {
-									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId())) {
+									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId()) && variableFrequency != null) {
 										long invalidValueFrequency = variableFrequency.getCount(".");
 										if (invalidValueFrequency > 0) {
 											VariableCategory variableCategory = new VariableCategory(".", Long.toString(invalidValueFrequency), "pi");
@@ -400,7 +411,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			}
 		}
 
-		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getDataFormat(), getProductIdentification());
+		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getDataFormat(), getProductIdentification(), "", "");
 	}
 
 	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
@@ -418,11 +429,15 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 			dataItem.setReference(entry.getValue().toString(), getAgency());
 
-			ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Width", "???"));
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("Decimals", "???"));
-			proprietaryInfo.addProprietaryProperty(new ProprietaryProperty("WriteFormatType", "???"));
-			dataItem.setProprietaryInfo(proprietaryInfo);
+			if (!getAttributeMap().isEmpty()) {
+				ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
+
+				// Anticipating the following properties: Width, Decimals, WriteFormatType etc
+				for (Map.Entry<String, String> attribute : getAttributeMap().entrySet()) {
+					proprietaryInfo.addProprietaryProperty(new ProprietaryProperty(attribute.getKey(), attribute.getValue()));
+				}
+				dataItem.setProprietaryInfo(proprietaryInfo);
+			}
 
 			recordLayout.addDataItem(dataItem);
 		}
@@ -477,7 +492,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 					UUID codeSchemeId = codeListIdToUuidMap.get(representation.getCodeSchemeId());
 
-					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("type");
+					CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("Numeric");
 					codeVariableRepresentation.setReferenceElement(codeSchemeId.toString(), getAgency());
 					variableElement.setVariableRepresentation(codeVariableRepresentation);
 				}

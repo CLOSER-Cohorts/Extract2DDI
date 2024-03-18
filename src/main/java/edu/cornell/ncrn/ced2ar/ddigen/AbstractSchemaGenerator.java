@@ -17,6 +17,7 @@ import java.util.UUID;
 public class AbstractSchemaGenerator {
 
 	private String agency;
+	private Map<String, String> attributeMap;
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
 	private Map<String, Frequency> variableToFrequencyMap;
@@ -37,6 +38,7 @@ public class AbstractSchemaGenerator {
 		List<Ced2arVariableStat> variableStatistics,
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
+		Map<String, String> attributeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -48,6 +50,7 @@ public class AbstractSchemaGenerator {
 		this.codeListList = codeListList;
 		this.variableSchemeList = variableSchemeList;
 		this.categorySchemeList = categorySchemeList;
+		this.attributeMap = attributeMap;
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
 		this.statistics = statistics;
 		this.title = title;
@@ -59,6 +62,10 @@ public class AbstractSchemaGenerator {
 
 	public String getAgency() {
 		return agency;
+	}
+
+	public Map<String, String> getAttributeMap() {
+		return attributeMap;
 	}
 
 	protected Map<String, UUID> getCategoryIdToUuidMap() {
@@ -81,7 +88,7 @@ public class AbstractSchemaGenerator {
 
 	protected Map<String, UUID> getCodeListIdToUuidMap() {
 		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
-		for (CodeList codeList : getCodeListList()) {
+		for (CodeList codeList : codeListList) {
 			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
 		}
 		return codeListIdToUuidMap;
@@ -154,6 +161,10 @@ public class AbstractSchemaGenerator {
 
 	public int getVersion() {
 		return version;
+	}
+
+	public void setAttributeMap(Map<String, String> attributeMap) {
+		this.attributeMap = attributeMap;
 	}
 
 	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {

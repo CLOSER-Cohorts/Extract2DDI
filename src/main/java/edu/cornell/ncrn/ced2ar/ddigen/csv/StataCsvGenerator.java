@@ -56,7 +56,7 @@ public class StataCsvGenerator extends CsvGenerator {
 			Ced2arVariableStat ced2arVariableStat = new Ced2arVariableStat();
 			ced2arVariableStat.setName(dtaVariable.getName());
 			ced2arVariableStat.setLabel(dtaVariable.getVariableLabel());
-			ced2arVariableStat.setNumeric(!dtaVariable.isString());
+			ced2arVariableStat.setNumeric(dtaVariable.isInt() || dtaVariable.isDouble() || dtaVariable.isFloat() || dtaVariable.isFloat());
 			ced2arVariableStat.setDate(dtaVariable.isDate());
 			ced2arVariableStat.setValidValues(dtaVariable
 					.getVariableValueLabels());

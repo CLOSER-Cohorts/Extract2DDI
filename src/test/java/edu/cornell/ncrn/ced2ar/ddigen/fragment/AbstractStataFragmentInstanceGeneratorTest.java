@@ -93,6 +93,7 @@ public class AbstractStataFragmentInstanceGeneratorTest {
 			variableStatList,
 			configUtil.getStats(),
 			excludeVariableToStatMap,
+			null,
 			configUtil.getAgency(),
 			configUtil.getDdiLanguage(),
 			"test-file-data-types.sav",

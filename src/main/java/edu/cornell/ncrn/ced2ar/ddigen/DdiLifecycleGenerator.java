@@ -11,28 +11,53 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.LogicalProductFactory;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.NumericRepresentation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
+import edu.cornell.ncrn.ced2ar.ddigen.representation.TextRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public abstract class DdiLifecycleGenerator {
 	protected final List<CategoryScheme> categorySchemeList = new ArrayList<>();
 	protected final List<CodeList> codeListList = new ArrayList<>();
 	protected final List<VariableScheme> variableSchemeList = new ArrayList<>();
+	protected Map<String, String> attributeMap = new HashMap<>();
 	protected FileFormatInfo.Format dataFormat;
 	protected String productIdentification;
 
 	protected void populateSpss(SpssCsvGenerator spssGen, SPSSFile spssFile) throws Exception {
 		Document logicalProductDocument = spssGen.getDDI3LogicalProduct(spssFile);
+		spssFile.getVariable(0);
 
 		categorySchemeList.addAll(LogicalProductFactory.createCategorySchemeList(logicalProductDocument));
 		codeListList.addAll(LogicalProductFactory.createCodeListList(logicalProductDocument));
 		variableSchemeList.addAll(LogicalProductFactory.createVariableSchemeList(logicalProductDocument));
+
+		// Populate attributes
+		Document physicalDataProduct = spssGen.getDDI3PhysicalDataProduct(spssFile);
+		NamedNodeMap namedNodeMap = physicalDataProduct.getAttributes();
+
+		if (namedNodeMap != null) {
+			int numAttrs = namedNodeMap.getLength();
+			for (int i = 0; i < numAttrs; i++){
+				Attr attr = (Attr) namedNodeMap.item(i);
+				String attrName = attr.getNodeName();
+				String attrValue = attr.getNodeValue();
+				attributeMap.put(attrName, attrValue);
+			}
+		}
 	}
 
 	protected VariableCsv generateVariablesCsv(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
@@ -64,6 +89,7 @@ public abstract class DdiLifecycleGenerator {
 	protected void populateStata(VariableCsv variableCsv) throws Exception {
 		VariableDDIGenerator variableDDIGenerator = new VariableDDIGenerator();
 		List<CodebookVariable> codebookVariables = variableDDIGenerator.getCodebookVariables(variableCsv);
+		Map<String, String> variableToCodeSchemeMap = new HashMap<>();
 
 		for (CodebookVariable codebookVariable : codebookVariables) {
 			List<Category> categoryList = new ArrayList<>();
@@ -91,9 +117,11 @@ public abstract class DdiLifecycleGenerator {
 			}
 
 			if (!codeList.isEmpty()) {
-				CodeList localCodeList = new CodeList();
+				String codeSchemeId = UUID.randomUUID().toString();
+				CodeList localCodeList = new CodeList(codeSchemeId);
 				localCodeList.setCodeList(codeList);
 				codeListList.add(localCodeList);
+				variableToCodeSchemeMap.put(codebookVariable.getName(), codeSchemeId);
 			}
 		}
 
@@ -102,6 +130,19 @@ public abstract class DdiLifecycleGenerator {
 			Variable variable = new Variable(UUID.randomUUID().toString());
 			variable.setName(stat.getName());
 			variable.setLabel(stat.getLabel());
+
+			Representation representation;
+			if (stat.isNumeric() && stat.getValidValues().isEmpty()) {
+				representation = new NumericRepresentation("Decimal");
+			} else if (stat.isNumeric() && !stat.getValidValues().isEmpty()) {
+				String codeSchemeId = variableToCodeSchemeMap.get(stat.getName());
+				representation = new CodeRepresentation(codeSchemeId);
+			} else if (stat.isDate()) {
+				representation = new DateTimeRepresentation("DateTime");
+			} else {
+				representation = new TextRepresentation();
+			}
+			variable.setRepresentation(representation);
 			variableList.add(variable);
 		}
 
