@@ -38,7 +38,7 @@ public class GenerateDdi32Test {
 	}
 
 	@Test
-	public void testGenerateDDI() throws Exception {
+	public void testGenerateDdi() throws Exception {
 		// Arrange
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, dataFileName);
 
@@ -60,5 +60,9 @@ public class GenerateDdi32Test {
 		// Expecting no attributes in all data items
 		NodeList proprietaryInfoNodeList = document.getElementsByTagName("r:ProprietaryInfo");
 		Assert.assertEquals(0, proprietaryInfoNodeList.getLength());
+
+		// Expecting at least 3 citations
+		NodeList citationNodeList = document.getElementsByTagName("r:Citation");
+		Assert.assertEquals(3, citationNodeList.getLength());
 	}
 }
