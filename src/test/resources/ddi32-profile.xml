@@ -54,11 +54,11 @@
   <pr:Used xpath="/DDIInstance/r:Citation/r:AlternateTitle" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:LogicalProductName" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:Label" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:Label/r:Content" fixedValue="false" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:LogicalProductName" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:Label" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:Label/r:Content" fixedValue="false" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship/ddi:DataRelationshipName" fixedValue="false" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship/ddi:DataRelationshipName" fixedValue="false" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship/ddi:LogicalRecord" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship/ddi:LogicalRecord/ddi:LogicalRecordName" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/ddi:DataRelationship/ddi:LogicalRecord/ddi:VariablesInRecord" fixedValue="false" isRequired="true"/>
@@ -68,7 +68,7 @@
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:CodeListSchemeReference" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/ddi:LogicalProduct/r:VariableSchemeReference" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:PhysicalDataProductName" fixedValue="false" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:PhysicalDataProductName" fixedValue="false" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:PhysicalStructureScheme" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:PhysicalStructureScheme/p:PhysicalStructure" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:PhysicalStructureScheme/p:PhysicalStructure/r:BasedOnObject" fixedValue="false" isRequired="true"/>
@@ -88,14 +88,14 @@
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:SystemSoftware/r:SoftwareName" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:SystemSoftware/r:Description" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:DefaultVariableSchemeReference" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty/r:AttributeKey" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty/r:AttributeValue" fixedValue="false" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty/r:AttributeKey" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/r:ProprietaryInfo/r:ProprietaryProperty/r:AttributeValue" fixedValue="false" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem/r:VariableReference" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem/ddi1:ProprietaryDataType" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem/ddi1:ProprietaryOutputFormat" fixedValue="false" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem/ddi1:ProprietaryDataType" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/p:PhysicalDataProduct/p:RecordLayoutScheme/ddi1:RecordLayout/ddi1:DataItem/ddi1:ProprietaryOutputFormat" fixedValue="false" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/r:RecordLayoutReference" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:DataFileIdentification" fixedValue="false" isRequired="true"/>
@@ -108,16 +108,16 @@
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:SummaryStatistic" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:SummaryStatistic/pi:TypeOfSummaryStatistic" fixedValue="false" isRequired="true"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:SummaryStatistic/pi:Statistic" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryValue" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryValue/r:Value" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic" fixedValue="false" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Minimum" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Maximum" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Mean" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="ValidCases" isRequired="true"/>
-  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="InvalidCases" isRequired="true"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryValue" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryValue/r:Value" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic" fixedValue="false" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Minimum" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Maximum" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Mean" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="ValidCases" isRequired="false"/>
+  <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="InvalidCases" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Mode" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="Frequency" isRequired="false"/>
   <pr:Used xpath="/DDIInstance/g:ResourcePackage/pi:PhysicalInstance/pi:StatisticalSummary/pi:VariableStatistics/pi:UnfilteredCategoryStatistics/pi:VariableCategory/pi:CategoryStatistic/pi:TypeOfCategoryStatistic" fixedValue="InvalidCases" isRequired="false"/>

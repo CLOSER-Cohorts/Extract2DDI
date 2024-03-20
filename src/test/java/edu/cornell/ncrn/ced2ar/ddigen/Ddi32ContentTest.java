@@ -44,7 +44,6 @@ public class Ddi32ContentTest {
 	}
 
 	@Test
-	@Ignore
 	public void testXmlMatchesProfile() throws Exception {
 
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, dataFileName);
