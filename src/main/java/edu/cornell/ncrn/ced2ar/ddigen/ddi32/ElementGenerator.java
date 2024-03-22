@@ -107,10 +107,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 	}
 
 	public DDIInstance getInstance() {
-		//Map<String, UUID> categorySchemeIdToUuidMap = getCategorySchemeIdToUuidMap();
 		Map<String, UUID> codeListIdToUuidMap = getCodeListIdToUuidMap();
-		//Map<String, UUID> variableIdToUuidMap = getVariableIdToUuidMap();
-		//Map<String, UUID> variableSchemeIdToUuidMap = getVariableSchemeIdToUuidMap();
 
 		DDIInstance ddiInstance = new DDIInstance(getAgency(), getDdiLanguage(), "", "");
 
@@ -126,13 +123,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		resourcePackage.setPurpose(new Purpose());
 
 		// Logical Product
-		resourcePackage.setLogicalProduct(
-			getLogicalProduct(
-				//categorySchemeIdToUuidMap,
-				//variableIdToUuidMap,
-				//variableSchemeIdToUuidMap
-			)
-		);
+		resourcePackage.setLogicalProduct(getLogicalProduct());
 
 		UUID physicalRecordSegmentId = UUID.randomUUID();
 
@@ -196,11 +187,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		resourcePackage.setCodeListScheme(codeListScheme);
 
 		// Variable Scheme
-		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(
-			//variableIdToUuidMap,
-			//variableSchemeIdToUuidMap,
-			codeListIdToUuidMap
-		);
+		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(codeListIdToUuidMap);
 
 		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
 			resourcePackage.addVariableScheme(variableSchemeElement);
@@ -211,11 +198,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return ddiInstance;
 	}
 
-	protected LogicalProductElement getLogicalProduct(
-		//Map<String, UUID> categorySchemeIdToUuidMap,
-		//Map<String, UUID> variableIdToUuidMap,
-		//Map<String, UUID> variableSchemeIdToUuidMap
-	) {
+	protected LogicalProductElement getLogicalProduct() {
 		LogicalProductElement logicalProduct = new LogicalProductElement(getAgency());
 
 		// Data Relationship
@@ -236,7 +219,6 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 		// Variable Schemes
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
-			//UUID uuid = entry.getValue();
 			VariableSchemeReference variableSchemeReference = new VariableSchemeReference(variableScheme.getUuid(), getAgency());
 			logicalProduct.addVariableSchemeReference(variableSchemeReference);
 		}
