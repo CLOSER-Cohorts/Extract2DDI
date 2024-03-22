@@ -1,5 +1,7 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference;
@@ -21,8 +23,32 @@ public class LogicalProductElement extends ElementWithUrn {
 	private List<CodeListSchemeReference> codeListSchemeReferencesList = new ArrayList<>();
 	private List<VariableSchemeReference> variableSchemeReferenceList = new ArrayList<>();
 
-	public LogicalProductElement(String agency) {
+	public LogicalProductElement(
+			String agency,
+			String title,
+			List<VariableScheme> variableSchemeList,
+			List<CategoryScheme> categorySchemeList,
+			List<CodeList> codeListList
+	) {
 		super(agency);
+
+		// Data Relationship
+		setDataRelationship(title, variableSchemeList);
+
+		// Category Schemes
+		for (CategoryScheme categoryScheme : categorySchemeList) {
+			addCategorySchemeReference(categoryScheme.getUuid());
+		}
+
+		// Code List Schemes
+		for (CodeList codeList : codeListList) {
+			addCodeListSchemeReference(codeList.getUuid());
+		}
+
+		// Variable Schemes
+		for (VariableScheme variableScheme : variableSchemeList) {
+			addVariableSchemeReference(variableScheme.getUuid());
+		}
 	}
 
 	public void addCategorySchemeReference(String categorySchemeId) {
@@ -91,7 +117,6 @@ public class LogicalProductElement extends ElementWithUrn {
 
 	public void setDataRelationship(String title, List<VariableScheme> variableSchemeList) {
 		LogicalRecordElement logicalRecord = new LogicalRecordElement(getAgency(), title, variableSchemeList);
-
 
 		DataRelationshipElement dataRelationshipElement = new DataRelationshipElement(getAgency());
 		dataRelationshipElement.setLogicalRecord(logicalRecord);

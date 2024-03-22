@@ -57,8 +57,8 @@ public class LogicalRecordElement extends ElementWithUrn {
 		return variablesInRecord;
 	}
 
-	public void setLogicalProductName(String variableSchemeName) {
-		this.logicalRecordName = new Name(NODE_NAME_LOGICAL_RECORD_NAME, variableSchemeName);
+	public void setLogicalProductName(String logicalRecordName) {
+		this.logicalRecordName = new Name(NODE_NAME_LOGICAL_RECORD_NAME, logicalRecordName);
 	}
 
 	public void setVariablesInRecord(VariablesInRecordElement variablesInRecord) {

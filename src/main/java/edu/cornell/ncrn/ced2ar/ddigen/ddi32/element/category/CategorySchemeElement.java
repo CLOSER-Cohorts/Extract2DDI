@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category;
 
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import org.w3c.dom.Document;
@@ -16,9 +17,13 @@ public class CategorySchemeElement extends ElementWithUrn {
 	private List<CategoryElement> categoryList = new ArrayList<>();
 	private Name name;
 
-	public CategorySchemeElement(String id, String agency, String name) {
+	public CategorySchemeElement(String id, String agency, String ddiLanguage, String name, List<Category> categoryList) {
 		super(id, agency);
 		setName(name);
+
+		for (Category category : categoryList) {
+			addCategory(category.getUuid(),category.getLabel(), ddiLanguage);
+		}
 	}
 
 	public void addCategory(String categoryId, String label, String ddiLanguage) {

@@ -39,9 +39,10 @@ public class ResourcePackageElement extends ElementWithUrn {
 		setCitation(citation);
 	}
 
-	public void addCategoryScheme(CategorySchemeElement categoryScheme) {
+	public void addCategoryScheme(String ddiLanguage, String categorySchemeId, String name, List<Category> categoryList) {
 		synchronized (categorySchemeList) {
-			categorySchemeList.add(categoryScheme);
+			CategorySchemeElement categorySchemeElement = new CategorySchemeElement(categorySchemeId, getAgency(), ddiLanguage, name, categoryList);
+			categorySchemeList.add(categorySchemeElement);
 		}
 	}
 
