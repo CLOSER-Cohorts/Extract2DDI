@@ -442,14 +442,10 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
 
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
-			//UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
-
 			VariableSchemeElement variableSchemeElement = new VariableSchemeElement(variableScheme.getUuid(), getAgency());
 			variableSchemeElement.setVariableSchemeName(getTitle());
 
 			for (Variable variable : variableScheme.getVariableList()) {
-
-				//UUID variableId = variableIdToUuidMap.get(variable.getId());
 				VariableElement variableElement = new VariableElement(variable.getUuid(), getAgency());
 				variableElement.setName(variable.getName());
 
