@@ -16,8 +16,9 @@ public class CategorySchemeElement extends ElementWithUrn {
 	private List<CategoryElement> categoryList = new ArrayList<>();
 	private Name name;
 
-	public CategorySchemeElement(String id, String agency) {
+	public CategorySchemeElement(String id, String agency, String name) {
 		super(id, agency);
+		setName(name);
 	}
 
 	public void addCategory(CategoryElement categoryElement) {

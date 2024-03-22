@@ -76,6 +76,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
 		Map<String, String> attributeMap,
+		Map<String, String> codeSchemeToCategorySchemeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
@@ -90,6 +91,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 			statistics,
 			excludeVariableToStatMap,
 			attributeMap,
+			codeSchemeToCategorySchemeMap,
 			agency,
 			ddiLanguage,
 			title,
@@ -98,18 +100,17 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		);
 	}
 
-	protected DataRelationshipElement getDataRelationshipElement(Map<String, UUID> variableIdToUuidMap) {
+	protected DataRelationshipElement getDataRelationshipElement() {
 		DataRelationshipElement dataRelationshipElement = new DataRelationshipElement(getAgency());
-		dataRelationshipElement.setLogicalRecord(getLogicalRecord(variableIdToUuidMap));
+		dataRelationshipElement.setLogicalRecord(getLogicalRecord());
 		return dataRelationshipElement;
 	}
 
 	public DDIInstance getInstance() {
-		Map<String, UUID> categoryIdToUuidMap = getCategoryIdToUuidMap();
-		Map<String, UUID> categorySchemeIdToUuidMap = getCategorySchemeIdToUuidMap();
+		//Map<String, UUID> categorySchemeIdToUuidMap = getCategorySchemeIdToUuidMap();
 		Map<String, UUID> codeListIdToUuidMap = getCodeListIdToUuidMap();
-		Map<String, UUID> variableIdToUuidMap = getVariableIdToUuidMap();
-		Map<String, UUID> variableSchemeIdToUuidMap = getVariableSchemeIdToUuidMap();
+		//Map<String, UUID> variableIdToUuidMap = getVariableIdToUuidMap();
+		//Map<String, UUID> variableSchemeIdToUuidMap = getVariableSchemeIdToUuidMap();
 
 		DDIInstance ddiInstance = new DDIInstance(getAgency(), getDdiLanguage(), "", "");
 
@@ -127,10 +128,9 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		// Logical Product
 		resourcePackage.setLogicalProduct(
 			getLogicalProduct(
-				categorySchemeIdToUuidMap,
-				codeListIdToUuidMap,
-				variableIdToUuidMap,
-				variableSchemeIdToUuidMap
+				//categorySchemeIdToUuidMap,
+				//variableIdToUuidMap,
+				//variableSchemeIdToUuidMap
 			)
 		);
 
@@ -139,28 +139,29 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		// Physical Data Product
 		PhysicalDataProduct physicalDataProduct = getPhysicalDataProduct(physicalRecordSegmentId);
 
-		Map.Entry<String,UUID> entry = variableSchemeIdToUuidMap.entrySet().iterator().next();
-		UUID variableSchemeId = entry.getValue();
+		VariableScheme variableScheme = getVariableSchemeList().iterator().next();
+		String variableSchemeId = variableScheme.getUuid();
 		UUID recordLayoutId = UUID.randomUUID();
 		physicalDataProduct.setRecordLayoutScheme(
-			getRecordLayoutScheme(recordLayoutId, variableSchemeId, variableIdToUuidMap, physicalRecordSegmentId)
+			getRecordLayoutScheme(recordLayoutId, variableSchemeId, physicalRecordSegmentId)
 		);
 		resourcePackage.setPhysicalDataProduct(physicalDataProduct);
 
 		// Physical Instance
-		PhysicalInstance physicalInstance = getPhysicalInstance(variableIdToUuidMap);
+		PhysicalInstance physicalInstance = getPhysicalInstance();
 		physicalInstance.setRecordLayoutReference(new RecordLayoutReference(recordLayoutId.toString(), getAgency()));
 		resourcePackage.setPhysicalInstance(physicalInstance);
 
 		// Category Scheme
 		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
-			UUID categorySchemeId = categorySchemeIdToUuidMap.get(categoryScheme.getId());
-			CategorySchemeElement categorySchemeElement = new CategorySchemeElement(categorySchemeId.toString(), getAgency());
-			categorySchemeElement.setName(categoryScheme.getId());
+			CategorySchemeElement categorySchemeElement = new CategorySchemeElement(categoryScheme.getUuid(), getAgency(), categoryScheme.getId());
 			for (Category category : categoryScheme.getCategoryList()) {
-				UUID categoryId = categoryIdToUuidMap.get(category.getId());
-				CategoryElement categoryElement = new CategoryElement(categoryId.toString(), getAgency());
-				categoryElement.setLabel(new Label(category.getLabel(), getDdiLanguage()));
+				CategoryElement categoryElement = new CategoryElement(
+						category.getUuid(),
+						getAgency(),
+						category.getLabel(),
+						getDdiLanguage()
+				);
 				categorySchemeElement.addCategory(categoryElement);
 			}
 			resourcePackage.addCategoryScheme(categorySchemeElement);
@@ -169,14 +170,25 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		// Code List Schemes
 		CodeListScheme codeListScheme = new CodeListScheme(getAgency());
 		for (CodeList codeList : getCodeListList()) {
-			UUID id = codeListIdToUuidMap.get(codeList.getId());
-			CodeListElement codeListElement = new CodeListElement(id.toString(), getAgency());
+			CodeListElement codeListElement = new CodeListElement(codeList.getUuid(), getAgency());
 			codeListElement.setName(codeList.getLabel());
+
+			String categorySchemeId = getCodeSchemeToCategorySchemeMap().get(codeList.getId());
+			CategoryScheme categoryScheme = getCategorySchemeList().stream().filter(
+				scheme -> scheme.getId().equalsIgnoreCase(categorySchemeId)
+			).findFirst().orElse(null);
 
 			for (Code code : codeList.getCodeList()) {
 				CodeElement codeElement = new CodeElement(getAgency(), code.getValue());
-				UUID categoryId = categoryIdToUuidMap.get(code.getCategoryId());
-				codeElement.setCategoryReference(categoryId.toString());
+
+				if (categoryScheme != null) {
+					for (Category category : categoryScheme.getCategoryList()) {
+						if (category.getId().equalsIgnoreCase(code.getCategoryId())) {
+							codeElement.setCategoryReference(category.getUuid());
+							break;
+						}
+					}
+				}
 				codeListElement.addCode(codeElement);
 			}
 			codeListScheme.addCodeList(codeListElement);
@@ -185,8 +197,8 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 
 		// Variable Scheme
 		List<VariableSchemeElement> variableSchemeElementList = getVariableSchemeElementList(
-			variableIdToUuidMap,
-			variableSchemeIdToUuidMap,
+			//variableIdToUuidMap,
+			//variableSchemeIdToUuidMap,
 			codeListIdToUuidMap
 		);
 
@@ -200,50 +212,46 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 	}
 
 	protected LogicalProductElement getLogicalProduct(
-		Map<String, UUID> categorySchemeIdToUuidMap,
-		Map<String, UUID> codeListIdToUuidMap,
-		Map<String, UUID> variableIdToUuidMap,
-		Map<String, UUID> variableSchemeIdToUuidMap
+		//Map<String, UUID> categorySchemeIdToUuidMap,
+		//Map<String, UUID> variableIdToUuidMap,
+		//Map<String, UUID> variableSchemeIdToUuidMap
 	) {
 		LogicalProductElement logicalProduct = new LogicalProductElement(getAgency());
 
 		// Data Relationship
-		DataRelationshipElement dataRelationshipElement = getDataRelationshipElement(variableIdToUuidMap);
+		DataRelationshipElement dataRelationshipElement = getDataRelationshipElement();
 		logicalProduct.setDataRelationship(dataRelationshipElement);
 
 		// Category Schemes
-		for (Map.Entry<String, UUID> entry : categorySchemeIdToUuidMap.entrySet()) {
-			UUID uuid = entry.getValue();
-			CategorySchemeReference categorySchemeReference = new CategorySchemeReference(uuid.toString(), getAgency());
+		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
+			CategorySchemeReference categorySchemeReference = new CategorySchemeReference(categoryScheme.getUuid(), getAgency());
 			logicalProduct.addCategorySchemeReference(categorySchemeReference);
 		}
 
 		// Code List Schemes
-		for (Map.Entry<String, UUID> entry : codeListIdToUuidMap.entrySet()) {
-			UUID uuid = entry.getValue();
-			CodeListSchemeReference codeListSchemeReference = new CodeListSchemeReference(uuid.toString(), getAgency());
+		for (CodeList codeList : getCodeListList()) {
+			CodeListSchemeReference codeListSchemeReference = new CodeListSchemeReference(codeList.getUuid(), getAgency());
 			logicalProduct.addCodeListSchemeReference(codeListSchemeReference);
 		}
 
 		// Variable Schemes
-		for (Map.Entry<String, UUID> entry : variableSchemeIdToUuidMap.entrySet()) {
-			UUID uuid = entry.getValue();
-			VariableSchemeReference variableSchemeReference = new VariableSchemeReference(uuid.toString(), getAgency());
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
+			//UUID uuid = entry.getValue();
+			VariableSchemeReference variableSchemeReference = new VariableSchemeReference(variableScheme.getUuid(), getAgency());
 			logicalProduct.addVariableSchemeReference(variableSchemeReference);
 		}
 
 		return logicalProduct;
 	}
 
-	protected LogicalRecordElement getLogicalRecord(Map<String, UUID> variableIdToUuidMap) {
+	protected LogicalRecordElement getLogicalRecord() {
 		LogicalRecordElement logicalRecord = new LogicalRecordElement(getAgency());
 
 		VariablesInRecordElement variablesInRecord = new VariablesInRecordElement();
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
 			for (Variable variable : variableScheme.getVariableList()) {
 				if (variable.getId() != null) {
-					UUID id = variableIdToUuidMap.get(variable.getId());
-					VariableUsedReference variableUsedReference = new VariableUsedReference(id.toString(), getAgency());
+					VariableUsedReference variableUsedReference = new VariableUsedReference(variable.getUuid(), getAgency());
 					variablesInRecord.addReference(variableUsedReference);
 				}
 			}
@@ -283,7 +291,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return physicalDataProduct;
 	}
 
-	protected PhysicalInstance getPhysicalInstance(Map<String, UUID> variableIdToUuidMap) {
+	protected PhysicalInstance getPhysicalInstance() {
 		StatisticalSummary statisticalSummary = new StatisticalSummary();
 
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
@@ -292,8 +300,7 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 					continue;
 				}
 
-				UUID variableId = variableIdToUuidMap.get(variable.getId());
-				VariableStatistics variableStatistics = new VariableStatistics(getAgency(), variableId.toString());
+				VariableStatistics variableStatistics = new VariableStatistics(getAgency(), variable.getUuid());
 
 				List<String> statisticList = new ArrayList<>();
 				if (getStatistics() != null && !getStatistics().trim().isEmpty()) {
@@ -414,32 +421,34 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return new PhysicalInstance(getAgency(), getTitle(), getDdiLanguage(), 10, statisticalSummary, getDataFormat(), getProductIdentification(), "", "");
 	}
 
-	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, UUID variableSchemeId, Map<String, UUID> variableIdToUuidMap, UUID physicalRecordSegmentId) {
+	protected RecordLayoutScheme getRecordLayoutScheme(UUID recordLayoutId, String variableSchemeId, UUID physicalRecordSegmentId) {
 		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(getAgency());
 
 		//FileFormatInfo.Format dataType = getTitle().toLowerCase().endsWith(".dta") ? "STATA" : "SPSS";
-		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId.toString(), getDdiLanguage(), getDataFormat(), getProductIdentification());
+		RecordLayout recordLayout = new RecordLayout(recordLayoutId.toString(), getAgency(), variableSchemeId, getDdiLanguage(), getDataFormat(), getProductIdentification());
 
 		// Physical Structure Link Reference
 		recordLayout.setReference(physicalRecordSegmentId.toString());
 
 		// Data List Item
-		for (Map.Entry<String, UUID> entry : variableIdToUuidMap.entrySet()) {
-			DataItem dataItem = new DataItem();
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
+			for (Variable variable : variableScheme.getVariableList()) {
+				DataItem dataItem = new DataItem();
 
-			dataItem.setReference(entry.getValue().toString(), getAgency());
+				dataItem.setReference(variable.getUuid(), getAgency());
 
-			if (!getAttributeMap().isEmpty()) {
-				ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
+				if (!getAttributeMap().isEmpty()) {
+					ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
 
-				// Anticipating the following properties: Width, Decimals, WriteFormatType etc
-				for (Map.Entry<String, String> attribute : getAttributeMap().entrySet()) {
-					proprietaryInfo.addProprietaryProperty(new ProprietaryProperty(attribute.getKey(), attribute.getValue()));
+					// Anticipating the following properties: Width, Decimals, WriteFormatType etc
+					for (Map.Entry<String, String> attribute : getAttributeMap().entrySet()) {
+						proprietaryInfo.addProprietaryProperty(new ProprietaryProperty(attribute.getKey(), attribute.getValue()));
+					}
+					dataItem.setProprietaryInfo(proprietaryInfo);
 				}
-				dataItem.setProprietaryInfo(proprietaryInfo);
-			}
 
-			recordLayout.addDataItem(dataItem);
+				recordLayout.addDataItem(dataItem);
+			}
 		}
 
 		recordLayoutScheme.setRecordLayout(recordLayout);
@@ -447,18 +456,19 @@ public class ElementGenerator extends AbstractSchemaGenerator {
 		return recordLayoutScheme;
 	}
 
-	protected List<VariableSchemeElement> getVariableSchemeElementList(Map<String, UUID> variableIdToUuidMap, Map<String, UUID> variableSchemeIdToUuidMap, Map<String, UUID> codeListIdToUuidMap) {
+	protected List<VariableSchemeElement> getVariableSchemeElementList(Map<String, UUID> codeListIdToUuidMap) {
 		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
 
 		for (VariableScheme variableScheme : getVariableSchemeList()) {
-			UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
+			//UUID variableSchemeId = variableSchemeIdToUuidMap.get(variableScheme.getId());
 
-			VariableSchemeElement variableSchemeElement = new VariableSchemeElement(variableSchemeId.toString(), getAgency());
+			VariableSchemeElement variableSchemeElement = new VariableSchemeElement(variableScheme.getUuid(), getAgency());
 			variableSchemeElement.setVariableSchemeName(getTitle());
 
 			for (Variable variable : variableScheme.getVariableList()) {
-				UUID variableId = variableIdToUuidMap.get(variable.getId());
-				VariableElement variableElement = new VariableElement(variableId.toString(), getAgency());
+
+				//UUID variableId = variableIdToUuidMap.get(variable.getId());
+				VariableElement variableElement = new VariableElement(variable.getUuid(), getAgency());
 				variableElement.setName(variable.getName());
 
 				Ced2arVariableStat variableStat = getVariableStatisticList()

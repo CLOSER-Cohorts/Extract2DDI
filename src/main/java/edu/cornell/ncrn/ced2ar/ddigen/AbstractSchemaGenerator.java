@@ -22,6 +22,7 @@ public class AbstractSchemaGenerator {
 	private Map<String, String> excludeVariableToStatMap;
 	private Map<String, Frequency> variableToFrequencyMap;
 	private List<CategoryScheme> categorySchemeList;
+	private Map<String, String> codeSchemeToCategorySchemeMap;
 	private List<CodeList> codeListList;
 	private List<VariableScheme> variableSchemeList;
 	private FileFormatInfo.Format dataFormat;
@@ -39,18 +40,20 @@ public class AbstractSchemaGenerator {
 		String statistics,
 		Map<String, String> excludeVariableToStatMap,
 		Map<String, String> attributeMap,
+		Map<String, String> codeSchemeToCategorySchemeMap,
 		String agency,
 		String ddiLanguage,
 		String title,
 		FileFormatInfo.Format dataFormat,
 		String productIdentification
 	) {
-		this.agency = agency;
-		this.ddiLanguage = ddiLanguage;
+		setAgency(agency);
+		setDdiLanguage(ddiLanguage);
 		this.codeListList = codeListList;
 		this.variableSchemeList = variableSchemeList;
 		this.categorySchemeList = categorySchemeList;
 		this.attributeMap = attributeMap;
+		this.codeSchemeToCategorySchemeMap = codeSchemeToCategorySchemeMap;
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
 		this.statistics = statistics;
 		this.title = title;
@@ -66,16 +69,6 @@ public class AbstractSchemaGenerator {
 
 	public Map<String, String> getAttributeMap() {
 		return attributeMap;
-	}
-
-	protected Map<String, UUID> getCategoryIdToUuidMap() {
-		Map<String, UUID> categoryIdToUuidMap = new HashMap<>();
-		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
-			for (Category category : categoryScheme.getCategoryList()) {
-				categoryIdToUuidMap.put(category.getId(), UUID.randomUUID());
-			}
-		}
-		return categoryIdToUuidMap;
 	}
 
 	protected Map<String, UUID> getCategorySchemeIdToUuidMap() {
@@ -96,6 +89,10 @@ public class AbstractSchemaGenerator {
 
 	public List<CategoryScheme> getCategorySchemeList() {
 		return categorySchemeList;
+	}
+
+	public Map<String, String> getCodeSchemeToCategorySchemeMap() {
+		return codeSchemeToCategorySchemeMap;
 	}
 
 	public List<CodeList> getCodeListList() {
@@ -163,8 +160,20 @@ public class AbstractSchemaGenerator {
 		return version;
 	}
 
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
 	public void setAttributeMap(Map<String, String> attributeMap) {
 		this.attributeMap = attributeMap;
+	}
+
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
+	}
+
+	public void setCodeSchemeToCategorySchemeMap(Map<String, String> codeSchemeToCategorySchemeMap) {
+		this.codeSchemeToCategorySchemeMap = codeSchemeToCategorySchemeMap;
 	}
 
 	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {

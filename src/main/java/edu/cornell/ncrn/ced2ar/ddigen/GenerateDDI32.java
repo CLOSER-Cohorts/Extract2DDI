@@ -41,6 +41,7 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 			statistics,
 			excludeVariableToStatMap,
 			attributeMap,
+			codeSchemeToCategorySchemeMap,
 			agency,
 			ddiLanguage,
 			dataFile,

@@ -11,9 +11,9 @@ public class CategoryElement extends ElementWithUrn {
 
 	private Label label;
 
-	public CategoryElement(String id, String agency) {
+	public CategoryElement(String id, String agency, String label, String ddiLanguage) {
 		super(id, agency);
-		setLabel(label);
+		setLabel(new Label(label, ddiLanguage));
 	}
 
 	@Override

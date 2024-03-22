@@ -27,13 +27,10 @@ public class LogicalProductFactory {
 			NodeList categorySchemeNodeList = document.getElementsByTagName("CategoryScheme");
 
 			for (int i = 0; i < categorySchemeNodeList.getLength(); i++) {
-				CategoryScheme categoryScheme = new CategoryScheme();
 				List<Category> categoryList = new ArrayList<>();
 
 				Node categorySchemeNode = categorySchemeNodeList.item(i);
 				if (nodeNameEquals(categorySchemeNode, "CategoryScheme")) {
-					Node categorySchemeIdNode = categorySchemeNode.getAttributes().getNamedItem("id");
-					categoryScheme.setId(categorySchemeIdNode.getTextContent());
 
 					NodeList variableNodeList = categorySchemeNode.getChildNodes();
 					for (int j = 0; j < variableNodeList.getLength(); j++) {
@@ -56,10 +53,13 @@ public class LogicalProductFactory {
 							categoryList.add(category);
 						}
 					}
-				}
 
-				categoryScheme.setCategoryList(categoryList);
-				categorySchemeList.add(categoryScheme);
+					Node categorySchemeIdNode = categorySchemeNode.getAttributes().getNamedItem("id");
+					String categorySchemeId = categorySchemeIdNode.getTextContent();
+
+					CategoryScheme categoryScheme = new CategoryScheme(categorySchemeId, categoryList);
+					categorySchemeList.add(categoryScheme);
+				}
 			}
 		}
 

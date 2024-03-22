@@ -2,17 +2,21 @@ package edu.cornell.ncrn.ced2ar.ddigen.variable;
 
 import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
 
-public class Variable {
+import java.util.UUID;
 
+public class Variable {
 	private String id;
 	private String label;
 	private String name;
+	private final String uuid;
 	private Representation representation;
 
 	public Variable() {
+		this.uuid = UUID.randomUUID().toString();
 	}
 
 	public Variable(String id) {
+		this();
 		setId(id);
 	}
 
@@ -30,6 +34,10 @@ public class Variable {
 
 	public Representation getRepresentation() {
 		return representation;
+	}
+
+	public String getUuid() {
+		return uuid;
 	}
 
 	public void setId(String id) {
