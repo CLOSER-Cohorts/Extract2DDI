@@ -71,5 +71,9 @@ public class GenerateDdi32Test {
 		for (int i = 0; i < recommendedDataTypeNodeList.getLength(); i++) {
 			Assert.assertNotEquals("type", recommendedDataTypeNodeList.item(i).getTextContent());
 		}
+
+		// Ensure there is 14 statistics in both STATA and SPSS files
+		NodeList variableStatisticsNodeList = document.getElementsByTagName("pi:VariableStatistics");
+		Assert.assertEquals(14, variableStatisticsNodeList.getLength());
 	}
 }

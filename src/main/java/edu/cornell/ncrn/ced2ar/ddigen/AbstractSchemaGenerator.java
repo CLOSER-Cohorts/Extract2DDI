@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen;
 
 import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
-import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
@@ -71,14 +70,6 @@ public class AbstractSchemaGenerator {
 		return attributeMap;
 	}
 
-	protected Map<String, UUID> getCategorySchemeIdToUuidMap() {
-		Map<String, UUID> categorySchemeIdToUuidMap = new HashMap<>();
-		for (CategoryScheme categoryScheme : getCategorySchemeList()) {
-			categorySchemeIdToUuidMap.put(categoryScheme.getId(), UUID.randomUUID());
-		}
-		return categorySchemeIdToUuidMap;
-	}
-
 	protected Map<String, UUID> getCodeListIdToUuidMap() {
 		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
 		for (CodeList codeList : codeListList) {
@@ -136,14 +127,6 @@ public class AbstractSchemaGenerator {
 		return variableIdToUuidMap;
 	}
 
-	protected Map<String, UUID> getVariableSchemeIdToUuidMap() {
-		Map<String, UUID> variableSchemeIdToUuidMap = new HashMap<>();
-		for (VariableScheme variableScheme : getVariableSchemeList()) {
-			variableSchemeIdToUuidMap.put(variableScheme.getId(), UUID.randomUUID());
-		}
-		return variableSchemeIdToUuidMap;
-	}
-
 	public List<Ced2arVariableStat> getVariableStatisticList() {
 		return variableStatisticList;
 	}
@@ -164,16 +147,8 @@ public class AbstractSchemaGenerator {
 		this.agency = agency;
 	}
 
-	public void setAttributeMap(Map<String, String> attributeMap) {
-		this.attributeMap = attributeMap;
-	}
-
 	public void setDdiLanguage(String ddiLanguage) {
 		this.ddiLanguage = ddiLanguage;
-	}
-
-	public void setCodeSchemeToCategorySchemeMap(Map<String, String> codeSchemeToCategorySchemeMap) {
-		this.codeSchemeToCategorySchemeMap = codeSchemeToCategorySchemeMap;
 	}
 
 	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {
