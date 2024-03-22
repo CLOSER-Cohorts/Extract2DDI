@@ -1,6 +1,12 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
+import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
@@ -11,6 +17,7 @@ import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ResourcePackageElement extends ElementWithUrn {
 
@@ -111,7 +118,32 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return variableSchemeList;
 	}
 
-	public void setCodeListScheme(CodeListScheme codeListScheme) {
+	public void setCodeListScheme(List<CodeList> codeListList, List<CategoryScheme> categorySchemeList, Map<String, String> codeSchemeToCategorySchemeMap) {
+		CodeListScheme codeListScheme = new CodeListScheme(getAgency());
+		for (CodeList codeList : codeListList) {
+			CodeListElement codeListElement = new CodeListElement(codeList.getUuid(), getAgency());
+			codeListElement.setName(codeList.getLabel());
+
+			String categorySchemeId = codeSchemeToCategorySchemeMap.get(codeList.getId());
+			CategoryScheme categoryScheme = categorySchemeList.stream().filter(
+					scheme -> scheme.getId().equalsIgnoreCase(categorySchemeId)
+			).findFirst().orElse(null);
+
+			for (Code code : codeList.getCodeList()) {
+				CodeElement codeElement = new CodeElement(getAgency(), code.getValue());
+
+				if (categoryScheme != null) {
+					for (Category category : categoryScheme.getCategoryList()) {
+						if (category.getId().equalsIgnoreCase(code.getCategoryId())) {
+							codeElement.setCategoryReference(category.getUuid());
+							break;
+						}
+					}
+				}
+				codeListElement.addCode(codeElement);
+			}
+			codeListScheme.addCodeList(codeListElement);
+		}
 		this.codeListScheme = codeListScheme;
 	}
 

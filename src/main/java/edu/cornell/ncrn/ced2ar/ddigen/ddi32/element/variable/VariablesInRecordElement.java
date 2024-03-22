@@ -14,9 +14,10 @@ public class VariablesInRecordElement implements Appendable {
 
 	private List<VariableUsedReference> variableUsedReferenceList = new ArrayList<>();
 
-	public void addReference(VariableUsedReference reference) {
+	public void addReference(String variableId, String agency) {
 		synchronized (variableUsedReferenceList)  {
-			variableUsedReferenceList.add(reference);
+			VariableUsedReference variableUsedReference = new VariableUsedReference(variableId, agency);
+			variableUsedReferenceList.add(variableUsedReference);
 		}
 	}
 

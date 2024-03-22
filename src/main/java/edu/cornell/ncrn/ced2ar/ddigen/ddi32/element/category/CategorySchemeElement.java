@@ -21,8 +21,9 @@ public class CategorySchemeElement extends ElementWithUrn {
 		setName(name);
 	}
 
-	public void addCategory(CategoryElement categoryElement) {
+	public void addCategory(String categoryId, String label, String ddiLanguage) {
 		synchronized (categoryList) {
+			CategoryElement categoryElement = new CategoryElement(categoryId, getAgency(), label, ddiLanguage);
 			categoryList.add(categoryElement);
 		}
 	}
