@@ -27,6 +27,7 @@ public class DDIInstance extends ElementWithUrn {
 	public void appendToElement(Element element, Document doc) {
 		// Resource Package
 		super.appendToElement(element, doc);
+
 		// Citation
 		if (getCitation() != null) {
 			getCitation().appendToElement(element, doc);

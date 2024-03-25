@@ -3,6 +3,7 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.SummaryStatistic;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.variable.StatisticType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -23,12 +24,18 @@ public class VariableStatistics extends ElementWithUrn {
 		variableReference = new VariableReference(variableId, agency);
 	}
 
-	public void addSummaryStatistic(SummaryStatistic statistic) {
-		this.summaryStatisticList.add(statistic);
+	public void addSummaryStatistic(String statistic, StatisticType statisticType, String prefix) {
+		SummaryStatistic summaryStatistic = new SummaryStatistic(statistic, statisticType, prefix);
+		this.summaryStatisticList.add(summaryStatistic);
 	}
 
-	public void addVariableCategory(VariableCategory variableCategory) {
-
+	public void addVariableCategory(String code, long frequency) {
+		VariableCategory variableCategory = new VariableCategory(code, Long.toString(frequency), null);
+		variableCategoryList.add(variableCategory);
+	}
+	public void addVariableCategory(String code, long frequency, String prefix) {
+		VariableCategory variableCategory = new VariableCategory(code, Long.toString(frequency), prefix);
+		variableCategoryList.add(variableCategory);
 	}
 
 	@Override

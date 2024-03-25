@@ -1,9 +1,12 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.VariableSchemeReference;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -20,24 +23,51 @@ public class LogicalProductElement extends ElementWithUrn {
 	private List<CodeListSchemeReference> codeListSchemeReferencesList = new ArrayList<>();
 	private List<VariableSchemeReference> variableSchemeReferenceList = new ArrayList<>();
 
-	public LogicalProductElement(String agency) {
+	public LogicalProductElement(
+			String agency,
+			String title,
+			List<VariableScheme> variableSchemeList,
+			List<CategoryScheme> categorySchemeList,
+			List<CodeList> codeListList
+	) {
 		super(agency);
+
+		// Data Relationship
+		setDataRelationship(title, variableSchemeList);
+
+		// Category Schemes
+		for (CategoryScheme categoryScheme : categorySchemeList) {
+			addCategorySchemeReference(categoryScheme.getUuid());
+		}
+
+		// Code List Schemes
+		for (CodeList codeList : codeListList) {
+			addCodeListSchemeReference(codeList.getUuid());
+		}
+
+		// Variable Schemes
+		for (VariableScheme variableScheme : variableSchemeList) {
+			addVariableSchemeReference(variableScheme.getUuid());
+		}
 	}
 
-	public void addCategorySchemeReference(CategorySchemeReference categorySchemeReference) {
+	public void addCategorySchemeReference(String categorySchemeId) {
 		synchronized (categorySchemeReferenceList) {
+			CategorySchemeReference categorySchemeReference = new CategorySchemeReference(categorySchemeId, getAgency());
 			categorySchemeReferenceList.add(categorySchemeReference);
 		}
 	}
 
-	public void addCodeListSchemeReference(CodeListSchemeReference codeListSchemeReference) {
+	public void addCodeListSchemeReference(String codeListId) {
 		synchronized (categorySchemeReferenceList) {
+			CodeListSchemeReference codeListSchemeReference = new CodeListSchemeReference(codeListId, getAgency());
 			codeListSchemeReferencesList.add(codeListSchemeReference);
 		}
 	}
 
-	public void addVariableSchemeReference(VariableSchemeReference variableSchemeReference) {
+	public void addVariableSchemeReference(String variableSchemeId) {
 		synchronized (categorySchemeReferenceList) {
+			VariableSchemeReference variableSchemeReference = new VariableSchemeReference(variableSchemeId, getAgency());
 			variableSchemeReferenceList.add(variableSchemeReference);
 		}
 	}
@@ -85,7 +115,11 @@ public class LogicalProductElement extends ElementWithUrn {
 		return variableSchemeReferenceList;
 	}
 
-	public void setDataRelationship(DataRelationshipElement dataRelationship) {
-		this.dataRelationship = dataRelationship;
+	public void setDataRelationship(String title, List<VariableScheme> variableSchemeList) {
+		LogicalRecordElement logicalRecord = new LogicalRecordElement(getAgency(), title, variableSchemeList);
+
+		DataRelationshipElement dataRelationshipElement = new DataRelationshipElement(getAgency());
+		dataRelationshipElement.setLogicalRecord(logicalRecord);
+		this.dataRelationship = dataRelationshipElement;
 	}
 }

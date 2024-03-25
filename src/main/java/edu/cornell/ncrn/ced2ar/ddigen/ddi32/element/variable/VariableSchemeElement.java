@@ -1,12 +1,16 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable;
 
+import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class VariableSchemeElement extends ElementWithUrn {
 
@@ -17,8 +21,35 @@ public class VariableSchemeElement extends ElementWithUrn {
 
 	private List<VariableElement> variableElementList = new ArrayList<>();
 
-	public VariableSchemeElement(String id, String agency) {
+	public VariableSchemeElement(
+			String id,
+			String agency,
+			String ddilanguage,
+			String title,
+			List<Variable> variableList,
+			Map<String, UUID> codeListIdToUuidMap,
+			List<Ced2arVariableStat> variableStatisticList
+	) {
 		super(id, agency);
+		setVariableSchemeName(title);
+
+		for (Variable variable : variableList) {
+			VariableElement variableElement = new VariableElement(variable.getUuid(), getAgency());
+			variableElement.setName(variable.getName());
+
+			Ced2arVariableStat variableStat = variableStatisticList
+					.stream()
+					.filter(variableStatistic -> variableStatistic.getName().equalsIgnoreCase(variable.getName()))
+					.findFirst()
+					.orElse(null);
+
+			String labelContent = variableStat != null ? variableStat.getLabel() : variable.getLabel();
+
+			variableElement.setLabel(labelContent, ddilanguage);
+			variableElement.setVariableRepresentation(variable.getRepresentation(), codeListIdToUuidMap);
+
+			addVariableElement(variableElement);
+		}
 	}
 
 	public void addVariableElement(VariableElement variableElement) {

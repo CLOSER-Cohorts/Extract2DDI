@@ -81,6 +81,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 				statistics,
 				excludeVariableToStatMap,
 				attributeMap,
+				new HashMap<>(),
 				agency,
 				ddiLanguage,
 				title,

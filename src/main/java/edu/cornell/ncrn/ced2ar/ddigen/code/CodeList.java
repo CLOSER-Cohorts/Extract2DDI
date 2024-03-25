@@ -2,18 +2,22 @@ package edu.cornell.ncrn.ced2ar.ddigen.code;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CodeList {
-
 	private List<Code> codeList = new ArrayList<>();
 	private String id;
 	private String label;
+	private final String uuid;
 
 	public CodeList() {
+		this.uuid = UUID.randomUUID().toString();
 	}
 
-	public CodeList(String id) {
-		this.id = id;
+	public CodeList(String id, List<Code> codeList) {
+		this();
+		setId(id);
+		setCodeList(codeList);
 	}
 
 	public List<Code> getCodeList() {
@@ -26,6 +30,10 @@ public class CodeList {
 
 	public String getLabel() {
 		return label;
+	}
+
+	public String getUuid() {
+		return uuid;
 	}
 
 	public void setCodeList(List<Code> codeList) {

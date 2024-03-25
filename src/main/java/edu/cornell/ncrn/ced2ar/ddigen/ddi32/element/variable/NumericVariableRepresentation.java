@@ -6,8 +6,6 @@ import org.w3c.dom.Element;
 public class NumericVariableRepresentation extends VariableRepresentation {
 
 	public static final String NODE_NAME_NUMERIC_REPRESENTATION = "r:NumericRepresentation";
-	public static final String NODE_NAME_RECOMMENDED_DATA_TYPE = "r:RecommendedDataType";
-	public static final String NODE_NAME_GENERIC_OUTPUT_FORMAT = "r:GenericOutputFormat";
 
 	public NumericVariableRepresentation(String recommendedDataType) {
 		super(recommendedDataType);

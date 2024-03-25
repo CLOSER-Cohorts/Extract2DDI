@@ -4,6 +4,8 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import java.util.UUID;
+
 public class PhysicalStructure extends ElementWithUrn {
 
 	public static final String NODE_NAME_PHYSICAL_STRUCTURE = "p:PhysicalStructure";
@@ -15,6 +17,10 @@ public class PhysicalStructure extends ElementWithUrn {
 
 	public PhysicalStructure(String agency) {
 		super(agency);
+
+		BasedOnObject basedOnObject = new BasedOnObject(agency);
+		basedOnObject.setBasedOnReference(UUID.randomUUID().toString());
+		setBasedOnObject(basedOnObject);
 	}
 
 	@Override

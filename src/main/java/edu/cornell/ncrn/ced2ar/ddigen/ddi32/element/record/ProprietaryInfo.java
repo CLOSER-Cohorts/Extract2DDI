@@ -13,8 +13,9 @@ public class ProprietaryInfo implements Appendable {
 
 	private List<ProprietaryProperty> proprietaryPropertyList = new ArrayList<>();
 
-	public void addProprietaryProperty(ProprietaryProperty proprietaryProperty) {
+	public void addProprietaryProperty(String key, String value) {
 		synchronized (proprietaryPropertyList) {
+			ProprietaryProperty proprietaryProperty = new ProprietaryProperty(key, value);
 			proprietaryPropertyList.add(proprietaryProperty);
 		}
 	}

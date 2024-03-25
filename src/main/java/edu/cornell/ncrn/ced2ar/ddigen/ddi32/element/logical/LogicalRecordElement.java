@@ -3,8 +3,12 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariablesInRecordElement;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import java.util.List;
 
 public class LogicalRecordElement extends ElementWithUrn {
 
@@ -14,8 +18,20 @@ public class LogicalRecordElement extends ElementWithUrn {
 	private VariablesInRecordElement variablesInRecord;
 	private Name logicalRecordName;
 
-	public LogicalRecordElement(String agency) {
+	public LogicalRecordElement(String agency, String title, List<VariableScheme> variableSchemeList) {
 		super(agency);
+
+		VariablesInRecordElement variablesInRecord = new VariablesInRecordElement();
+		for (VariableScheme variableScheme : variableSchemeList) {
+			for (Variable variable : variableScheme.getVariableList()) {
+				if (variable.getId() != null) {
+					variablesInRecord.addReference(variable.getUuid(), agency);
+				}
+			}
+		}
+		setVariablesInRecord(variablesInRecord);
+
+		setLogicalProductName(title);
 	}
 
 	@Override
@@ -41,8 +57,8 @@ public class LogicalRecordElement extends ElementWithUrn {
 		return variablesInRecord;
 	}
 
-	public void setLogicalProductName(String variableSchemeName) {
-		this.logicalRecordName = new Name(NODE_NAME_LOGICAL_RECORD_NAME, variableSchemeName);
+	public void setLogicalProductName(String logicalRecordName) {
+		this.logicalRecordName = new Name(NODE_NAME_LOGICAL_RECORD_NAME, logicalRecordName);
 	}
 
 	public void setVariablesInRecord(VariablesInRecordElement variablesInRecord) {
