@@ -8,7 +8,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.List;
-import java.util.Map;
 
 public class RecordLayoutScheme extends ElementWithUrn {
 
@@ -24,8 +23,7 @@ public class RecordLayoutScheme extends ElementWithUrn {
 			FileFormatInfo.Format dataFormat,
 			String productIdentification,
 			String physicalRecordSegmentId,
-			List<VariableScheme> variableSchemeList,
-			Map<String, String> attributeMap
+			List<VariableScheme> variableSchemeList
 	) {
 		super(agency);
 
@@ -38,7 +36,7 @@ public class RecordLayoutScheme extends ElementWithUrn {
 		// Data List Item
 		for (VariableScheme variableScheme : variableSchemeList) {
 			for (Variable variable : variableScheme.getVariableList()) {
-				recordLayout.addDataItem(variable.getUuid(), attributeMap);
+				recordLayout.addDataItem(variable);
 			}
 		}
 

@@ -25,8 +25,8 @@ import java.util.Map;
 import org.apache.commons.math3.stat.Frequency;
 import org.apache.log4j.Logger;
 
-import edu.cornell.ncrn.ced2ar.stata.StataReader;
 import edu.cornell.ncrn.ced2ar.stata.StataReaderFactory;
+import edu.cornell.ncrn.ced2ar.stata.StataReader;
 import edu.cornell.ncrn.ced2ar.stata.impl.DtaVariable;
 
 public class StataCsvGenerator extends CsvGenerator {

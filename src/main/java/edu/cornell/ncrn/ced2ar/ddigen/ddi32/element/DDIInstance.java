@@ -1,7 +1,15 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
+import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
+import org.apache.commons.math3.stat.Frequency;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import java.util.List;
+import java.util.Map;
 
 public class DDIInstance extends ElementWithUrn {
 
@@ -16,11 +24,46 @@ public class DDIInstance extends ElementWithUrn {
 	private ResourcePackageElement resourcePackage;
 	private Citation citation;
 
-	public DDIInstance(String agency, String ddiLanguage, String citationTitle, String citationAlternateTitle) {
+	public DDIInstance(
+			String agency,
+			String ddiLanguage,
+			String title,
+			String citationTitle,
+			String citationAlternateTitle,
+			List<VariableScheme> variableSchemes,
+			List<CategoryScheme> categorySchemes,
+			List<CodeList> codeLists,
+			FileFormatInfo.Format dataFormat,
+			String productIdentification,
+			String statistics,
+			Map<String, String> codeSchemeToCategorySchemeMap,
+			Map<String, String> excludeVariableToStatMap,
+			Map<String, Frequency> variableToFrequencyMap
+	) {
 		super(agency);
 
 		Citation citation = new Citation(citationTitle, citationAlternateTitle, ddiLanguage);
 		setCitation(citation);
+
+		// Resource package
+		ResourcePackageElement resourcePackage = new ResourcePackageElement(
+				getAgency(),
+				ddiLanguage,
+				title,
+				"",
+				"",
+				variableSchemes,
+				categorySchemes,
+				codeLists,
+				dataFormat,
+				productIdentification,
+				statistics,
+				codeSchemeToCategorySchemeMap,
+				excludeVariableToStatMap,
+				variableToFrequencyMap
+		);
+
+		setResourcePackage(resourcePackage);
 	}
 
 	@Override

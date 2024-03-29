@@ -6,12 +6,12 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Reference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.Software;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.SoftwareType;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.StringElement;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class RecordLayout extends ElementWithUrn {
 
@@ -28,21 +28,9 @@ public class RecordLayout extends ElementWithUrn {
 		this.software = new Software(new StringElement(dataFormat.toString(), ddiLang), productIdentification, "ddi1", SoftwareType.System);
 	}
 
-	public void addDataItem(String variableId, Map<String, String> attributeMap) {
+	public void addDataItem(Variable variable) {
 		synchronized (dataItemList) {
-			DataItem dataItem = new DataItem();
-
-				dataItem.setReference(variableId, getAgency());
-
-				if (!attributeMap.isEmpty()) {
-					ProprietaryInfo proprietaryInfo = new ProprietaryInfo();
-
-					// Anticipating the following properties: Width, Decimals, WriteFormatType etc
-					for (Map.Entry<String, String> attribute : attributeMap.entrySet()) {
-						proprietaryInfo.addProprietaryProperty(attribute.getKey(), attribute.getValue());
-					}
-					dataItem.setProprietaryInfo(proprietaryInfo);
-				}
+			DataItem dataItem = new DataItem(variable, getAgency());
 			dataItemList.add(dataItem);
 		}
 	}

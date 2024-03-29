@@ -1,7 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi33;
 
 import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
-import edu.cornell.ncrn.ced2ar.ddigen.AbstractSchemaGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.VariableCategory;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
@@ -57,7 +56,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class FragmentGenerator extends AbstractSchemaGenerator {
+public class FragmentGenerator {
+
+	private String agency;
+	private String ddiLanguage;
+	private Map<String, String> excludeVariableToStatMap;
+	private Map<String, Frequency> variableToFrequencyMap;
+	private List<CategoryScheme> categorySchemeList;
+	private Map<String, String> codeSchemeToCategorySchemeMap;
+	private List<CodeList> codeListList;
+	private List<VariableScheme> variableSchemeList;
+	private FileFormatInfo.Format dataFormat;
+	private String productIdentification;
+	private String title;
+	private String statistics;
+	private List<Ced2arVariableStat> variableStatisticList;
+	private int version;
 
 	public FragmentGenerator(
 		List<CategoryScheme> categorySchemeList,
@@ -73,21 +87,19 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		FileFormatInfo.Format dataFormat,
 		String productIdentification
 	) {
-		super(
-				categorySchemeList,
-				codeListList,
-				variableSchemeList,
-				variableStatistics,
-				statistics,
-				excludeVariableToStatMap,
-				attributeMap,
-				new HashMap<>(),
-				agency,
-				ddiLanguage,
-				title,
-				dataFormat,
-				productIdentification
-		);
+		setAgency(agency);
+		setDdiLanguage(ddiLanguage);
+		this.codeListList = codeListList;
+		this.variableSchemeList = variableSchemeList;
+		this.categorySchemeList = categorySchemeList;
+		this.codeSchemeToCategorySchemeMap = codeSchemeToCategorySchemeMap;
+		this.excludeVariableToStatMap = excludeVariableToStatMap;
+		this.statistics = statistics;
+		this.title = title;
+		this.variableStatisticList = variableStatistics;
+		this.version = 1;
+		this.dataFormat = dataFormat;
+		this.productIdentification = productIdentification;
 	}
 
 	public List<Fragment> getCategoryFragmentList(
@@ -332,7 +344,7 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 					new VariableReferenceFragment(id.toString(), getAgency(), getVersion());
 
 				VariableStatisticsFragment variableStatistics =
-					new VariableStatisticsFragment(id.toString(), getAgency(), getVersion());
+					new VariableStatisticsFragment(getAgency(), getVersion());
 
 				if (getExcludeVariableToStatMap().containsKey(variable.getName())) {
 					UserAttributePairFragment userAttributePair = new UserAttributePairFragment();
@@ -545,5 +557,94 @@ public class FragmentGenerator extends AbstractSchemaGenerator {
 		fragmentList.addAll(variableStatisticsList);
 
 		return fragmentList;
+	}
+
+	public String getAgency() {
+		return agency;
+	}
+
+	protected Map<String, UUID> getCodeListIdToUuidMap() {
+		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
+		for (CodeList codeList : codeListList) {
+			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
+		}
+		return codeListIdToUuidMap;
+	}
+
+	public List<CategoryScheme> getCategorySchemeList() {
+		return categorySchemeList;
+	}
+
+	public Map<String, String> getCodeSchemeToCategorySchemeMap() {
+		return codeSchemeToCategorySchemeMap;
+	}
+
+	public List<CodeList> getCodeListList() {
+		return codeListList;
+	}
+
+	public FileFormatInfo.Format getDataFormat() {
+		return dataFormat;
+	}
+
+	public String getDdiLanguage() {
+		return ddiLanguage;
+	}
+
+	public Map<String, String> getExcludeVariableToStatMap() {
+		return excludeVariableToStatMap;
+	}
+
+	public String getProductIdentification() {
+		return productIdentification;
+	}
+
+	public String getStatistics() {
+		return statistics;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	protected Map<String, UUID> getVariableIdToUuidMap() {
+		Map<String, UUID> variableIdToUuidMap = new HashMap<>();
+		for (VariableScheme variableScheme : getVariableSchemeList()) {
+			for (Variable variable : variableScheme.getVariableList()) {
+				if (variable.getId() != null) {
+					variableIdToUuidMap.put(variable.getId(), UUID.randomUUID());
+				}
+			}
+		}
+
+		return variableIdToUuidMap;
+	}
+
+	public List<Ced2arVariableStat> getVariableStatisticList() {
+		return variableStatisticList;
+	}
+
+	public Map<String, Frequency> getVariableToFrequencyMap() {
+		return variableToFrequencyMap;
+	}
+
+	public List<VariableScheme> getVariableSchemeList() {
+		return variableSchemeList;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
+	public void setDdiLanguage(String ddiLanguage) {
+		this.ddiLanguage = ddiLanguage;
+	}
+
+	public void setVariableToFrequencyMap(Map<String, Frequency> variableToFrequencyMap) {
+		this.variableToFrequencyMap = variableToFrequencyMap;
 	}
 }

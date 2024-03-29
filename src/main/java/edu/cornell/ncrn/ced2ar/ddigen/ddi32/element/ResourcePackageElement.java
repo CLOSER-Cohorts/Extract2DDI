@@ -1,5 +1,6 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element;
 
+import edu.cornell.ncrn.ced2ar.data.FileFormatInfo;
 import edu.cornell.ncrn.ced2ar.ddigen.category.Category;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.Code;
@@ -9,15 +10,23 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListElement;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical.LogicalProductElement;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.GrossRecordStructure;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalDataProduct;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalInstance;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalStructure;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.physical.PhysicalStructureScheme;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.RecordLayoutScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.variable.VariableSchemeElement;
+import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
+import org.apache.commons.math3.stat.Frequency;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class ResourcePackageElement extends ElementWithUrn {
 
@@ -32,11 +41,125 @@ public class ResourcePackageElement extends ElementWithUrn {
 	private PhysicalInstance physicalInstance;
 	private List<VariableSchemeElement> variableSchemeList = new ArrayList<>();
 
-	public ResourcePackageElement(String agency, String ddiLanguage, String citationTitle, String citationAlternateTitle) {
+	public ResourcePackageElement(
+			String agency,
+			String ddiLanguage,
+			String title,
+			String citationTitle,
+			String citationAlternateTitle,
+			List<VariableScheme> variableSchemes,
+			List<CategoryScheme> categorySchemes,
+			List<CodeList> codeLists,
+			FileFormatInfo.Format dataFormat,
+			String productIdentification,
+			String statistics,
+			Map<String, String> codeSchemeToCategorySchemeMap,
+			Map<String, String> excludeVariableToStatMap,
+			Map<String, Frequency> variableToFrequencyMap
+	) {
 		super(agency);
 
 		Citation citation = new Citation(citationTitle, citationAlternateTitle, ddiLanguage);
 		setCitation(citation);
+
+		// Purpose
+		setPurpose(new Purpose());
+
+		// Logical Product
+		LogicalProductElement logicalProduct = new LogicalProductElement(getAgency(), title, variableSchemes, categorySchemes, codeLists);
+		setLogicalProduct(logicalProduct);
+
+		UUID physicalRecordSegmentId = UUID.randomUUID();
+
+		// Physical Data Product
+		PhysicalDataProduct physicalDataProduct = getPhysicalDataProduct(physicalRecordSegmentId);
+
+		VariableScheme variableScheme = variableSchemes.iterator().next();
+		String variableSchemeId = variableScheme.getUuid();
+		UUID recordLayoutId = UUID.randomUUID();
+		RecordLayoutScheme recordLayoutScheme = new RecordLayoutScheme(
+				getAgency(),
+				recordLayoutId.toString(),
+				variableSchemeId,
+				ddiLanguage,
+				dataFormat,
+				productIdentification,
+				physicalRecordSegmentId.toString(),
+				variableSchemes
+		);
+		physicalDataProduct.setRecordLayoutScheme(recordLayoutScheme);
+		setPhysicalDataProduct(physicalDataProduct);
+
+		// Physical Instance
+		PhysicalInstance physicalInstance =  new PhysicalInstance(
+				getAgency(),
+				title,
+				ddiLanguage,
+				10,
+				dataFormat,
+				productIdentification,
+				"",
+				"",
+				variableSchemes,
+				statistics,
+				excludeVariableToStatMap,
+				variableToFrequencyMap,
+				codeLists
+		);
+		physicalInstance.setRecordLayoutReference(recordLayoutId.toString());
+		setPhysicalInstance(physicalInstance);
+
+		// Category Scheme
+		for (CategoryScheme categoryScheme : categorySchemes) {
+			addCategoryScheme(ddiLanguage, categoryScheme.getUuid(), categoryScheme.getId(), categoryScheme.getCategoryList());
+		}
+
+		// Code List Schemes
+		setCodeListScheme(codeLists, categorySchemes, codeSchemeToCategorySchemeMap);
+
+		// Variable Scheme
+		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
+		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
+		for (CodeList codeList : codeLists) {
+			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
+		}
+
+		for (VariableScheme variableSchemeLocal : variableSchemes) {
+			VariableSchemeElement variableSchemeElement = new VariableSchemeElement(
+					variableSchemeLocal.getUuid(),
+					getAgency(),
+					ddiLanguage,
+					title,
+					variableSchemeLocal.getVariableList(),
+					codeListIdToUuidMap
+			);
+
+			variableSchemeElementList.add(variableSchemeElement);
+		}
+		for (VariableSchemeElement variableSchemeElement : variableSchemeElementList) {
+			addVariableScheme(variableSchemeElement);
+		}
+	}
+
+	protected PhysicalDataProduct getPhysicalDataProduct(UUID physicalRecordSegmentId) {
+		PhysicalDataProduct physicalDataProduct = new PhysicalDataProduct(getAgency());
+
+		PhysicalStructureScheme physicalStructureScheme = new PhysicalStructureScheme(getAgency());
+
+		PhysicalStructure physicalStructure = new PhysicalStructure(getAgency());
+
+		// Gross Record Structure
+		GrossRecordStructure grossRecordStructure = new GrossRecordStructure(getAgency());
+
+		grossRecordStructure.setPhysicalRecordSegment(physicalRecordSegmentId.toString());
+
+		physicalStructure.setGrossRecordStructure(grossRecordStructure);
+
+		physicalStructureScheme.setPhysicalStructure(physicalStructure);
+
+		physicalDataProduct.setPhysicalStructureScheme(physicalStructureScheme);
+
+		return physicalDataProduct;
 	}
 
 	public void addCategoryScheme(String ddiLanguage, String categorySchemeId, String name, List<Category> categoryList) {

@@ -36,6 +36,8 @@ public class Ced2arVariableStat implements Serializable {
 	private String maxFormatted;
 	private String meanFormatted;
 	private String stdDeviationFormatted;
+	private String format;
+	private int decimals;
 
 	public Long getPossibleErrorValueCount() {
 		return possibleErrorValueCount;
@@ -282,5 +284,21 @@ public class Ced2arVariableStat implements Serializable {
 		if (StringUtils.isEmpty(valueString))
 			return "";
 		return valueString.replace("%2C", ",");
+	}
+
+	public String getFormat() {
+		return format;
+	}
+
+	public void setFormat(String format) {
+		this.format = format;
+	}
+
+	public int getDecimals() {
+		return decimals;
+	}
+
+	public void setDecimals(int decimals) {
+		this.decimals = decimals;
 	}
 }
