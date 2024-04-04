@@ -119,5 +119,8 @@ public class GenerateDdi32Test {
 		for (int i = 0; i < variableNodeList.getLength(); i++) {
 			Assert.assertEquals(String.format("Label '%s' is not found in variable %d", expectedVariableLabels.get(i), i), expectedVariableLabels.get(i), variableNodeList.item(i).getChildNodes().item(5).getTextContent().trim());
 		}
+
+		// Expect all 5 statistics to be present: max, min, valid, invalid, freq, stdev
+		//Assert.assertTrue("StandardDeviation statistic is not found", ddi.getXml().contains("StandardDeviation"));
 	}
 }

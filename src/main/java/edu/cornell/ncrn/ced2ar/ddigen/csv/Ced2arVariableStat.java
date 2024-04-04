@@ -38,6 +38,7 @@ public class Ced2arVariableStat implements Serializable {
 	private String stdDeviationFormatted;
 	private String format;
 	private int decimals;
+	private int width;
 
 	public Long getPossibleErrorValueCount() {
 		return possibleErrorValueCount;
@@ -300,5 +301,13 @@ public class Ced2arVariableStat implements Serializable {
 
 	public void setDecimals(int decimals) {
 		this.decimals = decimals;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
 	}
 }

@@ -61,6 +61,40 @@ public class StataCsvGenerator extends CsvGenerator {
 			ced2arVariableStat.setValidValues(dtaVariable
 					.getVariableValueLabels());
 			ced2arVariableStat.setVariableNumber(variableNumber);
+
+			// Data item attributes
+			if (dtaVariable.isFloat()) {
+				ced2arVariableStat.setDecimals(8);
+				ced2arVariableStat.setFormat("Float");
+				ced2arVariableStat.setWidth(4);
+
+			}
+			if (dtaVariable.isDouble()) {
+				ced2arVariableStat.setDecimals(16);
+				ced2arVariableStat.setFormat("Double");
+				ced2arVariableStat.setWidth(8);
+			}
+			if (dtaVariable.isString()) {
+				int width = dtaVariable.getVariableType();
+				ced2arVariableStat.setFormat("str" + width);
+				ced2arVariableStat.setWidth(width);
+			}
+			if (dtaVariable.isInt()) {
+				ced2arVariableStat.setFormat("Integer");
+				ced2arVariableStat.setWidth(2);
+			}
+			if (dtaVariable.isLong()) {
+				ced2arVariableStat.setFormat("Long");
+				ced2arVariableStat.setWidth(4);
+			}
+			if (dtaVariable.isDate()) {
+				ced2arVariableStat.setFormat("Date");
+			}
+			if (dtaVariable.isByte()) {
+				ced2arVariableStat.setFormat("Byte");
+				ced2arVariableStat.setWidth(1);
+			}
+
 			ced2arVariableStats.add(ced2arVariableStat);
 
 			variableToFrequencyMap.put(dtaVariable.getName(), new Frequency());

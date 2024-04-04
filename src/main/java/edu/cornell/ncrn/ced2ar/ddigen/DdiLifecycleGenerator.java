@@ -110,7 +110,7 @@ public abstract class DdiLifecycleGenerator {
 			variable.setName(stat.getName());
 			variable.setLabel(stat.getLabel());
 			variable.setDeciamls(stat.getDecimals());
-			variable.setWidth(stat.getEndPosition() - stat.getStartPosition());
+			variable.setWidth(stat.getWidth());
 			variable.setFormat(stat.getFormat());
 
 			variable.setValidCount(stat.getValidCount());

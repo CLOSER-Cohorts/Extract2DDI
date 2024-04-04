@@ -13,7 +13,7 @@ public class Format118Test {
 	private static final Logger logger = Logger.getLogger(Format118Test.class);
 	private static final boolean IS_SUMMARY_STATISTICS_ENABLED = false;
 	private static final long RECORD_LIMIT = 100;
-	private final String dataFileName = "test-file-data-types2.dta";
+	private final String dataFileName = "test-file-data-types-118-new.dta";
 
 	@Test @Ignore
 	public void testGenerateDdi() throws Exception {
