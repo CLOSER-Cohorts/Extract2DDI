@@ -215,6 +215,8 @@ public class SpssCsvGenerator extends CsvGenerator {
 			startPosition += width;
 			variable.setEndPosition(startPosition);
 			variable.setVariableNumber(spssVariable.getVariableNumber());
+			variable.setFormat(spssVariable.getSPSSFormat());
+			variable.setDecimals(spssVariable.getDecimals());
 			if (spssVariable.categoryMap != null) {
 				if (spssVariable.categoryMap.size() > 0) {
 					variable.setContainsCategory(true);

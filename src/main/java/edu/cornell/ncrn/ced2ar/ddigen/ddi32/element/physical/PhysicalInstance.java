@@ -42,7 +42,6 @@ public class PhysicalInstance extends ElementWithUrn {
 			String citationAlternateTitle,
 			List<VariableScheme> variableSchemesList,
 			String statistics,
-			List<Ced2arVariableStat> variableStatisticList,
 			Map<String, String> excludeVariableToStatMap,
 			Map<String, Frequency> variableToFrequencyMap,
 			List<CodeList> codeListList
@@ -68,98 +67,93 @@ public class PhysicalInstance extends ElementWithUrn {
 					statisticList.addAll(Arrays.asList(statisticArray));
 				}
 
-				for (Ced2arVariableStat variableStat : variableStatisticList) {
-					if (variableStat.getName() != null && variable.getName() != null && variableStat.getName().equalsIgnoreCase(variable.getName())) {
-						String excludeVariableStat = excludeVariableToStatMap.get(variable.getName());
+				String excludeVariableStat = excludeVariableToStatMap.get(variable.getName());
 
-						boolean excludeValid = !statisticList.isEmpty() && !statisticList.contains("valid");
-						boolean excludeInvalid = !statisticList.isEmpty() && !statisticList.contains("invalid");
-						boolean excludeMin = !statisticList.isEmpty() && !statisticList.contains("min");
-						boolean excludeMax = !statisticList.isEmpty() && !statisticList.contains("max");
-						boolean excludeMean = !statisticList.isEmpty() && !statisticList.contains("mean");
-						boolean excludeStdDev = !statisticList.isEmpty() && !statisticList.contains("stdev");
-						boolean excludeFrequency = !statisticList.isEmpty() && !statisticList.contains("freq");
+				boolean excludeValid = !statisticList.isEmpty() && !statisticList.contains("valid");
+				boolean excludeInvalid = !statisticList.isEmpty() && !statisticList.contains("invalid");
+				boolean excludeMin = !statisticList.isEmpty() && !statisticList.contains("min");
+				boolean excludeMax = !statisticList.isEmpty() && !statisticList.contains("max");
+				boolean excludeMean = !statisticList.isEmpty() && !statisticList.contains("mean");
+				boolean excludeStdDev = !statisticList.isEmpty() && !statisticList.contains("stdev");
+				boolean excludeFrequency = !statisticList.isEmpty() && !statisticList.contains("freq");
 
-						if (excludeVariableStat != null) {
-							String[] excludeVariableStatArray = excludeVariableStat.split(":");
+				if (excludeVariableStat != null) {
+					String[] excludeVariableStatArray = excludeVariableStat.split(":");
 
-							if (excludeVariableStatArray.length > 0 && !excludeVariableStatArray[0].isEmpty()) {
-								List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray[0].split(","));
-								if (!excludeValid) {
-									excludeValid = excludeVariableStatList.contains("valid");
-								}
-								if (!excludeInvalid) {
-									excludeInvalid = excludeVariableStatList.contains("invalid");
-								}
-								if (!excludeMin) {
-									excludeMin = excludeVariableStatList.contains("min");
-								}
-								if (!excludeMax) {
-									excludeMax = excludeVariableStatList.contains("max");
-								}
-								if (!excludeMean) {
-									excludeMean = excludeVariableStatList.contains("mean");
-								}
-								if (!excludeStdDev) {
-									excludeStdDev = excludeVariableStatList.contains("stdev");
-								}
-								if (!excludeFrequency) {
-									excludeFrequency = excludeVariableStatList.contains("freq");
-								}
-							}
+					if (excludeVariableStatArray.length > 0 && !excludeVariableStatArray[0].isEmpty()) {
+						List<String> excludeVariableStatList = Arrays.asList(excludeVariableStatArray[0].split(","));
+						if (!excludeValid) {
+							excludeValid = excludeVariableStatList.contains("valid");
 						}
-
-						Long validCount = variableStat.getValidCount();
-						if (!excludeValid && validCount != null) {
-							variableStatistics.addSummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES, "pi");
+						if (!excludeInvalid) {
+							excludeInvalid = excludeVariableStatList.contains("invalid");
 						}
-
-						Long invalidCount = variableStat.getInvalidCount();
-						if (!excludeInvalid && invalidCount != null) {
-							variableStatistics.addSummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES, "pi");
+						if (!excludeMin) {
+							excludeMin = excludeVariableStatList.contains("min");
 						}
-
-						String min = variableStat.getMinFormatted();
-						if (!excludeMin && min != null && !min.isEmpty()) {
-							variableStatistics.addSummaryStatistic(min, StatisticType.MINIMUM, "pi");
+						if (!excludeMax) {
+							excludeMax = excludeVariableStatList.contains("max");
 						}
-
-						String max = variableStat.getMaxFormatted();
-						if (!excludeMax && max != null && !max.isEmpty()) {
-							variableStatistics.addSummaryStatistic(max, StatisticType.MAXIMUM, "pi");
+						if (!excludeMean) {
+							excludeMean = excludeVariableStatList.contains("mean");
 						}
-
-						String mean = variableStat.getMeanFormatted();
-						if (!excludeMean && mean != null && !mean.isEmpty()) {
-							variableStatistics.addSummaryStatistic(mean, StatisticType.MEAN, "pi");
+						if (!excludeStdDev) {
+							excludeStdDev = excludeVariableStatList.contains("stdev");
 						}
-
-						String stdDeviation = variableStat.getStdDeviationFormatted();
-						if (!excludeStdDev && stdDeviation != null && !stdDeviation.isEmpty()) {
-							variableStatistics.addSummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION, "pi");
+						if (!excludeFrequency) {
+							excludeFrequency = excludeVariableStatList.contains("freq");
 						}
+					}
+				}
 
-						if (!excludeFrequency && variableToFrequencyMap != null) {
-							if (variable.getRepresentation() instanceof CodeRepresentation) {
-								Frequency variableFrequency = variableToFrequencyMap.get(variable.getName());
-								CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
-								for (CodeList codeList : codeListList) {
-									if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId()) && variableFrequency != null) {
-										long invalidValueFrequency = variableFrequency.getCount(".");
-										if (invalidValueFrequency > 0) {
-											variableStatistics.addVariableCategory(".", invalidValueFrequency, "pi");
-										}
-										for (Code code : codeList.getCodeList()) {
-											long frequency = variableFrequency.getCount(code.getValue());
-											if (frequency > 0) {
-												variableStatistics.addVariableCategory(code.getValue(), frequency);
-											}
-										}
+				long validCount = variable.getValidCount();
+				if (!excludeValid) {
+					variableStatistics.addSummaryStatistic(Long.toString(validCount), StatisticType.VALID_CASES, "pi");
+				}
+
+				long invalidCount = variable.getInvalidCount();
+				if (!excludeInvalid) {
+					variableStatistics.addSummaryStatistic(Long.toString(invalidCount), StatisticType.INVALID_CASES, "pi");
+				}
+
+				String min = variable.getMin();
+				if (!excludeMin && min != null && !min.isEmpty()) {
+					variableStatistics.addSummaryStatistic(min, StatisticType.MINIMUM, "pi");
+				}
+
+				String max = variable.getMax();
+				if (!excludeMax && max != null && !max.isEmpty()) {
+					variableStatistics.addSummaryStatistic(max, StatisticType.MAXIMUM, "pi");
+				}
+
+				String mean = variable.getMean();
+				if (!excludeMean && mean != null && !mean.isEmpty()) {
+					variableStatistics.addSummaryStatistic(mean, StatisticType.MEAN, "pi");
+				}
+
+				String stdDeviation = variable.getStdDeviation();
+				if (!excludeStdDev && stdDeviation != null && !stdDeviation.isEmpty()) {
+					variableStatistics.addSummaryStatistic(stdDeviation, StatisticType.STANDARD_DEVIATION, "pi");
+				}
+
+				if (!excludeFrequency && variableToFrequencyMap != null) {
+					if (variable.getRepresentation() instanceof CodeRepresentation) {
+						Frequency variableFrequency = variableToFrequencyMap.get(variable.getName());
+						CodeRepresentation representation = (CodeRepresentation) variable.getRepresentation();
+						for (CodeList codeList : codeListList) {
+							if (representation.getCodeSchemeId().equalsIgnoreCase(codeList.getId()) && variableFrequency != null) {
+								long invalidValueFrequency = variableFrequency.getCount(".");
+								if (invalidValueFrequency > 0) {
+									variableStatistics.addVariableCategory(".", invalidValueFrequency, "pi");
+								}
+								for (Code code : codeList.getCodeList()) {
+									long frequency = variableFrequency.getCount(code.getValue());
+									if (frequency > 0) {
+										variableStatistics.addVariableCategory(code.getValue(), frequency);
 									}
 								}
 							}
 						}
-						break;
 					}
 				}
 				statisticalSummary.addVariableStatistics(variableStatistics);

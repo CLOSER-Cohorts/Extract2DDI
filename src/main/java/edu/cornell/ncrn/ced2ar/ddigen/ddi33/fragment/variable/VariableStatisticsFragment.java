@@ -6,6 +6,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.FragmentWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi33.fragment.UserAttributePairFragment;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -22,8 +23,8 @@ public class VariableStatisticsFragment extends FragmentWithUrn {
 	private List<VariableCategory> variableCategoryList = new ArrayList<>();
 	private UserAttributePairFragment userAttributePair;
 
-	public VariableStatisticsFragment(String id, String agency, int version) {
-		super(id, agency, version);
+	public VariableStatisticsFragment(String agency, int version) {
+		super(UUID.randomUUID().toString(), agency, version);
 	}
 
 	public void addSummaryStatistic(SummaryStatistic statistic) {

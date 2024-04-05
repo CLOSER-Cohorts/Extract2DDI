@@ -3,7 +3,6 @@ package edu.cornell.ncrn.ced2ar.ddigen;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.DDI32DocumentGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.DDIInstance;
-import edu.cornell.ncrn.ced2ar.ddigen.ddi32.ElementGenerator;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 
@@ -33,23 +32,22 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 	public DDI generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
 		VariableCsv variableCsv = generateVariablesCsv(dataFile, runSumStats, observationLimit);
 
-		ElementGenerator elementGenerator = new ElementGenerator(
-			categorySchemeList,
-			codeListList,
-			variableSchemeList,
-			variableCsv.getVariableStatList(),
-			statistics,
-			excludeVariableToStatMap,
-			attributeMap,
-			codeSchemeToCategorySchemeMap,
-			agency,
-			ddiLanguage,
-			dataFile,
-			dataFormat,
-			productIdentification
+		DDIInstance ddiInstance = new DDIInstance(
+				agency,
+				ddiLanguage,
+				dataFile,
+				"",
+				"",
+				variableSchemeList,
+				categorySchemeList,
+				codeListList,
+				dataFormat,
+				productIdentification,
+				statistics,
+				codeSchemeToCategorySchemeMap,
+				excludeVariableToStatMap,
+				variableCsv.getVariableToFrequencyMap()
 		);
-		elementGenerator.setVariableToFrequencyMap(variableCsv.getVariableToFrequencyMap());
-		DDIInstance ddiInstance = elementGenerator.getInstance();
 
 		DDI32DocumentGenerator generator = new DDI32DocumentGenerator(ddiInstance);
 		Document fragmentInstanceDocument = generator.toDocument();

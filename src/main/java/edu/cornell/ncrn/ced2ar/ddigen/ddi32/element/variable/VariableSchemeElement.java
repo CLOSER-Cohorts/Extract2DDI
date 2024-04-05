@@ -27,8 +27,7 @@ public class VariableSchemeElement extends ElementWithUrn {
 			String ddilanguage,
 			String title,
 			List<Variable> variableList,
-			Map<String, UUID> codeListIdToUuidMap,
-			List<Ced2arVariableStat> variableStatisticList
+			Map<String, UUID> codeListIdToUuidMap
 	) {
 		super(id, agency);
 		setVariableSchemeName(title);
@@ -37,13 +36,7 @@ public class VariableSchemeElement extends ElementWithUrn {
 			VariableElement variableElement = new VariableElement(variable.getUuid(), getAgency());
 			variableElement.setName(variable.getName());
 
-			Ced2arVariableStat variableStat = variableStatisticList
-					.stream()
-					.filter(variableStatistic -> variableStatistic.getName().equalsIgnoreCase(variable.getName()))
-					.findFirst()
-					.orElse(null);
-
-			String labelContent = variableStat != null ? variableStat.getLabel() : variable.getLabel();
+			String labelContent = variable.getLabel();
 
 			variableElement.setLabel(labelContent, ddilanguage);
 			variableElement.setVariableRepresentation(variable.getRepresentation(), codeListIdToUuidMap);

@@ -9,7 +9,7 @@ TestDate1,Date dd/mmm/yy,505.0,101.0,277.75,0,4
 TestDate2,Date Jan,Feb,Mar,,,,0,0
 TestDate3,Date Q1 2000,203.0,101.0,127.5,0,4
 TestTime,Time mm:ss,5.0,1.0,2.75,0,4
-TestDateTime,DateTime dd.mm.yyyy.mm.ss,5.20050505058E10,1.20010101017E10,2.95027777785E10,0,4
+TestDateTime,DateTime dd.mm.yyyy.mm.ss,5.200505050554E10,1.200101010153E10,2.95027777782875E10,0,4
 TestCodedValue1,Coded Value basic,2.0,1.0,1.5,0,4
 TestCodeValue2,Coded Value Basic plus missing,2.0,1.0,1.5,0,4
 TestCodeValue3,Coded Value Basic plus range missing,2.0,1.0,1.3333333333333333,0,3

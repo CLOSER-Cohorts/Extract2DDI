@@ -92,7 +92,7 @@ public class Main {
 				util.help();
 			}
 
-			Properties properties = FileUtil.getPropertiesFromResource(AbstractSchemaGenerator.class);
+			Properties properties = FileUtil.getPropertiesFromResource(DdiLifecycleGenerator.class);
 			configUtil = new ConfigUtil(properties);
 		}
 

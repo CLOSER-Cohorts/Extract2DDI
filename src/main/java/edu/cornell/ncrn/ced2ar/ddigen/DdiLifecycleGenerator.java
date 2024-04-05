@@ -17,6 +17,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.representation.Representation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.TextRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.Variable;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
+import org.w3c.dom.Document;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public abstract class DdiLifecycleGenerator {
 			SPSSFile spssFile = new SPSSFile(serverFile);
 
 			// the next two lines are to initialise the variableMap inside spssFile
-			spssGen.getDDI3LogicalProduct(spssFile);
+			Document document = spssGen.getDDI3LogicalProduct(spssFile);
 			spssFile.getVariable(0);
 
 			populate(variableCsv);
@@ -108,6 +109,16 @@ public abstract class DdiLifecycleGenerator {
 			Variable variable = new Variable(UUID.randomUUID().toString());
 			variable.setName(stat.getName());
 			variable.setLabel(stat.getLabel());
+			variable.setDeciamls(stat.getDecimals());
+			variable.setWidth(stat.getWidth());
+			variable.setFormat(stat.getFormat());
+
+			variable.setValidCount(stat.getValidCount());
+			variable.setInvalidCount(stat.getInvalidCount());
+			variable.setMin(stat.getMinFormatted());
+			variable.setMax(stat.getMaxFormatted());
+			variable.setMean(stat.getMeanFormatted());
+			variable.setStdDeviation(stat.getStdDeviationFormatted());
 
 			Representation representation;
 			if (stat.isNumeric() && stat.getValidValues().isEmpty()) {
