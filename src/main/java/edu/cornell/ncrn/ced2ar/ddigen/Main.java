@@ -31,7 +31,7 @@ public class Main {
 
 	private static String FORMAT_OUTPUT_2_5 = "2.5";
 	private static String FORMAT_OUTPUT_3_2 = "3.2";
-	private static String FORMAT_OUTPUT_3_3_FRAGMENT = "3.3Fragment";
+//	private static String FORMAT_OUTPUT_3_3_FRAGMENT = "3.3Fragment";
 
 	public static void main(String args[]) throws Exception {
 		Util util = new Util();
@@ -134,27 +134,27 @@ public class Main {
 			if (summaryStats) {
 				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
 			}
-		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
-			if (agency == null || agency.isEmpty()) {
-				logger.error("Agency is required...");
-				System.exit(1);
-				return;
-			}
-			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
-				logger.error("DDI language is required...");
-				System.exit(1);
-				return;
-			}
-			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats);
-			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
-
-			if (isFrequencyFileEnabled) {
-				FileUtil.createFile(ddi.getVariableCsv().getFrequencies(), dataFile+".freq.csv");
-			}
-
-			if (summaryStats) {
-				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
-			}
+//		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
+//			if (agency == null || agency.isEmpty()) {
+//				logger.error("Agency is required...");
+//				System.exit(1);
+//				return;
+//			}
+//			if (ddiLanguage == null || ddiLanguage.isEmpty()) {
+//				logger.error("DDI language is required...");
+//				System.exit(1);
+//				return;
+//			}
+//			GenerateDDI33 generateDDI = new GenerateDDI33(agency, ddiLanguage, excludeVariableToStatMap, stats);
+//			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
+//
+//			if (isFrequencyFileEnabled) {
+//				FileUtil.createFile(ddi.getVariableCsv().getFrequencies(), dataFile+".freq.csv");
+//			}
+//
+//			if (summaryStats) {
+//				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
+//			}
 		} else {
 			throw new IllegalArgumentException("Unknown formatOutput: " + formatOutput);
 		}
