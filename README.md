@@ -70,7 +70,7 @@ The following code is in: ced2ardata2ddi's DataFileRestController.java file
 ### Run Instructions
 Run from a terminal:
 
-`java -jar Extract2DDI.jar  -f <filename>  [ -s <sumstats>  | -l <obsLimit> ]`
+`java -jar Extract2DDI.jar  -f <filename> --config <filename> --format [2.5 |3.2]  [ -s <sumstats>  | -l <obsLimit> ]`
 
 usage: Options are as follows...
 ```
@@ -88,6 +88,7 @@ usage: Options are as follows...
     sumstats=TRUE
     obsLimit=1000
 
+ -- format [2.5 | 3.2]
  --exclude <arg> (optional) exclude statistics for variables specified in the file with specified path. Format for the exlude file:
     var_1=max:user message
     var_2=freq:removed frequencies
@@ -95,20 +96,16 @@ usage: Options are as follows...
  --statistics (optional) Produce statistics file
  
  --frequencies (optional) Produce frequency file
+
+
 ```
 
 #### 2.5 format
 `java -jar Extract2DDI.jar -f filename.sav --format 2.5`
 
 #### 3.2 format
-`java -jar Extract2DDI.jar -f filename.sav --format 3.2`
+`java -jar Extract2DDI.jar -f filename.sav --config [filename] --format 3.2`
 
-#### 3.3 Fragment format
-`java -jar Extract2DDI.jar -f filename.sav`
-
-or
-
-`java -jar Extract2DDI.jar -f filename.sav --format 3.3Fragment`
 
 **Example**
 
