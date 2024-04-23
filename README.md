@@ -7,7 +7,7 @@
 To extract DDI metadata from SPSS and Stata files. It supports the most commonly used version of the DDI metadata standard version: 
 - DDI-Codebook 2.5
 - DDI-Lifecycle 3.2 (Instance)
-- DDI-Lifecycle 3.3 (Fragment)
+- DDI-Lifecycle 3.3 (Fragment) - currently in development
 
 It also adds functionality (for DDI-Lifecycle variants) to mute summary statistics on selected variables (e.g. exclude frequencies) either where these are not appropriate or to redact for other reasons. An optional message can be associated with each variable to indicate the reasons why.
 
@@ -88,7 +88,8 @@ usage: Options are as follows...
     sumstats=TRUE
     obsLimit=1000
 
- -- format [2.5 | 3.2]
+ --format [2.5 | 3.2]
+
  --exclude <arg> (optional) exclude statistics for variables specified in the file with specified path. Format for the exlude file:
     var_1=max:user message
     var_2=freq:removed frequencies
