@@ -3,6 +3,7 @@ package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.VariableSchemeReference;
@@ -18,6 +19,7 @@ public class LogicalProductElement extends ElementWithUrn {
 	public static final String NODE_NAME_LOGICAL_PRODUCT = "ddi:LogicalProduct";
 	public static final String NODE_NAME_LOGICAL_PRODUCT_NAME = "ddi:LogicalProductName";
 
+	private Name logicalProductName;
 	private DataRelationshipElement dataRelationship;
 	private List<CategorySchemeReference> categorySchemeReferenceList = new ArrayList<>();
 	private List<CodeListSchemeReference> codeListSchemeReferencesList = new ArrayList<>();
@@ -31,6 +33,8 @@ public class LogicalProductElement extends ElementWithUrn {
 			List<CodeList> codeListList
 	) {
 		super(agency);
+
+		this.logicalProductName = new Name(NODE_NAME_LOGICAL_PRODUCT_NAME, title + " Logical Product");
 
 		// Data Relationship
 		setDataRelationship(title, variableSchemeList);
@@ -78,6 +82,9 @@ public class LogicalProductElement extends ElementWithUrn {
 
 		super.appendToElement(logicalProduct, doc);
 
+		// Logical Product Name
+		this.logicalProductName.appendToElement(logicalProduct, doc);
+
 		// Logical Record
 		getDataRelationship().appendToElement(logicalProduct, doc);
 
@@ -118,7 +125,7 @@ public class LogicalProductElement extends ElementWithUrn {
 	public void setDataRelationship(String title, List<VariableScheme> variableSchemeList) {
 		LogicalRecordElement logicalRecord = new LogicalRecordElement(getAgency(), title, variableSchemeList);
 
-		DataRelationshipElement dataRelationshipElement = new DataRelationshipElement(getAgency());
+		DataRelationshipElement dataRelationshipElement = new DataRelationshipElement(title, getAgency());
 		dataRelationshipElement.setLogicalRecord(logicalRecord);
 		this.dataRelationship = dataRelationshipElement;
 	}

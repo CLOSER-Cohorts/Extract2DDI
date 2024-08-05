@@ -1,0 +1,1226 @@
+<?xml version="1.0" encoding="UTF-8"?><DDIInstance xmlns="ddi:instance:3_2" isMaintainable="true" scopeOfUniqueness="Agency" xml:lang="en-GB" xmlns:ddi="ddi:logicalproduct:3_2" xmlns:ddi1="ddi:physicaldataproduct_proprietary:3_2" xmlns:g="ddi:group:3_2" xmlns:p="ddi:physicaldataproduct:3_2" xmlns:pi="ddi:physicalinstance:3_2" xmlns:r="ddi:reusable:3_2">
+    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:667ba6e1-900f-4196-9f7c-eb0f03933c8b:1</r:URN>
+    <r:Citation>
+        <r:Title>
+            <r:String xml:lang="en-GB"/>
+        </r:Title>
+        <r:AlternateTitle>
+            <r:String xml:lang="en-GB"/>
+        </r:AlternateTitle>
+    </r:Citation>
+    <g:ResourcePackage>
+        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:e4ced95d-d38a-4d3a-8557-063476f058f9:1</r:URN>
+        <r:Citation>
+            <r:Title>
+                <r:String xml:lang="en-GB"/>
+            </r:Title>
+            <r:AlternateTitle>
+                <r:String xml:lang="en-GB"/>
+            </r:AlternateTitle>
+        </r:Citation>
+        <r:Purpose>
+            <r:Content/>
+        </r:Purpose>
+        <ddi:LogicalProduct>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:42257e19-1389-4d7a-88a7-8554211a3407:1</r:URN>
+            <ddi:DataRelationship>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:cba6450f-9741-4e12-a30e-4e428e204265:1</r:URN>
+                <ddi:LogicalRecord>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:39cc3fd1-561c-4df4-856f-1f104593551f:1</r:URN>
+                    <ddi:LogicalRecordName>
+                        <r:String>src/test/resources/test-file-data-types.sav</r:String>
+                    </ddi:LogicalRecordName>
+                    <ddi:VariablesInRecord>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c138e082-3c8e-4873-b5ba-322380ec7f8c:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:eb22e869-5ced-4616-891b-fb41a97d743d:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:08e31697-8aa3-4be0-9153-fb380520e468:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:66d46688-a5a1-4f40-b0bc-987903cbbc3b:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:6e000a82-623d-45d4-9a98-963fbf2c6f87:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a075ec04-d960-4e9a-9892-2519fda722ae:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85eaf847-f128-4ae4-9fdd-241c72437161:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3c2774f2-9322-4d49-8554-571df0e58f01:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bcabe972-b527-44ce-8f64-d771171b2d92:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3ff1cacd-bae7-4b38-834d-66f946de949a:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c964d510-90a1-4ade-9cc9-a7b0bcd18b07:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:730e5c6c-f58e-4921-8501-65ddf7314155:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3767b6c2-7695-4b31-98a9-ec0bac3f6238:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                        <ddi:VariableUsedReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:b87a410b-beae-42bf-8acd-e124c77ddde7:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </ddi:VariableUsedReference>
+                    </ddi:VariablesInRecord>
+                </ddi:LogicalRecord>
+            </ddi:DataRelationship>
+            <r:CategorySchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:225a117e-f0b3-4239-9159-7a9579fa194a:1</r:URN>
+                <r:TypeOfObject>CategoryScheme</r:TypeOfObject>
+            </r:CategorySchemeReference>
+            <r:CategorySchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:7a5ae356-4450-4f21-a0ea-657870b999e0:1</r:URN>
+                <r:TypeOfObject>CategoryScheme</r:TypeOfObject>
+            </r:CategorySchemeReference>
+            <r:CategorySchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3d73a332-381d-4d5e-8f0c-3452b593b287:1</r:URN>
+                <r:TypeOfObject>CategoryScheme</r:TypeOfObject>
+            </r:CategorySchemeReference>
+            <r:CodeListSchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:f511374b-4f33-421d-94c3-3f06e1bad847:1</r:URN>
+                <r:TypeOfObject>CodeListScheme</r:TypeOfObject>
+            </r:CodeListSchemeReference>
+            <r:CodeListSchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d827bc5d-1fb2-4709-9d39-74cec704f11b:1</r:URN>
+                <r:TypeOfObject>CodeListScheme</r:TypeOfObject>
+            </r:CodeListSchemeReference>
+            <r:CodeListSchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:33814e6d-d58a-448f-93ef-18186989f822:1</r:URN>
+                <r:TypeOfObject>CodeListScheme</r:TypeOfObject>
+            </r:CodeListSchemeReference>
+            <r:VariableSchemeReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d76f3b7c-1980-4d6d-a085-e3374ef58881:1</r:URN>
+                <r:TypeOfObject>VariableScheme</r:TypeOfObject>
+            </r:VariableSchemeReference>
+        </ddi:LogicalProduct>
+        <p:PhysicalDataProduct>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:923ef9d3-63a8-404e-8f6c-5be0e6319b8c:1</r:URN>
+            <p:PhysicalStructureScheme>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a241823e-9060-42b6-b90b-fb1f0908eb07:1</r:URN>
+                <p:PhysicalStructure>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:55ccef94-6101-4ce7-b959-d031a8c7953a:1</r:URN>
+                    <r:BasedOnObject>
+                        <r:BasedOnReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a90c4de8-d73c-45c9-b2fb-e57afe1e0817:1</r:URN>
+                            <r:TypeOfObject>LogicalProduct</r:TypeOfObject>
+                        </r:BasedOnReference>
+                    </r:BasedOnObject>
+                    <p:FileFormat/>
+                    <p:GrossRecordStructure>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:4ca90387-087a-4425-a828-b42de785b1ba:1</r:URN>
+                        <p:LogicalRecordReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:724b3f6c-5446-4595-96fc-a3229397876e:1</r:URN>
+                            <r:TypeOfObject>LogicalProduct</r:TypeOfObject>
+                        </p:LogicalRecordReference>
+                        <p:PhysicalRecordSegment>
+                            <r:Agency>uk.closer</r:Agency>
+                            <r:ID>382cef9d-aa1f-434d-a3d1-3ae17cf11bd5</r:ID>
+                            <r:Version>1</r:Version>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:382cef9d-aa1f-434d-a3d1-3ae17cf11bd5:1</r:URN>
+                        </p:PhysicalRecordSegment>
+                    </p:GrossRecordStructure>
+                </p:PhysicalStructure>
+            </p:PhysicalStructureScheme>
+            <p:RecordLayoutScheme>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c2c7a7c8-55ff-483f-8e76-c397a6b332c5:1</r:URN>
+                <ddi1:RecordLayout>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:2c16f566-dcc7-4df9-95ee-70058dbf8dbb:1</r:URN>
+                    <p:PhysicalStructureLinkReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:724dba16-e70f-46c4-86a0-f7fbdc845424:1</r:URN>
+                        <r:TypeOfObject>PhysicalRecordSegment</r:TypeOfObject>
+                        <p:PhysicalRecordSegmentUsed>382cef9d-aa1f-434d-a3d1-3ae17cf11bd5</p:PhysicalRecordSegmentUsed>
+                    </p:PhysicalStructureLinkReference>
+                    <ddi1:SystemSoftware>
+                        <r:SoftwareName>
+                            <r:String xml:lang="en-GB">SPSS</r:String>
+                        </r:SoftwareName>
+                        <r:Description>
+                            <r:Content>IBM SPSS STATISTICS 64-bit Macintosh 28.0.0.0</r:Content>
+                        </r:Description>
+                    </ddi1:SystemSoftware>
+                    <r:DefaultVariableSchemeReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d76f3b7c-1980-4d6d-a085-e3374ef58881:1</r:URN>
+                        <r:TypeOfObject>VariableScheme</r:TypeOfObject>
+                    </r:DefaultVariableSchemeReference>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c138e082-3c8e-4873-b5ba-322380ec7f8c:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>A32</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:eb22e869-5ced-4616-891b-fb41a97d743d:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F2.0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:08e31697-8aa3-4be0-9153-fb380520e468:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F8.4</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>4</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:66d46688-a5a1-4f40-b0bc-987903cbbc3b:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F8.2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:6e000a82-623d-45d4-9a98-963fbf2c6f87:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>Cca8.2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a075ec04-d960-4e9a-9892-2519fda722ae:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>Dollar7.2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85eaf847-f128-4ae4-9fdd-241c72437161:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>Date9</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3c2774f2-9322-4d49-8554-571df0e58f01:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>Month3</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bcabe972-b527-44ce-8f64-d771171b2d92:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>QYr6</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3ff1cacd-bae7-4b38-834d-66f946de949a:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>Time5.0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c964d510-90a1-4ade-9cc9-a7b0bcd18b07:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>DateTime23.2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>2</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:730e5c6c-f58e-4921-8501-65ddf7314155:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F8.0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3767b6c2-7695-4b31-98a9-ec0bac3f6238:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F8.0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                    <ddi1:DataItem>
+                        <r:VariableReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:b87a410b-beae-42bf-8acd-e124c77ddde7:1</r:URN>
+                            <r:TypeOfObject>Variable</r:TypeOfObject>
+                        </r:VariableReference>
+                        <r:ProprietaryInfo>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Width</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>WriteFormatType</r:AttributeKey>
+                                <r:AttributeValue>F8.0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                            <r:ProprietaryProperty>
+                                <r:AttributeKey>Decimals</r:AttributeKey>
+                                <r:AttributeValue>0</r:AttributeValue>
+                            </r:ProprietaryProperty>
+                        </r:ProprietaryInfo>
+                    </ddi1:DataItem>
+                </ddi1:RecordLayout>
+            </p:RecordLayoutScheme>
+        </p:PhysicalDataProduct>
+        <pi:PhysicalInstance>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a3bd3cdd-1e71-434c-944f-3be8bf7d92f6:1</r:URN>
+            <r:Citation>
+                <r:Title>
+                    <r:String xml:lang="en-GB"/>
+                </r:Title>
+                <r:AlternateTitle>
+                    <r:String xml:lang="en-GB"/>
+                </r:AlternateTitle>
+            </r:Citation>
+            <r:RecordLayoutReference>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:2c16f566-dcc7-4df9-95ee-70058dbf8dbb:1</r:URN>
+                <r:TypeOfObject>RecordLayout</r:TypeOfObject>
+            </r:RecordLayoutReference>
+            <pi:DataFileIdentification>
+                <pi:DataFileURI>src/test/resources/test-file-data-types.sav</pi:DataFileURI>
+            </pi:DataFileIdentification>
+            <pi:GrossFileStructure>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bda61723-6d62-4468-b27b-6bd595708211:1</r:URN>
+                <pi:CreationSoftware>
+                    <r:SoftwareName>
+                        <r:String xml:lang="en-GB">SPSS</r:String>
+                    </r:SoftwareName>
+                    <r:Description>
+                        <r:Content>IBM SPSS STATISTICS 64-bit Macintosh 28.0.0.0</r:Content>
+                    </r:Description>
+                </pi:CreationSoftware>
+                <pi:CaseQuantity>10</pi:CaseQuantity>
+            </pi:GrossFileStructure>
+            <pi:StatisticalSummary>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:51aefbe7-36d6-4300-a8a1-c2e57fdd2c09:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c138e082-3c8e-4873-b5ba-322380ec7f8c:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:1330b7bb-1cb6-439a-9b60-5ab77d9b109d:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:eb22e869-5ced-4616-891b-fb41a97d743d:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.5811388300841898</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:efcf6d62-78ea-4244-ade3-2901764fe35d:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:08e31697-8aa3-4be0-9153-fb380520e468:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.1111</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.5555</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3.0555250000000003</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.8975644993429517</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:de0b85b2-9644-4062-bedb-7370f687e0b7:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:66d46688-a5a1-4f40-b0bc-987903cbbc3b:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.11</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.55</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3.0525</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.8956858917025254</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:f5a0ef3e-8c99-40ed-8f29-c7b8c940edef:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:6e000a82-623d-45d4-9a98-963fbf2c6f87:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.11</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.55</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3.0525</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.8956858917025254</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:eb4e90b9-eecf-40a3-9fcf-3614c853d6a4:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a075ec04-d960-4e9a-9892-2519fda722ae:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.11</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.55</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3.0525</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.8956858917025254</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a91ea695-21cb-4ce4-9dab-a7ed945ea467:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85eaf847-f128-4ae4-9fdd-241c72437161:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">101.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">505.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">277.75</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">172.49033789365325</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d07ec519-b462-4245-998c-3523315d16ab:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3c2774f2-9322-4d49-8554-571df0e58f01:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:0fee53dd-4e01-41a7-aa69-d3b66e78f91b:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bcabe972-b527-44ce-8f64-d771171b2d92:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">101.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">203.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">127.5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">50.34878350069643</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:2b151228-8b6f-4e9c-8fac-34863bbb13db:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3ff1cacd-bae7-4b38-834d-66f946de949a:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">5.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">2.75</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.707825127659933</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:ece3c2a8-8696-470c-b28d-1a4177714bf9:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c964d510-90a1-4ade-9cc9-a7b0bcd18b07:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">12001010101.53</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">52005050505.54</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">29502777778.2875</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">17079976352.472021</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c6bf69af-5a76-49db-826f-836b7d244399:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:730e5c6c-f58e-4921-8501-65ddf7314155:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">2.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0.5773502691896257</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:5ef35f7a-0aba-4474-bc89-381f9616adce:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3767b6c2-7695-4b31-98a9-ec0bac3f6238:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">4</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">2.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.5</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0.5773502691896257</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+                <pi:VariableStatistics>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d3ac4482-842f-4c12-855b-9e20bae1f996:1</r:URN>
+                    <r:VariableReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:b87a410b-beae-42bf-8acd-e124c77ddde7:1</r:URN>
+                        <r:TypeOfObject>Variable</r:TypeOfObject>
+                    </r:VariableReference>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>ValidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">3</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>InvalidCases</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">2</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Minimum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Maximum</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">2.0</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>Mean</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">1.3333333333333333</pi:Statistic>
+                    </pi:SummaryStatistic>
+                    <pi:SummaryStatistic>
+                        <pi:TypeOfSummaryStatistic>StandardDeviation</pi:TypeOfSummaryStatistic>
+                        <pi:Statistic isWeighted="false">0.5773502691896257</pi:Statistic>
+                    </pi:SummaryStatistic>
+                </pi:VariableStatistics>
+            </pi:StatisticalSummary>
+        </pi:PhysicalInstance>
+        <ddi:CategoryScheme>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:225a117e-f0b3-4239-9159-7a9579fa194a:1</r:URN>
+            <ddi:CategorySchemeName>
+                <r:String>74d10c9e-2f33-469a-ae39-d1d56da0e202</r:String>
+            </ddi:CategorySchemeName>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:be081a90-ae23-46eb-9f22-25a4ec89c2cc:1</r:URN>
+                <r:Label>
+                    <r:Content>Yes</r:Content>
+                </r:Label>
+            </ddi:Category>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:e6bde4e6-2f84-43fa-90f5-dcfbb328b268:1</r:URN>
+                <r:Label>
+                    <r:Content>No</r:Content>
+                </r:Label>
+            </ddi:Category>
+        </ddi:CategoryScheme>
+        <ddi:CategoryScheme>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:7a5ae356-4450-4f21-a0ea-657870b999e0:1</r:URN>
+            <ddi:CategorySchemeName>
+                <r:String>cb5acf7f-da72-4769-af1d-65dcb3734dd1</r:String>
+            </ddi:CategorySchemeName>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3a5e8ba0-679d-4b6e-aaba-be158ba7523e:1</r:URN>
+                <r:Label>
+                    <r:Content>Oui</r:Content>
+                </r:Label>
+            </ddi:Category>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:fe41cdd4-5593-4fd4-9aa2-6ce4a6f16c1e:1</r:URN>
+                <r:Label>
+                    <r:Content>Non</r:Content>
+                </r:Label>
+            </ddi:Category>
+        </ddi:CategoryScheme>
+        <ddi:CategoryScheme>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3d73a332-381d-4d5e-8f0c-3452b593b287:1</r:URN>
+            <ddi:CategorySchemeName>
+                <r:String>c61e41c6-b516-48b5-8429-92499cec9d81</r:String>
+            </ddi:CategorySchemeName>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:4f130de8-3683-453d-83da-3e6113fb6726:1</r:URN>
+                <r:Label>
+                    <r:Content>Yes</r:Content>
+                </r:Label>
+            </ddi:Category>
+            <ddi:Category>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85a7d14d-3d57-495d-b7e6-0d654db1a28a:1</r:URN>
+                <r:Label>
+                    <r:Content>No</r:Content>
+                </r:Label>
+            </ddi:Category>
+        </ddi:CategoryScheme>
+        <ddi:CodeListScheme>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:ea11045e-38ec-49c5-aaa3-1a4be60e28e3:1</r:URN>
+            <ddi:CodeList>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:f511374b-4f33-421d-94c3-3f06e1bad847:1</r:URN>
+                <ddi:CodeListName>
+                    <r:String/>
+                </ddi:CodeListName>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:4374febc-51cc-40c7-960a-1ab800da0bbd:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:be081a90-ae23-46eb-9f22-25a4ec89c2cc:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>Yes</r:Value>
+                </ddi:Code>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:48502443-a63e-4405-9523-4fdbc0d4667d:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:e6bde4e6-2f84-43fa-90f5-dcfbb328b268:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>No</r:Value>
+                </ddi:Code>
+            </ddi:CodeList>
+            <ddi:CodeList>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d827bc5d-1fb2-4709-9d39-74cec704f11b:1</r:URN>
+                <ddi:CodeListName>
+                    <r:String/>
+                </ddi:CodeListName>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3d9e6583-5ebf-4cd7-9c42-f405c418847d:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3a5e8ba0-679d-4b6e-aaba-be158ba7523e:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>Oui</r:Value>
+                </ddi:Code>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c03aca89-b8cf-4d4a-b0a1-2b07731791e6:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:fe41cdd4-5593-4fd4-9aa2-6ce4a6f16c1e:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>Non</r:Value>
+                </ddi:Code>
+            </ddi:CodeList>
+            <ddi:CodeList>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:33814e6d-d58a-448f-93ef-18186989f822:1</r:URN>
+                <ddi:CodeListName>
+                    <r:String/>
+                </ddi:CodeListName>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:e6e43cd9-527c-4cb7-8dcb-a0dc98577727:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:4f130de8-3683-453d-83da-3e6113fb6726:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>Yes</r:Value>
+                </ddi:Code>
+                <ddi:Code>
+                    <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bcff5e57-3059-4f5c-8506-8a5bbba365bf:1</r:URN>
+                    <r:CategoryReference>
+                        <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85a7d14d-3d57-495d-b7e6-0d654db1a28a:1</r:URN>
+                        <r:TypeOfObject>Category</r:TypeOfObject>
+                    </r:CategoryReference>
+                    <r:Value>No</r:Value>
+                </ddi:Code>
+            </ddi:CodeList>
+        </ddi:CodeListScheme>
+        <ddi:VariableScheme>
+            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:d76f3b7c-1980-4d6d-a085-e3374ef58881:1</r:URN>
+            <ddi:VariableSchemeName>
+                <r:String>src/test/resources/test-file-data-types.sav</r:String>
+            </ddi:VariableSchemeName>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c138e082-3c8e-4873-b5ba-322380ec7f8c:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestString</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>String (32 characters)</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:TextRepresentation>
+                        <r:RecommendedDataType>text</r:RecommendedDataType>
+                    </r:TextRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:eb22e869-5ced-4616-891b-fb41a97d743d:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestInteger</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Integer</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:08e31697-8aa3-4be0-9153-fb380520e468:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDouble4dp</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Numeric 4 decimal points</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:66d46688-a5a1-4f40-b0bc-987903cbbc3b:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDouble2dp</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Fake Currency</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:6e000a82-623d-45d4-9a98-963fbf2c6f87:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestCustomCurrency</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Custom £ Currency</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:a075ec04-d960-4e9a-9892-2519fda722ae:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestRealCurrency</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Dollar</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:85eaf847-f128-4ae4-9fdd-241c72437161:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDate1</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Date dd/mmm/yy</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3c2774f2-9322-4d49-8554-571df0e58f01:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDate2</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Date Jan,Feb,Mar</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:bcabe972-b527-44ce-8f64-d771171b2d92:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDate3</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Date Q1 2000</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3ff1cacd-bae7-4b38-834d-66f946de949a:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestTime</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Time mm:ss</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:c964d510-90a1-4ade-9cc9-a7b0bcd18b07:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestDateTime</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>DateTime dd.mm.yyyy.mm.ss</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:NumericRepresentation>
+                        <r:RecommendedDataType>Decimal</r:RecommendedDataType>
+                    </r:NumericRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:730e5c6c-f58e-4921-8501-65ddf7314155:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestCodedValue1</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Coded Value basic</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:CodeRepresentation>
+                        <r:RecommendedDataType>Numeric</r:RecommendedDataType>
+                        <r:CodeListReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:12081d38-d704-46d8-8839-3fe423876448:1</r:URN>
+                            <r:TypeOfObject>CodeList</r:TypeOfObject>
+                        </r:CodeListReference>
+                    </r:CodeRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:3767b6c2-7695-4b31-98a9-ec0bac3f6238:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestCodeValue2</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Coded Value Basic plus missing</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:CodeRepresentation>
+                        <r:RecommendedDataType>Numeric</r:RecommendedDataType>
+                        <r:CodeListReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:aea69cb5-1b4a-41ab-9fbe-00ba744c4449:1</r:URN>
+                            <r:TypeOfObject>CodeList</r:TypeOfObject>
+                        </r:CodeListReference>
+                    </r:CodeRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+            <ddi:Variable>
+                <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:b87a410b-beae-42bf-8acd-e124c77ddde7:1</r:URN>
+                <ddi:VariableName>
+                    <r:String>TestCodeValue3</r:String>
+                </ddi:VariableName>
+                <r:Label>
+                    <r:Content>Coded Value Basic plus range missing</r:Content>
+                </r:Label>
+                <ddi:VariableRepresentation>
+                    <r:CodeRepresentation>
+                        <r:RecommendedDataType>Numeric</r:RecommendedDataType>
+                        <r:CodeListReference>
+                            <r:URN typeOfIdentifier="Canonical">urn:ddi:uk.closer:90b23b04-84ad-4be9-87e0-336c0d43403d:1</r:URN>
+                            <r:TypeOfObject>CodeList</r:TypeOfObject>
+                        </r:CodeListReference>
+                    </r:CodeRepresentation>
+                </ddi:VariableRepresentation>
+            </ddi:Variable>
+        </ddi:VariableScheme>
+    </g:ResourcePackage>
+</DDIInstance>

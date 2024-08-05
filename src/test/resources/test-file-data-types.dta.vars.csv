@@ -6,10 +6,10 @@ TestDouble2dp,Fake Currency,3,0,1.11,3.33,2.22,1.11
 TestCustomCurrency,Custom Currency,3,0,1.11,3.33,2.22,1.11
 TestRealCurrency,Dollar,3,0,1.11,3.33,2.22,1.11
 TestDate1,Date dd/mmm/yy,3,0,14976.0,15767.0,15372.0,395.5009481657408
-TestDate2,"Date Jan,Feb,Mar",0,3,,,,
+TestDate2,"Date Jan,Feb,Mar",3,0,1.0,3.0,2.0,1.0
 TestDate3,Date Q1 2000,3,0,14976.0,15887.0,15431.333333333334,455.5000914745609
 TestTime,Time mm:ss,3,0,61.0,183.0,122.0,61.0
 TestDateTime,DateTime dd.mm.yyyy.mm.ss,3,0,14976.0,15767.0,15372.0,395.5009481657408
-TestCodedValue1,Coded Value basic,0,3,,,,
-TestCodeValue2,Coded Value Basic plus missing,0,3,,,,
-TestCodeValue3,Coded Value Basic plus range missing,0,3,,,,
+TestCodedValue1,Coded Value basic,3,0,1.0,2.0,1.3333333333333333,0.5773502691896257
+TestCodeValue2,Coded Value Basic plus missing,2,1,1.0,2.0,1.5,0.7071067811865476
+TestCodeValue3,Coded Value Basic plus range missing,3,0,1.0,99.0,66.0,56.293871780150276

@@ -31,7 +31,7 @@ public class LogicalRecordElement extends ElementWithUrn {
 		}
 		setVariablesInRecord(variablesInRecord);
 
-		setLogicalProductName(title);
+		setLogicalProductName(title + " Logical Record");
 	}
 
 	@Override

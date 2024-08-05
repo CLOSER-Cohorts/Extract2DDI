@@ -16,17 +16,29 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 	private String ddiLanguage;
 	private Map<String, String> excludeVariableToStatMap;
 	private String statistics;
+	private String citationTitle;
+	private String citationAlternateTitle;
+	private String datasetUri;
+	private String isPublic;
 
 	public GenerateDDI32(
 		String agency,
 		String ddiLanguage,
 		Map<String, String> excludeVariableToStatMap,
-		String statistics
+		String statistics,
+		String citationTitle,
+		String citationAlternateTitle,
+		String datasetUri,
+		String isPublic
 	) {
 		this.agency = agency;
 		this.ddiLanguage = ddiLanguage;
 		this.excludeVariableToStatMap = excludeVariableToStatMap;
 		this.statistics = statistics;
+		this.citationTitle = citationTitle;
+		this.citationAlternateTitle = citationAlternateTitle;
+		this.datasetUri = datasetUri;
+		this.isPublic = isPublic;
 	}
 
 	public DDI generateDDI(String dataFile, boolean runSumStats, long observationLimit) throws Exception {
@@ -36,8 +48,10 @@ public class GenerateDDI32 extends DdiLifecycleGenerator {
 				agency,
 				ddiLanguage,
 				dataFile,
-				"",
-				"",
+				datasetUri,
+				isPublic,
+				citationTitle,
+				citationAlternateTitle,
 				variableSchemeList,
 				categorySchemeList,
 				codeListList,
