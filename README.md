@@ -87,6 +87,10 @@ usage: Options are as follows...
     outputfile=example_file_name
     sumstats=TRUE
     obsLimit=1000
+    dataset_short_description: short description
+    data_description: Description of file
+    dataset_URI: https:example.com
+    is_public : [0|1]
 
  --format [2.5 | 3.2]
 
