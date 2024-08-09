@@ -49,11 +49,9 @@ public class VariableStatistics extends ElementWithUrn {
 			summaryStatistic.appendToElement(variableStatistics, doc);
 		}
 
-		if (variableCategoryList.size() > 0) {
+		for (VariableCategory variableCategory : variableCategoryList) {
 			Element unfilteredCategoryStatistics = doc.createElement(NODE_NAME_UNFILTERED_CATEGORY_STATISTICS);
-			for (VariableCategory variableCategory : variableCategoryList) {
-				variableCategory.appendToElement(unfilteredCategoryStatistics, doc);
-			}
+			variableCategory.appendToElement(unfilteredCategoryStatistics, doc);
 			variableStatistics.appendChild(unfilteredCategoryStatistics);
 		}
 

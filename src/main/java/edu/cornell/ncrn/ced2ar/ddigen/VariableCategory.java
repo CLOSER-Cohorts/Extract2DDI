@@ -33,7 +33,7 @@ public class VariableCategory implements Appendable {
 		Element variableCategory = doc.createElement(prefixLocal + NODE_NAME_VARIABLE_CATEGORY);
 
 		Element categoryValueElement = doc.createElement(prefixLocal + NODE_NAME_CATEGORY_VALUE);
-		Element value = doc.createElement(prefixLocal + NODE_NAME_VALUE);
+		Element value = doc.createElement(NODE_NAME_VALUE);
 		value.setTextContent(categoryValue);
 		categoryValueElement.appendChild(value);
 
@@ -43,6 +43,7 @@ public class VariableCategory implements Appendable {
 		categoryStatisticType.setTextContent("Frequency");
 
 		Element statistic = doc.createElement(prefixLocal + NODE_NAME_STATISTIC);
+		statistic.setAttribute("isWeighted", "false");
 		statistic.setTextContent(frequency);
 
 		Element categoryStatistic = doc.createElement(prefixLocal + NODE_NAME_CATEGORY_STATISTIC);

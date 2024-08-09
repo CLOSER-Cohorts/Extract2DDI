@@ -34,6 +34,7 @@ public class PhysicalInstance extends ElementWithUrn {
 	public PhysicalInstance(
 			String agency,
 			String dataFileUri,
+			String isPublic,
 			String ddiLang,
 			long caseQuantity,
 			FileFormatInfo.Format dataFormat,
@@ -47,9 +48,9 @@ public class PhysicalInstance extends ElementWithUrn {
 			List<CodeList> codeListList
 	) {
 		super(agency);
-		this.dataFileIdentification = new DataFileIdentification(dataFileUri, "pi");
+		this.dataFileIdentification = new DataFileIdentification(dataFileUri, "pi", isPublic);
 		this.grossFileStructure = new GrossFileStructure(agency, ddiLang, caseQuantity, dataFormat, productIdentification);
-		setCitation(new Citation(citationTitle, citationAlternateTitle, ddiLang));
+		setCitation(new Citation(citationTitle + " Physical Instance", citationAlternateTitle, ddiLang));
 
 		StatisticalSummary statisticalSummary = new StatisticalSummary();
 
@@ -147,9 +148,9 @@ public class PhysicalInstance extends ElementWithUrn {
 									variableStatistics.addVariableCategory(".", invalidValueFrequency, "pi");
 								}
 								for (Code code : codeList.getCodeList()) {
-									long frequency = variableFrequency.getCount(code.getValue());
+									long frequency = variableFrequency.getCount(code.getCategoryId());
 									if (frequency > 0) {
-										variableStatistics.addVariableCategory(code.getValue(), frequency);
+										variableStatistics.addVariableCategory(code.getValue(), frequency, "pi");
 									}
 								}
 							}

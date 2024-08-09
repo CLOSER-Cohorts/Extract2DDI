@@ -28,7 +28,7 @@ public class GenerateDdi32StatisticsTest {
 		// Arrange
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
 
-		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"max,min,mean,valid,invalid,freq,stdev");
+		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"max,min,mean,valid,invalid,freq,stdev", "", "", "", "");
 
 		// Act
 		DDI ddi = generateDDI32.generateDDI(file.getPath(), IS_SUMMARY_STATISTICS_ENABLED, RECORD_LIMIT);
@@ -58,7 +58,7 @@ public class GenerateDdi32StatisticsTest {
 		// Arrange
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.dta");
 
-		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"max,min,mean,valid,invalid,freq,stdev");
+		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"max,min,mean,valid,invalid,freq,stdev", "", "", "", "");
 
 		// Act
 		DDI ddi = generateDDI32.generateDDI(file.getPath(), IS_SUMMARY_STATISTICS_ENABLED, RECORD_LIMIT);
@@ -75,12 +75,12 @@ public class GenerateDdi32StatisticsTest {
 		Assert.assertEquals("Invalid ValidCases statistic value", "3", variableStatisticsNodeList.item(0).getChildNodes().item(5).getChildNodes().item(3).getTextContent());
 		Assert.assertEquals("Invalid InvalidCases statistic value", "97",  variableStatisticsNodeList.item(0).getChildNodes().item(7).getChildNodes().item(3).getTextContent());
 
-		Assert.assertEquals("Invalid StandardDeviation statistic count", 9, StringUtils.countMatches(ddi.getXml(), "StandardDeviation"));
-		Assert.assertEquals("Invalid Maximum statistic count", 9, StringUtils.countMatches(ddi.getXml(), "Maximum"));
-		Assert.assertEquals("Invalid Minimum statistic count", 9, StringUtils.countMatches(ddi.getXml(), "Minimum"));
+		Assert.assertEquals("Invalid StandardDeviation statistic count", 13, StringUtils.countMatches(ddi.getXml(), "StandardDeviation"));
+		Assert.assertEquals("Invalid Maximum statistic count", 13, StringUtils.countMatches(ddi.getXml(), "Maximum"));
+		Assert.assertEquals("Invalid Minimum statistic count", 13, StringUtils.countMatches(ddi.getXml(), "Minimum"));
 		Assert.assertEquals("Invalid ValidCases statistic count", 14, StringUtils.countMatches(ddi.getXml(), "ValidCases"));
 		Assert.assertEquals("Invalid InvalidCases statistic count", 14, StringUtils.countMatches(ddi.getXml(), "InvalidCases"));
-		Assert.assertEquals("Invalid Mean statistic count", 9, StringUtils.countMatches(ddi.getXml(), "Mean"));
+		Assert.assertEquals("Invalid Mean statistic count", 13, StringUtils.countMatches(ddi.getXml(), "Mean"));
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class GenerateDdi32StatisticsTest {
 		// Arrange
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.sav");
 
-		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"valid");
+		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"valid", "", "", "", "");
 
 		// Act
 		DDI ddi = generateDDI32.generateDDI(file.getPath(), IS_SUMMARY_STATISTICS_ENABLED, RECORD_LIMIT);
@@ -107,7 +107,7 @@ public class GenerateDdi32StatisticsTest {
 		// Arrange
 		File file = FileUtil.getFileFromResource(AbstractFragmentInstanceGeneratorTest.class, "test-file-data-types.dta");
 
-		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"valid");
+		GenerateDDI32 generateDDI32 = new GenerateDDI32("uk.closer", "en-GB", new HashMap<>(),"valid", "", "", "", "");
 
 		// Act
 		DDI ddi = generateDDI32.generateDDI(file.getPath(), IS_SUMMARY_STATISTICS_ENABLED, RECORD_LIMIT);
@@ -130,7 +130,11 @@ public class GenerateDdi32StatisticsTest {
 				"uk.closer",
 				"en-GB",
 				new HashMap<String, String>() {{ put("TestInteger", "max,min,mean,valid,invalid,freq,stdev:remove statistics"); }},
-				"max,min,mean,valid,invalid,freq,stdev"
+				"max,min,mean,valid,invalid,freq,stdev",
+				"",
+				"",
+				"",
+				""
 		);
 
 		// Act
@@ -154,18 +158,22 @@ public class GenerateDdi32StatisticsTest {
 				"uk.closer",
 				"en-GB",
 				new HashMap<String, String>() {{ put("TestInteger", "max,min,mean,valid,invalid,freq,stdev:remove statistics"); }},
-				"max,min,mean,valid,invalid,freq,stdev"
+				"max,min,mean,valid,invalid,freq,stdev",
+				"",
+				"",
+				"",
+				""
 		);
 
 		// Act
 		DDI ddi = generateDDI32.generateDDI(file.getPath(), IS_SUMMARY_STATISTICS_ENABLED, RECORD_LIMIT);
 
 		// Assert
-		Assert.assertEquals("Invalid Maximum statistic count", 8, StringUtils.countMatches(ddi.getXml(), "Maximum"));
-		Assert.assertEquals("Invalid Minimum statistic count", 8, StringUtils.countMatches(ddi.getXml(), "Minimum"));
+		Assert.assertEquals("Invalid Maximum statistic count", 12, StringUtils.countMatches(ddi.getXml(), "Maximum"));
+		Assert.assertEquals("Invalid Minimum statistic count", 12, StringUtils.countMatches(ddi.getXml(), "Minimum"));
 		Assert.assertEquals("Invalid ValidCases statistic count", 13, StringUtils.countMatches(ddi.getXml(), "ValidCases"));
 		Assert.assertEquals("Invalid InvalidCases statistic count", 13, StringUtils.countMatches(ddi.getXml(), "InvalidCases"));
-		Assert.assertEquals("Invalid StandardDeviation statistic count", 8, StringUtils.countMatches(ddi.getXml(), "StandardDeviation"));
-		Assert.assertEquals("Invalid Mean statistic count is incorrect", 8, StringUtils.countMatches(ddi.getXml(), "Mean"));
+		Assert.assertEquals("Invalid StandardDeviation statistic count", 12, StringUtils.countMatches(ddi.getXml(), "StandardDeviation"));
+		Assert.assertEquals("Invalid Mean statistic count is incorrect", 12, StringUtils.countMatches(ddi.getXml(), "Mean"));
 	}
 }

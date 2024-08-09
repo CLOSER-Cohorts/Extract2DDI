@@ -27,7 +27,7 @@ import org.springframework.util.StringUtils;
 
 public class Main {
 
-	private static final Logger logger = Logger.getLogger(GenerateDDI33.class);
+	private static final Logger logger = Logger.getLogger(Main.class);
 
 	private static String FORMAT_OUTPUT_2_5 = "2.5";
 	private static String FORMAT_OUTPUT_3_2 = "3.2";
@@ -111,6 +111,14 @@ public class Main {
 		String ddiLanguage = configUtil.getDdiLanguage();
 		stats = configUtil.getStats();
 		outputFile = configUtil.getOutputFile();
+		String datasetShortDescription = configUtil.getDatasetShortDescription();
+		String dataDescription = configUtil.getDataDescription();
+		String datasetUri = configUtil.getDatasetUri();
+		String isPublic = configUtil.isPublic();
+		if (isPublic != null && !isPublic.equals("0") && !isPublic.equals("1")) {
+			logger.error("is_public must be either 0 or 1");
+			return;
+		}
 
 		Util.fileCheck(dataFile);
 
@@ -128,12 +136,9 @@ public class Main {
 				logger.error("DDI language is required...");
 				return;
 			}
-			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats);
+			GenerateDDI32 generateDDI = new GenerateDDI32(agency, ddiLanguage, excludeVariableToStatMap, stats, dataDescription, datasetShortDescription, datasetUri, isPublic);
 			ddi = generateDDI.generateDDI(dataFile, summaryStats, obsLimit);
 
-			if (summaryStats) {
-				FileUtil.createFile(ddi.getVariableCsv().getStatistics(), dataFile+".stats.csv");
-			}
 //		} else if (formatOutput.equalsIgnoreCase(FORMAT_OUTPUT_3_3_FRAGMENT)) {
 //			if (agency == null || agency.isEmpty()) {
 //				logger.error("Agency is required...");
@@ -170,6 +175,9 @@ public class Main {
 			fileName = dataFile;
 		}
 		FileUtil.createFile(ddi.getXml(), fileName+".xml");
+		if (isFrequencyFileEnabled) {
+			FileUtil.createFile(ddi.getVariableCsv().getFrequencies(), fileName+".freq.csv");
+		}
 		logger.info("Successfully created DDI file");
 		logger.info(observationLimit);
 

@@ -1,0 +1,601 @@
+Variable,Label,Max,Min,Mean,Mode,Valid,Invalid,StdDev
+serial,address serial number,3420.0,1.0,1694.1953435548003,0,1761
+area,area code,916.0,1.0,474.8375922771148,0,1761
+selfcomp,"self-completion qnaire returned,not",,,,0,1761
+readpap,q1a r reads newspaper 3+ times per week,,,,0,1761
+whpaper,q1b [if reads 3+ times] which paper,,,,0,1761
+supparty,q2a political party supporter,,,,0,1761
+closepty,q2c [if not suportr] closer to one party,,,,0,1761
+partyid1,q2b & 2d & 2e party identification[full],,,,0,1761
+voteresn,q3 closest reason why vote in election,,,,0,1761
+voteprob,q4a liklihood of voting in next election,,,,0,1761
+votenoch,q4b [if likely] how vote pref no chance,,,,0,1761
+revmeet,q5a shld revolnry hold public meeting,,,,0,1761
+revteasc,q5a shld revolnry teach in schools,,,,0,1761
+revteacl,q5a shld revolnry teach in higher educ,,,,0,1761
+revpub,q5a shld revolnry publish books,,,,0,1761
+racmeet,q5b shld racist hold public meeting,,,,0,1761
+racteasc,q5b shld racist teach in schools,,,,0,1761
+racteacl,q5b shld racist teach in higher educ,,,,0,1761
+racpub,q5b shld racist publish books,,,,0,1761
+coalitin,q6 better form of govt for britain,,,,0,1761
+mpviews,q7 views mp shld take into account,,,,0,1761
+mped,q8a mp shld be well educated,,,,0,1761
+mppoor,q8a mp shld know poverty,,,,0,1761
+mpbus,q8a mp shld have business experience,,,,0,1761
+mpunion,q8a mp shld have union experience,,,,0,1761
+mplocal,q8a mp shld have local upbringing,,,,0,1761
+mployal,q8a mp shld be loyal to party,,,,0,1761
+mpind,q8a mp shld be independent minded,,,,0,1761
+mpnone,q8a mp: none of these qualities,,,,0,1761
+clred,q8b councllr shld be well educated,,,,0,1761
+clrpoor,q8b councillr shld know poverty,,,,0,1761
+clrbus,q8b councllr shlb have business exp,,,,0,1761
+clrunion,q8b councllr shld have union exp,,,,0,1761
+clrlocal,q8b councllr shld have local upbrngng,,,,0,1761
+clrloyal,q8b councllr shld be loyal to party,,,,0,1761
+clrind,q8b councllr shld be independent minded,,,,0,1761
+clrnone,q8b cllr: none of these qualities,,,,0,1761
+mpoth1,q8a mp: other important qualities,,,,0,1761
+mpna,q8a mp: not answered,,,,0,1761
+clroth1,q8b cllr: other important qualities,,,,0,1761
+clroth2,q8b cllr: knowledge of local matters,,,,0,1761
+clrna,q8b cllr: not answered,,,,0,1761
+cntlcncl,q9a shld councils be cntrld by cent govt,,,,0,1761
+cntlind,q9b shld industry be cntrld by cent govt,,,,0,1761
+stateown,q9c state ownership of industry,,,,0,1761
+badlaw,q10a ever been an unjust law,,,,0,1761
+donemp,q10b [if unjust] ever contacted mp,,,,0,1761
+donespk,q10b [if unjust] spkn influential person,,,,0,1761
+donegov,q10b [if unjust] ever contctd govt dept,,,,0,1761
+donetv,q10b [if unjust] ever contctd media,,,,0,1761
+donesign,q10b [if unjust] ever signed a petition,,,,0,1761
+donerais,q10b [if unjust] raised issue in orgnstn,,,,0,1761
+doneprot,q10b [if unjust] gone on demonstration,,,,0,1761
+donegrp,q10b [if unjust] ever formed a group,,,,0,1761
+donenone,q10b [if unjust] done none of these,,,,0,1761
+domp,q10c would contact mp,,,,0,1761
+dospk,q10c would spk to inflnl person,,,,0,1761
+dogov,q10c would contct govt dept,,,,0,1761
+dotv,q10c would contact media,,,,0,1761
+dosign,q10c would sign petition,,,,0,1761
+dorais,q10c would raise issue in organisation,,,,0,1761
+doprot,q10c would go on demonstration,,,,0,1761
+dogrp,q10c would form a group,,,,0,1761
+donone,q10c would do none of these,,,,0,1761
+mosteff,q10d most effective to change govt mind,,,,0,1761
+obeylaw,q11a should people obey law no exception,,,,0,1761
+breaklaw,q11b would r ever break law,,,,0,1761
+lords,q12a shld h of lords be changed,,,,0,1761
+lordshow,q12b [if lord shld be changed] how,,,,0,1761
+monarchy,q13 importance of monarchy,,,,0,1761
+eec,q14a shd britain continue eec membership,,,,0,1761
+nato,q14b shld britain continue nato member,,,,0,1761
+chinalnk,q15 shld brit hve close links w china,,,,0,1761
+safrlnk,q15 shld brit hve close links w s africa,,,,0,1761
+rusialnk,q15 shld brit hve close links w russia,,,,0,1761
+brazllnk,q15 shld brit hve close links w brazil,,,,0,1761
+usalnk,q15 shld brit hve close links w usa,,,,0,1761
+ngeralnk,q15 shld brit hve close links w nigeria,,,,0,1761
+saudilnk,q15 brit hve close links w saudi arabia,,,,0,1761
+nireland,q16a long term policy for n ireland,,,,0,1761
+troopout,q16b withdraw troops fr n irelnd,,,,0,1761
+usanuke,q17a usa nuclear missiles in britain,,,,0,1761
+ownnuke,q17b own independent nuclear missiles,,,,0,1761
+uknucpol,q17c opinion of british nucl policy,,,,0,1761
+prices,q18 inflation in the next yr:1984,,,,0,1761
+unemp,q19 unemployment in the next yr:1984,,,,0,1761
+unempinf,q20 higher priority: jobs or prices,,,,0,1761
+industry,q21 britains industry in the next yr,,,,0,1761
+ecodif1,q22ab1 people not working hard,,,,0,1761
+ecodif2,q22ab2 employers not investing,,,,0,1761
+ecodif3,q22ab3 decline in world trade,,,,0,1761
+ecodif4,q22ab4 wages too high,,,,0,1761
+ecodif5,q22ab5 energy cost too high f industry,,,,0,1761
+ecodif6,q22ab6 govt spending too high,,,,0,1761
+ecodif7,q22ab7 brit indstry badly managed,,,,0,1761
+ecodif8,q22ab8 workers resist new ways,,,,0,1761
+ecodif9,q22ab9 govt not created jobs,,,,0,1761
+ecodif10,q22ab10 best leavers dont wk in man ind,,,,0,1761
+ecohelp1,q23i control wages by legislation,,,,0,1761
+ecohelp2,q23ii control prices by legislation,,,,0,1761
+ecohelp3,q23iii reduce spendng on health & educn,,,,0,1761
+ecohelp4,q23iv introduce import controls,,,,0,1761
+ecohelp5,q23v incrse govt subsidy for private ind,,,,0,1761
+ecohelp6,q23vi devalue pound,,,,0,1761
+ecohelp7,q23vii reduce spending on defence,,,,0,1761
+ecohelp8,q23viii incentives for job sharing,,,,0,1761
+ecohelp9,q23ix govt set up job-creatng projects,,,,0,1761
+taxavoid,q24a attitude to tax avoiders,,,,0,1761
+taxsneak,q24b [if tax avoid nt allwd]wld r report,,,,0,1761
+incomgap,q25 gap between high & low incomes,,,,0,1761
+taxhi,q26a tax for high income earners,,,,0,1761
+taxmid,q26b tax for middle income earners,,,,0,1761
+taxlow,q26c tax for low income earners,,,,0,1761
+srinc,q27a self-rated income,,,,0,1761
+incmange,q27b how well r managing on income,,,,0,1761
+vyearago,q27c [if 23+] finance compare 5 yrs ago,,,,0,1761
+reconact,q28 rs economic activity last week,,,,0,1761
+remploye,"q29 [if in work,away] employee,self-emp",,,,0,926
+efpttime,"q30 [if employee] full,part time",,,,0,817
+wagenow,"q31a [if employee] wages-high,low",,,,0,817
+paygap,q31b [if emp] pay gap at place of work,,,,0,817
+wagexpct,q32a [if emp] expect wages next year,,,,0,817
+numemp,q32b [if emp] expect no. emps next year,,,,0,817
+leavejob,q32c [if emp] likely leave job next year,,,,0,817
+whygo1,q32d [if likely leaver emp] firm close,,,,0,147
+whygo2,q32d [if likely leaver emp] redundant,,,,0,147
+whygo3,q32d [if likely leaver emp] retire age,,,,0,147
+whygo4,q32d [if likely leaver emp] contract end,,,,0,147
+whygo5,q32d [if likely leaver emp] early retire,,,,0,147
+whygo6,q32d [if likely leaver emp] new employer,,,,0,147
+whygo7,q32d [if likely leaver emp] go self-emp,,,,0,147
+whygo8,q32d [if likely leaver emp] other answer,,,,0,147
+whygo9,"q32d [if likely leaver emp] dk,na",,,,0,147
+elookjob,q33a [if emp] job search if lost job,,,,0,817
+efindjob,q33b [if start look emp]time to find job,999.0,1.0,245.34000000000012,0,400
+eretrain,q33c [if look 3+mths emp] will retrain,,,,0,817
+ejobmove,q33d [if look 3+mths emp] will move,,,,0,817
+ebadjob,q33e [if look 3+mths emp] unaccptble job,,,,0,817
+eothjob,q34 [if emp] done work outside mn job,,,,0,817
+eunemp,q35a [if emp] been unemployed last 5 yrs,,,,0,817
+eunempt,q35b [if emp & unemp last 5 yrs]how long,,,,0,16
+eselfem,q36a [if emp] been self-emp last 5 yrs,,,,0,817
+eselfemt,q36b [if emp & self-emp l 5 yrs]how long,,,,0,1
+eselfser,q36c [if emp & nt s-e l 5 yrs]cnsdrd s-e,,,,0,817
+whynsem1,q36d [if emp & cnsdr s-emp] reason not 1,,,,0,817
+whynsem2,q36d [if emp & cnsdr s-emp] reason not 2,,,,0,817
+whynsem3,q36d [if emp & cnsdr s-emp] reason not 3,,,,0,817
+eselflky,q36e [if emp & ser cnsdr s-e] likely s-e,,,,0,817
+wpunions,q37a [if emp] unions at place of work,,,,0,817
+wpunionw,q37b [if emp & union] wp unions do well,,,,0,817
+indrel,q38a [if emp] mngmt-emp relations at wrk,,,,0,817
+workrun,q38b [if emp] how well workplace managed,,,,0,817
+sfpttime,q39a [if self-emp] full-part time,,,,0,109
+sunemp,q39b [if s-e] been unemployed last 5 yrs,,,,0,109
+sunempt,q39c [if s-e & unemp last 5 yrs]how long,999.0,1.0,12.088888888888889,0,90
+semplee,q40a [if s-e] been employee last 5yrs,,,,0,109
+sempleet,q40b [if s-e & employee l 5 yrs]how long,999.0,3.0,501.0,0,2
+semplser,q40c [if s-e nt emp l 5 yrs]cnsdrd emp,,,,0,109
+semplky,q40e [if s-e & ser cnsdr emp] likely emp,,,,0,109
+bus1ok,q41a [if s-e] business compare 1 yr ago,,,,0,109
+bus5ok,q41b [if s-e] business compare 5 yrs ago,,,,0,109
+wunemp,q42a [if wait-sick] unemployed l 5yrs,,,,0,18
+wunempt,q42b [if w-s & unemp last 5 yrs]how long,,,,0,1
+edlookjb,q43a [if fte] look for job after ed ends,,,,0,28
+edfindjb,q43b [if start look fte]time to find job,999.0,1.0,143.5,0,14
+edbadjob,q43c [if look 3+mths fte] unacctble job,,,,0,28
+uunempt,q44a [if unemp] how long unemp l 5yrs,999.0,1.0,881.7142857142859,0,42
+curunemp,q44b [if unemp] how long current unemp,999.0,1.0,100.8,0,10
+jobcent,q44c [if unemp] registered w jobcentre,,,,0,118
+jobqual,q44d [if unemp] find job to match quals,,,,0,118
+ufindjob,q44e [if unemp] time to find job,999.0,1.0,785.936170212766,0,47
+uretrain,q44f [if unemp 3+mths] will retrain,,,,0,118
+ujobmove,q44g [if unemp 3+mths] will move,,,,0,118
+ubadjob,q44h [if unemp 3+mths] unaceptble job,,,,0,118
+uprefjob,q45 [if unemp] want job if adeq income,,,,0,118
+retage,q46a [if retired] is r retirement age,,,,0,272
+rpension,q46b [if oap] opinion of state pension,,,,0,272
+rpeninyr,q46c [if oap] value of pension in 1yr,,,,0,272
+emplpen,q46d [if rtd] r or spse rec empl pension,,,,0,272
+everjob,q47a [if home] had job in last 5 yrs,,,,0,353
+everjobt,q47b [if home & job l 5yr] when last had,999.0,1.0,9.146938775510204,0,245
+owngo,q47c [if home & jb l 5yr]left own accord,,,,0,353
+ftjobser,q48a [if home & no job l 5yr]considrd ft,,,,0,353
+ptjobser,q48b [if home & nt considred ft job] pt,,,,0,353
+whynojb1,q48c [if home & cnsdrd job] why no job 1,,,,0,353
+whynojb2,q48c [if home & cnsdrd job] why no job 2,,,,0,353
+ftjoblky,q49a [if home] lkly get ft job nxt 5 yrs,,,,0,353
+ptjoblky,q49b [if home] lkly get pt job nxt 5 yrs,,,,0,353
+spend1,q50 1st priority for extra govt spending,,,,0,1761
+spend2,q50 2nd priority for extra govt spending,,,,0,1761
+socben1,q51 1st priority f spending on soc bens,,,,0,1761
+socben2,q51 2nd priority f spending on soc bens,,,,0,1761
+falseclm,q52a many people falsely claim benefits,,,,0,1761
+failclm,q52b many people fail to claim benefits,,,,0,1761
+dole,q53 opinion on unemployment benefit,,,,0,1761
+taxspend,q54 views on tax v health etc spending,,,,0,1761
+nhsvalue,q55 which family gets best nhs value,,,,0,1761
+nhssat,q56 how satisfied with nhs,,,,0,1761
+gpsat,q57 how satisfied with doctors,,,,0,1761
+dentsat,q57 how satisfied with nhs dentists,,,,0,1761
+hvsat,q57 how satisfied with health visitors,,,,0,1761
+dnsat,q57 how satisfied with district nurses,,,,0,1761
+inpatsat,q57 how satisfied with being inpatient,,,,0,1761
+outpasat,q57 how satisfied with being outpatient,,,,0,1761
+privmed,q58a r has private health insurance,,,,0,1761
+privpaid,q58b [if has hlth ins] does employer pay,,,,0,1761
+prinsnhs,q58c effect of private hlth ins on nhs,,,,0,1761
+prtrtnhs,q59a effect of private med ttmt on nhs,,,,0,1761
+hviews1,q59b priv med ttmt in brit shld be abol,,,,0,1761
+hviews2,q59b pr med ttmt in nhs hos shld be abol,,,,0,1761
+hviews3,q59b arrangements for priv med  nhs ok,,,,0,1761
+hviews4,q59b pr med ttmt outside nhs shld expand,,,,0,1761
+hviews5,q59b pr med ttmt generally shld expand,,,,0,1761
+hviews6,q59b health views: dont agree with any,,,,0,1761
+nhslimit,q60 nhs only avail to lower income grps,,,,0,1761
+housesat,q61 satisfaction with own accommodation,,,,0,1761
+areapast,q62a has area changed in last 2 yrs,,,,0,1761
+areanext,q62b will area change in next 2 yrs,,,,0,1761
+tenure1,q63 housing tenure [fullform],,,,0,1761
+cnclbuy,q64a [if council] intend buy cncl accom,,,,0,1761
+cnclrnt,q64b [if council] view on rent level,,,,0,1761
+edspend1,q65 1st priority f extra spendng on ed,,,,0,1761
+edspend2,q65 2nd priority f extra spendng on ed,,,,0,1761
+primeed,q66a to improve primary education,,,,0,1761
+seced,q66b to improve secondary education,,,,0,1761
+privsch,q67a opinion of private schooling,,,,0,1761
+privefct,q67b effect of priv sch on state sch,,,,0,1761
+edvalue,q68 which family gets best educat value,,,,0,1761
+edstd,q69 educational standards today,,,,0,1761
+pubres,q70a how useful publicatn o exam results,,,,0,1761
+edinfo,q70b is other info necessary for parents,,,,0,1761
+edinfo1,q70c what info for parents of pupils 1,,,,0,1761
+edinfo2,q70c what info for parents of pupils 2,,,,0,1761
+edinfo3,q70c what info for parents of pupils 3,,,,0,1761
+hedopp,q71a opportunities for higher education,,,,0,1761
+hegrant,q71b grants or loans for students,,,,0,1761
+victim,q72a worry about being a victim of crime,,,,0,1761
+vmworry,q72b [if worry abt crime victim]how much,,,,0,1761
+safedark,q72c safety of area at night,,,,0,1761
+burglary,q73a incidence of burglary in this area,,,,0,1761
+vandal,q73b incidence of vandlsm in this area,,,,0,1761
+mugging,q73c incidence of mugging in this area,,,,0,1761
+gopolice,q74a ever gone to police in last 2 yrs,,,,0,1761
+pchelp,q74b [if gone to police] helpfulness,,,,0,1761
+pcstop,q74c evr been stoppd by police:last 2yrs,,,,0,1761
+pcpolite,q74d [if stopped by police] politeness,,,,0,1761
+pcannoy,q75a ever annoyd by police behav to you,,,,0,1761
+pcplease,q75b ever pleasd by police behav to you,,,,0,1761
+pcsat,q75c satisfaction with police,,,,0,1761
+scaware,q76a are people aware of soc class diffs,,,,0,1761
+scopport,q76b does soc class affct opportunities,,,,0,1761
+scimpago,q76c how imp soc class comprd w 10yr ago,,,,0,1761
+scimpfut,q76d if soc class more imp in 10yrs time,,,,0,1761
+srsoccl,q77a self rated social class,,,,0,1761
+prsoccl,q77b parents social class,,,,0,1761
+poverty,q78a is there real poverty,,,,0,1761
+povview,q78b views on poverty,,,,0,1761
+religion,q79a religious denomination,,,,0,1761
+relig16,q79b religion at 16,,,,0,1761
+attendch,q79c [if has relig]freqncy of attendance,,,,0,1761
+prejas,q80a prejudice against asians,,,,0,1761
+prejblk,q80b prejudice against blacks,,,,0,1761
+prejnow,q80c if more prejudice now,,,,0,1761
+prejfut,q80d racial prejudice in future,,,,0,1761
+srprej,q80e own racial prejudice,,,,0,1761
+prejwho1,q80f [if race prejudiced] against whom:1,,,,0,1761
+prejwho2,q80f [if race prejudiced] against whom:2,,,,0,1761
+prejwho3,q80f [if race prejudiced] against whom:3,,,,0,1761
+asjob,q81a prej agnst asians in job mrkt,,,,0,1761
+wijob,q81b prej agnst w.ind in job mrkt,,,,0,1761
+racelaw,q82a view on law against rac discrim,,,,0,1761
+immhelp,q82b view on aid to asian & w.ind immigs,,,,0,1761
+racevers,question version asked-racism section,,,,0,1761
+othboss,q83a asian:black as boss :most people,,,,0,1761
+selfboss,q83b asian:black as boss:self,,,,0,1761
+othmar,q83c asian:black as spouse :most people,,,,0,1761
+selfmar,q83d asian:black as spouse: self,,,,0,1761
+chsup,q84a shld man pay maint f childr,,,,0,1761
+chwsup,q84a shld man pay maint f wife:w childr,,,,0,1761
+nchwsup,q84b shld man pay maint f wife:no childr,,,,0,1761
+nmarwsup,q84c shld man pay maint f woman:no child,,,,0,1761
+divorce,q85 opinion on ease of divorce,,,,0,1761
+sexlaw,q86 view on law against sexual discrim,,,,0,1761
+marstat,q87a rs marital status,,,,0,1761
+cohabit,q87b [if not married] is r co-habitating,,,,0,1761
+chore1,"q88i does,should: household shopping",,,,0,1761
+chore2,"q88ii does,should: make evening meal",,,,0,1761
+chore3,"q88iii does,should:do the evening dishes",,,,0,1761
+chore4,"q88iv does,should: household cleaning",,,,0,1761
+chore5,"q88v does,should: washing & ironing",,,,0,1761
+chore6,"q88vi does,should:repair hhold equipment",,,,0,1761
+chore7,"q88vii does,should: organise hhold money",,,,0,1761
+chore8,"q88viii does,should:colour of livng room",,,,0,1761
+pms,q89a view on pre-marital sex,,,,0,1761
+mexms,q89b view on extra marital sex : man,,,,0,1761
+wexms,q89c view on extra marital sex : woman,,,,0,1761
+homosex,q89d view on sex btwn the same sex,,,,0,1761
+gayteasc,q90a shld gays teach in schools,,,,0,1761
+gayteahe,q90a shld gays teach in higher ed,,,,0,1761
+gaypub,q90a shld gays hold public positions,,,,0,1761
+gayadopt,q90b shld gay couples adopt children,,,,0,1761
+rsex,q91a respondents sex,,,,0,1761
+rage,q91b respondents age,,,,0,6
+rresp,q91d respondent: legal respons for accom,,,,0,1761
+rsch1,q92 resp:state primary  school,,,,0,1761
+rsch2,q92 resp:private primary sch,,,,0,1761
+rsch3,q92 resp:voluntary primary sch,,,,0,1761
+rsch4,q92 resp:state secondary sch,,,,0,1761
+rsch5,q92 resp:private secondary sch,,,,0,1761
+rsch6,q92 resp:voluntary secndry sch,,,,0,1761
+p1sex,q91a person 1:sex,,,,0,1761
+p1age,q91b person 1: age,,,,0,13
+p1rel,q91c person 1: relation to resp,,,,0,1761
+p1resp,q91d person 1: responsiblty f accom,,,,0,1761
+p1sch1,q92 person 1:state primary  school,,,,0,1522
+p1sch2,q92 person 1:private primary sch,,,,0,1522
+p1sch3,q92 person 1:voluntary primary sch,,,,0,1522
+p1sch4,q92 person 1:state secondary sch,,,,0,1522
+p1sch5,q92 person 1:private secondary sch,,,,0,1522
+p1sch6,q92 person 1:voluntary secndry sch,,,,0,1522
+p2sex,q91a person 2:sex,,,,0,1761
+p2age,q91b person 2: age,,,,0,6
+p2rel,q91c person 2: relation to resp,,,,0,1761
+p2resp,q91d person 2: responsiblty f accom,,,,0,1761
+p2sch1,q92 person 2:state primary  school,,,,0,1421
+p2sch2,q92 person 2:private primary sch,,,,0,1421
+p2sch3,q92 person 2:voluntary primary sch,,,,0,1421
+p2sch4,q92 person 2:state secondary sch,,,,0,1421
+p2sch5,q92 person 2:private secondary sch,,,,0,1421
+p2sch6,q92 person 2:voluntary secndry sch,,,,0,1421
+p3sex,q91a person 3:sex,,,,0,1761
+p3age,q91b person 3: age,,,,0,1
+p3rel,q91c person 3: relation to resp,,,,0,1761
+p3resp,q91d person 3: responsiblty f accom,,,,0,1761
+p3sch1,q92 person 3:state primary  school,,,,0,1523
+p3sch2,q92 person 3:private primary sch,,,,0,1523
+p3sch3,q92 person 3:voluntary primary sch,,,,0,1523
+p3sch4,q92 person 3:state secondary sch,,,,0,1523
+p3sch5,q92 person 3:private secondary sch,,,,0,1523
+p3sch6,q92 person 3:voluntary secndry sch,,,,0,1523
+p4sex,q91a person 4:sex,,,,0,1761
+p4age,q91b person 4: age,,,,0,2
+p4rel,q91c person 4: relation to resp,,,,0,1761
+p4resp,q91d person 4: responsiblty f accom,,,,0,1761
+p4sch1,q92 person 4:state primary  school,,,,0,1658
+p4sch2,q92 person 4:private primary sch,,,,0,1658
+p4sch3,q92 person 4:voluntary primary sch,,,,0,1658
+p4sch4,q92 person 4:state secondary sch,,,,0,1658
+p4sch5,q92 person 4:private secondary sch,,,,0,1658
+p4sch6,q92 person 4:voluntary secndry sch,,,,0,1658
+p5sex,q91a person 5:sex,,,,0,1761
+p5age,q91b person 5: age,,,,0,1
+p5rel,q91c person 5: relation to resp,,,,0,1761
+p5resp,q91d person 5: responsiblty f accom,,,,0,1761
+p5sch1,q92 person 5:state primary  school,,,,0,1730
+p5sch2,q92 person 5:private primary sch,,,,0,1730
+p5sch3,q92 person 5:voluntary primary sch,,,,0,1730
+p5sch4,q92 person 5:state secondary sch,,,,0,1730
+p5sch5,q92 person 5:private secondary sch,,,,0,1730
+p5sch6,q92 person 5:voluntary secndry sch,,,,0,1730
+p6sex,q91a person 6:sex,,,,0,1761
+p6age,q91b person 6: age,,,,0,0
+p6rel,q91c person 6: relation to resp,,,,0,1761
+p6resp,q91d person 6: responsiblty f accom,,,,0,1761
+p6sch1,q92 person 6:state primary  school,,,,0,1748
+p6sch2,q92 person 6:private primary sch,,,,0,1748
+p6sch3,q92 person 6:voluntary primary sch,,,,0,1748
+p6sch4,q92 person 6:state secondary sch,,,,0,1748
+p6sch5,q92 person 6:private secondary sch,,,,0,1748
+p6sch6,q92 person 6:voluntary secndry sch,,,,0,1748
+p7sex,q91a person 7:sex,,,,0,1761
+p7age,q91b person 7: age,,,,0,0
+p7rel,q91c person 7: relation to resp,,,,0,1761
+p7resp,q91d person 7: responsiblty f accom,,,,0,1761
+p7sch1,q92 person 7:state primary  school,,,,0,1758
+p7sch2,q92 person 7:private primary sch,,,,0,1758
+p7sch3,q92 person 7:voluntary primary sch,,,,0,1758
+p7sch4,q92 person 7:state secondary sch,,,,0,1758
+p7sch5,q92 person 7:private secondary sch,,,,0,1758
+p7sch6,q92 person 7:voluntary secndry sch,,,,0,1758
+p8sex,q91a person 8:sex,,,,0,1761
+p8age,q91b person 8: age,,,,0,0
+p8rel,q91c person 8: relation to resp,,,,0,1761
+p8resp,q91d person 8: responsiblty f accom,,,,0,1761
+p8sch1,q92 person 8:state primary  school,,,,0,1758
+p8sch2,q92 person 8:private primary sch,,,,0,1758
+p8sch3,q92 person 8:voluntary primary sch,,,,0,1758
+p8sch4,q92 person 8:state secondary sch,,,,0,1758
+p8sch5,q92 person 8:private secondary sch,,,,0,1758
+p8sch6,q92 person 8:voluntary secndry sch,,,,0,1758
+p9sex,q91a person 9:sex,,,,0,1761
+p9age,q91b person 9: age,,,,0,0
+p9rel,q91c person 9: relation to resp,,,,0,1761
+p9resp,q91d person 9: responsiblty f accom,,,,0,1761
+p9sch1,q92 person 9:state primary  school,,,,0,1761
+p9sch2,q92 person 9:private primary sch,,,,0,1761
+p9sch3,q92 person 9:voluntary primary sch,,,,0,1761
+p9sch4,q92 person 9:state secondary sch,,,,0,1761
+p9sch5,q92 person 9:private secondary sch,,,,0,1761
+p9sch6,q92 person 9:voluntary secndry sch,,,,0,1761
+tea,q93 age completed full time education,,,,0,1761
+ethnicgp,q94 ethnic group,,,,0,1761
+rconkos,q95 respondent: rg 1980 occup cond kos,999.0,0.0,827.2783964365258,0,449
+rempstat,q95 respondent: rg employment status,,,,0,1761
+rseg,q95 respondent: rg socio-economic gp,,,,0,1761
+rsocclas,q95 respondent: rg social class,,,,0,1761
+rmanual,q95 respondent: manual or non-manual,,,,0,1761
+rmlh,q95 respondent:sic 1968 mlh,999.0,0.0,648.2481617647061,0,544
+rindordr,q95 respondent:sic 1968 industry order,,,,0,1761
+rindclas,q95 respondent: sic 1980 industry class,,,,0,1283
+union,q96a is r trade union member now,,,,0,1761
+unionevr,q96b was r ever a trade union member,,,,0,1761
+union1,q96c [if ever in union] attended meeting,,,,0,1761
+union2,q96c [if ever in union] voted at meeting,,,,0,1761
+union3,q96c [if ever in union] put a proposal,,,,0,1761
+union4,q96c [if ever in union] gone on strike,,,,0,1761
+union5,q96c [if ever in union] stood in picket,,,,0,1761
+union6,q96c [if ever in union] been an official,,,,0,1761
+whoother,significant other h-h member,,,,0,1761
+onumber,person no. of significant other,,,,0,1761
+oeconact,q97 other: economic activity last week,,,,0,1761
+oconkos,q98 other: rg 1980 occup cond kos,999.0,0.0,418.9930651872397,0,721
+oempstat,q98 other: rg  employment status,,,,0,1761
+oseg,q98 other:rg 1980 socio-economic group,,,,0,1761
+osocclas,q98 other: rg social class,,,,0,1761
+omanual,q98 other: manual or non-manual,,,,0,1761
+omlh,q98 other: 1968 sic mlh,999.0,0.0,360.4382022471908,0,801
+oindordr,q98 other: 1968 sic industry order,,,,0,1761
+oindclas,q98 other: 1980 sic industry class,,,,0,1013
+hhincome,q99a gross household income,,,,0,1761
+rearn,q99b [if in paid work] rs gross income,,,,0,1761
+comeback,q100a alright to return a year later,,,,0,1761
+sameadd,q100b [if return ok]likely same address,,,,0,1761
+phone,q101a if phone in accommodation,,,,0,1761
+phonehom,q101b [if no phone] access to home phone,,,,0,1761
+phonewk,q101b [if no phone] access to work phone,,,,0,1761
+nophone,q101b [if no phone]no access to phone,,,,0,1761
+telnum,q101c [if phone or access] tel no. given,,,,0,1761
+selfques,q102a when self-completion qnaire filled,,,,0,1761
+qcollect,q102b how self-compl qnaire collected,,,,0,1761
+duration,duration of interview,999.0,30.0,837.5,0,18
+dateint,date of interview,310583.0,10383.0,188733.70982396384,0,1761
+wtfactor,weight factor,3.0,0.3333,0.9760968199886431,0,1761
+hhtype,"dv, household type",,,,0,1761
+legalres,"dv, legal respons for accommodation",,,,0,1761
+prived,"dv, if any in hh had private educn",,,,0,1761
+rprejblk,"dv, r prejudiced against blacks:see q80f",,,,0,1761
+rprejasn,"dv, r prejudiced against asians:see q80f",,,,0,1761
+rprejoth,"dv, r prejudiced against any other race",,,,0,1761
+rprejno,"dv, r prejudiced - no info which race",,,,0,1761
+areatype,"dv, met, non-met area",,,,0,1761
+ussrad,q201 admiration for ussr,,,,0,1650
+francead,q201 admiration for france,,,,0,1650
+usaad,q201 admiration for america,,,,0,1650
+israelad,q201 admiration for israel,,,,0,1650
+holandad,q201 admiration for holland,,,,0,1650
+nigeriad,q201 admiration for nigeria,,,,0,1650
+wgermad,q201 admiration for west germany,,,,0,1650
+britad,q201 admiration for britain,,,,0,1650
+safrad,q201 admiration for south africa,,,,0,1650
+brazilad,q201 admiration for brazil,,,,0,1650
+saudiaad,q201 admiration for saudi arabia,,,,0,1650
+chinaad,q201 admiration for china,,,,0,1650
+jobad16,q202a most imp job advice: school leaver,,,,0,1650
+jobad21,q202b most imp job advice: graduate,,,,0,1650
+mhint1,q203a most useful health action f a man,,,,0,1650
+mhint2,q203a next useful health action f man,,,,0,1650
+whint1,q203b most useful health action f woman,,,,0,1650
+whint2,q203b next useful health action f woman,,,,0,1650
+abort1,q204 woman does not want child,,,,0,1650
+abort2,q204 couple do not want child,,,,0,1650
+abort3,q204 woman is not & doesnt want to marry,,,,0,1650
+abort4,q204 couple cannot afford more children,,,,0,1650
+abort5,q204 chance of birth defect,,,,0,1650
+abort6,q204 womans health at risk,,,,0,1650
+abort7,q204 woman had been raped,,,,0,1650
+exit1,q205a euthanasia if incurably ill,,,,0,1650
+exit2,q205b euthanasia if not incurably ill,,,,0,1650
+cappun1,q206 death penalty f murder by terrorist,,,,0,1650
+cappun2,q206 death penalty f murder of policeman,,,,0,1650
+cappun3,q206 death penalty f other murders,,,,0,1650
+nhs,q207 national health service,,,,0,1650
+press,q207 press,,,,0,1650
+localgov,q207 local government,,,,0,1650
+civilser,q207 civil service,,,,0,1650
+manuind,q207 manufacturing industry,,,,0,1650
+natind,q207 nationalised industry,,,,0,1650
+banks,q207 banks,,,,0,1650
+trunion,q207 trade unions,,,,0,1650
+bbc,q207 bbc,,,,0,1650
+itv,q207 itv and radio,,,,0,1650
+police,q207 police,,,,0,1650
+prison,q207 prison,,,,0,1650
+envir1,q208 environmtl eff f aircraft noise,,,,0,1650
+envir2,q208 environmtl eff f lead fr petrol,,,,0,1650
+envir3,q208 environmtl eff f ind waste in sea,,,,0,1650
+envir4,q208 environmtl eff f waste fr nuc power,,,,0,1650
+envir5,q208 environmtl eff f industrial fumes,,,,0,1650
+envir6,q208 environmtl eff f traffic noise etc,,,,0,1650
+power,q209a solve britains electricity needs,,,,0,1650
+nucpower,q209b opinion on nuclear power stations,,,,0,1650
+predict1,q210 political terrorism will be common,,,,0,1650
+predict2,q210 city riots will be common,,,,0,1650
+predict3,q210 britain will be in world war,,,,0,1650
+predict4,q210 will be serious nuclear accident,,,,0,1650
+predict5,q210 police wont be able to protect us,,,,0,1650
+predict6,q210 govt overthrown by revolution,,,,0,1650
+porno,q211 views on pornography,,,,0,1650
+tuinf1,q212a amount of trade union influence,,,,0,1650
+tuinf2,q212b t.u. influence - too much,,,,0,1650
+hsevalue,q213a which family gets best house value,,,,0,1650
+cnclsale,q213b views on council house sales,,,,0,1650
+council1,q213c council tenants pay low rents,,,,0,1650
+council2,q213c councils give poor maintenance,,,,0,1650
+council3,q213c council estate pleasant to live in,,,,0,1650
+arthelp,q214a government support for the arts,,,,0,1650
+artsup1,q214b 1st priority for arts support,,,,0,1650
+artsup2,q214b 2nd priority for arts support,,,,0,1650
+ausieimm,q215a level of austrln immigration,,,,0,1650
+asianimm,q215a level of asian immigration,,,,0,1650
+eecimm,q215a level of eec immigration,,,,0,1650
+wiimm,q215a level of west ind immigration,,,,0,1650
+relcontl,q215b immigration of close relatives,,,,0,1650
+imchild1,q216 extra eng class f.immig childrn,,,,0,1650
+imchild2,q216 sep relig class f immig childrn,,,,0,1650
+imchild3,q216 allow trad dress f immig childrn,,,,0,1650
+imchild4,q216 study of moth-tong f immig child,,,,0,1650
+imchild5,q216 own history f immig children,,,,0,1650
+imchild6,q216 immigs history f all children,,,,0,1650
+wompol,q217 more women in politics,,,,0,1650
+sakech,q217 parents shld stay tog for childrn,,,,0,1650
+mothsmch,q217 women w small childrn shld not work,,,,0,1650
+womrsp,q217 women handl respon better than men,,,,0,1650
+wifeearn,q217 wife shld not earn more th husband,,,,0,1650
+chlddisc,q217 chld get too little discipline,,,,0,1650
+agedpar,q217 chld shld look after aged parents,,,,0,1650
+numchild,q217 woman shld decide on num of chldrn,,,,0,1650
+childhap,q217 chldrn are essntl to happy marriage,,,,0,1650
+babyhosp,q217 woman shld have babies in hosp,,,,0,1650
+conadyng,q217 fam planng advice f all yng people,,,,0,1650
+legcan,q217 legalise cannabis,,,,0,1650
+cosmtest,q217 ok to test cosmetics on animals,,,,0,1650
+meditest,q217 ok to test medicines on animals,,,,0,1650
+foxhunt,q217 fox hunting shld be banned,,,,0,1650
+socwchld,q217 soc wkrs shld put childs int 1st,,,,0,1650
+socwpowr,q217 soc wkrs have too much power,,,,0,1650
+welfresp,q217 peopl less willng to look aft self,,,,0,1650
+welfstig,q217 ss recip feel like 2nd class citzn,,,,0,1650
+welfhelp,q217 welf st stop peop helping each oth,,,,0,1650
+docrely,q217 people rely on doctors too much,,,,0,1650
+earlyret,q217 encourage early retirement,,,,0,1650
+oldjobop,q217 older peopl dont get job opports,,,,0,1650
+rocccode,"q95, respondent: rg 1980 occupation code",,,,0,0
+oocccode,"q98, other: rg 1980 occupation code",,,,0,0
+stregion,"dv, rg standard region",,,,0,1761
+region,"dv, region",,,,0,1761
+votepty,"q2e [if not supportr,close]has vote pref",,,,0,1761
+partyid2,"dv, party identification [condensed]",,,,0,1761
+ptyalleg,"dv, political allegiance",,,,0,1761
+doneact,"dv, no of actions taken, q10b",,,,0,1761
+doact,"dv, no of actions would take, q10c",,,,0,1761
+married,"dv, marital status [q87a&b combined]",,,,0,1761
+dochore1,q88ia [if married] household shopping,,,,0,1761
+shchore1,q88ib [if single] household shopping,,,,0,1761
+dochore2,q88iia [if married] make evening meal,,,,0,1761
+shchore2,q88iib [if single] make evening meal,,,,0,1761
+dochore3,q88iiia [if married] do evening dishes,,,,0,1761
+shchore3,q88iiib [if single] do evening dishes,,,,0,1761
+dochore4,q88iva [if married] household cleaning,,,,0,1761
+shchore4,q88ivb [if single] household cleaning,,,,0,1761
+dochore5,q88va [if married] washing & ironing,,,,0,1761
+shchore5,q88vb [if single] washing & ironing,,,,0,1761
+dochore6,q88via [if married] repair hh equipment,,,,0,1761
+shchore6,q88vib [if single] repair hh equipment,,,,0,1761
+dochore7,q88viia [if married] organise hh money,,,,0,1761
+shchore7,q88viib [if single] organise hh money,,,,0,1761
+dochore8,q88viiia [if married] colour of room,,,,0,1761
+shchore8,q88viiib [if single] colour of room,,,,0,1761
+ragecat,"dv,respondents age category",,,,0,1761
+rageband,"dv, respondents age band",,,,0,1755
+rsexage,"dv, rs sex and age category",,,,0,1761
+rseggrp,"dv, r:rg socio-economic group [grouped]",,,,0,1761
+oseggrp,"dv, oth: rg socio-economic grp [grouped]",,,,0,1761
+rrgclass,"dv, r: rg social class [full form]",,,,0,1761
+rrgcomp,"dv, r:rg social class [compressed]",,,,0,1761
+orgclass,"dv, oth: rg social class [full form]",,,,0,1761
+orgcomp,"dv, oth: rg social class [compressed]",,,,0,1761
+rinddiv,"dv, r: 1980 sic industry division",,,,0,1761
+oinddiv,"dv, oth: 1980 sic industry division",,,,0,1761
+tenure2,"dv, housing tenure [condensed]",,,,0,1761
+reconpos,"dv, respondent's economic position",,,,0,1761
+hhinccat,"dv, household income category",,,,0,1761
+obossas,q83a[version a] mind asian as boss:other,,,,0,920
+sbossas,q83b[version a] mind asian as boss :self,,,,0,920
+omaras,q83c[version a] mind asian spouse :other,,,,0,920
+smaras,q83d[version a] mind asian spouse :self,,,,0,920
+obosswi,q83a[version b] mind black as boss:other,,,,0,809
+sbosswi,q83b[version b] mind black as boss :self,,,,0,809
+omarwi,q83c[version b] mind black spouse :other,,,,0,809
+smarwi,q83d[version b] mind black spouse : self,,,,0,809

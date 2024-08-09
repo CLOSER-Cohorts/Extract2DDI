@@ -1,0 +1,600 @@
+serial
+area
+selfcomp,61=returned,51=not     returned
+readpap,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+whpaper,11=other local,99=na,12=other,13=more than one,0=no paper,1=daily express,2=daily mail,3=daily mirror,4=daily star,5=the sun,6=daily telegraph,7=financl times,8=guardian,9=times,10=morning star
+supparty,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+closepty,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+partyid1,99=na,1=conservative,2=labour,3=liberal,4=sdp,5=alliance,6=scottish natnlst,7=plaid cymru,8=other,9=none ,98=dk
+voteresn,1=vote f  party,2=prty if appr can,3=vote f candidte,4=do not  vote,5=other,6=too     young,8=dk,9=na
+voteprob,1=very    likely,2=quite   likely,3=not very likely,4=not  at all lkly,9=na
+votenoch,0=nt lkly to vote,1=vote f  that prty,2=vote f  oth prty,3=not bther to vote,4=dk,9=na
+revmeet,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+revteasc,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+revteacl,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+revpub,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+racmeet,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+racteasc,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+racteacl,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+racpub,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+coalitin,1=govt by 1 party,2=govt by 2+ prtys,8=dk,9=na
+mpviews,1=party conf views,2=local party views,3=constituents views,4=fellow mps views,5=own views,6=other,8=dk,9=na
+mped,0=not     importnt,1=importnt,9=na
+mppoor,0=not     importnt,2=importnt,9=na
+mpbus,0=not     importnt,3=importnt,9=na
+mpunion,0=not     importnt,4=importnt,9=na
+mplocal,0=not     importnt,5=importnt,9=na
+mployal,0=not     importnt,6=importnt,9=na
+mpind,0=not     importnt,7=importnt,9=na
+mpnone,0=one+    importnt,8=none    importnt,9=na
+clred,0=not     importnt,1=importnt,9=na
+clrpoor,0=not     importnt,2=importnt,9=na
+clrbus,0=not     importnt,3=importnt,9=na
+clrunion,0=not     importnt,4=importnt,9=na
+clrlocal,0=not     importnt,5=importnt,9=na
+clrloyal,0=not     importnt,6=importnt,9=na
+clrind,0=not     importnt,7=importnt,9=na
+clrnone,0=one+    importnt,8=none    importnt,9=na
+mpoth1,0=not     importnt,1=importnt,9=na
+mpna,0=q8a     answered,9=na to q8a
+clroth1,0=not     importnt,1=importnt,9=na
+clroth2,0=not     importnt,2=importnt,9=na
+clrna,0=q8b     answered,9=na to q8b
+cntlcncl,1=more,2=less,3=same,4=dk,9=na
+cntlind,1=more,2=less,3=same,4=dk,9=na
+stateown,1=more,2=less,3=same,4=dk,9=na
+badlaw,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+donemp,0=never   done,1=ever    done,9=na
+donespk,0=never   done,2=ever    done,9=na
+donegov,0=never   done,3=ever    done,9=na
+donetv,0=never   done,4=ever    done,9=na
+donesign,0=never   done,5=ever    done,9=na
+donerais,0=never   done,6=ever    done,9=na
+doneprot,0=never   done,7=ever    done,9=na
+donegrp,0=never   done,1=ever    done,9=na
+donenone,0=done one or more,2=none,9=na
+domp,0=wouldnt do,1=would do,9=na
+dospk,0=wouldnt do,2=would do,9=na
+dogov,0=wouldnt do,3=would do,9=na
+dotv,0=wouldnt do,4=would do,9=na
+dosign,0=wouldnt do,5=would do,9=na
+dorais,0=wouldnt do,6=would do,9=na
+doprot,0=wouldnt do,7=would do,9=na
+dogrp,0=wouldnt do,1=would do,9=na
+donone,0=would do one+,2=none,9=na
+mosteff,99=na,1=contact mp,2=spk to  infl psn,3=contact gov dept,4=contact tv,5=sign petition,6=raise issue,7=go on   protest,8=form a group,9=none of these,98=dk
+obeylaw,1=always obey law,2=follow conscience,8=dk,9=na
+breaklaw,1=yes,2=no,3=dk,9=na
+lords,1=remain as is,2=change  needed,8=dk,9=na
+lordshow,0=skipped,1=replcace,2=abolish,3=other change,9=na
+monarchy,1=very    importnt,2=quite   importnt,3=not vry importnt,4=not at  all impt,5=abolish it,9=na
+eec,1=continue,2=withdraw,8=dk,9=na
+nato,1=continue,2=withdraw,8=dk,9=na
+chinalnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+safrlnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+rusialnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+brazllnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+usalnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+ngeralnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+saudilnk,0=dk,1=not at  all impt,2=not very important,3=quite important,4=very important,9=na
+nireland,1=remain pt of uk,2=reunify w irelnd,3=other,4=n.irelnd ind ste,5=n.irelnd into 2,8=dk,9=na
+troopout,1=support strongly,2=support a little,3=oppose  strongly,4=oppose a little,5=other,6=wdraw in long tm,8=dk,9=na
+usanuke,1=make gb safer,2=make gb less sfe,3=dk,4=no diff,9=na
+ownnuke,1=make gb safer,2=make gb less sfe,3=dk,4=no diff,9=na
+uknucpol,1=unilat disarm,2=multilat disarm,3=neither,8=dk,9=na
+prices,1=go up by lot,2=go up by little,3=stay the same,4=go down by litle,5=go down by lot,6=dk,9=na
+unemp,1=go up by lot,2=go up by little,3=stay the same,4=go down by litle,5=go down by lot,6=dk,9=na
+unempinf,1=infltn  down,2=unemp   down,3=other,4=both    equally,8=dk,9=na
+industry,1=improve a lot,2=improve a little,3=stay same,4=decline a little,5=decline a lot,6=dk,9=na
+ecodif1,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif2,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif3,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif4,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif5,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif6,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif7,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif8,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif9,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecodif10,0=false: not cause,1=true: nt imprtnt,2=true: nt vry imp,3=true: q importnt,4=true: v importnt,7=dk,8=true but na,9=na
+ecohelp1,1=support,2=oppose,8=dk,9=na
+ecohelp2,1=support,2=oppose,8=dk,9=na
+ecohelp3,1=support,2=oppose,8=dk,9=na
+ecohelp4,1=support,2=oppose,8=dk,9=na
+ecohelp5,1=support,2=oppose,8=dk,9=na
+ecohelp6,1=support,2=oppose,8=dk,9=na
+ecohelp7,1=support,2=oppose,8=dk,9=na
+ecohelp8,1=support,2=oppose,8=dk,9=na
+ecohelp9,1=support,2=oppose,8=dk,9=na
+taxavoid,1=shdnt be allowed,2=gd luck to them,8=dk,9=na
+taxsneak,0=avoiding tax ok,1=yes,2=no,3=other,9=na
+incomgap,1=too     large,2=about   right,3=too     small,8=dk,9=na
+taxhi,1=much too low,2=too low,3=about   right,4=too      high,5=much too high,8=dk,9=na
+taxmid,1=much too low,2=too low,3=about   right,4=too      high,5=much too high,8=dk,9=na
+taxlow,1=much too low,2=too low,3=about   right,4=too      high,5=much too high,8=dk,9=na
+srinc,1=high    income,2=middle  income,3=low     income,8=dk,9=na
+incmange,1=very    well,2=quite   well,3=not very well,4=not at  all well,8=dk,9=na
+vyearago,0=skipped,1=better  off,2=about   the same,3=worse off,8=dk,9=na
+reconact,0=no other,99=na,1=in ft ed,2=working,3=temp awy fr work,4=waiting to work,5=seeking work,6=temp not seeking,7=sick or disabled,8=retired,9=looking aft home,10=somethng else
+remploye,0=skipped,1=employee,2=self-   employed,9=na
+efpttime,0=skipped,1=ft:     30+hrs,2=pt:     10-29hrs,9=na
+wagenow,0=skipped,1=very low,2=a bit   low,3=reasonable,4=on high side,5=other,9=na
+paygap,0=skipped,1=much too big,2=too big,3=about   right,4=too     small,5=much too small,6=dk,9=na
+wagexpct,0=skipped,1=rise more cost o liv,2=same as cost o livng,3=less th cost o livng,4=no rise,5=leave job,6=dk,9=na
+numemp,0=skipped,1=incr in numbers,2=redc in numbers,3=stay the same,4=other,8=dk,9=na
+leavejob,0=skipped,1=very    likely,2=quite   likely,3=not very likely,4=not all at lkly,9=na
+whygo1,0=not a   reason,1=yes,-1=skipped not lkly,-2=skipped not emp,8=dk,9=na
+whygo2,0=not a   reason,2=yes,-1=skipped not lkly,-2=skipped not emp,8=dk,9=na
+whygo3,0=not a   reason,3=yes,-1=skipped not lkly,-2=skipped not emp,8=dk,9=na
+whygo4,0=not a   reason,-1=skipped not lkly,4=yes,-2=skipped not emp,8=dk,9=na
+whygo5,0=not a   reason,-1=skipped not lkly,-2=skipped not emp,5=yes,8=dk,9=na
+whygo6,0=not a   reason,-1=skipped not lkly,-2=skipped not emp,6=yes,8=dk,9=na
+whygo7,0=not a   reason,-1=skipped not lkly,-2=skipped not emp,7=yes,8=dk,9=na
+whygo8,0=not a   reason,1=yes,-1=skipped not lkly,-2=skipped not emp,8=dk,9=na
+whygo9,0=q32d    answered,-1=skipped not lkly,-2=skipped not emp,8=dk,9=na
+elookjob,0=skipped,1=start   looking,2=wait sev months,3=not     looking,4=dk,9=na
+efindjob,0=skipped,1=months,-1=wouldnt look,998=dk,999=na
+eretrain,0=skipped not emp,1=very    willing,2=quite   willing,3=not very willing,4=dk,6=skipped not look,7=skipped not 3+,9=na
+ejobmove,0=skipped not emp,1=very    willing,2=quite   willing,3=not very willing,4=dk,6=skipped not look,7=skipped not 3+,9=na
+ebadjob,0=skipped not emp,1=very    willing,2=quite   willing,3=not very willing,4=dk,6=skipped not look,7=skipped not 3+,9=na
+eothjob,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+eunemp,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+eunempt,0=skipped,1=months,-1=not been unemp,998=dk,999=na
+eselfem,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+eselfemt,0=skipped,1=months,-1=not been self-emp,998=dk,999=na
+eselfser,0=skipped not emp,1=very    sriously,2=quite   sriously,3=not vry sriously,4=not at  all srly,7=skipped ex-semp,9=na
+whynsem1,0=skipped not emp,99=na,1=lack of money,2=risk,3=recessin,90=skipped ex-semp,91=skipped not ser,96=no fthr rsn givn,97=other,98=dk
+whynsem2,0=skipped not emp,99=na,1=lack of money,2=risk,3=recessin,90=skipped ex-semp,91=skipped not ser,96=no fthr rsn givn,97=other,98=dk
+whynsem3,0=skipped not emp,99=na,1=lack of money,2=risk,3=recessin,90=skipped ex-semp,91=skipped not ser,96=no fthr rsn givn,97=other,98=dk
+eselflky,0=skipped not emp,1=very    likely,2=quite   likely,3=not very likely,4=not at  all lkly,5=dk,6=skipped-not ser,7=skipped ex-semp,9=na
+wpunions,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+wpunionw,0=skipped,1=yes,2=no,3=no union at work,9=na
+indrel,0=skipped,1=very    good,2=quite   good,3=not very good,4=not at  all good,9=na
+workrun,0=skipped,1=vry well managed,2=qte well managed,3=not well managed,9=na
+sfpttime,0=skipped,1=ft:     30+hrs,2=pt:     10-29hrs,9=na
+sunemp,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+sunempt,0=skipped,1=months,-1=not been unemp,998=dk,999=na
+semplee,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+sempleet,0=skipped,3=months,-1=not been employee,998=dk,999=na
+semplser,0=skipped not semp,1=very    sriously,2=quite   sriously,3=not vry sriously,4=not at  all srly,7=skipped ex-emp,9=na
+semplky,0=skipped not semp,1=very    likely,2=quite   likely,3=not very likely,4=not at  all lkly,5=dk,6=skipped not ser,7=skipped ex-emp,9=na
+bus1ok,0=skipped,1=very    well,2=quite   well,3=about   the same,4=not very well,5=not at  all well,6=bus not exist,9=na
+bus5ok,0=skipped,1=very    well,2=quite   well,3=about   the same,4=not very well,5=not at  all well,6=bus not exist,9=na
+wunemp,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+wunempt,0=skipped,2=months,-1=not been unemp,998=dk,999=na
+edlookjb,0=skipped,1=start   looking,2=wait sev months,3=not     looking,4=dk,5=other,9=na
+edfindjb,0=skipped,1=months,-1=will not look,998=dk,999=na
+edbadjob,0=skipped not fte,1=very    willing,2=quite   willing,3=not very willing,4=dk,6=skipped not look,7=skipped not 3+,9=na
+uunempt,0=skipped,99=99 +    months,1=months,998=dk,999=na
+curunemp,990=skipped,1=months,998=dk,999=na
+jobcent,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+jobqual,0=skipped,1=very    confidnt,2=quite   confidnt,3=not vry confidnt,4=not at  all conf,9=na
+ufindjob,0=skipped,99=99 +    months,1=months,998=dk,999=na
+uretrain,0=skipped not unemp,1=very    willing,2=quite   willing,3=not very willing,4=dk,7=skipped not 3+,9=na
+ujobmove,0=skipped not unemp,1=very    willing,2=quite   willing,3=not very willing,4=dk,7=skipped not 3+,9=na
+ubadjob,0=skipped not unemp,1=very    willing,2=quite   willing,3=not very willing,4=dk,7=skipped not 3+,9=na
+uprefjob,0=skipped,1=prefer  job,2=wouldnt bother,3=dk,4=other,9=na
+retage,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+rpension,0=skipped not retd,1=very    low,2=a bit   low,3=reasonable,4=on high side,7=skipped not oap,9=na
+rpeninyr,0=skipped not retd,1=more,2=less,3=about the same,4=dk,7=skipped not oap,9=na
+emplpen,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+everjob,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+everjobt,0=skipped,1=months,-1=not had job,998=dk,999=na
+owngo,0=skipped not home,1=yes,2=no,7=skipped no job,8=dk,9=na
+ftjobser,0=skipped,1=very    sriously,2=quite   sriously,3=not vry sriously,4=not at  all srly,6=skipped ft ser,7=skipped had job,9=na
+ptjobser,0=skipped,1=very    sriously,2=quite   sriously,3=not vry sriously,4=not at  all srly,6=skipped ft ser,7=skipped had job,9=na
+whynojb1,0=skipped,99=na,1=job less 10hrs,2=children,90=skipped had job,91=skipped not ser,96=no fthr rsn givn,97=other,98=dk
+whynojb2,0=skipped,99=na,1=job less 10hrs,2=children,90=skipped had job,91=skipped not ser,96=no fthr rsn givn,97=other,98=dk
+ftjoblky,0=skipped,1=very    likely,2=quite   likely,3=not very likely,4=not at  all lkly,5=dk,9=na
+ptjoblky,0=skipped,1=very    likely,2=quite   likely,3=not very likely,4=not at  all lkly,5=dk,9=na
+spend1,11=none,99=na,12=dk,1=education,2=defence,3=health,4=housing,5=public  transprt,6=roads,7=police & prisons,8=soc sec benefits,9=help f  industry,10=overseas aid
+spend2,11=none,99=na,12=dk,1=education,2=defence,3=health,4=housing,5=public  transprt,6=roads,7=police & prisons,8=soc sec benefits,9=help f  industry,10=overseas aid
+socben1,1=old age pen,2=child   benefits,3=unempl  benefits,4=disabled ben,5=single  prnt ben,6=none of these,7=dk,9=na
+socben2,1=old age pen,2=child   benefits,3=unempl  benefits,4=disabled ben,5=single  prnt ben,6=none of these,7=dk,9=na
+falseclm,1=agree   strongly,2=agree   slightly,3=disagree slghtly,4=disagree strngly,5=dk,9=na
+failclm,1=agree   strongly,2=agree   slightly,3=disagree slghtly,4=disagree strngly,5=dk,9=na
+dole,1=unemp bn too low,2=unemp bn too high,3=neither,4=dk,9=na
+taxspend,1=less tax & xpend,2=same tax & xpend,3=more tax & xpend,4=none,5=dk,9=na
+nhsvalue,1=high    incomes,2=middle  incomes,3=low     incomes,4=dk,5=no      diffrnce,9=na
+nhssat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+gpsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+dentsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+hvsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+dnsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+inpatsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+outpasat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+privmed,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+privpaid,0=skipped,1=yes,2=no,3=dk,9=na
+prinsnhs,0=skipped,1=good,2=bad,3=no diff,4=dk,9=na
+prtrtnhs,1=good    thing,2=bad      thing,3=no diff,4=dk,9=na
+hviews1,0=not     supportd,1=support,8=dk,9=na
+hviews2,0=not     supportd,2=support,8=dk,9=na
+hviews3,0=not     supportd,3=support,8=dk,9=na
+hviews4,0=not     supportd,4=support,8=dk,9=na
+hviews5,0=not     supportd,5=support,8=dk,9=na
+hviews6,0=one+    supportd,6=none    supportd,8=dk,9=na
+nhslimit,1=support,2=oppose,3=dk,9=na
+housesat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+areapast,1=better,2=worse,3=about   the same,4=dk,9=na
+areanext,1=better,2=worse,3=about   the same,4=dk,9=na
+tenure1,99=na,1=owner,2=rent    council,3=rent new town,4=housing  assoc,5=property comp,6=other   orgnstn,7=rent fr relative,8=rent fr employer,9=other   individl
+cnclbuy,0=not cncl tenant,1=very    likely,2=quite   likely,3=quite   unlikely,4=very    unlikely,5=nt allw to buy,6=dk,9=na
+cnclrnt,0=not cncl tenant,1=on high side,2=reasonable,3=on low  side,9=na
+edspend1,1=nursery children,2=primary children,3=secndry children,4=special needs ch,5=college students,6=none of these,7=dk,9=na
+edspend2,1=nursery children,2=primary children,3=secndry children,4=special needs ch,5=college students,6=none of these,7=dk,9=na
+primeed,11=emphasis on maths,99=na,12=emph on  english,13=stricter discpne,14=none of these,15=dk,1=books & equipmnt,2=buildings,3=teachers pay,4=involve parents,5=pt-teach discuss,6=smaller classes,7=exam    prep,8=devop ch skills,9=training fr jobs,10=emphasis on arts
+seced,11=emphasis on maths,99=na,12=emph on  english,13=stricter discpne,14=none of these,15=dk,1=books & equipmnt,2=buildings,3=teachers pay,4=involve parents,5=pt-teach discuss,6=smaller classes,7=exam    prep,8=devop ch skills,9=training fr jobs,10=emphasis on arts
+privsch,1=more    priv sch,2=same as now,3=fewer   priv sch,4=no priv sch,5=other,8=dk,9=na
+privefct,1=benefit,2=suffer,3=no diff,4=dk,9=na
+edvalue,1=high    incomes,2=middle  incomes,3=low     incomes,4=dk,5=no diff,9=na
+edstd,1=now lot higher,2=little  higher,3=about   the same,4=little  lower,5=now lot lower,6=not educ here,7=dk,9=na
+pubres,1=very    useful,2=quite   useful,3=nt realy useful,4=dk,9=na
+edinfo,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+edinfo1,0=skipped,99=na,1=children records,2=teachers quals,3=curriculum,4=teacher:pupil ratio,5=parnt:teachr contc,6=extra cours avail,7=career  guidance,96=no fthr info wtd,97=other,98=dk
+edinfo2,0=skipped,99=na,1=children records,2=teachers quals,3=curriculum,4=teacher:pupil ratio,5=parnt:teachr contc,6=extra cours avail,7=career  guidance,96=no fthr info wtd,97=other,98=dk
+edinfo3,0=skipped,99=na,1=children records,2=teachers quals,3=curriculum,4=teacher:pupil ratio,5=parnt:teachr contc,6=extra cours avail,7=career  guidance,96=no fthr info wtd,97=other,98=dk
+hedopp,1=increasd a lot,2=incrsd a little,3=about   right,4=reduced a little,5=reduced a lot,6=dk,9=na
+hegrant,1=grants,2=loans,3=dk,4=other,9=na
+victim,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+vmworry,0=never   worry,1=big     worry,2=bit of a worry,3=occasnl doubt,9=na
+safedark,1=very    safe,2=fairly  safe,3=bit     unsafe,4=very    unsafe,9=na
+burglary,1=very    common,2=fairly  common,3=not very common,8=dk,9=na
+vandal,1=very    common,2=fairly  common,3=not very common,8=dk,9=na
+mugging,1=very    common,2=fairly  common,3=not very common,8=dk,9=na
+gopolice,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+pchelp,0=not gone to pc,1=very    helpful,2=fairly  helpful,3=fairly  unhelpfl,4=very    unhelpful,5=varied,9=na
+pcstop,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+pcpolite,0=not stop by pc,1=very    polite,2=fairly  polite,3=fairly  impolite,4=very    impolite,5=varied,9=na
+pcannoy,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+pcplease,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+pcsat,1=very    dissat,2=quite   dissat,3=neither,4=quite   satsfied,5=very    satisfied,8=dk,9=na
+scaware,0=skipped,1=very    aware,2=quite   aware,3=not very aware,4=not at  all awre,5=dk,6=other,9=na
+scopport,1=a great deal,2=quite a lot,3=not very much,4=not at  all,5=other,8=dk,9=na
+scimpago,1=now more imprtnt,2=now less imprtnt,3=no      change,8=dk,9=na
+scimpfut,1=more imp in 10yrs,2=less imp in 10yrs,3=no      change,8=dk,9=na
+srsoccl,1=upper   middle,2=middle,3=upper   working,4=working,5=poor,6=dk,9=na
+prsoccl,1=upper   middle,2=middle,3=upper   working,4=working,5=poor,6=dk,9=na
+poverty,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+povview,0=skipped,1=shortage of necessit,2=unabl to mntn stds,3=neither,9=na
+religion,99=na,13=hindu,14=jew,15=muslim,16=sikh,17=buddhist,18=oth non-christn,1=no relig,2=christn:no denom,3=rc,4=c of e,5=urc,6=baptist,7=methodist,8=presbyterian,9=other   christn
+relig16,99=na,13=hindu,14=jew,15=muslim,16=sikh,17=buddhist,18=oth non-christn,1=no relig,2=christn:no denom,3=rc,4=c of e,5=urc,6=baptist,7=methodist,8=presbyterian,9=other   christn
+attendch,0=no relig,1=once a  week,2=once in 2 weeks,3=once a  month,4=twice a year,5=once a  year,6=less    often,7=never,8=varies,9=na
+prejas,1=a lot,2=a little,3=hardly  any,4=dk,9=na
+prejblk,1=a lot,2=a little,3=hardly  any,4=dk,9=na
+prejnow,1=more now,2=less now ,3=about   the same ,4=other,9=na
+prejfut,1=more,2=less,3=about   the same,4=other,9=na
+srprej,1=very prejudiced ,2=little prejudiced,3=not prejudiced,4=other,9=na
+prejwho1,99=na,0=skipped,1=asians,2=blacks,3=coloureds,4=pakistanis,5=indians,6=sikhs,7=west    indians,8=africans,9=other   races,96=no frthr race,97=other   answers,98=dk
+prejwho2,99=na,0=skipped,1=asians,2=blacks,3=coloureds,4=pakistanis,5=indians,6=sikhs,7=west    indians,8=africans,9=other   races,96=no frthr race,97=other   answers,98=dk
+prejwho3,99=na,0=skipped,1=asians,2=blacks,3=coloureds,4=pakistanis,5=indians,6=sikhs,7=west    indians,8=africans,9=other   races,96=no frthr race,97=other   answers,98=dk
+asjob,1=a lot,2=a little,3=hardly  at all,4=dk,9=na
+wijob,1=a lot,2=a little,3=hardly  at all,4=dk,9=na
+racelaw,1=support,2=oppose,8=dk,9=na
+immhelp,1=too    little,2=about   right,3=too much,4=other,8=dk,9=na
+racevers,1=version a,2=version b,9=na
+othboss,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+selfboss,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+othmar,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+selfmar,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+chsup,1=yes,2=no,3=dpnd who guilty,4=dpnd on circumst,5=dpnd on earnings,7=other,8=dk,9=na
+chwsup,1=yes,2=no,3=dpnd who guilty,4=dpnd on circumst,5=dpnd on earnings,7=other,8=dk,9=na
+nchwsup,1=yes,2=no,3=dpnd who guilty,4=dpnd on circumst,5=dpnd on earnings,7=other,8=dk,9=na
+nmarwsup,1=yes,2=no,3=dpnd who guilty,4=dpnd on circumst,5=dpnd on earnings,7=other,8=dk,9=na
+divorce,1=shld be easier,2=shld be more diff,3=remain  same,4=dk,9=na
+sexlaw,1=support,2=oppose,8=dk,9=na
+marstat,1=married,2=separtd/divorced,3=widowed,4=never   married,9=na
+cohabit,0=skipped,1=yes,2=no,9=na
+chore1,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore2,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore3,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore4,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore5,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore6,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore7,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+chore8,1=mainly  man,2=mainly  woman,3=shared  equally,4=other,9=na
+pms,1=always  wrong,2=mostly  wrong,3=sometmes wrong,4=rarely  wrong,5=not at  all wrong,6=depends,9=na
+mexms,1=always  wrong,2=mostly  wrong,3=sometmes wrong,4=rarely  wrong,5=not at  all wrong,6=depends,9=na
+wexms,1=always  wrong,2=mostly  wrong,3=sometmes wrong,4=rarely  wrong,5=not at  all wrong,6=depends,9=na
+homosex,1=always  wrong,2=mostly  wrong,3=sometmes wrong,4=rarely  wrong,5=not at  all wrong,6=depends,9=na
+gayteasc,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+gayteahe,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+gaypub,1=yes ,2=no,3=other,4=depends on job,8=dk,9=na
+gayadopt,1=yes,2=no,3=other,4=not male couples,5=hetero gvn pref,8=dk,9=na
+rsex,0=skipped,1=male,2=female,9=na
+rage,99=na,-1=skipped,98=98+
+rresp,0=no legal respnsblty,1=legally respnsble,9=na
+rsch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+rsch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+rsch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+rsch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+rsch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+rsch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p1sex,0=skipped,1=male,2=female,9=na
+p1age,99=na,-1=skipped,98=98+
+p1rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p1resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p1sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p1sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p1sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p1sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p1sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p1sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p2sex,0=skipped,1=male,2=female,9=na
+p2age,99=na,-1=skipped,98=98+
+p2rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p2resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p2sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p2sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p2sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p2sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p2sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p2sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p3sex,0=skipped,1=male,2=female,9=na
+p3age,99=na,-1=skipped,98=98+
+p3rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p3resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p3sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p3sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p3sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p3sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p3sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p3sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p4sex,0=skipped,1=male,2=female,9=na
+p4age,99=na,-1=skipped,98=98+
+p4rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p4resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p4sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p4sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p4sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p4sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p4sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p4sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p5sex,0=skipped,1=male,2=female,9=na
+p5age,99=na,-1=skipped,98=98+
+p5rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p5resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p5sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p5sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p5sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p5sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p5sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p5sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p6sex,0=skipped,1=male,2=female,9=na
+p6age,99=na,-1=skipped,98=98+
+p6rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p6resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p6sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p6sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p6sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p6sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p6sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p6sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p7sex,0=skipped,1=male,2=female,9=na
+p7age,99=na,-1=skipped,98=98+
+p7rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p7resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p7sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p7sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p7sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p7sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p7sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p7sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p8sex,0=skipped,1=male,2=female,9=na
+p8age,99=na,-1=skipped,98=98+
+p8rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p8resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p8sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p8sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p8sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p8sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p8sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p8sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+p9sex,0=skipped,1=male,2=female,9=na
+p9age,99=na,-1=skipped,98=98+
+p9rel,0=skipped,1=spouse,2=son -   daughter,3=parent -p-in-law,4=other relative,5=not     related,9=na
+p9resp,0=skipped,1=legally respnsble,2=no legal respnsblty,9=na
+p9sch1,0=skipped no persn,1=attended,-1=skipped nt asked,7=did not attend,9=na
+p9sch2,0=skipped no persn,2=attended,-1=skipped nt asked,7=did not attend,9=na
+p9sch3,0=skipped no persn,3=attended,-1=skipped nt asked,7=did not attend,9=na
+p9sch4,0=skipped no persn,-1=skipped nt asked,4=attended,7=did not attend,9=na
+p9sch5,0=skipped no persn,-1=skipped nt asked,5=attended,7=did not attend,9=na
+p9sch6,0=skipped no persn,-1=skipped nt asked,6=attended,7=did not attend,9=na
+tea,99=na,1=15 or   under,2=16,3=17,4=18,5=19+,6=still at school,7=still at col:uni,8=other   answer
+ethnicgp,1=asian,2=black,3=white,4=other   nonwhite,9=na
+rconkos,0=skipped,990=sk:look aft home,998=foremen & craft,999=inadeq: nt stated
+rempstat,11=na: insuff info,12=sk:look aft home,0=skipped,1=self emp:25+ empl,2=self emp:1-24 empl,3=self emp: no empl,4=self emp:na on empl,5=manager:25+ empl,6=manager:1-24 empl,7=manager:na on size,8=foreman supervisor,9=other   employee,10=employee if na 7 8 9
+rseg,11=unskilld manual,12=self emp:not prof,13=farmers:employer,14=farmers:no emps,15=agricult wrkr,16=armed   forces,17=insuffic info,18=sk:look aft home,0=skipped,1=employer:large,2=employer:small,3=self emp: prof,4=employee: prof,5=non-manl: interm,6=non-manl: junior,7=personal service,8=manual: foremen,9=skilled manual,10=semi-skd manual
+rsocclas,0=skipped,1=professional,2=intermediate,3=skilled,4=partly  skilled,5=unskilled,7=sk:look aft home,8=armed   forces,9=insuffic info
+rmanual,0=skipped,1=non     manual,2=manual,7=sk:look aft home,8=armed forces,9=unable  to classify
+rmlh,0=sk/cant classify,999=sk:look aft home
+rindordr,22=transport & commun,23=distributive trades,24=banking & finance,25=prof & scientific,26=misc services,27=public admin,28=insufficient info,29=sk:look aft home,10=ship & marine eng,11=vehicles,12=metal goods,13=textiles,14=leather & fur,15=clothing & footwr,16=bricks glass & cemnt,17=timber,18=paper & publshng,19=oth manu ind,0=skipped,1=agric forest & fish,2=mining & quarrying,3=food drink & tobac,4=coal & petrol prod,5=chem & allied ind,6=metal manu,7=mech eng,8=instrument eng,9=elect eng,20=construction,21=gas elect & water
+rindclas,44=leather goods,45=footwear & clothing,46=timber,47=paper & printing,48=rubber & plastic,49=other manu ind,90=legal services,91=public admin,92=sanitary services,93=education,50=construction,94=research & devel,95=medical & veternry,96=oth pub services,97=recreational,98=personal services,11=coal extraction,99=domestic services,12=coke ovens,13=mineral oil extract,14=mineral oil process,-1=insuffic info,15=nuclear fuel process,16=energy prod,17=water supply ind,-8=sk:look aft home,-9=skipped,0=diplomatic & intl,1=agriculture,2=forestry,3=fishing,61=wholesale distrib,62=scrap & waste,63=commission agents,64=retail distrib,21=metal ore extraction,22=metal manufact,66=hotels & catering,23=mineral extraction,67=repair of goods,24=non-metal prod manu,25=chemical ind,26=man-made fibres,71=railways,72=oth inland transp,74=sea transport,31=metal goods manu,75=air transport,32=mech eng,76=transport supp serv,33=office machine manu,77=misc transport serv,34=elect eng,35=motor vehicles,79=post & telecom,36=transport equip manu,37=instrument eng,38=shipbuilding,81=banking,82=insurance,83=business services,84=renting of movables,41=food drink tobacco,85=real estate,86=accountancy,43=textile ind
+union,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+unionevr,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+union1,0=never tu member,1=yes,2=no,9=na
+union2,0=never tu member,1=yes,2=no,9=na
+union3,0=never tu member,1=yes,2=no,9=na
+union4,0=never tu member,1=yes,2=no,9=na
+union5,0=never tu member,1=yes,2=no,9=na
+union6,0=never tu member,1=yes,2=no,9=na
+whoother,1=oldest m w legal re,2=husb o oldest female,3=oldest f legal resp,4=spouse,5=no-one,6=oldest m w shrd resp,7=husb o oldest female,8=oldest f w shrd resp,9=na
+onumber,0=skipped:no-one,1=person 1,2=person 2,3=person 3
+oeconact,0=no other,99=na,1=in ft ed,2=working,3=temp awy fr work,4=waiting to work,5=seeking work,6=temp not seeking,7=sick or disabled,8=retired,9=looking aft home,10=somethng else
+oconkos,0=skipped,990=sk:look aft home,998=foremen & craft,999=inadeq: nt stated
+oempstat,11=na: insuff info,12=sk:look aft home,0=skipped,1=self emp:25+ empl,2=self emp:1-24 empl,3=self emp: no empl,4=self emp:na on empl,5=manager:25+ empl,6=manager:1-24 empl,7=manager:na on size,8=foreman supervisor,9=other   employee,10=employee if na 7 8 9
+oseg,11=unskilld manual,12=self emp:not prof,13=farmers:employer,14=farmers:no emps,15=agricult wrkr,16=armed   forces,17=insuffic info,18=sk:look aft home,0=skipped,1=employer:large,2=employer:small,3=self emp: prof,4=employee: prof,5=non-manl: interm,6=non-manl: junior,7=personal service,8=manual: foremen,9=skilled manual,10=semi-skd manual
+osocclas,0=skipped,1=professional,2=intermediate,3=skilled,4=partly  skilled,5=unskilled,7=sk:look aft home,8=armed   forces,9=insuffic info
+omanual,0=skipped,1=non     manual,2=manual,7=sk:look aft home,8=armed forces,9=unable  to classify
+omlh,0=sk/cant classify,999=sk:look aft home
+oindordr,22=transport & commun,23=distributive trades,24=banking & finance,25=prof & scientific,26=misc services,27=public admin,28=insufficient info,29=sk:look aft home,10=ship & marine eng,11=vehicles,12=metal goods,13=textiles,14=leather & fur,15=clothing & footwr,16=bricks glass & cemnt,17=timber,18=paper & publshng,19=oth manu ind,0=skipped,1=agric forest & fish,2=mining & quarrying,3=food drink & tobac,4=coal & petrol prod,5=chem & allied ind,6=metal manu,7=mech eng,8=instrument eng,9=elect eng,20=construction,21=gas elect & water
+oindclas,44=leather goods,45=footwear & clothing,46=timber,47=paper & printing,48=rubber & plastic,49=other manu ind,90=legal services,91=public admin,92=sanitary services,93=education,50=construction,94=research & devel,95=medical & veternry,96=oth pub services,97=recreational,98=personal services,11=coal extraction,99=domestic services,12=coke ovens,13=mineral oil extract,14=mineral oil process,-1=insuffic info,15=nuclear fuel process,16=energy prod,17=water supply ind,-8=sk:look aft home,-9=skipped,0=diplomatic & intl,1=agriculture,2=forestry,3=fishing,61=wholesale distrib,62=scrap & waste,63=commission agents,64=retail distrib,21=metal ore extraction,22=metal manufact,66=hotels & catering,23=mineral extraction,67=repair of goods,24=non-metal prod manu,25=chemical ind,26=man-made fibres,71=railways,72=oth inland transp,74=sea transport,31=metal goods manu,75=air transport,32=mech eng,76=transport supp serv,33=office machine manu,77=misc transport serv,34=elect eng,35=motor vehicles,79=post & telecom,36=transport equip manu,37=instrument eng,38=shipbuilding,81=banking,82=insurance,83=business services,84=renting of movables,41=food drink tobacco,85=real estate,86=accountancy,43=textile ind
+hhincome,11=15000+ pounds,99=na,0=skipped,1=< 2000 pounds,2=2000-2999 pounds,3=3000-3999 pounds,4=4000-4999 pounds,5=5000-5999 pounds,6=6000-6999 pounds,7=7000-7999 pounds,8=8000-9999 pounds,9=10000-11999 pounds,10=12000-14999 pounds,98=dk
+rearn,11=15000+ pounds,99=na,0=skipped,1=< 2000 pounds,2=2000-2999 pounds,3=3000-3999 pounds,4=4000-4999 pounds,5=5000-5999 pounds,6=6000-6999 pounds,7=7000-7999 pounds,8=8000-9999 pounds,9=10000-11999 pounds,10=12000-14999 pounds,98=dk
+comeback,1=yes,2=no,3=other,9=na
+sameadd,0=skipped,1=yes,2=no,8=dk,9=na
+phone,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+phonehom,0=skipped/no,1=yes
+phonewk,0=skipped/no,2=yes
+nophone,0=skipped/access,3=no access to phone
+telnum,0=skipped,1=number  given,2=number  refused,9=na
+selfques,1=self q before main q,2=self q after main q,3=self q left behind,4=other,5=done by interviewer,9=na
+qcollect,1=by interviewer,2=by      post,9=na
+duration,999=na,30=minutes
+dateint
+wtfactor
+hhtype,1=single  adlt 60+,2=2 adults 1,2 60+,3=single  ad 18-59,4=2 adlts 18-59,5=youngest psn 0-4,6=youngest pn 5-17,7=3+      adults,9=insuff  info
+legalres,0=r sole  resp,1=other   has resp,2=r & oth share rp
+prived,0=all othr cases,1=any had priv ed
+rprejblk,0=not prejudiced,1=prejudiced
+rprejasn,0=not prejudiced,1=prejudiced
+rprejoth,0=not prejudiced,1=prejudiced
+rprejno,0=not prejudiced,1=prejudiced
+areatype,1=metropolitan,2=non-metropolitan
+ussrad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+francead,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+usaad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+israelad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+holandad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+nigeriad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+wgermad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+britad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+safrad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+brazilad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+saudiaad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+chinaad,0=no self-completn,1=dont adm at all,2=dont adm much,3=quite   admire,4=admire  vry much,8=dk,9=na
+jobad16,0=no self-completn,1=high    wage,2=secure  job,3=career developt,4=satisfyng work,5=gd work conditions,6=pleasant people,7=short   hours,8=responsibility,9=na
+jobad21,0=no self-completn,1=high    wage,2=secure  job,3=career developt,4=satisfyng work,5=gd work conditions,6=pleasant people,7=short   hours,8=responsibility,9=na
+mhint1,0=no self-completn,1=reduce  smoking,2=reduce  alcohol,3=lose    weight,4=tke more xercise,9=na
+mhint2,0=no self-completn,1=reduce  smoking,2=reduce  alcohol,3=lose    weight,4=tke more xercise,9=na
+whint1,0=no self-completn,1=reduce  smoking,2=reduce  alcohol,3=lose    weight,4=tke more xercise,9=na
+whint2,0=no self-completn,1=reduce  smoking,2=reduce  alcohol,3=lose    weight,4=tke more xercise,9=na
+abort1,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort2,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort3,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort4,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort5,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort6,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+abort7,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+exit1,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+exit2,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+cappun1,0=no self-completn,1=favour,2=against,8=dk,9=na
+cappun2,0=no self-completn,1=favour,2=against,8=dk,9=na
+cappun3,0=no self-completn,1=favour,2=against,8=dk,9=na
+nhs,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+press,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+localgov,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+civilser,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+manuind,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+natind,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+banks,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+trunion,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+bbc,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+itv,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+police,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+prison,0=no self-completn,1=well run,2=not well run,8=dk,9=na
+envir1,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+envir2,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+envir3,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+envir4,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+envir5,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+envir6,0=no self-completn,1=not at  all serious,2=not very serious,3=quite   serious,4=very    serious,9=na
+power,0=no self-completn,1=make do w exst stns,2=build more coal stns,3=build more nuc stns,9=na
+nucpower,0=no self-completn,1=very serious risk,2=quite serious risk,3=slight  risk,4=hardly  any risk,9=na
+predict1,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+predict2,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+predict3,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+predict4,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+predict5,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+predict6,0=no self-completn,1=not  at all lkly,2=not very likely,3=quite   likely,4=very    likely,9=na
+porno,0=no self-completn,1=banned,2=sp shops:not disp,3=sp shops:displayed,4=any shop:f adults,5=any shop:f all,9=na
+tuinf1,0=no self-completn,1=great   deal,2=quite a bit,3=some,4=not much,9=na
+tuinf2,0=no self-completn,1=too much,2=about   right,3=too     little,9=na
+hsevalue,0=no self-completn,1=high    incomes,2=middle  incomes,3=low     incomes,9=na
+cnclsale,0=no self-completn,1=not     allowed,2=in some areas,3=generly allowed,9=na
+council1,0=no self-completn,1=true,2=false,9=na
+council2,0=no self-completn,1=true,2=false,9=na
+council3,0=no self-completn,1=true,2=false,9=na
+arthelp,0=no self-completn,1=more    support,2=less    support,3=same as now,4=none,8=dk,9=na
+artsup1,0=no self-completn,1=national instit,2=reg arts events,3=museums & galls,4=events  in schs,5=indival artists,6=pop     concerts,7=evnts f eth mins,8=amateur art evnts,9=na
+artsup2,0=no self-completn,1=national instit,2=reg arts events,3=museums & galls,4=events  in schs,5=indival artists,6=pop     concerts,7=evnts f eth mins,8=amateur art evnts,9=na
+ausieimm,0=no self-completn,1=more    settlement,2=less    settlement,3=about   the same,9=na
+asianimm,0=no self-completn,1=more    settlement,2=less    settlement,3=about   the same,9=na
+eecimm,0=no self-completn,1=more    settlement,2=less    settlement,3=about   the same,9=na
+wiimm,0=no self-completn,1=more    settlement,2=less    settlement,3=about   the same,9=na
+relcontl,0=no self-completn,1=stricter control,2=less    control,3=same as now,9=na
+imchild1,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+imchild2,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+imchild3,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+imchild4,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+imchild5,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+imchild6,0=skipped,1=yes,2=no,3=other,8=dk,9=na
+wompol,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+sakech,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+mothsmch,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+womrsp,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+wifeearn,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+chlddisc,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+agedpar,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+numchild,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+childhap,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+babyhosp,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+conadyng,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+legcan,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+cosmtest,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+meditest,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+foxhunt,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+socwchld,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+socwpowr,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+welfresp,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+welfstig,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+welfhelp,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+docrely,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+earlyret,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+oldjobop,0=no self-completn,1=disagree strngly,2=just    disagree,3=neither,4=just    agree,5=agree   strngly,9=na
+rocccode,0=skipped,998=trainee craftsman,999=not     stated
+oocccode,0=skipped,998=trainee craftsman,999=not     stated
+stregion,11=wales,1=scotland,2=north,3=north   west,4=yorks & humber,5=west    midlands,6=east    midlands,7=east    anglia,8=south   west,9=south   east,10=greater london
+region,1=scotland,2=north,3=midlands,4=wales,5=south,6=greater london
+votepty,0=skipped,1=has vote pref,2=no  vote pref,8=dk,9=na
+partyid2,1=conservative,2=labour,3=alliance,4=other,5=none,8=dk/na
+ptyalleg,11=none,1=con:    partisan,2=con:    sympathr,3=con:    resid id,4=lab:    partisan,5=lab:    sympathr,6=lab:    resid id,7=alln:   partisan,8=alln:   sympathr,9=alln:   resid id,10=other,98=dk/na
+doneact,0=none,1=1-2     actions,2=3-4     actions,3=5+      actions,9=na
+doact,0=none,1=1-2     actions,2=3-4     actions,3=5+      actions,9=na
+married,1=married,2=live as married,3=separtd/divorced,4=widowed,5=never   married,9=na
+dochore1,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore1,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore2,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore2,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore3,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore3,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore4,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore4,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore5,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore5,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore6,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore6,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore7,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore7,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+dochore8,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+shchore8,0=skipped,1=mainly  man,2=mainly  woman,3=shared,4=other,9=na
+ragecat,1=18-24,2=25-34,3=35-44,4=45-54,5=55-59,6=60-64,7=65+,8=na
+rageband,1=18-34,2=35-54,3=55+,9=na
+rsexage,11=female  35-44,12=female  45-54,13=female  55-59,14=female  60-64,15=female  65+,16=female  na,1=male    18-24,2=male    25-34,3=male    35-44,4=male    45-54,5=male    55-59,6=male    60-64,7=male    65+,8=male    na,9=female  18-24,10=female  25-34
+rseggrp,1=professional,2=employer,3=non-manl: interm,4=non-manl: junior,5=skilled manual,6=semi-skd manual,7=unskilld manual,8=other   occ,9=cant    classify,10=sk:look aft home
+oseggrp,1=professional,2=employer,3=non-manl: interm,4=non-manl: junior,5=skilled manual,6=semi-skd manual,7=unskilld manual,8=other   occ,9=cant    classify,10=sk:look aft home
+rrgclass,0=skipped,1=i,2=ii,3=iii.nm,4=iii.m,5=iv,6=v,7=sk:look aft home,9=forces/ no info
+rrgcomp,0=skipped,1=i/ii,2=iii.nm,3=iii.m,4=iv/v,7=sk:look aft home,9=forces/ no info
+orgclass,0=skipped,1=i,2=ii,3=iii.nm,4=iii.m,5=iv,6=v,7=sk:look aft home,9=forces/ no info
+orgcomp,0=skipped,1=i/ii,2=iii.nm,3=iii.m,4=iv/v,7=sk:look aft home,9=forces/ no info
+rinddiv,99=cant    classify,0=agriculture,1=energy & water,2=metals, minerals,etc,3=metal   goods etc,4=other manufacturing,5=construction,6=distribution etc,7=transport & commun,8=financial services,9=other   services,10=sk:look aft home,98=skipped
+oinddiv,99=cant    classify,0=agriculture,1=energy & water,2=metals, minerals,etc,3=metal   goods etc,4=other manufacturing,5=construction,6=distribution etc,7=transport & commun,8=financial services,9=other   services,10=sk:look aft home,98=skipped
+tenure2,1=owner,2=rent nt/council,3=rent    other,9=na
+reconpos,11=other,1=in work ft-emp,12=na,2=in work pt-emp,3=in work ft-self,4=in work pt-self,5=in work n/k,6=waiting to work,7=unemployed,8=looking aft home,9=retired,10=in ft ed
+hhinccat,1=< 5000 pounds,2=5000-7999 pounds,3=8000-11999 pounds,4=12000 + pounds,8=dk,9=na
+obossas,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+sbossas,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+omaras,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+smaras,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+obosswi,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+sbosswi,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+omarwi,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na
+smarwi,1=mind a  lot,2=mind a  little,3=not mind,4=other,9=na

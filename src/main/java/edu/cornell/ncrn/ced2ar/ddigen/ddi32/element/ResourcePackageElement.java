@@ -45,6 +45,8 @@ public class ResourcePackageElement extends ElementWithUrn {
 			String agency,
 			String ddiLanguage,
 			String title,
+			String datasetUri,
+			String isPublic,
 			String citationTitle,
 			String citationAlternateTitle,
 			List<VariableScheme> variableSchemes,
@@ -59,14 +61,20 @@ public class ResourcePackageElement extends ElementWithUrn {
 	) {
 		super(agency);
 
-		Citation citation = new Citation(citationTitle, citationAlternateTitle, ddiLanguage);
+		Citation citation = new Citation(citationTitle + " Resource Package", citationAlternateTitle, ddiLanguage);
 		setCitation(citation);
 
 		// Purpose
 		setPurpose(new Purpose());
 
 		// Logical Product
-		LogicalProductElement logicalProduct = new LogicalProductElement(getAgency(), title, variableSchemes, categorySchemes, codeLists);
+		LogicalProductElement logicalProduct = new LogicalProductElement(
+				getAgency(),
+				(citationTitle != null && !citationTitle.isEmpty()) ? citationTitle : title,
+				variableSchemes,
+				categorySchemes,
+				codeLists
+		);
 		setLogicalProduct(logicalProduct);
 
 		UUID physicalRecordSegmentId = UUID.randomUUID();
@@ -93,13 +101,14 @@ public class ResourcePackageElement extends ElementWithUrn {
 		// Physical Instance
 		PhysicalInstance physicalInstance =  new PhysicalInstance(
 				getAgency(),
-				title,
+				(datasetUri != null && !datasetUri.isEmpty()) ? datasetUri : title,
+				isPublic,
 				ddiLanguage,
 				10,
 				dataFormat,
 				productIdentification,
-				"",
-				"",
+				citationTitle,
+				citationAlternateTitle,
 				variableSchemes,
 				statistics,
 				excludeVariableToStatMap,
@@ -129,7 +138,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 					variableSchemeLocal.getUuid(),
 					getAgency(),
 					ddiLanguage,
-					title,
+					(citationTitle != null && !citationTitle.isEmpty()) ? citationTitle : title,
 					variableSchemeLocal.getVariableList(),
 					codeListIdToUuidMap
 			);

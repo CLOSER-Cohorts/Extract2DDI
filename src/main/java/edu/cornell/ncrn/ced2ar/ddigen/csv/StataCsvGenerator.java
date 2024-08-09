@@ -126,6 +126,7 @@ public class StataCsvGenerator extends CsvGenerator {
 
 		variablesCSV.setVariableValueLables(variableValueLabels);
 		variablesCSV.setReadErrors(readErrors);
+		variablesCSV.setVariableToFrequencyMap(variableToFrequencyMap);
 		variablesCSV.setVariableStatList(ced2arVariableStats);
 
 		return variablesCSV;

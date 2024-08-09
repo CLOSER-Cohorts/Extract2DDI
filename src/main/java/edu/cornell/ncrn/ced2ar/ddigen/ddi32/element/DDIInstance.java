@@ -28,6 +28,8 @@ public class DDIInstance extends ElementWithUrn {
 			String agency,
 			String ddiLanguage,
 			String title,
+			String datasetUri,
+			String isPublic,
 			String citationTitle,
 			String citationAlternateTitle,
 			List<VariableScheme> variableSchemes,
@@ -42,7 +44,7 @@ public class DDIInstance extends ElementWithUrn {
 	) {
 		super(agency);
 
-		Citation citation = new Citation(citationTitle, citationAlternateTitle, ddiLanguage);
+		Citation citation = new Citation(citationTitle + " Instance", citationAlternateTitle, ddiLanguage);
 		setCitation(citation);
 
 		// Resource package
@@ -50,8 +52,10 @@ public class DDIInstance extends ElementWithUrn {
 				getAgency(),
 				ddiLanguage,
 				title,
-				"",
-				"",
+				datasetUri,
+				isPublic,
+				citationTitle,
+				citationAlternateTitle,
 				variableSchemes,
 				categorySchemes,
 				codeLists,

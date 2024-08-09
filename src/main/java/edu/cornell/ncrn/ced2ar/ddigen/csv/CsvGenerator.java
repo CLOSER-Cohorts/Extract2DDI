@@ -103,6 +103,11 @@ public class CsvGenerator {
 		HashMap<String, String> validLabels = variable.getValidValues();
 
 		if (!validLabels.isEmpty()) {
+			// Check if the string ends with ".0"
+			if (value.endsWith(".0")) {
+				// Remove the ".0" part
+				value = value.substring(0, value.length() - 2);
+			}
 			return validLabels.containsKey(value);
 		}
 		// SPSS Reader sometimes reads '.' as this long value 
