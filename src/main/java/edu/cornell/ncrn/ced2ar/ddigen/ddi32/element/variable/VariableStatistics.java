@@ -29,10 +29,6 @@ public class VariableStatistics extends ElementWithUrn {
 		this.summaryStatisticList.add(summaryStatistic);
 	}
 
-	public void addVariableCategory(String code, long frequency) {
-		VariableCategory variableCategory = new VariableCategory(code, Long.toString(frequency), null);
-		variableCategoryList.add(variableCategory);
-	}
 	public void addVariableCategory(String code, long frequency, String prefix) {
 		VariableCategory variableCategory = new VariableCategory(code, Long.toString(frequency), prefix);
 		variableCategoryList.add(variableCategory);

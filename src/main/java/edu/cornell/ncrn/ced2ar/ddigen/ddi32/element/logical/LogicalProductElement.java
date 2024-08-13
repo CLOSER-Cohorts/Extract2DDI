@@ -1,10 +1,10 @@
 package edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.logical;
 
 import edu.cornell.ncrn.ced2ar.ddigen.category.CategoryScheme;
-import edu.cornell.ncrn.ced2ar.ddigen.code.CodeList;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.ElementWithUrn;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.Name;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.category.CategorySchemeReference;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListSchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.record.VariableSchemeReference;
 import edu.cornell.ncrn.ced2ar.ddigen.variable.VariableScheme;
@@ -30,7 +30,7 @@ public class LogicalProductElement extends ElementWithUrn {
 			String title,
 			List<VariableScheme> variableSchemeList,
 			List<CategoryScheme> categorySchemeList,
-			List<CodeList> codeListList
+			CodeListScheme codeListScheme
 	) {
 		super(agency);
 
@@ -45,9 +45,7 @@ public class LogicalProductElement extends ElementWithUrn {
 		}
 
 		// Code List Schemes
-		for (CodeList codeList : codeListList) {
-			addCodeListSchemeReference(codeList.getUuid());
-		}
+		addCodeListSchemeReference(codeListScheme.getId());
 
 		// Variable Schemes
 		for (VariableScheme variableScheme : variableSchemeList) {

@@ -10,6 +10,7 @@ import edu.cornell.ncrn.ced2ar.ddigen.csv.Ced2arVariableStat;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.SpssCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.StataCsvGenerator;
 import edu.cornell.ncrn.ced2ar.ddigen.csv.VariableCsv;
+import edu.cornell.ncrn.ced2ar.ddigen.ddi32.element.code.CodeListScheme;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.CodeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.DateTimeRepresentation;
 import edu.cornell.ncrn.ced2ar.ddigen.representation.NumericRepresentation;
@@ -30,6 +31,7 @@ public abstract class DdiLifecycleGenerator {
 	protected final List<CategoryScheme> categorySchemeList = new ArrayList<>();
 	protected final List<CodeList> codeListList = new ArrayList<>();
 	protected final List<VariableScheme> variableSchemeList = new ArrayList<>();
+	protected final List<CodeListScheme> codeListSchemes = new ArrayList<>();
 	protected Map<String, String> attributeMap = new HashMap<>();
 	protected Map<String, String> codeSchemeToCategorySchemeMap = new HashMap<>();
 	protected FileFormatInfo.Format dataFormat;
@@ -90,7 +92,19 @@ public abstract class DdiLifecycleGenerator {
 				Code code = new Code(splits[0]);
 				code.setValue(splits[1]);
 				codeList.add(code);
+
 			}
+
+			for (Ced2arVariableStat stat : variableCsv.getVariableStatList()) {
+				if (stat.getName().equals(codebookVariable.getName())) {
+					for (Map.Entry<String, String> entry : stat.getMissingValues().entrySet()) {
+						Code code = new Code(entry.getKey());
+						code.setValue(entry.getValue());
+						codeList.add(code);
+					}
+				}
+			}
+
 			if (!categoryList.isEmpty() && !codeList.isEmpty()) {
 				String categorySchemeId = UUID.randomUUID().toString();
 				CategoryScheme categoryScheme = new CategoryScheme(categorySchemeId, categoryList);

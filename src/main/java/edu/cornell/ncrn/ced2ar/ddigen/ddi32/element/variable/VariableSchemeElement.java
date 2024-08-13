@@ -27,7 +27,7 @@ public class VariableSchemeElement extends ElementWithUrn {
 			String ddilanguage,
 			String title,
 			List<Variable> variableList,
-			Map<String, UUID> codeListIdToUuidMap
+			Map<String, String> codeListIdToUuidMap
 	) {
 		super(id, agency);
 		setVariableSchemeName(title);

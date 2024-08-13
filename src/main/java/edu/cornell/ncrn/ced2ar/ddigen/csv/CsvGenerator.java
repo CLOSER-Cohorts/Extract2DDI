@@ -78,7 +78,7 @@ public class CsvGenerator {
 		}
 
 		Frequency frequency = variableToFrequencyMap.get(variable.getName());
-		if (frequency != null && variable.isNumeric() && isValidValue) {
+		if (frequency != null && variable.isNumeric()) {
 			double d = Double.parseDouble(value);
 			int i = (int) d;
 			frequency.addValue(Integer.toString(i));
