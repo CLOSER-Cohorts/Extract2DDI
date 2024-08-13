@@ -36,6 +36,15 @@ public class CodeList {
 		return uuid;
 	}
 
+	public Code findCodeById(String id) {
+		for (Code code : codeList) {
+			if (code.getCategoryId().equals(id)) {
+				return code;
+			}
+		}
+		return null;
+	}
+
 	public void setCodeList(List<Code> codeList) {
 		this.codeList = codeList;
 	}

@@ -19,6 +19,7 @@ import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -147,10 +148,13 @@ public class PhysicalInstance extends ElementWithUrn {
 								if (invalidValueFrequency > 0) {
 									variableStatistics.addVariableCategory(".", invalidValueFrequency, "pi");
 								}
-								for (Code code : codeList.getCodeList()) {
-									long frequency = variableFrequency.getCount(code.getCategoryId());
-									if (frequency > 0) {
-										variableStatistics.addVariableCategory(code.getValue(), frequency, "pi");
+
+								Iterator<Map.Entry<Comparable<?>, Long>> iterator = variableFrequency.entrySetIterator();
+								while (iterator.hasNext()) {
+									Map.Entry<Comparable<?>, Long> entry = iterator.next();
+									Code code = codeList.findCodeById(entry.getKey().toString());
+									if (code != null) {
+										variableStatistics.addVariableCategory(code.getValue(), entry.getValue(), "pi");
 									}
 								}
 							}

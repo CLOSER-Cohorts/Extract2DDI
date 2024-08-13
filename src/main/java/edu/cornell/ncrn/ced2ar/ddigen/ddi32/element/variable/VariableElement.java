@@ -12,7 +12,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.util.Map;
-import java.util.UUID;
 
 public class VariableElement extends ElementWithUrn {
 
@@ -68,7 +67,7 @@ public class VariableElement extends ElementWithUrn {
 //		this.variableRepresentation = variableRepresentation;
 //	}
 
-	public void setVariableRepresentation(Representation variableRepresentation, Map<String, UUID> codeListIdToUuidMap) {
+	public void setVariableRepresentation(Representation variableRepresentation, Map<String, String> codeListIdToUuidMap) {
 		if (variableRepresentation instanceof NumericRepresentation) {
 			NumericRepresentation representation = (NumericRepresentation) variableRepresentation;
 
@@ -82,10 +81,10 @@ public class VariableElement extends ElementWithUrn {
 		} else if (variableRepresentation instanceof CodeRepresentation) {
 			CodeRepresentation representation = (CodeRepresentation) variableRepresentation;
 
-			UUID codeSchemeId = codeListIdToUuidMap.get(representation.getCodeSchemeId());
+			String codeSchemeId = codeListIdToUuidMap.get(representation.getCodeSchemeId());
 
 			CodeVariableRepresentation codeVariableRepresentation = new CodeVariableRepresentation("Numeric");
-			codeVariableRepresentation.setReferenceElement(codeSchemeId.toString(), getAgency());
+			codeVariableRepresentation.setReferenceElement(codeSchemeId, getAgency());
 			this.variableRepresentation = codeVariableRepresentation;
 		}
 	}

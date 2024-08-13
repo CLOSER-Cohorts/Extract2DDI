@@ -35,7 +35,7 @@ public class CodeVariableRepresentation extends VariableRepresentation {
 		return referenceElement;
 	}
 
-	public void setReferenceElement(String codeId, String agency) {
-		this.referenceElement = new CodeListReference(codeId, agency);
+	public void setReferenceElement(String codeListId, String agency) {
+		this.referenceElement = new CodeListReference(codeListId, agency);
 	}
 }

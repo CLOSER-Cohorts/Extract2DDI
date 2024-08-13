@@ -111,11 +111,31 @@ public class Main {
 		String ddiLanguage = configUtil.getDdiLanguage();
 		stats = configUtil.getStats();
 		outputFile = configUtil.getOutputFile();
+
 		String datasetShortDescription = configUtil.getDatasetShortDescription();
 		String dataDescription = configUtil.getDataDescription();
 		String datasetUri = configUtil.getDatasetUri();
 		String isPublic = configUtil.isPublic();
-		if (isPublic != null && !isPublic.equals("0") && !isPublic.equals("1")) {
+
+		if (datasetShortDescription == null || datasetShortDescription.isEmpty()) {
+			logger.error("dataset_short_description is missing in config");
+			return;
+		}
+
+		if (dataDescription == null || dataDescription.isEmpty()) {
+			logger.error("data_description is missing in config");
+			return;
+		}
+
+		if (datasetUri == null || datasetUri.isEmpty()) {
+			logger.error("dataset_URI is missing in config");
+			return;
+		}
+
+		if (isPublic == null || isPublic.isEmpty()) {
+			logger.error("is_public is missing in config");
+			return;
+		} else if (!isPublic.equals("0") && !isPublic.equals("1")) {
 			logger.error("is_public must be either 0 or 1");
 			return;
 		}

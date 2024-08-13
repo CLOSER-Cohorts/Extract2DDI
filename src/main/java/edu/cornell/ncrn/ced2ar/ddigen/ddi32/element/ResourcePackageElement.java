@@ -67,13 +67,17 @@ public class ResourcePackageElement extends ElementWithUrn {
 		// Purpose
 		setPurpose(new Purpose());
 
+		// Code List Schemes
+		CodeListScheme codeListScheme = createCodeListScheme(codeLists, categorySchemes, codeSchemeToCategorySchemeMap);
+		this.codeListScheme = codeListScheme;
+
 		// Logical Product
 		LogicalProductElement logicalProduct = new LogicalProductElement(
 				getAgency(),
 				(citationTitle != null && !citationTitle.isEmpty()) ? citationTitle : title,
 				variableSchemes,
 				categorySchemes,
-				codeLists
+				codeListScheme
 		);
 		setLogicalProduct(logicalProduct);
 
@@ -123,14 +127,11 @@ public class ResourcePackageElement extends ElementWithUrn {
 			addCategoryScheme(ddiLanguage, categoryScheme.getUuid(), categoryScheme.getId(), categoryScheme.getCategoryList());
 		}
 
-		// Code List Schemes
-		setCodeListScheme(codeLists, categorySchemes, codeSchemeToCategorySchemeMap);
-
 		// Variable Scheme
 		List<VariableSchemeElement> variableSchemeElementList = new ArrayList<>();
-		Map<String, UUID> codeListIdToUuidMap = new HashMap<>();
+		Map<String, String> codeListIdToUuidMap = new HashMap<>();
 		for (CodeList codeList : codeLists) {
-			codeListIdToUuidMap.put(codeList.getId(), UUID.randomUUID());
+			codeListIdToUuidMap.put(codeList.getId(), codeList.getUuid());
 		}
 
 		for (VariableScheme variableSchemeLocal : variableSchemes) {
@@ -213,7 +214,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		}
 
 		// Code List Scheme
-		getCodeListScheme().appendToElement(resourcePackage, doc);
+		codeListScheme.appendToElement(resourcePackage, doc);
 
 		// Variable Scheme
 		for (VariableSchemeElement variableSchemeElement : getVariableSchemeList()) {
@@ -229,10 +230,6 @@ public class ResourcePackageElement extends ElementWithUrn {
 
 	public Citation getCitation() {
 		return citation;
-	}
-
-	public CodeListScheme getCodeListScheme() {
-		return codeListScheme;
 	}
 
 	public LogicalProductElement getLogicalProduct() {
@@ -251,7 +248,7 @@ public class ResourcePackageElement extends ElementWithUrn {
 		return variableSchemeList;
 	}
 
-	public void setCodeListScheme(List<CodeList> codeListList, List<CategoryScheme> categorySchemeList, Map<String, String> codeSchemeToCategorySchemeMap) {
+	public CodeListScheme createCodeListScheme(List<CodeList> codeListList, List<CategoryScheme> categorySchemeList, Map<String, String> codeSchemeToCategorySchemeMap) {
 		CodeListScheme codeListScheme = new CodeListScheme(getAgency());
 		for (CodeList codeList : codeListList) {
 			CodeListElement codeListElement = new CodeListElement(codeList.getUuid(), getAgency());
@@ -263,21 +260,21 @@ public class ResourcePackageElement extends ElementWithUrn {
 			).findFirst().orElse(null);
 
 			for (Code code : codeList.getCodeList()) {
-				CodeElement codeElement = new CodeElement(getAgency(), code.getValue());
 
 				if (categoryScheme != null) {
 					for (Category category : categoryScheme.getCategoryList()) {
 						if (category.getId().equalsIgnoreCase(code.getCategoryId())) {
+							CodeElement codeElement = new CodeElement(getAgency(), code.getValue());
 							codeElement.setCategoryReference(category.getUuid());
+							codeListElement.addCode(codeElement);
 							break;
 						}
 					}
 				}
-				codeListElement.addCode(codeElement);
 			}
 			codeListScheme.addCodeList(codeListElement);
 		}
-		this.codeListScheme = codeListScheme;
+		return codeListScheme;
 	}
 
 	public void setCitation(Citation citation) {

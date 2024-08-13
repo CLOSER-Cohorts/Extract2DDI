@@ -147,11 +147,13 @@ public class FragmentGenerator {
 			for (Code code : codeList.getCodeList()) {
 				String id = UUID.randomUUID().toString();
 
-				String categoryId = categoryIdToUuidMap.get(code.getCategoryId()).toString();
-				CodeFragment codeFragment = new CodeFragment(id, getAgency(), getVersion(), code.getValue());
-				CategoryReferenceFragment reference = new CategoryReferenceFragment(categoryId, getAgency(), getVersion());
-				codeFragment.setCategoryReference(reference);
-				codeListFragment.addCode(codeFragment);
+				UUID categoryId = categoryIdToUuidMap.get(code.getCategoryId());
+				if (categoryId != null) {
+					CodeFragment codeFragment = new CodeFragment(id, getAgency(), getVersion(), code.getValue());
+					CategoryReferenceFragment reference = new CategoryReferenceFragment(categoryId.toString(), getAgency(), getVersion());
+					codeFragment.setCategoryReference(reference);
+					codeListFragment.addCode(codeFragment);
+				}
 			}
 		}
 
